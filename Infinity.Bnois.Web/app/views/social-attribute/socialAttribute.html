@@ -1,0 +1,42 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Social Attributes & Hobby</h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.updateSocialAttribute()"><span class="glyphicon glyphicon-user"></span>Update</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                        <tr>
+                            <td style="font-weight:bold">Highly Accepted Social Qualities and Happy Family Record</td>
+                            <td><yes-no is-true="{{vm.socialAttribute.isSocialAttribute}}"></yes-no></td>
+                            <td style="font-weight:bold">Remarks</td>
+                            <td>{{vm.socialAttribute.saRemarks}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Good Circulation Value</td>
+                            <td><yes-no is-true="{{vm.socialAttribute.isCirculationValue}}"></yes-no></td>
+                            <td style="font-weight:bold">Remarks</td>
+                            <td>{{vm.socialAttribute.cvRemarks}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Personality and Personal Character</td>
+                             
+                            <td><yes-no is-true="{{vm.socialAttribute.isPersonalityPerChar}}"></yes-no></td>
+                            <td style="font-weight:bold">Remarks</td>
+                            <td>{{vm.socialAttribute.ppcRemarks}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Hobby</td>
+                            <td>{{vm.socialAttribute.hobby}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

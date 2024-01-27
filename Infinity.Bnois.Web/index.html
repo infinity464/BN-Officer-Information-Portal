@@ -1,0 +1,710 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>BNOIP</title>
+    <base href="/" />
+    <link rel="shortcut icon" href="Images/BNLogo.png">
+    <!--<link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,400i,600,700" rel="stylesheet">-->
+
+    <!--     Fonts and icons     -->
+    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none !important;
+        }
+        @font-face {
+            font-family: 'Roboto-Regular';
+            src: url('fonts/Roboto-Regular.ttf') format('truetype');
+        }
+
+    </style>
+
+
+</head>
+<body style="background-color:#5B9BD5; font-family: Roboto-Regular !important">
+    <div ng-include="'app/layout/shell.html'" class="main-div" id="myDiv"></div>
+
+
+
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="Content/toastr.css" rel="stylesheet" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="Content/themes/base/all.css" rel="stylesheet" />
+    <link href="Content/addmin/style.css" rel="stylesheet" />
+    <link href="Content/angucomplete-alt.css" rel="stylesheet" />
+    <!--<link href="Content/addmin/site.css" rel="stylesheet" />-->
+    <link href="Content/addmin/responsive.css" rel="stylesheet" />
+    <!--<link href="Content/addmin/customStyle.css" rel="stylesheet" />-->
+    <link href="Content/kendo/css/kendo.metro.min.css" rel="stylesheet" />
+    <link href="Content/kendo/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="Content/jquery.orgchart.css" rel="stylesheet" />
+
+
+    <link href="Content/template/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/template/paper-dashboard.css" rel="stylesheet" />
+    <link href="Content/template/demo.css" rel="stylesheet" />
+    <link href="Content/bnoipStyle.css" rel="stylesheet" />
+    <!-- vendor script -->
+    <!--<script src="Scripts/jquery-3.2.1.min.js"></script>-->
+    <script src="Content/template/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="Scripts/jquery-migrate-3.0.0.min.js"></script>
+    <script src="Scripts/jquery.mockjax.min.js"></script>
+    <script src="Scripts/jquery.orgchart.js"></script>
+    <script src="Scripts/Chart.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-messages.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/angular-cookies.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="Scripts/AngularUI/ui-router.js"></script>
+    <script src="Scripts/angular-ui/ui-utils.js"></script>
+    <script src="Scripts/angular-ui/ui-utils-ieshiv.js"></script>
+
+    <!--<script src="Content/template/js/bootstrap.min.js"></script>-->
+    <!--<script src="Content/template/js/popper.min.js"></script>-->
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/toastr.min.js"></script>
+    <script src="Scripts/spin.min.js"></script>
+    <script src="Scripts/angular-file-upload.min.js"></script>
+    <script src="Scripts/ng-img-crop.js"></script>
+    <script src="Scripts/oidc-token-manager/oidc-token-manager.min.js"></script>
+    <script src="Scripts/ngComboDatePicker.min.js"></script>
+    <script src="Scripts/angucomplete-alt.js"></script>
+    <!--<script src="Scripts/custom.js"></script>-->
+    <script src="Content/kendo/js/kendo.all.min.js"></script>
+    <script src="app/directives/checklist-model.js"></script>
+    <script src="app/directives/angularjs-dropdown-multiselect.js"></script>
+    <script src="Scripts/angular-chart.min.js"></script>
+
+
+    <!--<script src="Content/template/js/paper-dashboard.js"></script>-->
+    <script src="Content/template/js/demo.js"></script>
+
+
+    <!-- Infinity script -->
+    <script src="app/app.js"></script>
+    <script src="app/common/routerHelperProvider.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/common/common.services.js"></script>
+    <script src="app/common/common.js"></script>
+    <script src="app/common/config.js"></script>
+    <script src="app/common/spinner.js"></script>
+    <script src="app/directives/directives.js"></script>
+    <script src="app/directives/employeeSearchDirective.js"></script>
+    <script src="app/services/identityDataConstants.js"></script>
+    <script src="app/services/downloadService.js"></script>
+    <script src="app/services/requestCounterService.js"></script>
+    <script src="app/services/notificationService.js"></script>
+    <script src="app/services/apiHttpService.js"></script>
+    <script src="app/common/codeValue.js"></script>
+    <script src="app/services/dataConstants.js"></script>
+    <script src="app/services/uploadFileService.js"></script>
+    <script src="app/layout/shellController.js"></script>
+    <script src="app/layout/topNavigationController.js"></script>
+    <script src="app/layout/leftSideBarNavigationController.js"></script>
+    <script src="app/services/moduleService.js"></script>
+    <!--Feature script added here-->
+    <!--Services-->
+    <script src="app/services/employeeService.js"></script>
+    <script src="app/services/currentStatusService.js"></script>
+    <script src="app/services/employeeLeaveService.js"></script>
+    <script src="app/services/feedbackFormService.js"></script>
+    <script src="app/services/userService.js"></script>
+    <script src="app/services/roleService.js"></script>
+    <script src="app/services/featureService.js"></script>
+    <script src="app/services/feedBackService.js"></script>
+    <script src="app/services/downloadfileService.js"></script>
+    <script src="app/services/flashNoticeService.js"></script>
+    <script src="app/services/bulkUserService.js"></script>
+    <!--controller-->
+
+    <script src="app/views/current-status/currentStatusController.js"></script>
+    <script src="app/views/log-out/logOutController.js"></script>
+    <script src="app/views/transfer-history/transferHistoryController.js"></script>
+    <script src="app/views/course-attended/courseAttendedController.js"></script>
+    <script src="app/views/opr-grading/oprGradingController.js"></script>
+    <script src="app/views/medal-award-publication/medalAwardPublicationController.js"></script>
+    <script src="app/views/commendation-appreciation/commendationAppreciationController.js"></script>
+    <script src="app/views/leave-information/leaveInformationController.js"></script>
+    <script src="app/views/feedback-form/feedbackFormController.js"></script>
+    <script src="app/views/Download/DownloadController.js"></script>
+    <script src="app/views/contact/contactController.js"></script>
+    <script src="app/views/notifications/notificationsController.js"></script>
+    <script src="app/views/useful-link/usefulLinkController.js"></script>
+    <script src="app/views/password/changePasswordController.js"></script>
+    <script src="app/views/user/usersController.js"></script>
+    <script src="app/views/user/userAddController.js"></script>
+    <script src="app/views/user-role/userRolesController.js"></script>
+    <script src="app/views/role/rolesController.js"></script>
+    <script src="app/views/role/roleAddController.js"></script>
+    <script src="app/views/role-feature/roleFeaturesController.js"></script>
+    <script src="app/views/module/modulesController.js"></script>
+    <script src="app/views/module/moduleAddController.js"></script>
+    <script src="app/views/feature/featuresController.js"></script>
+    <script src="app/views/feature/featureAddController.js"></script>
+    <script src="app/views/feedback-form/feedBackController.js"></script>
+    <script src="app/views/Download/downloadAddController.js"></script>
+    <script src="app/views/Download/downloadViewController.js"></script>
+    <script src="app/views/bulk-user/bulkUserController.js"></script>
+    <script src="app/views/dashboardTab/dashboardTabController.js"></script>
+    <script src="app/views/js-report/printController.js"></script>
+    <script src="app/views/Backup-migration/MigrationController.js"></script>
+    <script src="app/views/employee-history/employeeHistoryController.js"></script>
+    <script src="app/views/user-log/userLogController.js"></script>
+    <script src="app/views/flash-notice/flashNoticeAddController.js"></script>
+    <script src="app/views/flash-notice/flashNoticeController.js"></script>
+    <script src="app/views/flash-notice/flashNoticeForMemberController.js"></script>
+    <!--
+
+    <script src="app/services/rankService.js"></script>
+    <script src="app/views/rank/ranksController.js"></script>
+    <script src="app/views/rank/rankAddController.js"></script>
+    <script src="app/services/rankCategoryService.js"></script>
+    <script src="app/views/rank-category/rankCategoriesController.js"></script>
+    <script src="app/views/rank-category/rankCategoryAddController.js"></script>
+    <script src="app/services/categoryService.js"></script>
+    <script src="app/views/category/categoriesController.js"></script>
+    <script src="app/views/category/categoryAddController.js"></script>
+    <script src="app/services/subCategoryService.js"></script>
+    <script src="app/views/sub-category/subCategoriesController.js"></script>
+    <script src="app/views/sub-category/subCategoryAddController.js"></script>
+    <script src="app/services/commissionTypeService.js"></script>
+    <script src="app/views/commission-type/commissionTypesController.js"></script>
+    <script src="app/views/commission-type/commissionTypeAddController.js"></script>
+    <script src="app/services/subBranchService.js"></script>
+    <script src="app/views/sub-branch/subBranchesController.js"></script>
+    <script src="app/views/sub-branch/subBranchAddController.js"></script>
+    <script src="app/services/officerStreamService.js"></script>
+    <script src="app/views/officer-stream/officerStreamsController.js"></script>
+    <script src="app/views/officer-stream/officerStreamAddController.js"></script>
+    <script src="app/services/batchService.js"></script>
+    <script src="app/views/batch/batchesController.js"></script>
+    <script src="app/views/batch/batchAddController.js"></script>
+    <script src="app/services/countryService.js"></script>
+    <script src="app/views/country/countriesController.js"></script>
+    <script src="app/views/country/countryAddController.js"></script>
+    <script src="app/services/maritalTypeService.js"></script>
+    <script src="app/views/marital-type/maritalTypesController.js"></script>
+    <script src="app/views/marital-type/maritalTypeAddController.js"></script>
+    <script src="app/services/branchService.js"></script>
+    <script src="app/views/branch/branchesController.js"></script>
+    <script src="app/views/branch/branchAddController.js"></script>
+    <script src="app/services/subjectService.js"></script>
+    <script src="app/views/subject/subjectController.js"></script>
+    <script src="app/views/subject/subjectAddController.js"></script>
+    <script src="app/services/religionService.js"></script>
+    <script src="app/views/religion/religionsController.js"></script>
+    <script src="app/views/religion/religionAddController.js"></script>
+
+    <script src="app/views/employee/employeesController.js"></script>
+    <script src="app/views/employee/employeeAddController.js"></script>
+    <script src="app/views/employeeTab/employeeTabController.js"></script>
+    <script src="app/services/employeeGeneralService.js"></script>
+    <script src="app/views/employee-general/employeeGeneralsController.js"></script>
+    <script src="app/views/employee-general/employeeGeneralAddController.js"></script>
+    <script src="app/services/divisionService.js"></script>
+    <script src="app/views/division/divisionsController.js"></script>
+    <script src="app/views/division/divisionAddController.js"></script>
+    <script src="app/services/colorService.js"></script>
+    <script src="app/views/color/colorsController.js"></script>
+    <script src="app/views/color/colorAddController.js"></script>
+    <script src="app/services/districtService.js"></script>
+    <script src="app/views/district/districtsController.js"></script>
+    <script src="app/views/district/districtAddController.js"></script>
+    <script src="app/views/blood-group/bloodGroupsController.js"></script>
+    <script src="app/views/blood-group/bloodGroupAddController.js"></script>
+    <script src="app/services/bloodGroupService.js"></script>
+    <script src="app/views/eye-vision/eyeVisionsController.js"></script>
+    <script src="app/views/eye-vision/eyeVisionAddController.js"></script>
+    <script src="app/services/eyeVisionService.js"></script>
+    <script src="app/views/medical-category/medicalCategoryAddController.js"></script>
+    <script src="app/views/medical-category/medicalCategoriesController.js"></script>
+    <script src="app/services/medicalCategoryService.js"></script>
+    <script src="app/views/physical-structure/physicalStructuresController.js"></script>
+    <script src="app/views/physical-structure/physicalStructureAddController.js"></script>
+    <script src="app/services/physicalStructureService.js"></script>
+    <script src="app/services/physicalConditionService.js"></script>
+    <script src="app/views/physical-condition/physicalConditionsController.js"></script>
+    <script src="app/views/physical-condition/physicalConditionAddController.js"></script>
+    <script src="app/services/leaveTypeService.js"></script>
+    <script src="app/views/leave-Type/leaveTypeAddController.js"></script>
+    <script src="app/views/leave-Type/leaveTypesController.js"></script>
+    <script src="app/services/leavePolicyService.js"></script>
+    <script src="app/views/leave-policy/leavePolicyiesController.js"></script>
+    <script src="app/views/leave-policy/leavePolicyAddController.js"></script>
+    <script src="app/views/employee-leave/employeeLeaveApprovedController.js"></script>
+    <script src="app/services/employeeOtherService.js"></script>
+    <script src="app/views/employee-other/employeeOthersController.js"></script>
+    <script src="app/views/employee-other/employeeOtherAddController.js"></script>
+    <script src="app/views/employee-other/employeeOtherImageController.js"></script>
+    <script src="app/views/upazila/upazilasController.js"></script>
+    <script src="app/views/upazila/upazilaAddController.js"></script>
+    <script src="app/services/upazilaService.js"></script>
+    <script src="app/services/examCategoryService.js"></script>
+    <script src="app/views/exam-category/examCategoriesController.js"></script>
+    <script src="app/views/exam-category/examCategoryAddController.js"></script>
+    <script src="app/services/examinationService.js"></script>
+    <script src="app/views/examination/examinationsController.js"></script>
+    <script src="app/views/examination/examinationAddController.js"></script>
+    <script src="app/views/termination-type/terminationTypesController.js"></script>
+    <script src="app/views/termination-type/terminationTypeAddController.js"></script>
+    <script src="app/services/terminationTypeService.js"></script>
+    <script src="app/views/age-service-policy/ageServicePolicyAddController.js"></script>
+    <script src="app/views/age-service-policy/ageServicePoliciesController.js"></script>
+    <script src="app/services/ageServicePolicyService.js"></script>
+    <script src="app/services/instituteTypeService.js"></script>
+    <script src="app/views/institute-type/instituteTypesController.js"></script>
+    <script src="app/views/institute-type/instituteTypeAddController.js"></script>
+    <script src="app/services/instituteService .js"></script>
+    <script src="app/views/institute/institutesController.js"></script>
+    <script src="app/views/institute/instituteAddController.js"></script>
+    <script src="app/views/retired-age/retiredAgesController.js"></script>
+    <script src="app/views/retired-age/retiredAgeAddController.js"></script>
+    <script src="app/services/retiredAgeService.js"></script>
+    <script src="app/views/employee-service-extension/employeeServiceExtensionsController.js"></script>
+    <script src="app/views/employee-service-extension/employeeServiceExtensionAddController.js"></script>
+    <script src="app/services/employeeServiceExtensionService.js"></script>
+
+    <script src="app/views/employee-leave/employeeLeavesController.js"></script>
+    <script src="app/views/employee-leave/employeeLeaveAddController.js"></script>
+    <script src="app/views/employee-leave/employeeLeaveInboxController.js"></script>
+    <script src="app/views/employee-leave/IndividualEmployeeLeaveController.js"></script>
+    <script src="app/views/employee-leave/nsOfficeDashBoardController.js"></script>
+    <script src="app/views/employee-leave/CurrentEmployeeInformationController.js"></script>
+    <script src="app/views/employee-leave/leaveTrackingController.js"></script>
+    <script src="app/views/employee-leave/nsOfficeLeavedashboardController.js"></script>
+    <script src="app/services/boardService.js"></script>
+    <script src="app/views/board/boardsController.js"></script>
+    <script src="app/views/board/boardAddController.js"></script>
+    <script src="app/views/course-category/courseCategoriesController.js"></script>
+    <script src="app/views/course-category/courseCategoryAddController.js"></script>
+    <script src="app/services/courseCategoryService.js"></script>
+    <script src="app/views/course-sub-category/courseSubCategoriesController.js"></script>
+    <script src="app/views/course-sub-category/courseSubCategoryAddController.js"></script>
+    <script src="app/services/courseSubCategoryService.js"></script>
+    <script src="app/views/employee-run-missing/empRunMissingsController.js"></script>
+    <script src="app/views/employee-run-missing/empRunMissingAddController.js"></script>
+    <script src="app/services/empRunMissingService.js"></script>
+    <script src="app/services/empRejoinService.js"></script>
+    <script src="app/views/employee-rejoin/empRejoinsController.js"></script>
+    <script src="app/views/employee-rejoin/empRejoinAddController.js"></script>
+    <script src="app/services/examSubjectService.js"></script>
+    <script src="app/views/exam-subject/examSubjectsController.js"></script>
+    <script src="app/views/exam-subject/examSubjectAddController.js"></script>
+    <script src="app/services/resultService.js"></script>
+    <script src="app/views/result/resultsController.js"></script>
+    <script src="app/views/result/resultAddController.js"></script>
+    <script src="app/services/resultTypeService.js"></script>
+    <script src="app/views/result-type/resultTypesController.js"></script>
+    <script src="app/views/result-type/resultTypeAddController.js"></script>
+    <script src="app/services/educationService.js"></script>
+    <script src="app/views/education/educationsController.js"></script>
+    <script src="app/views/education/educationAddController.js"></script>
+    <script src="app/views/education/certificateUploadController.js"></script>
+    <script src="app/views/course/coursesController.js"></script>
+    <script src="app/views/course/courseAddController.js"></script>
+    <script src="app/services/courseService.js"></script>
+    <script src="app/views/training-institute/trainingInstitutesController.js"></script>
+    <script src="app/views/training-institute/trainingInstituteAddController.js"></script>
+    <script src="app/services/trainingInstituteService.js"></script>
+    <script src="app/views/training-plan/trainingPlansController.js"></script>
+    <script src="app/views/training-plan/trainingPlanAddController.js"></script>
+    <script src="app/services/trainingPlanService.js"></script>
+    <script src="app/services/addressService.js"></script>
+    <script src="app/views/address/addressesController.js"></script>
+    <script src="app/views/address/addressAddController.js"></script>
+    <script src="app/services/socialAttributeService.js"></script>
+    <script src="app/views/social-attribute/socialAttributeController.js"></script>
+    <script src="app/views/training-result/trainingResultsController.js"></script>
+    <script src="app/views/training-result/trainingResultAddController.js"></script>
+    <script src="app/views/training-result/trainingResultUploadController.js"></script>
+    <script src="app/services/trainingResultService.js"></script>
+    <script src="app/views/extracurricular-type/extracurricularTypesController.js"></script>
+    <script src="app/views/extracurricular-type/extracurricularTypeAddController.js"></script>
+    <script src="app/services/extracurricularTypeService.js"></script>
+    <script src="app/services/extracurricularService.js"></script>
+    <script src="app/views/extracurricular/extracurricularsController.js"></script>
+    <script src="app/views/extracurricular/extracurricularAddController.js"></script>
+    <script src="app/views/religion-cast/religionCastsController.js"></script>
+    <script src="app/views/religion-cast/religionCastAddController.js"></script>
+    <script src="app/services/religionCastService.js"></script>
+    <script src="app/views/occupation/occupationsController.js"></script>
+    <script src="app/views/occupation/occupationAddController.js"></script>
+    <script src="app/services/occupationService.js"></script>
+    <script src="app/services/parentService.js"></script>
+    <script src="app/views/parent/parentController.js"></script>
+    <script src="app/views/sibling/siblingAddController.js"></script>
+    <script src="app/views/sibling/siblingsController.js"></script>
+    <script src="app/views/sibling/siblingImageController.js"></script>
+    <script src="app/services/siblingService.js"></script>
+    <script src="app/views/spouse/spousesController.js"></script>
+    <script src="app/views/spouse/spouseAddController.js"></script>
+    <script src="app/views/spouse/spouseImageController.js"></script>
+    <script src="app/services/spouseService.js"></script>
+    <script src="app/views/parent/parentImageController.js"></script>
+    <script src="app/services/parentService.js"></script>
+    <script src="app/views/parent/parentController.js"></script>
+    <script src="app/views/pre-commission-rank/preCommissionRanksController.js"></script>
+    <script src="app/views/pre-commission-rank/preCommissionRankAddController.js"></script>
+    <script src="app/services/preCommissionRankService.js"></script>
+    <script src="app/views/heir-type/heirTypesController.js"></script>
+    <script src="app/views/heir-type/heirTypeAddController.js"></script>
+    <script src="app/views/heir-next-of-kin-info/heirNextOfKinImageController.js"></script>
+    <script src="app/services/heirTypeService.js"></script>
+    <script src="app/views/relation/relationsController.js"></script>
+    <script src="app/views/relation/relationAddController.js"></script>
+    <script src="app/services/relationService.js"></script>
+    <script src="app/views/appointment-Nature/appointmentNatureAddController.js"></script>
+    <script src="app/views/appointment-Nature/appointmentNaturesController.js"></script>
+    <script src="app/services/appointmentNatureService.js"></script>
+    <script src="app/views/appointment-Category/appointmentCategoriesAddController.js"></script>
+    <script src="app/views/appointment-Category/appointmentCategoriesController.js"></script>
+    <script src="app/services/appointmentCategoryService.js"></script>
+    <script src="app/views/heir-next-of-kin-info/heirNextOfKinInfoListController.js"></script>
+    <script src="app/views/heir-next-of-kin-info/heirNextOfKinInfoAddController.js"></script>
+    <script src="app/services/heirNextOfKinInfoService.js"></script>
+    <script src="app/views/pattern/patternsController.js"></script>
+    <script src="app/views/pattern/patternAddController.js"></script>
+    <script src="app/services/patternService.js"></script>
+    <script src="app/views/previous-experience/previousExperienceController.js"></script>
+    <script src="app/services/previousExperienceService.js"></script>
+    <script src="app/views/zone/zonesController.js"></script>
+    <script src="app/views/zone/zoneAddController.js"></script>
+    <script src="app/services/zoneService.js"></script>
+    <script src="app/views/ship-category/shipCategoryAddController.js"></script>
+    <script src="app/views/ship-category/shipCategoriesController.js"></script>
+    <script src="app/services/shipCategoryService.js"></script>
+    <script src="app/views/promotion-board/promotionBoardsController.js"></script>
+    <script src="app/views/promotion-board/promotionBoardAddController.js"></script>
+    <script src="app/services/promotionBaordService.js"></script>
+    <script src="app/views/office/officeController.js"></script>
+    <script src="app/services/officeService.js"></script>
+    <script src="app/services/photoService.js"></script>
+    <script src="app/views/photo/upload-picture.js"></script>
+    <script src="app/views/photo/upload-signature.js"></script>
+    <script src="app/views/lpr-calculateInfo/lprCalculateInfoesController.js"></script>
+    <script src="app/views/lpr-calculateInfo/lprCalculateInfoAddController.js"></script>
+    <script src="app/services/lprcalculateInfoService.js"></script>
+    <script src="app/views/execution-remark/executionRemarksController.js"></script>
+    <script src="app/views/execution-remark/executionRemarkAddController.js"></script>
+    <script src="app/services/executionRemarkService .js"></script>
+    <script src="app/views/office-appointment/officeAppointmentsController.js"></script>
+    <script src="app/views/office-appointment/officeAppointmentAddController.js"></script>
+    <script src="app/services/officeAppointmentService.js"></script>
+    <script src="app/views/officeTab/officeTabController.js"></script>
+    <script src="app/services/promotionNominationService.js"></script>
+    <script src="app/views/promotion-nomination/promotionNominationsController.js"></script>
+    <script src="app/views/promotion-nomination/promotionNominationAddController.js"></script>
+    <script src="app/views/leave-break-down/leaveBreakDownsController.js"></script>
+    <script src="app/services/leaveBreakDownService.js"></script>
+    <script src="app/views/medal/medalsController.js"></script>
+    <script src="app/views/medal/medalAddController.js"></script>
+    <script src="app/services/medalService.js"></script>
+    <script src="app/views/award/awardsController.js"></script>
+    <script src="app/views/award/awardAddController.js"></script>
+    <script src="app/services/awardService.js"></script>
+    <script src="app/views/publication-category/publicationCategoryAddController.js"></script>
+    <script src="app/views/publication-category/publicationCategoriesController.js"></script>
+    <script src="app/services/publicationCategoryService.js"></script>
+    <script src="app/views/publication/publicationsController.js"></script>
+    <script src="app/views/publication/publicationAddController.js"></script>
+    <script src="app/services/publicationService.js"></script>
+    <script src="app/views/member-role/memberRoleAddController.js"></script>
+    <script src="app/views/member-role/memberRolesController.js"></script>
+    <script src="app/services/memberRoleService.js"></script>
+    <script src="app/views/punishment-sub-category/punishmentSubCategoryAddController.js"></script>
+    <script src="app/views/punishment-sub-category/punishmentSubCategoriesController.js"></script>
+    <script src="app/services/punishmentSubCategoryService.js"></script>
+    <script src="app/services/punishmentCategoryService.js"></script>
+    <script src="app/views/punishment-category/punishmentCategoryAddController.js"></script>
+    <script src="app/views/punishment-category/punishmentCategoriesController.js"></script>
+    <script src="app/views/commendation/commendationsController.js"></script>
+    <script src="app/views/commendation/commendationAddController.js"></script>
+    <script src="app/services/commendationService.js"></script>
+    <script src="app/views/board-member/boardMembersController.js"></script>
+    <script src="app/views/board-member/boardMemberAddController.js"></script>
+    <script src="app/services/boardMemberService.js"></script>
+    <script src="app/views/punishment-nature/punishmentNaturesController.js"></script>
+    <script src="app/views/punishment-nature/punishmentNatureAddController.js"></script>
+    <script src="app/services/punishmentNatureService.js"></script>
+    <script src="app/views/promotion-execution/promotionExecutionsController.js"></script>
+    <script src="app/views/promotion-execution/promotionExecutionAddController.js"></script>
+    <script src="app/views/promotion-execution/promotionExecutedListController.js"></script>
+    <script src="app/services/promotionExecutionService.js"></script>
+    <script src="app/views/achievement/achievementsController.js"></script>
+    <script src="app/views/achievement/achievementAddController.js"></script>
+    <script src="app/services/achievementService.js"></script>
+    <script src="app/views/employee-lpr/employeeLprController.js"></script>
+    <script src="app/views/employee-lpr/employeeLprAddController.js"></script>
+    <script src="app/services/employeeLprService.js"></script>
+    <script src="app/views/medal-award/medalAwardsController.js"></script>
+    <script src="app/views/medal-award/medalAwardAddController.js"></script>
+    <script src="app/services/medalAwardService.js"></script>
+    <script src="app/views/observation-intelligent/observationIntelligentsController.js"></script>
+    <script src="app/views/observation-intelligent/observationIntelligentAddController.js"></script>
+    <script src="app/services/observationIntelligentService.js"></script>
+    <script src="app/views/punishment-accident/punishmentAccidentsController.js"></script>
+    <script src="app/views/punishment-accident/punishmentAccidentAddController.js"></script>
+    <script src="app/services/punishmentAccidentService.js"></script>
+    <script src="app/services/nominationService.js"></script>
+    <script src="app/views/nomination/nominationsController.js"></script>
+    <script src="app/views/nomination/nominationAddController.js"></script>
+    <script src="app/views/nomination-detail/nominationDetailsController.js"></script>
+    <script src="app/services/nominationDetailService.js"></script>
+    <script src="app/views/nomination-detail/nominationApprovalsController.js"></script>
+    <script src="app/views/pre-commission-course/preCommissionCoursesController.js"></script>
+    <script src="app/views/pre-commission-course/preCommissionCourseAddController.js"></script>
+    <script src="app/services/preCommissionCourseService.js"></script>
+    <script src="app/views/office-transfer/officeTransfersController.js"></script>
+    <script src="app/views/course-transfer/courseTransfersController.js"></script>
+    <script src="app/views/mission-transfer/missionTransfersController.js"></script>
+    <script src="app/services/officerTransferService.js"></script>
+    <script src="app/views/report-viewer/reportViwerController.js"></script>
+    <script src="app/views/mission-schedule/missionSchedulesController.js"></script>
+    <script src="app/views/mission-schedule/missionScheduleAddController.js"></script>
+    <script src="app/services/nominationScheduleService.js"></script>
+    <script src="app/views/visit-category/visitCategoriesController.js"></script>
+    <script src="app/views/visit-category/visitCategoryAddController.js"></script>
+    <script src="app/views/visit-sub-category/visitSubCategoryAddController.js"></script>
+    <script src="app/views/visit-sub-category/visitSubCategoriesController.js"></script>
+    <script src="app/services/visitSubCategoryService.js"></script>
+    <script src="app/services/visitCategoryService.js"></script>
+    <script src="app/views/mission-appointment/missionAppointmentsController.js"></script>
+    <script src="app/views/mission-appointment/missionAppointmentAddController.js"></script>
+    <script src="app/services/missionAppointmentService.js"></script>
+    <script src="app/views/sport/sportsController.js"></script>
+    <script src="app/views/sport/sportAddController.js"></script>
+    <script src="app/services/sportService.js"></script>
+    <script src="app/views/employee-sport/employeeSportsController.js"></script>
+    <script src="app/views/employee-sport/employeeSportAddController.js"></script>
+    <script src="app/services/employeeSportService.js"></script>
+    <script src="app/views/spouse-foreign-visit/spouseForeignVisitsController.js"></script>
+    <script src="app/views/spouse-foreign-visit/spouseForeignVisitAddController.js"></script>
+    <script src="app/services/spouseForeignVisitService.js"></script>
+    <script src="app/views/foreign-visit-schedule/foreignVisitSchedulesController.js"></script>
+    <script src="app/views/foreign-visit-schedule/foreignVisitScheduleAddController.js"></script>
+    <script src="app/views/other-schedule/otherScheduleAddController.js"></script>
+    <script src="app/views/other-schedule/otherSchedulesController.js"></script>
+    <script src="app/views/pre-commission-course-detail/preCommissionCourseDetailsController.js"></script>
+    <script src="app/views/pre-commission-course-detail/preCommissionCourseDetailAddController.js"></script>
+    <script src="app/services/preCommissionCourseDetailService.js"></script>
+    <script src="app/views/officer-naming-convention/officerNamingConventionAddController.js"></script>
+    <script src="app/views/officer-naming-convention/officerNamingConventionsController.js"></script>
+    <script src="app/views/employee-dollar-sign/employeeDollarSignsController.js"></script>
+    <script src="app/views/employee-dollar-sign/employeeDollarSignAddController.js"></script>
+    <script src="app/services/employeeDollarSignService.js"></script>
+    <script src="app/views/employee-security-clearance/employeeSecurityClearancesController.js"></script>
+    <script src="app/views/employee-security-clearance/employeeSecurityClearanceAddController.js"></script>
+    <script src="app/services/employeeSecurityClearanceService.js"></script>
+    <script src="app/views/security-clearance-reason/securityClearanceReasonsController.js"></script>
+    <script src="app/views/security-clearance-reason/securityClearanceReasonAddController.js"></script>
+    <script src="app/services/securityClearanceReasonService.js"></script>
+    <script src="app/views/service-exam-category/serviceExamCategoriesController.js"></script>
+    <script src="app/views/service-exam-category/serviceExamAddController.js"></script>
+    <script src="app/services/serviceExamCategoryService.js"></script>
+    <script src="app/views/service-exam/serviceExamsController.js"></script>
+    <script src="app/views/service-exam/serviceExamAddController.js"></script>
+    <script src="app/services/serviceExamService.js"></script>
+    <script src="app/views/employee-service-exam-result/employeeServiceExamResultsController.js"></script>
+    <script src="app/views/employee-service-exam-result/employeeServiceExamResultAddController.js"></script>
+    <script src="app/services/employeeServiceExamResultService.js"></script>
+    <script src="app/services/purposeService.js"></script>
+    <script src="app/views/leave-purpose/purposeController.js"></script>
+    <script src="app/views/leave-purpose/purposeAddController.js"></script>
+    <script src="app/views/employee-pft/employeePftsController.js"></script>
+    <script src="app/views/employee-pft/employeePftAddController.js"></script>
+    <script src="app/services/employeePftService.js"></script>
+    <script src="app/views/current-status-tab/currentStatusTabController.js"></script>
+
+    <script src="app/views/security-clearance/securityClearanceController.js"></script>
+    <script src="app/views/sea-command-services/seaCommandServicesController.js"></script>
+    <script src="app/views/punishment-discipline/punishmentDisciplineController.js"></script>
+    <script src="app/views/promotion-history/promotionHistoryController.js"></script>
+
+
+
+    <script src="app/views/general-information/generalInformationController.js"></script>
+    <script src="app/views/foreign-visit/foreignVisitController.js"></script>
+    <script src="app/views/family-information/familyInformationController.js"></script>
+    <script src="app/views/exam-test-result/examTestResultController.js"></script>
+
+
+
+    <script src="app/views/civil-academic-qualification/civilAcademicQualificationController.js"></script>
+    <script src="app/views/sea-services/seaServiceInfoController.js"></script>
+    <script src="app/views/employee-children/employeeChildrensController.js"></script>
+    <script src="app/views/employee-children/employeeChildrenAddController.js"></script>
+    <script src="app/views/employee-children/childrenImageController.js"></script>
+    <script src="app/services/employeeChildrenService.js"></script>
+
+    <script src="app/views/promotion-policy/promotionPoliciesController.js"></script>
+    <script src="app/views/promotion-policy/promotionPolicyAddController.js"></script>
+    <script src="app/services/promotionPolicyService.js"></script>
+    <script src="app/views/trace-setting/traceSettingsController.js"></script>
+    <script src="app/views/trace-setting/traceSettingAddController.js"></script>
+    <script src="app/services/traceSettingService.js"></script>
+    <script src="app/views/trace-setting-tab/traceSettingTabController.js"></script>
+    <script src="app/views/trace-setting-course-point/coursePointsController.js"></script>
+    <script src="app/views/trace-setting-course-point/coursePointAddController.js"></script>
+    <script src="app/views/trace-setting-poor-course-result/poorCourseResultsController.js"></script>
+    <script src="app/views/trace-setting-poor-course-result/poorCourseResultAddController.js"></script>
+    <script src="app/views/trace-setting-bra-ctry-course-point/braCtryCoursePointsController.js"></script>
+    <script src="app/views/trace-setting-bra-ctry-course-point/braCtryCoursePointAddController.js"></script>
+    <script src="app/views/trace-setting-point-deduct-punishment/ptDeductPunishmentsController.js"></script>
+    <script src="app/views/trace-setting-point-deduct-punishment/ptDeductPunishmentAddController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-medal/bonusPtMedalsController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-medal/bonusPtMedalAddController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-award/bonusPtAwardsController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-award/bonusPtAwardAddController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-publication/bonusPtPublicsController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-publication/bonusPtPublicAddController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-com-app/bonusPtComAppsController.js"></script>
+    <script src="app/views/trace-setting-bonus-point-com-app/bonusPtComAppAddController.js"></script>
+    <script src="app/views/opr-entry/oprEntriesController.js"></script>
+    <script src="app/views/opr-entry/oprEntryAddController.js"></script>
+    <script src="app/views/opr-entry/oprFileUploadController.js"></script>
+    <script src="app/views/opr-entry/oprAppointmentsController.js"></script>
+    <script src="app/services/oprAppointmentService.js"></script>
+    <script src="app/services/oprEntryService.js"></script>
+    <script src="app/views/officers/officersController.js"></script>
+    <script src="app/views/office-structure/officeStructuresController.js"></script>
+    <script src="app/views/office-appointment-structure/officeAppointmentStructuresController.js"></script>
+    <script src="app/views/office-additional-appointment/officeAdditionalAppointmentsController.js"></script>
+    <script src="app/views/office-additional-appointment/officeAdditionalAppointmentAddController.js"></script>
+    <script src="app/views/promotion-execution-without-board/promotionExecutionWithoutBoardsController.js"></script>
+    <script src="app/views/promotion-execution-without-board/promotionExecutionWithoutBoardAddController.js"></script>
+    <script src="app/views/sea-service/seaServiceAddController.js"></script>
+    <script src="app/views/sea-service/seaServicesController.js"></script>
+    <script src="app/services/seaServiceService.js"></script>
+    <script src="app/views/inter-organization-services/interOrganizationServicesController.js"></script>
+    <script src="app/views/intelligence-services/intelligenceServicesController.js"></script>
+    <script src="app/views/instructional-services/instructionalServicesController.js"></script>
+    <script src="app/views/emp-back-to-unit/empBackToUnitsController.js"></script>
+    <script src="app/views/emp-back-to-unit/empBackToUnitAddController.js"></script>
+    <script src="app/views/course-future-plan/courseFuturePlansController.js"></script>
+    <script src="app/views/course-future-plan/courseFuturePlanAddController.js"></script>
+    <script src="app/services/courseFuturePlanService.js"></script>
+    <script src="app/views/transfer-future-plan/transferFuturePlansController.js"></script>
+    <script src="app/views/transfer-future-plan/transferFuturePlanAddController.js"></script>
+    <script src="app/services/transferFuturePlanService.js"></script>
+    <script src="app/views/certificate/certificatesController.js"></script>
+    <script src="app/views/certificate/certificateAddController.js"></script>
+    <script src="app/services/certificateService.js"></script>
+    <script src="app/views/retired-employee/retiredEmployeesController.js"></script>
+    <script src="app/views/retired-employee/retiredEmployeeController.js"></script>
+    <script src="app/views/retired-employee/retiredEmployeeAddController.js"></script>
+    <script src="app/services/retiredEmployeeService.js"></script>
+    <script src="app/views/employee-report/employeeReportsController.js"></script>
+    <script src="app/services/employeeReportService.js"></script>
+    <script src="app/services/reportService.js"></script>
+    <script src="app/views/transfer-proposal/transferProposalsController.js"></script>
+    <script src="app/views/transfer-proposal/transferProposalAddController.js"></script>
+    <script src="app/services/transferProposalService.js"></script>
+    <script src="app/views/proposal-detail/proposalDetailsController.js"></script>
+    <script src="app/views/proposal-detail/proposalDetailAddController.js"></script>
+    <script src="app/services/proposalDetailService.js"></script>
+    <script src="app/views/proposal-candidate/proposalCandidatesController.js"></script>
+    <script src="app/services/proposalCandidateService.js"></script>
+    <script src="app/services/advanceSearchService.js"></script>
+    <script src="app/views/advance-search/advanceSearchController.js"></script>
+    <script src="app/services/basicSearchService.js"></script>
+    <script src="app/views/basic-search/basicSearchController.js"></script>
+    <script src="app/views/result-grade/resultGradesController.js"></script>
+    <script src="app/views/result-grade/resultGradeAddController.js"></script>
+    <script src="app/services/resultGradeService.js"></script>
+    <script src="app/views/advance-search/advanceSearchResultController.js"></script>
+    <script src="app/services/genderService.js"></script>
+    <script src="app/views/dashboardTab/dashboardTabController.js"></script>
+    <script src="app/views/dashboard-outside-navy/dashboardOutsideNavyController.js"></script>
+    <script src="app/services/dashboardService.js"></script>
+    <script src="app/views/dashboard-branch/dashboardBranchController.js"></script>
+    <script src="app/views/dashboard-admin-authority/dashboardAdminAuthorityController.js"></script>
+    <script src="app/views/dashboard-leave/dashboardLeaveController.js"></script>
+    <script src="app/views/dashboard-stream/dashboardStreamController.js"></script>
+    <script src="app/views/dashboard-office-appointment/dashboardOfficeAppointmentController.js"></script>
+    <script src="app/views/dashboard-outside-navy/outsideNavyOfficerController.js"></script>
+    <script src="app/views/dashboard-stream/streamOfficerController.js"></script>
+    <script src="app/views/dashboard-leave/leaveOfficerController.js"></script>
+    <script src="app/views/dashboard-branch/branchOfficerController.js"></script>
+    <script src="app/views/dashboard-admin-authority/adminAuthorityOfficerController.js"></script>
+    <script src="app/views/ship-movement/shipMovementController.js"></script>
+    <script src="app/services/shipMovementService.js"></script>
+
+    <script src="app/views/daily-process/dailyProcessesController.js"></script>
+    <script src="app/services/dailyProcessService.js"></script>
+
+    <script src="app/services/backLogService.js"></script>
+    <script src="app/services/statusChangeService.js"></script>
+    <script src="app/views/status-change/statusChangeAddController.js"></script>
+    <script src="app/views/status-change/statusChangesController.js"></script>
+    <script src="app/views/dashboard-category/dashboardCategoryController.js"></script>
+    <script src="app/views/dashboard-category/categoryOfficerController.js"></script>
+    <script src="app/views/dashboard-gender/dashboardGenderController.js"></script>
+    <script src="app/views/dashboard-gender/genderOfficerController.js"></script>
+    <script src="app/services/extraAppointmentService.js"></script>
+    <script src="app/views/extra-appointment/extraAppointmentsController.js"></script>
+    <script src="app/views/extra-appointment/extraAppointmentAddController.js"></script>
+    <script src="app/views/remark/remarkAddController.js"></script>
+    <script src="app/views/remark/remarksController.js"></script>
+    <script src="app/services/remarkService.js"></script>
+    <script src="app/views/remarks/remarkController.js"></script>
+    <script src="app/views/persuasion/persuasionController.js"></script>
+    <script src="app/views/future-plan/futurePlanController.js"></script>
+    <script src="app/views/pre-commission-test/preCommissionTestController.js"></script>
+    <script src="app/services/foreignProjectService.js"></script>
+    <script src="app/views/foreign-project/foreignProjectsController.js"></script>
+    <script src="app/views/foreign-project/foreignProjectAddController.js"></script>
+    <script src="app/views/mission-foreign-project/missionForeignProjectsController.js"></script>
+    <script src="app/views/hod-services/hodServicesController.js"></script>
+    <script src="app/views/dockyard-services/dockyardServicesController.js"></script>
+    <script src="app/views/previous-leave/previousLeavesController.js"></script>
+    <script src="app/views/previous-leave/previousLeaveAddController.js"></script>
+    <script src="app/services/previousLeaveService.js"></script>
+    <script src="app/views/zone-service/zoneServicesController.js"></script>
+    <script src="app/services/previousMissionService.js"></script>
+    <script src="app/services/previousPunishmentService.js"></script>
+    <script src="app/services/previousTransferService.js"></script>
+    <script src="app/views/previous-mission/previousMissionAddController.js"></script>
+    <script src="app/views/previous-mission/previousMissionsController.js"></script>
+    <script src="app/views/previous-punishment/previousPunishmentAddController.js"></script>
+    <script src="app/views/previous-punishment/previousPunishmentsController.js"></script>
+    <script src="app/views/previous-transfer/previousTransferAddController.js"></script>
+    <script src="app/views/previous-transfer/previousTransfersController.js"></script>
+    <script src="app/views/quick-link/quickLinksController.js"></script>
+    <script src="app/views/quick-link/quickLinkAddController.js"></script>
+    <script src="app/services/quickLinkService.js"></script>
+    <script src="app/views/graphical-report/graphicalReportsController.js"></script>
+    <script src="app/services/graphicalReportService.js"></script>
+    <script src="app/services/specialAppointmentService.js"></script>
+    <script src="app/views/special-appointment/specialAppointmentAddController.js"></script>
+    <script src="app/views/special-appointment/specialAppointmentsController.js"></script>
+    <script src="app/views/transfer-history/costguardController.js"></script>
+
+
+
+
+    <script src="app/services/employeeHajjDetailService.js"></script>
+    <script src="app/views/employee-hajj-detail/employeeHajjDetailController.js"></script>
+    <script src="app/views/employee-hajj-detail/employeeHajjDetailAddController.js"></script>-->
+</body>
+
+</html>
+

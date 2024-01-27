@@ -1,0 +1,47 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+	        <div class="panel-body">
+
+	            <h4 class="text-center" style="margin-top: -5px;">Branch wise Officer Summary</h4>
+               
+		        <div class="col-sm-12"></div>
+		        <div class="table-wrapper table-responsive">
+			        <table class="table table-bordered">
+				        <thead>
+				        <tr class="tableHeading">
+					        
+					        <th>Name</th>
+					        <th>X</th>
+					        <th>E</th>
+					        <th>S</th>
+					        <th>Edu</th>
+					        <th>Med</th>
+					        <th>L</th>
+					        
+					        <th>Total</th>
+					      
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <tr  ng-repeat="branch in vm.dashboardBranches">
+							<td><strong>{{branch.name}}</strong></td>
+				            <td style="text-align: center" ><a href="" ng-if="branch.xValue>0" ng-click="vm.getOfficerList(branch.id,branch.x)"><strong>{{branch.xValue}}</strong></a> </td>
+				            <td style="text-align: center" ><a href="" ng-if="branch.eValue>0" ng-click="vm.getOfficerList(branch.id,branch.e)"><strong>{{branch.eValue}}</strong></a></td>
+				            <td style="text-align: center"><a href="" ng-if="branch.sValue>0" ng-click="vm.getOfficerList(branch.id,branch.s)"><strong>{{branch.sValue}}</strong></a></td>
+				            <td style="text-align: center" ><a href="" ng-if="branch.eduValue>0" ng-click="vm.getOfficerList(branch.id,branch.edu)"><strong>{{branch.eduValue}}</strong></a></td>
+				            <td style="text-align: center" ><a href="" ng-if="branch.medValue>0" ng-click="vm.getOfficerList(branch.id,branch.med)"><strong>{{branch.medValue}}</strong></a></td>
+				            <td style="text-align: center"><a href="" ng-if="branch.lValue>0" ng-click="vm.getOfficerList(branch.id,branch.l)"><strong>{{branch.lValue}}</strong></a></td>
+				            <td style="text-align: center" ><a href="" ng-if="branch.total>0" ng-click="vm.getOfficerList(branch.id,null)"><strong>{{branch.total}}</strong></a></td>
+
+				        </tr>
+                  
+				        </tbody>
+			        </table>
+
+		        </div>
+		
+	        </div>
+        </div>
+    </div>
+</div>

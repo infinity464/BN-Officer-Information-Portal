@@ -1,0 +1,100 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{vm.typeName}}  Nomination<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.nominationForm">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="entityId" class="custom-label">Nomination </label>
+                            <angucomplete-alt id="scheduleId"
+                                              placeholder="Search Schedule"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selected"
+                                              local-data="vm.nominationTypeResults"
+                                              local-search="vm.localSearch"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="true"
+                                              input-name="entityId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Schedule Not Found"
+                                              input-class="form-control form-control-small custom-width" />
+                            
+                            <!-- <select style="margin-left: -195px;" name="entityId" id="entityId" class="form-control" -->
+                            <!--         ng-model="vm.nomination.entityId" -->
+                            <!--         ng-options="option.value as option.text for option in vm.nominationTypeResults" required -->
+                            <!--         ng-change="vm.getMissionAppointmentByMission(vm.nomination.entityId)"> -->
+                            <!--     <option  value="">--Select an Option--</option> -->
+                            <!-- </select> -->
+                            <p ng-show="vm.nominationForm.entityId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6" ng-show="vm.appointment">
+                        <div class="form-group">
+                            <input type="checkbox" id="withoutAppointment" class="form-check-input"
+                                   ng-model="vm.nomination.withoutAppointment" name="withoutAppointment" />
+                            <label for="withoutAppointment" class="custom-label"> Without Appointment</label>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-sm-6" ng-show="vm.appointment">
+                        <div class="form-group">
+                            <label for="missoinAppointmentId" class="custom-label">Appointment </label>
+                            <select name="missoinAppointmentId" id="missoinAppointmentId" class="form-control"
+                                    ng-model="vm.nomination.missoinAppointmentId" ng-disabled="vm.nomination.withoutAppointment"
+                                    ng-options="option.value as option.text for option in vm.missionAppointments" >
+                                   
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.nominationForm.entityId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="entryDate" class="custom-label">Nomination Date</label>
+                            <input kendo-date-picker id="entryDate" class="form-control custom-form-control" k-ng-model="vm.nomination.entryDate" k-format="'dd-MM-yyyy'" name="entryDate" required />
+                            <p ng-show="vm.nominationForm.entryDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+                    
+                   
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.nomination.remarks" name="remarks" maxlength="250"></textarea>
+                            <p ng-show="vm.nominationForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-hide="vm.transfer">
+                        <div class="form-group">
+                            <input type="checkbox" id="withoutTransfer" class="form-check-input"
+                                   ng-model="vm.nomination.withoutTransfer" name="withoutTransfer" />
+                            <label for="withoutTransfer" class="custom-label"> Without Transfer</label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 ">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-disabled="vm.nominationForm.$invalid" ng-click="vm.save()"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

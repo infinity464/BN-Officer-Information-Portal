@@ -1,0 +1,40 @@
+﻿<div class="container-fluid pdfReportFormCover">
+    <div class="row">
+        <div class="panel">
+            <button class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+            <div class="panel-body" id="print">
+                <h3 class="reportHeader">Punishment/Discipline</h3>
+                <hr />
+                <h4 class="noScreen" style="border-bottom: 3px solid blue;font-family: Arial">{{vm.officerName}} ({{vm.pNo}})</h4>
+                <div ng-if="vm.punishmentDisciplines.length>0" class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable" border="1">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th>SL</th>
+                                <th>Punishment</th>
+                                <th>Nature</th>
+                                <th>Punishment Duration</th>
+                                <th>Date</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="punishmentDiscipline in vm.punishmentDisciplines">
+                                <td class="reportTD" style="text-align: center; width: 50px;">{{$index+1}}</td>
+                                <td class="reportTD">{{punishmentDiscipline.punishment}}</td>
+                                <td class="reportTD">{{punishmentDiscipline.nature}}</td>
+                                <td class="reportTD" style="text-align: center">{{punishmentDiscipline.month}} <span ng-if="punishmentDiscipline.month !=null">m</span> {{punishmentDiscipline.day}} <span ng-if="punishmentDiscipline.day !=null">d</span></td>
+                                <td class="reportTD" style="text-align: center;width: 100px;">{{punishmentDiscipline.date | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD">{{punishmentDiscipline.remarks}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <h5 ng-if="vm.punishmentDisciplines.length==null" class="text-center" style="margin-top: 15px;">No data found. </h5>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Punishment Sub Category<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.punishmentSubCategoryForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentCategoryId" class="custom-label">Punishment Category</label>
+                            <select name="punishmentCategoryId" id="punishmentCategoryId" class="form-control" ng-model="vm.punishmentSubCategory.punishmentCategoryId" ng-options="option.value as option.text for option in vm.punishmentCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.punishmentSubCategoryForm.punishmentCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label"> Punishment Sub Category Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.punishmentSubCategory.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.punishmentSubCategoryForm.name.$error.required" class="help-block errormsg">Name is required</p>
+                            <p ng-show="vm.punishmentSubCategoryForm.name.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label">Short Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.punishmentSubCategory.shortName" name="shortName" maxlength="50" required />
+                            <p ng-show="vm.punishmentSubCategoryForm.shortName.$error.required" class="help-block errormsg">Short Name is required</p>
+                            <p ng-show="vm.punishmentSubCategoryForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="gotoTrace" class="form-check-input"
+                                   ng-model="vm.punishmentSubCategory.gotoTrace" name="gotoTrace" />
+                            <label for="gotoTrace" class="custom-label"> Go to Trace </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.punishmentSubCategoryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

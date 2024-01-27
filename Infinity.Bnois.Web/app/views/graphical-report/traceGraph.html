@@ -1,0 +1,75 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Trace Graph</h2>
+                </div>
+                <form name="vm.graphicalReportForm">
+                    <employee-search ng-model="vm.graphicalReport.employee"></employee-search>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.graphicalReportForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+
+                    </div>
+                </form>
+
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>PNo</th>
+                                <th>Name</th>
+                                <th class="text-right">
+                                    <a class="btn custom-btn btn-delete btn-info btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteAllGraphicalReport()"
+                                       ng-confirmation-message="Do you want to delete All ?"
+                                       ng-confirmation-title="Delete All ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete All"></span></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="graphicalReport in vm.graphicalReports">
+                                <td>{{$index+1}}</td>
+                                <td>{{graphicalReport.pNo}}</td>
+                                <td>{{graphicalReport.fullNameEng}}</td>
+                                <td class="text-right">
+                                    <a class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteGraphicalReport(graphicalReport)"
+                                       ng-confirmation-message="Do you want to delete ?"
+                                       ng-confirmation-title="Delete Offficer ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <h3 style="border-bottom: 2px solid lightblue; margin-top: 25px; ">Input Parameters</h3>
+          
+                <div class="col-sm-12">
+
+                    <div class="pull-right">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.getTraceChart()"><span class="glyphicon glyphicon-search"></span> Show Report</button>
+
+                        <!-- <button class="btn btn btn-success" type="button" ng-disabled="vm.fromYear==null && vm.toYear==null" ng-click="vm.downloadGraphicalTraceReport(vm.fromYear,vm.toYear)">Download</button> -->
+
+                    </div>
+
+                </div>
+
+
+                <h3 style="border-bottom: 2px solid lightblue; margin-top: 25px; ">Graph</h3>
+
+                <div>
+                    <canvas id="multi-bar-chart-grouped" width="700" height="250"></canvas>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

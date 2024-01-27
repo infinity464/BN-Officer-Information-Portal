@@ -1,0 +1,237 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Punishment & Accident<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.punishmentAccidentForm">
+                    <employee-search ng-model="vm.punishmentAccident.employee"></employee-search>
+
+
+                  
+                    
+                <div class="col-sm-6" ng-if="vm.punishmentAccident.employee.employeeId>0">
+                    <div class="form-group">
+                        <input type="checkbox" id="isBackLog" class="form-check-input" ng-model="vm.punishmentAccident.isBackLog" name="isBackLog" ng-change="vm.isBackLogChecked(vm.punishmentAccident.isBackLog)" />
+                        <label for="isBackLog" class="custom-label"> Back Log </label>
+                    </div>
+                </div>
+                <div class="col-sm-6" ng-show="vm.punishmentAccident.isBackLog">
+                    <div class="form-group">
+                        <label for="rankId" class="custom-label">Rank</label>
+                        <select name="rankId" id="rankId" class="form-control" ng-model="vm.punishmentAccident.rankId"
+                                ng-options="option.value as option.text for option in vm.ranks">
+                            <option value="">--Select an Option--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6" ng-show="vm.punishmentAccident.isBackLog">
+                    <div class="form-group">
+                        <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                        <select name="transferId" id="transferId" class="form-control" ng-model="vm.punishmentAccident.transferId"
+                                ng-options="option.value as option.text for option in vm.transfers">
+                            <option value="">--Select an Option--</option>
+                        </select>
+                    </div>
+                </div>    
+                
+                <div class="col-sm-12">
+                    <hr />
+                </div>
+
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="type" class="custom-label">Type</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.punishmentAccidentTypes">
+
+                                <label>
+                                    <input type="radio" id="type" ng-model="vm.punishmentAccident.type"
+                                           value="{{status.value}}" ng-change="vm.punishmentAccidentType(vm.punishmentAccident.type)"
+                                           required> {{status.text}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-12">
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentCategoryId" class="custom-label">Punishment Category</label>
+                            <select name="punishmentCategoryId" id="punishmentCategoryId" class="form-control"
+                                    ng-model="vm.punishmentAccident.punishmentCategoryId" ng-disabled="vm.punishmentDisabled"
+                                    ng-options="option.value as option.text for option in vm.punishmentCategories"
+                                    ng-change="vm.subCategoriesByCategory(vm.punishmentAccident.punishmentCategoryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentSubCategoryId" class="custom-label">Punishment Sub Category</label>
+                            <select name="punishmentSubCategoryId" id="punishmentSubCategoryId" class="form-control"
+                                    ng-model="vm.punishmentAccident.punishmentSubCategoryId" ng-disabled="vm.punishmentDisabled"
+                                    ng-options="option.value as option.text for option in vm.punishmentSubCategories">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentNatureId" class="custom-label">Punishment Nature</label>
+                            <select name="punishmentNatureId" id="punishmentNatureId" class="form-control"
+                                    ng-model="vm.punishmentAccident.punishmentNatureId" ng-disabled="vm.punishmentDisabled"
+                                    ng-options="option.value as option.text for option in vm.punishmentNatures">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                 
+                
+
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="durationMonths" class="custom-label">Duration Months</label>
+                            <input type="number" id="durationMonths" class="form-control custom-form-control" ng-model="vm.punishmentAccident.durationMonths" ng-disabled="vm.punishmentDisabled" name="durationMonths" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="durationDays" class="custom-label">Duration Days</label>
+                            <input type="number" id="durationDays" class="form-control custom-form-control" ng-model="vm.punishmentAccident.durationDays" ng-disabled="vm.punishmentDisabled" name="durationDays" />
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="accedentType" class="custom-label">Accident Type</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.accidentTypes">
+
+                                <label>
+                                    <input type="radio" id="givenByType" ng-model="vm.punishmentAccident.accedentType" ng-disabled="vm.isAccidentDisabled"
+                                           value="{{status.value}}"> {{status.text}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="date" class="custom-label"> Date</label>
+                            <input kendo-date-picker id="date" class="form-control custom-form-control" k-ng-model="vm.punishmentAccident.date" k-format="'dd-MM-yyyy'" name="date" required />
+                            <p ng-show="vm.punishmentAccidentForm.date.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentType" class="custom-label">Punishment Type (For Report)</label>
+                            <input type="text" id="punishmentType" class="form-control custom-form-control" ng-model="vm.punishmentAccident.punishmentType" name="punishmentType" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reason" class="custom-label">Reason (For Report)</label>
+                            <input type="text" id="reason" class="form-control custom-form-control" ng-model="vm.punishmentAccident.reason" name="reason" maxlength="500" />
+                            <p ng-show="vm.punishmentAccidentForm.reason.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.punishmentAccident.remarks" name="remarks" maxlength="1000"></textarea>
+                            <p ng-show="vm.punishmentAccidentForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 1000</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Punishment/Accident File Upload</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="panel" nv-file-drop="" uploader="uploader">
+                            <div class="panel-body" style="padding-top: 0;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-wrapper table-responsive">
+                                            <div class="col-sm-12">
+                                                <h4>Upload only Image File</h4>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <img src="{{vm.url}}{{vm.punishmentAccident.fileName}}" class="img-responsive" style="width: 200%;max-width: 200px;height: 200%;max-height: 200px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                                                </div>
+                                                Upload progress:
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group" style="min-height: 50px;">
+                                                    <div class="panel-default">
+                                                        <div ng-show="uploader.isHTML5">
+                                                            <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                                                <input type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="pull-right">
+                                                    <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-xs-12 ">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-disabled="vm.punishmentAccidentForm.$invalid" ng-click="vm.save()"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

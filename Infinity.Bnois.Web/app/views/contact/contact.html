@@ -1,0 +1,140 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+
+    .card {
+        margin: auto !important;
+        font-size: 23px;
+        width: 40%;
+        padding: 10px;
+        border-radius: 25px !important;
+        padding: 0px !important;
+        top: 30%;
+        background-color: #ffffffe6 !important;
+    }
+
+        .card .card-body {
+            padding: 10px 15px 0px 15px !important;
+        }
+
+    .card-title {
+        color: #000066 !important;
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    address {
+        padding-left: 5px;
+    }
+
+    .card-body p {
+        font-size: 25px !important;
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .card {
+            font-size: 18px;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .card {
+            font-size: 18px;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+
+        .card {
+            width: 95%;
+            top: 20%;
+        }
+    }
+
+    @media screen and (max-width: 900px) and (min-width: 576px) {
+        .card {
+            font-size: 18px;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+
+        .card {
+            width: 60%;
+        }
+    }
+
+    img {
+        width: 22px;
+        margin: 5px 0px 0px 0px;
+    }
+
+    .footer {
+        padding: 0px !important;
+    }
+
+        .footer.content > img,
+        .footer.content > address {
+            display: inline-block;
+        }
+
+    .content {
+        padding-left: 10px !important;
+    }
+
+        .content img {
+            width: 26px;
+            margin: 0px 0px 0px 0px;
+        }
+
+    .card-body p a {
+        color: #000066 !important;
+    }
+
+
+
+    
+</style>
+
+<div class="card">
+    
+    <div class="card-body">
+        <h5 class="card-title text-center">Contact/ Feedback</h5>
+        <div class="footer content">
+            <img src="../../../Images/Icons/Icons/Email on contact.png" />
+            <address>
+                bnoip_ns@navy.mil.bd
+            </address>
+            <br />
+            <img src="../../../Images/Icons/Icons/Mobile number on Contact.png" />
+            <address>
+                01769702029
+            </address>
+        </div>
+        <p>
+            Your query will be reviewed within 10 working days after submitting the <a style="cursor:pointer !important" ng-click="vm.showConatcToggle()">feedback form</a>.
+        </p>
+        <div style="text-align:center; ">
+            <a style="cursor:pointer !important" ng-click="vm.showConatcToggle()"><img style="width:50px;" src="../../../Images/Icons/Icons/More on Contact & Downloads.png" /></a>
+        </div>
+    </div>
+</div>

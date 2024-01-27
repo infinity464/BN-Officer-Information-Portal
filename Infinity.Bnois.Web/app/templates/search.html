@@ -1,0 +1,8 @@
+﻿  <div class="search-section pull-right">
+  <div class="input-group">
+    <input type="text" ng-model="vm.searchText" class="form-control" name="" placeholder="Search..." ng-keypress="$event.keyCode == 13 && vm.onSearch()">
+    <span class="input-group-btn">
+      <button class="btn btn-success search-btn-success" type="button" ng-click="vm.onSearch()"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </span>
+  </div>
+</div>

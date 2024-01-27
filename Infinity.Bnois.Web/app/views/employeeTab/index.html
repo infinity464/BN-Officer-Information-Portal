@@ -1,0 +1,94 @@
+﻿<style>
+    div.scrollmenu {
+        background-color: #FFFFFF;
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu > .active {
+            color: #4527A0;
+        }
+
+        div.scrollmenu a:hover {
+            color: #673AB7;
+        }
+</style>
+
+<div class="container-fluid">
+    
+    <div class="col-sm-12">
+        <div class="col-sm-2">
+            <img ng-if="vm.fileModel.filePath != null" src="{{vm.fileModel.filePath}}" style="height:100px; width: 85px; margin-top:5px;" alt="Officer's Photo'" />
+            <img ng-if="vm.fileModel.filePath == null" src="../../../Images/officer.png" style="height:100px; width: 85px;margin-top:5px;" alt="Officer's Photo'" />
+        </div>
+        <div class="col-sm-7" style="margin-left: -80px; margin-top: 5px;">
+            <h4>{{vm.employee.fullNameEng}}</h4>
+            <h5>PNo : {{vm.employee.pNo}}</h5>
+        </div> 
+        <div class="col-sm-3 pull-right">
+            <div class="input-group " style="margin-top: 20px;">
+                <input type="text" class="form-control" style="text-align: center" placeholder="PNO" ng-model="vm.searchPno" ng-keypress="$event.keyCode == 13 && vm.searchByPno(vm.searchPno)">
+                <span class="input-group-btn">
+                    <button class="btn btn btn-success" type="button" ng-click="vm.searchByPno(vm.searchPno)">Search</button>
+                </span>
+            </div>
+
+        </div>
+
+       
+    </div>
+  
+    <div class="col-sm-12">
+
+        <div >
+            <div class="scrollmenu">
+
+                <a ui-sref="employee-tabs.employee-modify({id:vm.employeeId})" ui-sref-active="active">Basic</a>
+                <a ui-sref="employee-tabs.employee-generals()" ui-sref-active="active">General</a>
+                <a ui-sref="employee-tabs.employee-others()" ui-sref-active="active">Others</a>
+                <a ui-sref="employee-tabs.physical-conditions()" ui-sref-active="active">Physical Structure</a>
+                <a ui-sref="employee-tabs.employee-educations()" ui-sref-active="active">Education</a>
+                <a ui-sref="employee-tabs.employee-addresses()" ui-sref-active="active">Address</a>
+                <a ui-sref="employee-tabs.employee-social-attribute()" ui-sref-active="active">Social Attributes & Hobby</a>
+                <a ui-sref="employee-tabs.employee-extracurriculars()" ui-sref-active="active">Extracurricular</a>
+                <a ui-sref="employee-tabs.employee-sports()" ui-sref-active="active">Sports</a>
+                <a ui-sref="employee-tabs.employee-previous-experiences()" ui-sref-active="active">Pre Commission Service </a>
+                <a ui-sref="employee-tabs.pre-commission-courses()" ui-sref-active="active">Pre Commission Test</a>
+
+                <!-- <a ui-sref="employee-tabs.employee-precommission-course()" ui-sref-active="active">Pre Commission Test </a> -->
+                <a ui-sref="employee-tabs.employee-father({relationType:1})" ui-sref-active="active">Father</a>
+                <a ui-sref="employee-tabs.employee-mother({relationType:2})" ui-sref-active="active">Mother</a>
+                <a ui-sref="employee-tabs.employee-stepfather({relationType:3})" ui-sref-active="active">Step Father</a>
+                <a ui-sref="employee-tabs.employee-stepmother({relationType:4})" ui-sref-active="active">Step Mother</a>
+                <a ui-sref="employee-tabs.employee-spouses()" ui-sref-active="active">Spouse</a>
+                <a ui-sref="employee-tabs.employee-childrens()" ui-sref-active="active">Childrens</a>
+                <a ui-sref="employee-tabs.employee-siblings()" ui-sref-active="active">Siblings</a>
+                <a ui-sref="employee-tabs.employee-heir-next-of-kin-info-list()" ui-sref-active="active">Heir & Next of Kin </a>
+                <a ui-sref="employee-tabs.employee-image({type:1})" ui-sref-active="active">Image</a>
+                <a ui-sref="employee-tabs.employee-signature({type:2})" ui-sref-active="active">Signature</a>
+            </div>
+
+            <div class="tab-content">
+                <div ui-view></div>
+            </div>
+
+        </div>
+
+
+    </div>
+   
+
+
+</div>
+
+
+

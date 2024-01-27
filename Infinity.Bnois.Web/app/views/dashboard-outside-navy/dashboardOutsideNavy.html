@@ -1,0 +1,94 @@
+﻿
+
+<style>
+    .headerFixed {
+        position: fixed;
+        margin-top: -150px;
+        vertical-align: middle;
+        text-align: center;
+        width: 150px;
+    }
+</style>
+
+<script>
+
+    $(document).ready(function () {
+
+        var header = $(".header-inner");
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll >= 100 && $(this).width() > 400) {
+                header.addClass("headerFixed");
+            } else {
+                header.removeClass('headerFixed');
+            }
+        });
+
+    });
+
+</script>
+
+
+
+
+
+<div class="">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <h4 class="text-center" style="margin-top: -5px;">Outside Navy wise Officer Summary</h4>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="officeId" class="custom-label">Organization Pattern</label>
+                        <select name="officeId" id="officeId" class="form-control" ng-model="vm.officeId"
+                                ng-change="vm.getEmployeeListByOffice(vm.officeId)"
+                                ng-options="option.value as option.text for option in vm.ministryOffices">
+                            <option value="">--Select an Option--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="tableHeading">
+
+                                <th style="vertical-align: middle; text-align: center;">Organization</th>
+                                <th style="vertical-align: middle; text-align: center;">Admiral</th>
+                                <th style="vertical-align: middle; text-align: center;">Vice Admiral</th>
+                                <th style="vertical-align: middle; text-align: center;">Rear Admiral</th>
+                                <th style="vertical-align: middle; text-align: center;">Cdre</th>
+                                <th style="vertical-align: middle; text-align: center;">Capt</th>
+                                <th style="vertical-align: middle; text-align: center;">Cdr</th>
+                                <th style="vertical-align: middle; text-align: center;">Lt Cdr</th>
+                                <th style="vertical-align: middle; text-align: center;">Lt</th>
+                                <th style="vertical-align: middle; text-align: center;">Sub Lt</th>
+                                <th style="vertical-align: middle; text-align: center;">Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="outsideNavy in vm.dashboardOutsideNavies">
+
+                                <td><strong>{{outsideNavy.name}}</strong></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.admiral_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.admiral_Level)"><strong>{{outsideNavy.admiral_Value}}</strong></a> </td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.viceAdmiral_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.viceAdmiral_Level)"><strong>{{outsideNavy.viceAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.rearAdmiral_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.rearAdmiral_Level)"><strong>{{outsideNavy.rearAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.cdre_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.cdre_Level)"><strong>{{outsideNavy.cdre_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.capt_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.capt_Level)"><strong>{{outsideNavy.capt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.cdr_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.cdr_Level)"><strong>{{outsideNavy.cdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.ltCdr_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.ltCdr_Level)"><strong>{{outsideNavy.ltCdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.lt_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.lt_Level)"><strong>{{outsideNavy.lt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.subLt_Value>0" ng-click="vm.getOfficerList(outsideNavy.id,outsideNavy.subLt_Level)"><strong>{{outsideNavy.subLt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="outsideNavy.total>0 " ng-click="vm.getOfficerList(outsideNavy.id,-1)"><strong>{{outsideNavy.total}}</strong></a></td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+
+                <h4 class="text-center" style="margin-top: -5px;">Present Leave Summary</h4>
+                <div class="col-sm-12"></div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="tableHeading">
+
+                                <th>Leave Type</th>
+                                <th>Admiral</th>
+                                <th>Vice Admiral</th>
+                                <th>Rear Admiral</th>
+                                <th>Cdre</th>
+                                <th>Capt</th>
+                                <th>Cdr</th>
+                                <th>Lt Cdr</th>
+                                <th>Lt</th>
+                                <th>Sub Lt</th>
+                                <th>Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="leave in vm.dashboardLeaves  | filter: {id: '!2'}">
+                                <td><strong>{{leave.name}}</strong></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.admiral_Value>0" ng-click="vm.getOfficerList(leave.id,leave.admiral_Level)"><strong>{{leave.admiral_Value}}</strong></a> </td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.viceAdmiral_Value>0" ng-click="vm.getOfficerList(leave.id,leave.viceAdmiral_Level)"><strong>{{leave.viceAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.rearAdmiral_Value>0" ng-click="vm.getOfficerList(leave.id,leave.rearAdmiral_Level)"><strong>{{leave.rearAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.cdre_Value>0" ng-click="vm.getOfficerList(leave.id,leave.cdre_Level)"><strong>{{leave.cdre_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.capt_Value>0" ng-click="vm.getOfficerList(leave.id,leave.capt_Level)"><strong>{{leave.capt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.cdr_Value>0" ng-click="vm.getOfficerList(leave.id,leave.cdr_Level)"><strong>{{leave.cdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.ltCdr_Value>0" ng-click="vm.getOfficerList(leave.id,leave.ltCdr_Level)"><strong>{{leave.ltCdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.lt_Value>0" ng-click="vm.getOfficerList(leave.id,leave.lt_Level)"><strong>{{leave.lt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.subLt_Value>0" ng-click="vm.getOfficerList(leave.id,leave.subLt_Level)"><strong>{{leave.subLt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.total>0" ng-click="vm.getOfficerList(leave.id,-1)"><strong>{{leave.total}}</strong></a></td>
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+                <h4 class="text-center" >EX-BD Leave Summary</h4>
+                <div class="col-sm-12"></div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="tableHeading">
+
+                                <th>Leave </th>
+                                <th>Admiral</th>
+                                <th>Vice Admiral</th>
+                                <th>Rear Admiral</th>
+                                <th>Cdre</th>
+                                <th>Capt</th>
+                                <th>Cdr</th>
+                                <th>Lt Cdr</th>
+                                <th>Lt</th>
+                                <th>Sub Lt</th>
+                                <th>Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="leave in vm.dashboardExBDLeaves">
+                                <td><strong>{{leave.name}}</strong></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.admiral_Value>0" ng-click="vm.getExBDOfficerList(leave.admiral_Level)"><strong>{{leave.admiral_Value}}</strong></a> </td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.viceAdmiral_Value>0" ng-click="vm.getExBDOfficerList(leave.viceAdmiral_Level)"><strong>{{leave.viceAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.rearAdmiral_Value>0" ng-click="vm.getExBDOfficerList(leave.rearAdmiral_Level)"><strong>{{leave.rearAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.cdre_Value>0" ng-click="vm.getExBDOfficerList(leave.cdre_Level)"><strong>{{leave.cdre_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.capt_Value>0" ng-click="vm.getExBDOfficerList(leave.capt_Level)"><strong>{{leave.capt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.cdr_Value>0" ng-click="vm.getExBDOfficerList(leave.cdr_Level)"><strong>{{leave.cdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.ltCdr_Value>0" ng-click="vm.getExBDOfficerList(leave.ltCdr_Level)"><strong>{{leave.ltCdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.lt_Value>0" ng-click="vm.getExBDOfficerList(leave.lt_Level)"><strong>{{leave.lt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.subLt_Value>0" ng-click="vm.getExBDOfficerList(leave.subLt_Level)"><strong>{{leave.subLt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="leave.total>0" ng-click="vm.getExBDOfficerList(-1)"><strong>{{leave.total}}</strong></a></td>
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

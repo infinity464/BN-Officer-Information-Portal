@@ -1,0 +1,120 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Future Plan For Transfer<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.transferFutureePlanForm">
+                    <!-- <employee-search ng-model="vm.transferFuturePlan.employee"></employee-search> -->
+                    <!-- -->
+                    <!-- <div class="col-sm-12"> -->
+                    <!--     <hr /> -->
+                    <!-- </div> -->
+                    <!-- -->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="patternId" class="custom-label">Pattern</label>
+                            <select name="patternId" id="patternId" class="form-control" ng-model="vm.transferFuturePlan.patternId"
+                                    ng-options="option.value as option.text for option in vm.patterns" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.transferFuturePlanForm.patternId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="officeId" class="custom-label">Office</label>
+                            <select name="officeId" id="officeId" class="form-control" ng-model="vm.transferFuturePlan.officeId"
+                                    ng-options="option.value as option.text for option in vm.offices" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.transferFuturePlanForm.officeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aptNatId" class="custom-label">Appointment Nature</label>
+                            <select name="aptNatId" id="aptNatId" class="form-control" ng-model="vm.transferFuturePlan.aptnatId"
+                                    ng-options="option.value as option.text for option in vm.aptNats" 
+                                    ng-change="vm.getCategoryByNature(vm.transferFuturePlan.aptnatId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.transferFuturePlanForm.aptNatId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aptCatId" class="custom-label">Appointment Category</label>
+                            <select name="aptCatId" id="aptCatId" class="form-control" ng-model="vm.transferFuturePlan.aptcatId"
+                                    ng-options="option.value as option.text for option in vm.aptCats" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.transferFuturePlanForm.aptCatId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                  
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.transferFuturePlan.countryId"
+                                    ng-options="option.value as option.text for option in vm.countries" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.transferFuturePlanForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                   
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="planDate" class="custom-label"> Plan Date</label>
+                            <input kendo-date-picker id="planDate" class="form-control custom-form-control" k-ng-model="vm.transferFuturePlan.planDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                            <p ng-show="vm.transferFuturePlanForm.planDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="endDate" class="custom-label"> End Date</label>
+                            <input kendo-date-picker id="endDate" class="form-control custom-form-control" k-ng-model="vm.transferFuturePlan.endDate" k-format="'dd-MM-yyyy'" name="fromDate"  />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="isMandatory" class="form-check-input"
+                                   ng-model="vm.transferFuturePlan.isMandatory" name="isMandatory" />
+                            <label for="isMandatory" class="custom-label"> Mandatory</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea  id="remarks" class="form-control custom-form-control" ng-model="vm.transferFuturePlan.remarks" name="remarks" maxlength="250" ></textarea>
+                            <p ng-show="vm.transferFuturePlanForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.transferFutureePlanForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,249 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">OPR Entry<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.oprEntryForm">
+                    <!-- <employee-search ng-model="vm.oprEntry.employee"></employee-search> -->
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label"> PNo</label>
+                            <input type="text" id="pNo" ng-keypress="$event.keyCode ==13 && vm.searchEmployee()" class="form-control custom-form-control" ng-model="vm.oprEntry.employee.pNo" name="pNo" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameEng" class="custom-label">Name</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.oprEntry.employee.fullNameEng" name="fullNameEng" maxlength="250" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Rank</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.oprEntry.employee.rank.fullName" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Batch</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.oprEntry.employee.batch.name" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bOffCId" class="custom-label">Born Office</label>
+
+                            <angucomplete-alt id="bOffCId"
+                                              placeholder="Search Office"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selected"
+                                              local-data="vm.attachOffices"
+                                              local-search="vm.localSearch"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="false"
+                                              input-name="bOffCId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Office Not Found"
+                                              input-class="form-control form-control-small custom-width" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="officeId" class="custom-label"> Attach Office</label>
+
+                            <angucomplete-alt id="officeId"
+                                              placeholder="Search Attach Office"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selectedAttach"
+                                              local-data="vm.newattachOffices"
+                                              local-search="vm.localSearchAttach"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="false"
+                                              input-name="officeId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Office Not Found"
+                                              input-class="form-control form-control-small custom-width" />
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="appoinmentId" class="custom-label">Appoinment</label>
+                            <select name="appoinmentId" id="appoinmentId" class="form-control" ng-model="vm.oprEntry.appoinmentId" ng-options="option.value as option.text for option in vm.appointments">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="otherAppointment" class="custom-label">Other Appointment</label>
+                            <input type="text"   id="otherAppointment" class="form-control custom-form-control" ng-model="vm.oprEntry.otherAppointment" name="otherAppointment" maxlength="250"  />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="oprRankId" class="custom-label">OPR Rank</label>
+                            <select name="oprRankId" id="oprRankId" class="form-control" ng-model="vm.oprEntry.oprRankId" ng-options="option.value as option.text for option in vm.ranks" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.oprEntryForm.oprRankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="oprFromDate" class="custom-label"> From Date</label>
+                            <input kendo-date-picker id="oprFromDate" class="form-control custom-form-control" k-ng-model="vm.oprEntry.oprFromDate" k-format="'dd-MM-yyyy'" name="oprFromDate" required />
+                            <p ng-show="vm.oprEntryForm.oprFromDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="oprToDate" class="custom-label"> To Date</label>
+                            <input kendo-date-picker id="oprToDate" class="form-control custom-form-control" k-ng-model="vm.oprEntry.oprToDate" k-format="'dd-MM-yyyy'" name="oprToDate" required />
+                            <p ng-show="vm.oprEntryForm.oprToDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="occasionId" class="custom-label">Occasion</label>
+                            <select name="occasionId" id="occasionId" class="form-control" ng-model="vm.oprEntry.occasionId" ng-options="option.value as option.text for option in vm.occasions" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.oprEntryForm.occasionId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="recomandationTypeId" class="custom-label">Recommendation For Promotion (Section-V)</label>
+                            <select name="recomandationTypeId" id="resultTypeId" class="form-control" ng-model="vm.oprEntry.recomandationTypeId" ng-options="option.value as option.text for option in vm.recommendationTypes">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.oprEntryForm.recomandationTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="overweight" class="custom-label">Over Weight KG(s)</label>
+                            <input type="number" id="overweight" class="form-control custom-form-control" ng-model="vm.oprEntry.overweight" name="overweight" />
+                            <p ng-show="vm.oprEntryForm.overweight.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="underweight" class="custom-label">Under Weight KG(s)</label>
+                            <input type="number" id="underweight" class="form-control custom-form-control" ng-model="vm.oprEntry.underweight" name="percentage" />
+                            <p ng-show="vm.oprEntryForm.underweight.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="oprGrade" class="custom-label">Final OPR Grading</label>
+                            <input type="number" id="oprGrade" class="form-control custom-form-control" ng-model="vm.oprEntry.oprGrade" name="oprGrade" min="0" max="9"
+                                   ng-change="vm.getGradingStatus(vm.oprEntry.oprGrade)" required />
+                            <p ng-show="vm.oprEntryForm.oprGrade.$error.required" class="help-block errormsg">OPR Grading is required.</p>
+                            <p ng-show="vm.oprEntryForm.oprGrade.$error.min" class="help-block errormsg">OPR Grading should be 0-9</p>
+                            <p ng-show="vm.oprEntryForm.oprGrade.$error.max" class="help-block errormsg">OPR Grading should be 0-9</p>
+                            <p class="text-success" style="margin-left: 36%">{{vm.oprEntry.gradingStatus}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isAdverseRemark" class="custom-label">Adverse Remark</label>
+                            <input type="radio" name="isAdverseRemark" ng-model="vm.oprEntry.isAdverseRemark" ng-value="true">Yes
+                            <input type="radio" name="isAdverseRemark" ng-model="vm.oprEntry.isAdverseRemark" ng-value="false">No
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="adverseRemark" class="custom-label">Remarks</label>
+                            <textarea id="adverseRemark" class="form-control custom-form-control" ng-model="vm.oprEntry.adverseRemark" name="adverseRemark" maxlength="250"></textarea>
+                            <p ng-show="vm.oprEntryForm.adverseRemark.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="apptRecom" class="custom-label">Appt Recom</label>
+                            <textarea id="apptRecom" class="form-control custom-form-control" ng-model="vm.oprEntry.apptRecom" name="apptRecom" maxlength="250"></textarea>
+                            <p ng-show="vm.oprEntryForm.apptRecom.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="section2" class="custom-label">Section II</label>
+                            <input id="section2" class="form-control custom-form-control" ng-model="vm.oprEntry.section2" name="section2" maxlength="500" />
+                            <p ng-show="vm.oprEntryForm.section2.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="section3" class="custom-label">Section III</label>
+                            <input id="section3" class="form-control custom-form-control" ng-model="vm.oprEntry.section3" name="section3" maxlength="500" />
+                            <p ng-show="vm.oprEntryForm.section3.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="section4" class="custom-label">Section IV</label>
+                            <input id="section4" class="form-control custom-form-control" ng-model="vm.oprEntry.section4" name="section4" maxlength="500" />
+                            <p ng-show="vm.oprEntryForm.section4.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.oprEntryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

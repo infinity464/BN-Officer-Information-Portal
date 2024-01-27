@@ -1,0 +1,49 @@
+﻿
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <button class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+            <div class="panel-body" id="print">
+                <h3 class="text-center reportHeader">Outside Navy wise Officer List</h3>
+                <hr />
+
+
+                <h4 class="text-center reportHeader">Total Officer found: {{vm.totalResult}}</h4>
+
+                <div class="table-wrapper table-responsive reportCover">
+
+                    <table class="table table-bordered pdfReportTable" border="1">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                 <th>SL</th>
+                                 <th>Officer Name</th>
+                                 <th>PNo</th>
+                                <th>Billet-Appointment</th>
+                                 <th>Since</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="item in vm.outsideNavyOfficers">
+                                <td class="reportTD" style="text-align: center;width: 50px;"><strong> {{$index+1}}</strong> </td>
+                                <td class="reportTD hideElement" ><a href="" ng-click="vm.officerDetails(item.pNo)"> <strong>{{item.officerName}}</strong></a> </td>
+                                <td class="reportTD noScreen" ><strong>{{item.officerName}}</strong></td>
+                                <td class="reportTD" style="text-align: center"> <strong>{{item.pNo}}</strong> </td>
+                                <td class="reportTD"><strong>{{item.presentBillet}} </strong> </td>
+                                <td class="reportTD" style="text-align: center;width: 100px;"><strong> {{item.since | date:'dd/MM/yyyy'}}</strong>  </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-sm-12" style="margin-bottom: 50px;"></div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

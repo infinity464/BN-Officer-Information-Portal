@@ -1,0 +1,49 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Feature Information</h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addFeature()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                    <div ng-include="'app/templates/search.html'" class="search-wrapper"></div>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Module Name</th>
+                                <th>Feature Name</th>
+                                <th>Authorize Code</th>
+                                <th>Feature Order</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="feature in vm.features">
+                                <td>{{$index+1}}</td>
+                                <td>{{feature.module.name}}</td>
+                                <td>{{feature.featureName}}</td>
+                                <td>{{feature.featureCode}}</td>
+                                <td>{{feature.orderNo}}</td>
+                                <td class="text-center">
+                                    <a  class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateFeature(feature)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a  class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteFeature(feature)"
+                                       ng-confirmation-message="Do you want to delete Feature?"
+                                       ng-confirmation-title="Delete Feature"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete role"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagenation-wrapper" ng-if="vm.features.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

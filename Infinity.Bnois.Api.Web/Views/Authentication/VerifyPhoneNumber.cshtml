@@ -1,0 +1,60 @@
+﻿@model Infinity.Bnois.Api.Web.Models.VerifyPhoneNumberViewModel
+@{
+    ViewBag.Title = "Reset password";
+}
+
+@using (Html.BeginForm("verify-phone-number", "core/authentication", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="register-form">
+        <div class="container">
+            <div class="row main">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <img class="swordImg" src="~/Images/bn_logo.PNG" />
+                    </div>
+                </div>
+                <div class="main-login main-center">
+                    <h4>Phone Number Verification</h4>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "cols-md-2 control-label" })
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Enter your phone number" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Code, new { @class = "cols-md-2 control-label" })
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-code fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(m => m.Code, new { @class = "form-control", @placeholder = "Enter Your Code" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" style="padding: 5px 15px" class="btn btn-lg btn-block custom-btn-primary" value=""><i class="fa fa-sign-in" aria-hidden="true"></i> Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-section">
+        <div class="row">
+            <div class="col-xs-12">
+                <marquee behavior="scroll" direction="left"><p style="1.5em">This web portal is open for BN officers only.    ||    Please use registered mobile phone number to sign up.   ||     Powered by: &#169;Naval Secretariat.</p></marquee>
+            </div>
+        </div>
+    </footer>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

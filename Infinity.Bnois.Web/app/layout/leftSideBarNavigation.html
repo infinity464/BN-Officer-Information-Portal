@@ -1,0 +1,468 @@
+﻿<style>
+    .unread {
+        /*float: right;*/
+        background: #e74c3c;
+        width: 2em;
+        border-radius: 50%;
+        font-size: 0.75em;
+        line-height: 2;
+        text-align: center;
+        animation: notificationpulse 0.5s infinite;
+        -webkit-animation: notificationpulse 0.5s infinite;
+        -moz-animation: notificationpulse 0.5s infinite;
+    }
+    /*the animations */
+    @keyframes notificationpulse {
+        0% {
+            box-shadow: 0 0 0 0.00em #c0392b;
+        }
+
+        25% {
+            box-shadow: 0 0 0 0.25em #c0392b;
+        }
+
+        50% {
+            box-shadow: 0 0 0 0.50em #c0392b;
+        }
+
+        75% {
+            box-shadow: 0 0 0 0.25em #c0392b;
+        }
+
+        100% {
+            box-shadow: 0 0 0 0.15em #c0392b;
+        }
+    }
+
+    @-webkit-keyframes notificationpulse {
+        0% {
+            box-shadow: 0 0 0 0.00em #c0392b;
+        }
+
+        25% {
+            box-shadow: 0 0 0 0.25em #c0392b;
+        }
+
+        50% {
+            box-shadow: 0 0 0 0.50em #c0392b;
+        }
+
+        75% {
+            box-shadow: 0 0 0 0.25em #c0392b;
+        }
+
+        100% {
+            box-shadow: 0 0 0 0.15em #c0392b;
+        }
+    }
+
+    @-moz-keyframes notificationpulse {
+        0% {
+            box-shadow: 0 0 0 0.00em #c0392b;
+        }
+
+        25% {
+            box-shadow: 0 0 0 0.25em #c0392b;
+        }
+
+        50% {
+            box-shadow: 0 0 0 0.50em #c0392b;
+        }
+
+        75% {
+            box-shadow: 0 0 0 0.25em #c0392b;
+        }
+
+        100% {
+            box-shadow: 0 0 0 0.15em #c0392b;
+        }
+    }
+
+    /*Other style form floating contact*/
+    #center-text {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    #chat-circle {
+        display: none;
+        position: fixed;
+        bottom: 65px;
+        right: 40px;
+        background: #5b9bd5;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        color: white;
+        padding: 14px;
+        cursor: pointer;
+        box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 60%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+        z-index: 9;
+    }
+
+        #chat-circle:hover {
+            background: #EEF4FA !important;
+            color: white !important;
+        }
+
+    .btn#my-btn {
+        background: white;
+        padding-top: 13px;
+        padding-bottom: 12px;
+        border-radius: 45px;
+        padding-right: 40px;
+        padding-left: 40px;
+        color: #5865C3;
+    }
+
+    #chat-overlay {
+        background: rgba(255,255,255,0.1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        display: none;
+    }
+
+
+    .chat-box {
+        display: block;
+        background: #efefef;
+        position: fixed;
+        right: 38px;
+        bottom: 59px;
+        width: 350px;
+        max-width: 85vw;
+        max-height: 100vh;
+        border-radius: 5px;
+        /*   box-shadow: 0px 5px 35px 9px #464a92; */
+        /*box-shadow: 0px 5px 35px 9px #ccc;*/
+        z-index: 9;
+    }
+
+    .chat-box-toggle {
+        float: right;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+    .chat-box-header {
+        background: #5b9bd5;
+        /* height: 60px; */
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        color: white;
+        text-align: left;
+        font-size: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+        .chat-box-header > .chat-box-toggle > img {
+            width: 25px;
+            margin: 0px 0px 0px 0px;
+        }
+            .chat-box-header > .chat-box-toggle > img:hover {
+                transform: scale(1.5);
+                transition: all .3s ease-out
+            }
+        .chat-box-body {
+            position: relative;
+            height: 370px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .chat-box-body:after {
+            content: "";
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAgOCkiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgY3g9IjE3NiIgY3k9IjEyIiByPSI0Ii8+PHBhdGggZD0iTTIwLjUuNWwyMyAxMW0tMjkgODRsLTMuNzkgMTAuMzc3TTI3LjAzNyAxMzEuNGw1Ljg5OCAyLjIwMy0zLjQ2IDUuOTQ3IDYuMDcyIDIuMzkyLTMuOTMzIDUuNzU4bTEyOC43MzMgMzUuMzdsLjY5My05LjMxNiAxMC4yOTIuMDUyLjQxNi05LjIyMiA5LjI3NC4zMzJNLjUgNDguNXM2LjEzMSA2LjQxMyA2Ljg0NyAxNC44MDVjLjcxNSA4LjM5My0yLjUyIDE0LjgwNi0yLjUyIDE0LjgwNk0xMjQuNTU1IDkwcy03LjQ0NCAwLTEzLjY3IDYuMTkyYy02LjIyNyA2LjE5Mi00LjgzOCAxMi4wMTItNC44MzggMTIuMDEybTIuMjQgNjguNjI2cy00LjAyNi05LjAyNS0xOC4xNDUtOS4wMjUtMTguMTQ1IDUuNy0xOC4xNDUgNS43IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTg1LjcxNiAzNi4xNDZsNS4yNDMtOS41MjFoMTEuMDkzbDUuNDE2IDkuNTIxLTUuNDEgOS4xODVIOTAuOTUzbC01LjIzNy05LjE4NXptNjMuOTA5IDE1LjQ3OWgxMC43NXYxMC43NWgtMTAuNzV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjcxLjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjE3MC41IiBjeT0iOTUuNSIgcj0iMS41Ii8+PGNpcmNsZSBmaWxsPSIjMDAwIiBjeD0iODEuNSIgY3k9IjEzNC41IiByPSIxLjUiLz48Y2lyY2xlIGZpbGw9IiMwMDAiIGN4PSIxMy41IiBjeT0iMjMuNSIgcj0iMS41Ii8+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTkzIDcxaDN2M2gtM3ptMzMgODRoM3YzaC0zem0tODUgMThoM3YzaC0zeiIvPjxwYXRoIGQ9Ik0zOS4zODQgNTEuMTIybDUuNzU4LTQuNDU0IDYuNDUzIDQuMjA1LTIuMjk0IDcuMzYzaC03Ljc5bC0yLjEyNy03LjExNHpNMTMwLjE5NSA0LjAzbDEzLjgzIDUuMDYyLTEwLjA5IDcuMDQ4LTMuNzQtMTIuMTF6bS04MyA5NWwxNC44MyA1LjQyOS0xMC44MiA3LjU1Ny00LjAxLTEyLjk4N3pNNS4yMTMgMTYxLjQ5NWwxMS4zMjggMjAuODk3TDIuMjY1IDE4MGwyLjk0OC0xOC41MDV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxwYXRoIGQ9Ik0xNDkuMDUgMTI3LjQ2OHMtLjUxIDIuMTgzLjk5NSAzLjM2NmMxLjU2IDEuMjI2IDguNjQyLTEuODk1IDMuOTY3LTcuNzg1LTIuMzY3LTIuNDc3LTYuNS0zLjIyNi05LjMzIDAtNS4yMDggNS45MzYgMCAxNy41MSAxMS42MSAxMy43MyAxMi40NTgtNi4yNTcgNS42MzMtMjEuNjU2LTUuMDczLTIyLjY1NC02LjYwMi0uNjA2LTE0LjA0MyAxLjc1Ni0xNi4xNTcgMTAuMjY4LTEuNzE4IDYuOTIgMS41ODQgMTcuMzg3IDEyLjQ1IDIwLjQ3NiAxMC44NjYgMy4wOSAxOS4zMzEtNC4zMSAxOS4zMzEtNC4zMSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48L3N2Zz4=');
+            opacity: 0.1;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+
+    #chat-input {
+        background: #f4f7f9;
+        width: 100%;
+        position: relative;
+        height: 47px;
+        padding-top: 10px;
+        padding-right: 50px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        border: none;
+        resize: none;
+        outline: none;
+        border: 1px solid #ccc;
+        color: #888;
+        border-top: none;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        overflow: hidden;
+    }
+
+    .chat-input > form {
+        margin-bottom: 0;
+    }
+
+    #chat-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #ccc;
+    }
+
+    #chat-input::-moz-placeholder { /* Firefox 19+ */
+        color: #ccc;
+    }
+
+    #chat-input:-ms-input-placeholder { /* IE 10+ */
+        color: #ccc;
+    }
+
+    #chat-input:-moz-placeholder { /* Firefox 18- */
+        color: #ccc;
+    }
+
+    .chat-submit {
+        position: absolute;
+        bottom: 3px;
+        right: 10px;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        border-radius: 50%;
+        color: #5A5EB9;
+        width: 35px;
+        height: 35px;
+    }
+
+    .chat-logs {
+        padding: 15px;
+        height: 370px;
+        overflow-y: scroll;
+    }
+
+        .chat-logs::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+
+        .chat-logs::-webkit-scrollbar {
+            width: 5px;
+            background-color: #F5F5F5;
+        }
+
+        .chat-logs::-webkit-scrollbar-thumb {
+            background-color: #5A5EB9;
+        }
+
+
+
+    @media only screen and (max-width: 500px) {
+        .chat-logs {
+            height: 40vh;
+        }
+    }
+
+    .chat-msg.user > .msg-avatar img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        float: left;
+        width: 15%;
+    }
+
+    .chat-msg.self > .msg-avatar img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        float: right;
+        width: 15%;
+    }
+
+    .cm-msg-text {
+        background: white;
+        padding: 10px 15px 10px 15px;
+        color: #666;
+        max-width: 75%;
+        float: left;
+        margin-left: 10px;
+        position: relative;
+        margin-bottom: 20px;
+        border-radius: 30px;
+    }
+
+    .chat-msg {
+        clear: both;
+    }
+
+        .chat-msg.self > .cm-msg-text {
+            float: right;
+            margin-right: 10px;
+            background: #5A5EB9;
+            color: white;
+        }
+
+    .cm-msg-button > ul > li {
+        list-style: none;
+        float: left;
+        width: 50%;
+    }
+
+    .cm-msg-button {
+        clear: both;
+        margin-bottom: 70px;
+    }
+    .form-group .form-control, .input-group .form-control {
+        padding: 6px !important;
+    }
+    @media screen and (max-width: 900px) and (min-width: 576px) {
+    
+    }
+    @media screen and (max-width: 575px) {
+        .chat-box {
+            right: 27px;
+            bottom: 130px;
+        }
+    }
+</style>
+<div ng-controller="LeftSideBarNavigationController as vm">
+    <nav class="menu" tabindex="0">
+        <div class="smartphone-menu-trigger fa-on-mobile">
+            <i class="fa fa-bars" style="color: #fff; padding: 13px;"></i>
+        </div>
+        <div style="overflow:auto !important;max-height: 100%;">
+            <ul ng-if="vm.role === 'MemberUser'">
+                <li tabindex="0" ng-click="vm.refresh()" class="icon-refresh"><a id="refresh" ng-click="vm.refresh()"><span>Refresh</span></a> </li>
+                <li tabindex="0" ng-click="vm.homeButton()" class="icon-dashboard"><a id="homeButton" class="active" ng-click="vm.homeButton()"><span>Home</span></a> </li>
+                <li tabindex="1" ng-click="vm.transfer()" class="icon-customers"><a id="transfer" ng-click="vm.transfer()"><span>Appointment</span></a> </li>
+                <li tabindex="2" ng-click="vm.course()" class="icon-users"><a id="course" ng-click="vm.course()"><span>Course</span></a> </li>
+                <li tabindex="3" ng-click="vm.opr()" class="icon-opr"><a id="opr" ng-click="vm.opr()" class="noPrint"><span>OPR</span></a> </li>
+                <li tabindex="4" ng-click="vm.award()" class="icon-Publication"><a id="award" ng-click="vm.award()"><span>Publication</span></a> </li>
+                <li tabindex="5" ng-click="vm.commendation()" class="icon-Commendation"><a id="commendation" ng-click="vm.commendation()"><span>Commendation</span></a> </li>
+                <li tabindex="6" ng-click="vm.leave()" class="icon-Leave"><a id="leave" ng-click="vm.leave()"><span>Leave</span></a> </li>
+                <li tabindex="7" ng-click="vm.password()" class="icon-password"><a id="password" ng-click="vm.password()"><span>Password</span></a> </li>
+                <li tabindex="7" ng-click="vm.noticeBoard()" class="icon-noticeBoard"><a id="noticeBoard" ng-click="vm.noticeBoard()"><span>Notice</span></a> </li>
+                <li tabindex="7" ng-click="vm.logout()" class="icon-Logout"><a id="logout" ng-click="vm.logout()"><span>Logout</span></a> </li>
+                <li tabindex="7" ng-click="vm.print()" class="icon-Print"><a id="print" ng-click="vm.print()"><span>Print</span></a> </li>
+            </ul>
+        </div>
+
+        <div style="overflow:auto !important;max-height: 100%;">
+            <ul ng-if="vm.role === 'System Administrator : SO(IT), In-charge Data Room'">
+                <li tabindex="0" ng-click="vm.refresh()" class="icon-refresh"><a id="refresh" ng-click="vm.refresh()"><span>Refresh</span></a> </li>
+                <li tabindex="0" ng-click="vm.homeButton()" class="icon-dashboard"><a id="homeButton" class="active" ng-click="vm.homeButton()"><span>Home</span></a> </li>
+                <li tabindex="0" ng-click="vm.download()" class="icon-Download"><a id="download" ng-click="vm.download()"><span>Download</span></a> </li>
+                <li tabindex="0" ng-click="vm.user()" class="icon-user"><a id="user" ng-click="vm.user()"><span>User</span></a> </li>
+                <li tabindex="0" ng-click="vm.userCreate()" class="icon-userCreate"><a id="userCreate" ng-click="vm.userCreate()"><span>User Create</span></a> </li>
+                <li tabindex="0" ng-click="vm.feedBack()" class="icon-feedBack"><a id="feedBack" ng-click="vm.feedBack()"><span>Feed Back</span></a> </li>
+                <li tabindex="7" ng-click="vm.migration()" class="icon-Migration"><a id="migration" ng-click="vm.migration()"><span>Migration</span></a> </li>
+
+                <li tabindex="7" ng-click="vm.empHistory()" class="icon-settings"><a id="empHistory" ng-click="vm.empHistory()"><span>Database</span></a> </li>
+                <li tabindex="7" ng-click="vm.userLog()" class="icon-userLog"><a id="userLog" ng-click="vm.userLog()"><span>UserLog</span></a> </li>
+                <li tabindex="7" ng-click="vm.flashNotice()" class="icon-flashNotice"><a id="flashNotice" ng-click="vm.flashNotice()"><span>Flash Notice</span></a> </li>
+                <li tabindex="7" ng-click="vm.password()" class="icon-password"><a id="password" ng-click="vm.password()"><span>Password</span></a> </li>
+                <li tabindex="7" ng-click="vm.logout()" class="icon-Logout"><a id="logout" ng-click="vm.logout()"><span>Logout</span></a> </li>
+
+
+
+
+
+
+
+
+
+                <!--<span ng-repeat="item in vm.model">
+        <span ng-repeat="subitem in item.features">
+            <li tabindex="0" class="icon-dashboard"><a ng-href="{{subitem.actionNgHref}}"><span>{{subitem.featureName}}</span></a> </li>
+        </span>
+    </span>-->
+                <!--<li tabindex="7" ng-click="vm.migration()" class="icon-Migration"><a href="/migration"><span>Migration</span></a> </li>-->
+                <!--<li tabindex="7" ng-click="vm.password()" class="icon-password"><a href="/change-password"><span>Password</span></a> </li>-->
+                <!--<li tabindex="0" class="icon-Logout"><a href="/log-out"><span>Logout</span></a> </li>-->
+            </ul>
+        </div>
+    </nav>
+    <div class="on-mobile-menu-header justify-content-center">
+        <div class="iconheader">
+            <a href="/download">
+                <img src="../../Images/Icons/Icons/Downloads.png" />
+            </a>
+            <a href="/notifications">
+                <img src="../../Images/Icons/Icons/Notification.png" /><span ng-if="vm.notificationUser === 1"><span class="badge badge-danger" style="position:relative; top:11px;right:15px;margin-right:-18px;">1</span></span>
+            </a>
+            <a href="/contact">
+                <img src="../../Images/Icons/Icons/Contact.png" />
+            </a>
+            <a href="/useful-link">
+                <img src="../../Images/Icons/Icons/UsefulLinks.png" />
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="floatBerBox" style="display:none;">
+    <div class="chat-box">
+        <div class="chat-box-header">
+            Contact/ Feedback Form
+            <span class="chat-box-toggle"><img src="../../Images/Icons/Icons/Logout.png" /></span>
+        </div>
+        <div class="chat-box-body">
+            <form name="vm.feedBackForm" style="padding: 0px 15px">
+                <div class="form-group">
+                    <label for="subject" style="font-size: 19px;color: #5b9bd5;margin-bottom: 0px !important;">Subject</label>
+                    <input type="text" class="form-control" id="subject" ng-model="vm.feedBackFloat.subject" placeholder="Enter Feedback Subject." required>
+                    <p ng-show="vm.feedBackForm.subject.$error.required" class="help-block errormsg">Subject is required</p>
+                </div>
+                <div class="form-group">
+                    <label for="description" style="font-size: 19px;color: #5b9bd5;margin-bottom: 0px !important;">
+                        Please state your request
+                    </label>
+                    <textarea class="form-control" id="description" ng-model="vm.feedBackFloat.description" rows="5" style="height: fit-content;max-height: fit-content;" required></textarea>
+                    <p ng-show="vm.feedBackForm.description.$error.required" class="help-block errormsg">Message is required</p>
+                </div>
+                <div class="form-group" style="text-align:center">
+                    <button type="submit" class="btn btn-primary mb-2" ng-click="vm.insertFeedBack()" ng-disabled="vm.feedBackForm.$invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+        <!--<div class="chat-input">
+            <form>
+                <button type="submit" class="chat-submit" id="chat-submit">Submit</button>
+            </form>
+        </div>-->
+    </div>
+    <div id="chat-circle" class="btn btn-raised">
+        <div id="chat-overlay"></div>
+        <img src="../../Images/Icons/Icons/Contact.png" />
+    </div>
+</div>
+
+
+
+<script>
+    $(function () {
+        $("#chat-circle").click(function () {
+            $("#chat-circle").toggle('scale');
+            $(".chat-box").toggle('scale');
+        })
+
+        $(".chat-box-toggle").click(function () {
+            $("#chat-circle").toggle('scale');
+            $(".chat-box").toggle('scale');
+        })
+
+    })
+</script>

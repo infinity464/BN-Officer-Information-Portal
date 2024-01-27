@@ -1,0 +1,46 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Retired Officer Information</h2>
+                    <div ng-include="'app/templates/search.html'" class="search-wrapper"></div>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Pn.</th>
+                                <th>Full Name</th>
+                                <th>Batch</th>
+                                <th>Gender</th>
+                                <th>Rank</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="retiredEmployee in vm.retiredEmployees">
+                                <td>{{$index+1}}</td>
+                                <td>{{retiredEmployee.pNo}}</td>
+                                <td>{{retiredEmployee.fullNameEng}}</td>
+                                <td>{{retiredEmployee.batch.name}}</td>
+                                <td>{{retiredEmployee.gender.name}}</td>
+                                <td>{{retiredEmployee.rank.fullName}}</td>
+                                <td class="text-right">
+                                    <a class="btn btn-info btn-xs" ng-click="vm.detailsRetiredEmployee(retiredEmployee)"><span aria-hidden="true" title="Update">Details</span></a>
+                                  
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagenation-wrapper" ng-if="vm.retiredEmployees.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

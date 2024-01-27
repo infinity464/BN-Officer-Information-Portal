@@ -1,0 +1,45 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+            <div class="panel-body" id="print">
+				
+			    <h3> Dockyard Services</h3>
+                <hr />
+                <h4 class="noScreen" style="border-bottom: 3px solid blue;font-family: Arial">{{vm.officerName}} ({{vm.pNo}})</h4>
+
+
+                <div ng-if="vm.dockyardServices.length>0" class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable" border="1">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th>Organization Name</th>
+                                <th>Appointment</th>
+                                <th>From Date</th>
+                                <th>To Date </th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="dockyardService in vm.dockyardServices">
+
+                                <td  class="reportTD">{{dockyardService.organizationName}}</td>
+                                <td  class="reportTD">{{dockyardService.appointment}}</td>
+                                <td  class="reportTD" style="text-align: center; width: 100px;">{{dockyardService.fromDate | date:"dd-MMM-yyyy"}}</td>
+                                <td  class="reportTD" style="text-align: center; width: 100px;" ng-if="dockyardService.toDate !='Total'">{{dockyardService.toDate | date:"dd-MMM-yyyy"}}</td>
+                                <td  class="reportTD" style="text-align: center; width: 100px;" ng-if="dockyardService.toDate=='Total'"><strong>{{dockyardService.toDate | date:"dd-MMM-yyyy"}}</strong></td>
+                                <td  class="reportTD" style="text-align: center;text-transform: lowercase;">{{dockyardService.duration}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+			    </div>
+                
+
+
+			</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="page-header">
+				    <h2 class="warning page-header-item">Ship Category<span class="pull-right text-success">{{vm.title}}</span></h2>
+				</div>
+				<form name="vm.shipCategoryForm">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="name" class="custom-label">Ship Category Name</label>
+							<input type="text" id="name" class="form-control custom-form-control" ng-model="vm.shipCategory.name" name="name" ng-maxlength="250" required />
+							<p ng-show="vm.shipCategoryForm.name.$error.required" class="help-block errormsg">Name is required</p>
+							<p ng-show="vm.shipCategoryForm.name.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+					
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="shortName" class="custom-label">Short Name</label>
+							<input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.shipCategory.shortName" name="shortName" ng-maxlength="50"  />
+							<p ng-show="vm.shipCategoryForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+						</div>
+					</div>
+					
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="priority" class="custom-label">Priority</label>
+							<input type="number" id="priority" class="form-control custom-form-control" ng-model="vm.shipCategory.priority" name="priority"  required />
+							<p ng-show="vm.shipCategoryForm.priority.$error.required" class="help-block errormsg">Name is required</p>
+							<p ng-show="vm.shipCategoryForm.priority.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="purpose" class="custom-label">Purpose</label>
+						    <textarea type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.shipCategory.purpose" name="purpose" ng-maxlength="250"></textarea>
+						    <p ng-show="vm.shipCategoryForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.shipCategoryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+						<button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

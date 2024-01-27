@@ -1,0 +1,49 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item" style="font-size: 16px;">{{vm.title}} [Candidate]<span class="pull-right text-success">{{vm.action}}</span></h2>
+                </div>
+                <form name="vm.promotinNominationForm">
+                    <employee-search ng-model="vm.promotionNomination.employee"></employee-search>
+
+                    <!--<div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="executionRemarkId" class="custom-label">Execution Remark</label>
+                            <select name="executionRemarkId" id="executionRemarkId" class="form-control" ng-model="vm.promotionNomination.executionRemarkId" ng-options="option.value as option.text for option in vm.executionRemarks" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotionNominationForm.executionRemarkId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="executionDate" class="custom-label"> Execution Date</label>
+                            <input kendo-date-picker id="executionDate" class="form-control custom-form-control" k-ng-model="vm.promotionNomination.executionDate" k-format="'dd-MM-yyyy'" name="executionDate" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="effectiveDate" class="custom-label"> Effective Date</label>
+                            <input kendo-date-picker id="effectiveDate" class="form-control custom-form-control" k-ng-model="vm.promotionNomination.effectiveDate" k-format="'dd-MM-yyyy'" name="effectiveDate" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <input type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.promotionNomination.remarks" name="remarks" maxlength="250" required />
+                            <p ng-show="vm.promotionNominationForm.remarks.$error.required" class="help-block errormsg">Remarks is required</p>
+                            <p ng-show="vm.promotionNominationForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>-->
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.promotionNominationForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

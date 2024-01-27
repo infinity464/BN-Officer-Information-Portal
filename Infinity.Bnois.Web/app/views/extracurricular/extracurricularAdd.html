@@ -1,0 +1,46 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.extracurricularForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Extracurricular<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="extracurricularTypeId" class="custom-label">Extracurricular Type</label>
+                            <select name="extracurricularTypeId" id="extracurricularTypeId" class="form-control" ng-model="vm.extracurricular.extracurricularTypeId" ng-options="option.value as option.text for option in vm.extracurricularTypes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.extracurricularForm.extracurricularTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="holdAnyPost" class="custom-label">Hold any post (School/College/University)</label>
+                            <input type="text" id="holdAnyPost" class="form-control custom-form-control" ng-model="vm.extracurricular.holdAnyPost" name="holdAnyPost" maxlength="250" />
+                            <p ng-show="vm.extracurricularForm.roll.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <input type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.extracurricular.remarks" name="remarks" maxlength="250" />
+                            <p ng-show="vm.extracurricularForm.remarks.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.extracurricularForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning " ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

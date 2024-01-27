@@ -1,0 +1,142 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{vm.title}}</h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.uploadParentImage()" title="Upload Image"><span class="fa fa-image"></span></button>
+                    <button style="margin-right:10px" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.updateParent()"><span class="glyphicon glyphicon-user"></span>Update</button>
+
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:bold">Full Name</td>
+                                <td>{{vm.parent.fullName}}</td>
+                                <td style="font-weight:bold">Full Name (বাংলা)</td>
+                                <td>{{vm.parent.fullNameBan}}</td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Nick Name</td>
+                                <td>{{vm.parent.nickName}}</td>
+                                <td style="font-weight:bold">Family Title</td>
+                                <td>{{vm.parent.familyTitle}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Date Of Birth </td>
+                                <td>{{vm.parent.doB | date:"dd-MMM-yyyy"}} </td>
+                                <td style="font-weight: bold">Place Birth</td>
+                                <td>{{vm.parent.placeOfBirth}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Birth Outside</td>
+                                <td>{{vm.parent.isBirthOutside}}</td>
+                                <td style="font-weight:bold">Country</td>
+                                <td>{{vm.parent.country.name}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Reason Of Migration</td>
+                                <td>{{vm.parent.reasonOfMigration}}</td>
+                                <td style="font-weight:bold">Migration Date</td>
+                                <td>{{vm.parent.migrationDate | date:"dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Educational Qualification</td>
+                                <td>{{vm.parent.educationalQualification}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Nationality</td>
+                                <td>{{vm.parent.nationality.name}}</td>
+                                <td style="font-weight:bold">NID</td>
+                                <td>{{vm.parent.nid}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Previous Nationality</td>
+                                <td>{{vm.previousNationality.name}}</td>
+                                <td style="font-weight:bold">Religion</td>
+                                <td>{{vm.parent.religion.name}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Religion Cast</td>
+                                <td>{{vm.parent.religionCast.name}}</td>
+                                <td style="font-weight:bold">Occupation</td>
+                                <td>{{vm.parent.occupation.name}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Has Armed Force Experience</td>
+                                <td>{{vm.parent.isArmedForceExp==1?"Yes":"No"}}</td>
+                                <td style="font-weight:bold">Armed Force Organization</td>
+                                <td>{{vm.parent.rankCategory.name}}(PNo:{{vm.parent.pNo}})</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Rank</td>
+                                <td>{{vm.parent.rankName}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Doing Service</td>
+                                <td>{{vm.parent.isDoingService?'Yes':'No'}}</td>
+                                <td style="font-weight:bold">Department</td>
+                                <td>{{vm.parent.department}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Designation</td>
+                                <td>{{vm.parent.designation}}</td>
+                                <td style="font-weight:bold">Retired</td>
+                                <td>{{vm.parent.isRetired?'Yes':'No'}}</td>
+                            </tr>
+                        <tr>
+                            <td style="font-weight:bold">Present Service Address</td>
+                            <td>{{vm.parent.serviceAddress}}</td>
+                            <td style="font-weight:bold">Previous Service Address (If Any)</td>
+                            <td>{{vm.parent.preServiceAddress}}</td> 
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Yearly Income</td>
+                            <td>{{vm.parent.yearlyIncome}}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                            <tr>
+                                <td style="font-weight:bold">Present Address</td>
+                                <td>{{vm.parent.presentAddress}}</td>
+                                <td style="font-weight:bold">Present Address (বাংলা)</td>
+                                <td>{{vm.parent.presentAddressBan}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Permanent Address</td>
+                                <td>{{vm.parent.permanentAddress}}</td>
+                                <td style="font-weight:bold">Permanent Address (বাংলা)</td>
+                                <td>{{vm.parent.permanentAddressBan}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Other Address</td>
+                                <td>{{vm.parent.otherAddress}}</td>
+                                <td style="font-weight:bold">Other Address (বাংলা)</td>
+                                <td>{{vm.parent.otherAddressBan}}</td>
+                            </tr>
+                        <tr>
+                            <td style="font-weight:bold">Political Ideology</td>
+                            <td>{{vm.parent.politicalIdeology}}</td>
+                            <td style="font-weight:bold">Dependency on the Subj Indl</td>
+                            <td>{{vm.parent.dependency}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Status</td>
+                            <td colspan="3">{{vm.parent.isDead?'Dead':'Alive'}}</td>
+                           
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

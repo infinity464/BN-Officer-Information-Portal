@@ -1,0 +1,115 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="page-header">
+				    <h2 class="warning page-header-item">Leave Policy<span class="pull-right text-success">{{vm.title}}</span></h2>
+				</div>
+				<form name="vm.leaveTypeForm">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="commissionTypeId" class="custom-label">Commission Type</label>
+							<select name="commissionTypeId" id="commissionTypeId" class="form-control" ng-model="vm.leavePolicy.commissionTypeId" ng-options="option.value as option.text for option in vm.commissionType" required>
+								<option value="">--Select an Option--</option>
+							</select>
+							<p ng-show="vm.leaveTypeForm.commissionTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="leaveTypeId" class="custom-label">Leave Type</label>
+							<select name="leaveTypeId" id="leaveTypeId" class="form-control" ng-model="vm.leavePolicy.leaveTypeId" ng-options="option.value as option.text for option in vm.leaveType" required>
+								<option value="">--Select an Option--</option>
+							</select>
+							<p ng-show="vm.leaveTypeForm.leaveTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="leaveDuration" class="custom-label">Duration</label>
+
+							<input type="text" id="leaveDuration" class="form-control custom-form-control" ng-model="vm.leavePolicy.leaveDuration" name="leaveDuration" required />
+
+							<p ng-show="vm.leaveTypeForm.leaveDuration.$error.required" class="help-block errormsg">Please select an Option</p>
+
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="leaveDurationType" class="custom-label">Type</label>
+							<select name="leaveDurationType" id="leaveDurationType" class="form-control" ng-model="vm.leavePolicy.leaveDurationType" ng-options="option.value as option.text for option in vm.durationType" required>
+								<option value="">--Select an Option--</option>
+							</select>
+							<p ng-show="vm.leaveTypeForm.leaveDurationType.$error.required" class="help-block errormsg">Please select an Option</p>
+						</div>
+					</div>
+
+
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="foreignDuration" class="custom-label">Foreign Duration</label>
+							<input type="text" id="foreignDuration" class="form-control custom-form-control" ng-keyup ="vm.checkForeignDate()" ng-model="vm.leavePolicy.foreignDuration" name="foreignDuration"  />
+
+							<!--<p ng-show="vm.leaveTypeForm.foreignDuration.$error.required" class="help-block errormsg">Please select an Option</p>-->
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="foreignDurationType" class="custom-label">Type</label>
+							<select name="foreignDurationType" id="foreignDurationType" class="form-control" ng-change ="vm.checkForeignDate()" ng-model="vm.leavePolicy.foreignDurationType" ng-options="option.value as option.text for option in vm.durationType">
+								<option value="">--Select an Option--</option>
+							</select>
+							<p ng-show="vm.leavePolicyForm.foreignDurationType.$error.required" class="help-block errormsg">Please select an Option</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="watp" class="custom-label">Will Effect</label>
+								<select name="watp" id="watp" class="form-control" ng-model="vm.leavePolicy.watp" ng-change="vm.getEffectType(vm.leavePolicy.watp)" ng-options="option.value as option.text for option in vm.effectType" required>
+									<option value="">--Select an Option--</option>
+								</select>
+								<p ng-show="vm.leaveTypeForm.watp.$error.required" class="help-block errormsg">Please select an Option</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6" ng-if="vm.leavePolicy.watp == vm.AfterYear || vm.leavePolicy.watp == vm.WholeCarrer">
+							<div class="form-group col-sm-12">
+								<div class="col-sm-4">
+									<label for="tmYear" class="custom-label">Year</label>
+								</div>
+								<div class="col-sm-6">
+									<input type="number" id="tmYear" class="form-control" ng-model="vm.leavePolicy.tmYear" name="tmYear" required/>
+									<p ng-show="vm.leaveTypeForm.tmYear.$error.required" class="help-block errormsg">Time & Year is required</p>
+									<p ng-show="vm.leaveTypeForm.tmYear.$error.maxlength" class="help-block errormsg">Please Insert Number</p>
+								</div>
+								<div class="col-sm-2" ng-if="vm.leavePolicy.watp == vm.AfterYear">
+									<p ><strong>{{vm.effectTypeLabel}}</strong></p>
+								</div>
+							</div>
+						</div>
+					</div>
+		
+
+					<div class="col-sm-6" ng-if="vm.leavePolicy.leaveTypeId == vm.plCode">
+						<div class="form-group">
+							<label for="slot" class="custom-label">Slot</label>
+
+							<input type="text" id="slot" class="form-control custom-form-control" ng-model="vm.leavePolicy.slot" name="slot"  />
+
+							<!--<p ng-show="vm.leaveTypeForm.slot.$error.required" class="help-block errormsg">Please select an Option</p>-->
+
+						</div>
+					</div>
+
+					<div class="col-xs-12">
+						<button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.leaveTypeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+						<button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

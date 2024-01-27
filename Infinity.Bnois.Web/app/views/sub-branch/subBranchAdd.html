@@ -1,0 +1,62 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Sub Branch<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.subBranchForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullName" class="custom-label"> Full name</label>
+                            <input type="text" id="fullName" class="form-control custom-form-control" ng-model="vm.subBranch.fullName" name="fullName" maxlength="250"/>
+                            <p ng-show="vm.subBranchForm.fullName.$error.required" class="help-block errormsg">Full Name is required</p>
+                            <p ng-show="vm.subBranchForm.fullName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Full Name (বাংলা)</label>
+                            <input type="text" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.subBranch.fullNameBan" name="fullNameBan" ng-maxlength="250"/>
+                            <p ng-show="vm.subBranchForm.nameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label"> Short name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.subBranch.shortName" name="shortName" maxlength="250" required/>
+                            <p ng-show="vm.subBranchForm.shortName.$error.required" class="help-block errormsg">Short Name is required</p>
+                            <p ng-show="vm.subBranchForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortNameBan" class="custom-label">Short Name (বাংলা)</label>
+                            <input type="text" id="shortNameBan" class="form-control custom-form-control" ng-model="vm.subBranch.shortNameBan" name="shortNameBan" ng-maxlength="50"/>
+                            <p ng-show="vm.subBranchForm.shortNameBan.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="description" class="custom-label">Description</label>
+                            <textarea type="text" id="description" class="form-control custom-form-control" ng-model="vm.subBranch.description" name="description" maxlength="250" />
+                            <p ng-show="vm.subBranchForm.description.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.subBranchForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

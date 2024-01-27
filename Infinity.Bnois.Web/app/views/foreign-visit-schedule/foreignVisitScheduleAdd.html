@@ -1,0 +1,85 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Foreign Visit Schedule<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.foreignVisitScheduleForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="visitCategoryId" class="custom-label">Visit Category</label>
+                            <select name="visitCategoryId" id="visitCategoryId" class="form-control" ng-model="vm.foreignVisitSchedule.visitCategoryId"
+                                    ng-options="option.value as option.text for option in vm.visitCategories"
+                                    ng-change="vm.getVisitSubCategorySelectModelsByVisitCategory(vm.foreignVisitSchedule.visitCategoryId)" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.foreignVisitScheduleForm.visitCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="visitSubCategoryId" class="custom-label">Visit Sub Category</label>
+                            <select name="visitSubCategoryId" id="visitSubCategoryId" class="form-control" ng-model="vm.foreignVisitSchedule.visitSubCategoryId"
+                                    ng-options="option.value as option.text for option in vm.visitSubCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.foreignVisitScheduleForm.visitSubCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.foreignVisitSchedule.countryId"
+                                    ng-options="option.value as option.text for option in vm.countries" required ng-disabled="vm.countryDisable">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.foreignVisitScheduleForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="location" class="custom-label">Location</label>
+                            <textarea type="text" id="location" class="form-control custom-form-control" ng-model="vm.foreignVisitSchedule.location" name="location" maxlength="250"></textarea>
+                            <p ng-show="vm.foreignVisitScheduleForm.location.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+               
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fromDate" class="custom-label"> From Date</label>
+                            <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.foreignVisitSchedule.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required /> 
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="toDate" class="custom-label"> To Date</label>
+                            <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.foreignVisitSchedule.toDate" k-format="'dd-MM-yyyy'" name="toDate" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="purpose" class="custom-label">Purpose</label>
+                            <textarea type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.foreignVisitSchedule.purpose" name="purpose" maxlength="250"></textarea>
+                            <p ng-show="vm.foreignVisitScheduleForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.foreignVisitScheduleForm.$invalid" kendo-validator="vm.formValidation"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

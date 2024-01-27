@@ -1,0 +1,130 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+
+    .card {
+        margin: auto !important;
+        font-size: 18px;
+        width: 40%;
+        padding: 10px;
+        border-radius: 25px !important;
+        padding: 0px !important;
+        top: 30%;
+        height: 40%;
+        background-color: #ffffffe6 !important;
+    }
+
+    .content {
+        padding-left: 10px !important;
+        max-height: 72%;
+        overflow-y: auto;
+    }
+
+    .card .card-body {
+        padding: 10px 15px 0px 15px !important;
+    }
+
+    .card-body p {
+        font-size: 25px !important;
+    }
+
+    .card-title {
+        color: #000066 !important;
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    .content a {
+        padding-left: 5px;
+        vertical-align: middle;
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .content {
+            max-height: 65%;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 17px !important;
+        }
+
+        .card {
+            width: 95%;
+            top: 20%;
+            font-size: 16px !important;
+        }
+
+        .content {
+            max-height: 50%;
+        }
+    }
+
+    @media screen and (max-width: 900px) and (min-width: 576px) {
+
+        .card {
+            width: 60%;
+        }
+    }
+
+    img {
+        width: 22px;
+        margin: 5px 0px 0px 0px;
+    }
+
+    .footer {
+        padding: 0px !important;
+    }
+
+        .footer.content > img,
+        .footer.content > address {
+            display: inline-block;
+        }
+
+
+
+    .content img {
+        width: 26px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .footer div {
+        padding: 5px 0px !important;
+    }
+
+        .footer div a {
+            color: black !important;
+        }
+</style>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-center">Downloads</h5>
+        <!--<p>Forms</p>--><hr />
+            <div class="footer content">
+                <div ng-repeat="CA in vm.downloads">
+                    <div>
+                        <img src="../../../Images/Icons/Icons/Forms on downloads.png" />
+                        <!--<a target="_blank" href="http://localhost:24116/Documents/File/Blank PL Form.doc" download>Blank PL Form</a>-->
+                        <a target="_blank" href="{{CA.source}}" download>
+                            {{CA.fileName}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

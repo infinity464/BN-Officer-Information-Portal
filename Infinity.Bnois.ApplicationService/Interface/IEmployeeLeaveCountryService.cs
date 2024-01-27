@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Infinity.Bnois.ApplicationService.Models;
+
+namespace Infinity.Bnois.ApplicationService.Interface
+{
+	public interface IEmployeeLeaveCountryService
+	{
+		Task<EmployeeLeaveCountryModel> SaveEmployeeLeaveCountry(int v, EmployeeLeaveCountryModel employeeLeaveCountryModel, int empLeaveId);
+	}
+}

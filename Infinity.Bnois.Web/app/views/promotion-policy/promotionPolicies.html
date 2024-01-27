@@ -1,0 +1,52 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Promotion Policy</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addPromotionPolicy()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                    <div ng-include="'app/templates/search.html'" class="search-wrapper"></div>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Service (Year)</th>
+                                <th>1 Year in Present Rank</th>
+                                <th>OPR Recommendation in Present Rank</th>
+                                <th>Lf Cdr Q-Exam Pass</th>
+                                <th>Specialization Course [Completed/Ongoging]</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="promotionPolicy in vm.promotionPolicies">
+                                <td>{{$index+1}}</td>
+                                <td>{{promotionPolicy.rank.shortName}}</td>
+                                <td>{{promotionPolicy.rank1.shortName}}</td>
+                                <td>{{promotionPolicy.serviceYear +" Year"}}</td>
+                                <td>{{promotionPolicy.isOneYearPreRank==1?"Yes":"No"}}</td>
+                                <td>{{promotionPolicy.isOprRecom==1?"Yes":"No"}}</td>
+                                <td>{{promotionPolicy.isPassLfCdrQExam==1?"Yes":"No"}}</td>
+                                <td>{{promotionPolicy.isSpcialCourse==1?"Yes":"No"}}</td>
+                                <td class="text-right">
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updatePromotionPolicy(promotionPolicy)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deletePromotionPolicy(promotionPolicy)"
+                                       ng-confirmation-message="Do you want to delete Promotion Policy ?"
+                                       ng-confirmation-title="Delete Promotion Policy ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Promotion Policy"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

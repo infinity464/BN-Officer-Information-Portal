@@ -1,0 +1,67 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+                <form name="vm.appointmentCategoryForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Appointment Category<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aNatId" class="custom-label">Appointment Nature</label>
+                            <select name="aNatId" id="aNatId" class="form-control" ng-model="vm.appointmentCategory.aNatId" ng-options="option.value as option.text for option in vm.appointmentNatureList" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.appointmentCategoryForm.aNatNm.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>            
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="acatNm" class="custom-label">Appointment Category</label>
+                            <input type="text" id="acatNm" class="form-control custom-form-control" ng-model="vm.appointmentCategory.acatNm" name="aNatNm" maxlength="60" required />
+                            <p ng-show="vm.appointmentCategoryForm.acatNm.$error.required" class="help-block errormsg">This is required</p>
+                            <p ng-show="vm.appointmentCategoryForm.acatNm.$error.maxlength" class="help-block errormsg">Maximum length 60 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="acatNmBng" class="custom-label">Appointment Category(Bangla)</label>
+                            <input type="text" id="acatNmBng" class="form-control custom-form-control" ng-model="vm.appointmentCategory.acatNmBng" name="acatNmBng" maxlength="80"  />
+                            <p ng-show="vm.appointmentCategoryForm.acatNmBng.$error.maxlength" class="help-block errormsg">Maximum length 80 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aCatShNm" class="custom-label">Short Name</label>
+                            <input type="text" id="aCatShNm" class="form-control custom-form-control" ng-model="vm.appointmentCategory.aCatShNm" name="aCatShNm" maxlength="20" />
+                            <p ng-show="vm.appointmentCategoryForm.aCatShNm.$error.maxlength" class="help-block errormsg">Maximum length 20 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aCatShNmBng" class="custom-label">Short Name(Bangla)</label>
+                            <input type="text" id="aCatShNmBng" class="form-control custom-form-control" ng-model="vm.appointmentCategory.aCatShNmBng" name="aCatShNmBng" maxlength="30" />
+                            <p ng-show="vm.appointmentCategoryForm.aCatShNmBng.$error.maxlength" class="help-block errormsg">Maximum length 30 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="custom-label"></label>
+
+                            <input type="checkbox" ng-model="vm.appointmentCategory.goAcr" /> <b>Go To ACR</b>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.appointmentCategoryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+			</div>
+		</div>
+	</div>
+</div>

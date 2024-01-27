@@ -1,0 +1,162 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+	        <div class="panel-body">
+	            <h4 class="text-center" style="margin-top: -5px;" >List of appointed officer</h4>
+
+	            <div class="col-sm-12"></div>
+
+           <div class="col-sm-12">
+	         <div class="col-sm-5">
+	                <div class="form-group">
+	                    <label for="transferType" class="custom-label">Officer From</label>
+	                    <select name="transferType" id="transferType" class="form-control" ng-model="vm.transferType"
+	                            ng-change="vm.getEmployeeListByOffice(vm.transferType,vm.rankId,vm.displayId)"
+	                            ng-options="option.value as option.text for option in vm.officerFroms"
+	                            ng-init="vm.transferType=1">
+	                       
+	                    </select>
+	                </div>
+	            </div>
+		
+                
+	            <div class="col-sm-4">
+	                <div class="form-group">
+	                    <label for="rankId" class="custom-label">Rank</label>
+	                    <select name="rankId" id="rankId" class="form-control" ng-model="vm.rankId"
+	                            ng-change="vm.getEmployeeListByOffice(vm.transferType,vm.rankId,vm.displayId)"
+	                            ng-options="option.value as option.text for option in vm.ranks"
+	                            ng-init="vm.rankId=2">
+	                       
+	                    </select>
+	                </div>
+	            </div>
+                
+                
+	            <div class="col-sm-3">
+	                <div class="form-group">
+	                    <label for="displayId" class="custom-label">Display</label>
+                        <select name="displayId" id="displayId" class="form-control" ng-model="vm.displayId"
+                                ng-change="vm.getEmployeeListByOffice(vm.transferType,vm.rankId,vm.displayId)"
+                                ng-options="option.value as option.text for option in vm.displayValue"
+                                ng-init="vm.displayId=1">
+
+
+                        </select>
+	                </div>
+	            </div>
+              </div>  
+              
+	         
+                
+	        
+
+
+	            <div class="table-wrapper table-responsive">
+
+	                <table class="table table-bordered">
+	                    <thead>
+	                    <tr class="tableHeading">
+	                        <th>SL</th>
+	                        <th>Appointment</th>
+	                        <th>Office</th>
+	                        <th>PNo</th>
+	                        <th>Officer Name</th>
+	                        <th>Branch</th>
+
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+	                    <tr ng-repeat="item in vm.officeAppointments">
+	                        <td style="text-align: center;width: 50px;"><strong> {{$index+1}}</strong> </td>
+	                        <td > <strong>{{item.appointment}}</strong> </td>
+	                        <td > <strong>{{item.office}}</strong> </td>
+	                        <td style="text-align: center"><strong>{{item.pno}} </strong> </td>
+	                        <td ng-if="item.officer!='Vacant'"><a href=""  ng-click="vm.officerDetails(item.pno)"> <strong>{{item.officer}}</strong></a> </td>
+	                        <td ng-if="item.officer=='Vacant'" style="text-align: center;color: red"> <strong>{{item.officer}}</strong> </td>
+	                        <td > <strong>{{item.branches}}</strong> </td>
+
+
+	                    </tr>
+	                    </tbody>
+	                </table>
+
+	            </div>
+                
+	               
+	            <h4 class="text-center" >List of Officers' under Course</h4>
+
+                
+	            <div class="table-wrapper table-responsive">
+
+	                <table class="table table-bordered">
+	                    <thead>
+	                    <tr class="tableHeading">
+	                        <th>SL</th>
+	                        <th>Course Name</th>
+	                        <th>PNo</th>
+	                        <th>Officer Name</th> 
+
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+	                    <tr ng-repeat="item in vm.underCourses">
+	                        <td style="text-align: center;width: 50px;"><strong> {{$index+1}}</strong> </td>
+	                        <td > <strong>{{item.course}}</strong> </td>
+	                        <td style="text-align: center"><strong>{{item.pNo}} </strong> </td>
+	                        <td ><a href=""  ng-click="vm.officerDetails(item.pNo)"> <strong>{{item.officer}}</strong></a> </td>
+
+
+	                    </tr>
+	                    </tbody>
+	                </table>
+
+	            </div>
+                
+                
+                
+                
+	            <h4 class="text-center" >List of Officers' under UN Mission</h4>
+
+                
+	            <div class="table-wrapper table-responsive">
+
+	                <table class="table table-bordered">
+	                    <thead>
+	                    <tr class="tableHeading">
+	                        <th>SL</th>
+	                        <th>Appointment</th>
+	                        <th>UN Mission Name</th>
+	                        <th>PNo</th>
+	                        <th>Officer Name</th>
+
+
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+	                    <tr ng-repeat="item in vm.underMissions">
+	                        <td style="text-align: center;width: 50px;"><strong> {{$index+1}}</strong> </td>
+	                        <td > <strong>{{item.appointment}}</strong> </td>
+	                        <td > <strong>{{item.mission}}</strong> </td>
+	                        <td style="text-align: center"><strong>{{item.pNo}} </strong> </td>
+	                        <td ><a href=""  ng-click="vm.officerDetails(item.pNo)"> <strong>{{item.officer}}</strong></a> </td>
+
+
+
+
+	                    </tr>
+	                    </tbody>
+	                </table>
+
+	            </div>
+                
+                
+
+	            <div class="col-sm-12" style="margin-bottom: 50px;"></div>
+
+
+
+	        </div>
+        </div>
+    </div>
+</div>

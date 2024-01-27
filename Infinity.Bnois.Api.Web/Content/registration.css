@@ -1,0 +1,372 @@
+﻿.register-form {
+    margin-top: 154px;
+}
+
+.custom-btn-primary {
+    color: #ffffff;
+    background-color: #3BBF38;
+    border-color: #89C541;
+}
+
+    .custom-btn-primary:hover {
+        color: #ffffff;
+        background-color: #1C9C17;
+        border-color: #1E9019;
+    }
+
+.form-control {
+    display: inline-block;
+}
+
+.logo {
+    display: inline-block;
+    margin: 0px auto 8px;
+    width: 80px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    padding-top: 3px;
+}
+
+.main-login {
+    background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 10px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.main-center {
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 20px 30px;
+}
+
+.login-button {
+    margin-top: 5px;
+}
+
+.login-register {
+    font-size: 14px;
+    text-align: center;
+}
+
+    .login-register a:hover {
+        text-decoration: underline;
+    }
+
+
+
+
+@import url('http://fonts.cdnfonts.com/css/ink-free');
+@import url('http://fonts.cdnfonts.com/css/segoe-ui-4');
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url("../../images/LoginBanner.jpg") !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.body-section {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.btnDiv {
+    margin: auto;
+    padding: 30px;
+    padding-bottom: 0px !important;
+}
+
+.PNDiv {
+    margin: auto;
+    padding: 60px 4px 10px 4px;
+}
+
+.ErrorDiv {
+    margin: auto;
+    padding: 10px;
+}
+
+.btnCenter {
+    margin-left: 18%;
+    margin-bottom: 5%;
+    font-size: 22px;
+    background: #000561;
+    color: #fff;
+    /* font-weight: bold; */
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 15px 30px !important;
+}
+
+    .btnCenter.focus, .btnCenter:focus, .btnCenter:hover {
+        background-color: white;
+        color: #000561;
+        border: 2px solid #000561;
+    }
+
+.btnCenter1 {
+    margin-left: 20%;
+    margin-bottom: 5%;
+    font-size: 22px;
+    left: 77%;
+    background: #000561;
+    color: #fff;
+    /* font-weight: bold; */
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 15px 30px !important;
+}
+
+    .btnCenter1.focus, .btnCenter1:focus, .btnCenter1:hover {
+        background-color: white;
+        color: #000561;
+        border: 2px solid #000561;
+    }
+
+.loginBtnSubmit {
+    margin: 0;
+    font-size: 22px;
+    position: absolute;
+    left: 50%;
+    background: #000561;
+    color: #fff;
+    border: 2px solid #fff;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    padding: 15px 30px !important;
+}
+
+    .loginBtnSubmit.focus, .loginBtnSubmit:focus, .loginBtnSubmit:hover {
+        background-color: white;
+        color: #000561;
+        border: 2px solid #000561;
+    }
+
+.swordImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+}
+
+.footer-section {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #2159ea;
+    text-align: center;
+    background-color: #fff;
+}
+
+.BrowsersImgItems img {
+    width: 22px;
+    margin: 5px 0px 0px 0px;
+}
+
+
+
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+body {
+    background-image: url("../../images/LoginBanner.jpg") !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    --bg-color: #e3f8ff !important;
+    --color-primary: #acd6e6 !important;
+    --color-secondary: #252c6a !important;
+    --border-radius: 4px !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    background-color: var(--bg-color) !important;
+    background-size: cover !important;
+}
+
+.container {
+    width: 400px;
+    max-width: 400px;
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    /*background: white;*/
+}
+
+.container {
+    font: 500 1rem "Roboto-Regular", sans-serif;
+}
+
+.form__input {
+    font: 17px "Roboto-Regular", sans-serif !important;
+}
+
+.form__button {
+    font: 18px "Roboto-Regular", sans-serif !important;
+}
+
+.form--hidden {
+    display: none;
+}
+
+.form > *:first-child {
+    margin-top: 0;
+}
+
+.form > *:last-child {
+    margin-bottom: 0;
+}
+
+.form__title {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0px 20px 0px !important;
+    color: white;
+}
+
+.form__input-group {
+    margin-bottom: 2rem;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #dddddd;
+    outline: none;
+    background: #eeeeee;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+    .form__input:focus {
+        border-color: var(--color-primary);
+        background: #ffffff;
+    }
+
+.form__button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background-color: #000561;
+    border: 1px solid #fff;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+    .form__button:hover {
+        transform: scale(0.98);
+        background-color: #fff !important;
+        color: #000;
+    }
+
+.padding {
+    padding-bottom: 10px; /* Padding */
+}
+/*my css*/
+.bnlogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 100px;
+}
+
+.iconheader {
+    padding: 15px 0px;
+}
+
+    .iconheader img {
+        width: 30px;
+        margin: 5px 5px;
+    }
+
+    .iconheader a {
+        cursor: pointer;
+        text-decoration: none !important;
+        transition: all .2s ease-in-out;
+    }
+
+        .iconheader a:hover img {
+            text-decoration: none !important;
+            transform: scale(1.2);
+            /*background-color:black;*/
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+            border-radius: 50%;
+        }
+
+.name {
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 1.7em;
+    text-align: center;
+    background: #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.submitbtn {
+    background-color: #000561;
+    border: 1px solid #fff;
+}
+
+    .submitbtn:hover {
+        background-color: #fff !important;
+        color: #000;
+    }
+
+.field-validation-error {
+    color: #ffffff;
+}
+
+
+.footer-section {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    margin: 1rem;
+    padding: 2rem;
+}
+
+@media (max-width: 575px) {
+    body {
+        background-position: left !important;
+        justify-content: center !important;
+    }
+}

@@ -1,0 +1,100 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Future Plan For Course<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.courseFuturePlanForm">
+                    <!-- <employee-search ng-model="vm.courseFuturePlan.employee"></employee-search> -->
+                    <!-- -->
+                    <!-- <div class="col-sm-12"> -->
+                    <!--     <hr /> -->
+                    <!-- </div> -->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseCategoryId" class="custom-label">Category</label>
+                            <select name="courseCategoryId" id="courseCategoryId" class="form-control" ng-model="vm.courseFuturePlan.courseCategoryId"
+                                    ng-options="option.value as option.text for option in vm.courseCategories" required
+                                    ng-change="vm.getCourseSubCategory(vm.courseFuturePlan.courseCategoryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.courseFuturePlanForm.courseCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseSubCategoryId" class="custom-label">Sub Category</label>
+                            <select name="courseSubCategoryId" id="courseSubCategoryId" class="form-control" ng-model="vm.courseFuturePlan.courseSubCategoryId"
+                                    ng-options="option.value as option.text for option in vm.courseSubCategories" 
+                                    ng-change="vm.getCourses(vm.courseFuturePlan.courseSubCategoryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.courseFuturePlanForm.courseSubCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseId" class="custom-label"> Course</label>
+                            <select name="courseId" id="courseId" class="form-control" ng-model="vm.courseFuturePlan.coureseId" ng-options="option.value as option.text for option in vm.courses" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.courseFuturePlanForm.courseId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="planDate" class="custom-label"> Plan Date</label>
+                            <input kendo-date-picker id="planDate" class="form-control custom-form-control" k-ng-model="vm.courseFuturePlan.planDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                            <p ng-show="vm.courseFuturePlanForm.planDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="endDate" class="custom-label"> End Date</label>
+                            <input kendo-date-picker id="endDate" class="form-control custom-form-control" k-ng-model="vm.courseFuturePlan.endDate" k-format="'dd-MM-yyyy'" name="fromDate"  />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="isMandatory" class="form-check-input"
+                                   ng-model="vm.courseFuturePlan.isMandatory" name="isMandatory" />
+                            <label for="isMandatory" class="custom-label"> Mandatory</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea id="remarks" class="form-control custom-form-control" ng-model="vm.courseFuturePlan.remarks" name="remarks" maxlength="250" > </textarea>
+                            <p ng-show="vm.courseFuturePlanForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.courseFuturePlanForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

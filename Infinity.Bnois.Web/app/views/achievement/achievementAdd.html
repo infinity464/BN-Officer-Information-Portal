@@ -1,0 +1,318 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Personal Achievement<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.achievementForm">
+                    <employee-search ng-model="vm.achievement.employee"></employee-search>
+
+
+                    <div class="col-sm-6" ng-if="vm.achievement.employee.employeeId>0">
+                        <div class="form-group">
+                            <input type="checkbox" id="isBackLog" class="form-check-input" ng-model="vm.achievement.isBackLog" name="isBackLog" ng-change="vm.isBackLogChecked(vm.achievement.isBackLog)" />
+                            <label for="isBackLog" class="custom-label"> Back Log </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.achievement.isBackLog">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.achievement.rankId"
+                                    ng-options="option.value as option.text for option in vm.ranks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.achievement.isBackLog">
+                        <div class="form-group">
+                            <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                            <select name="transferId" id="transferId" class="form-control" ng-model="vm.achievement.transferId"
+                                    ng-options="option.value as option.text for option in vm.transfers">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label style="width: 25%" for="type" class="custom-label">Type</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.achievementComTypes">
+
+                                <label>
+                                    <input type="radio" id="type" class="radio-inline" ng-model="vm.achievement.type"
+                                           value="{{status.value}}" ng-change="vm.achievementType(vm.achievement.type)"
+                                           required> {{status.text}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12">
+
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="commendationId" class="custom-label">Commendation</label>
+                            <select name="commendationId" id="commendationId" class="form-control"
+                                    ng-model="vm.achievement.commendationId" ng-disabled="vm.commendationDisabled"
+                                    ng-options="option.value as option.text for option in vm.commendations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="appreciationId" class="custom-label">Appreciation</label>
+                            <select name="appreciationId" id="appreciationId" class="form-control" ng-model="vm.achievement.commendationId"
+                                    ng-options="option.value as option.text for option in vm.appreciations"
+                                    ng-disabled="vm.appreciationDisabled">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="date" class="custom-label"> Date</label>
+                            <input kendo-date-picker id="date" class="form-control custom-form-control" k-ng-model="vm.achievement.date" k-format="'dd-MM-yyyy'" name="date" required />
+                            <p ng-show="vm.achievementForm.date.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="commAppType" class="custom-label">Achievement Type (For Report)</label>
+                            <input type="text" id="commAppType" class="form-control custom-form-control" ng-model="vm.achievement.commAppType" name="commAppType" maxlength="500" />
+                            <p ng-show="vm.achievementForm.commAppType.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="reason" class="custom-label">Reason (For Promotion Report)</label>
+                            <input type="text" id="reason" class="form-control custom-form-control" ng-model="vm.achievement.reason" name="reason" maxlength="500" />
+                            <p ng-show="vm.achievementForm.reason.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Description</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.achievement.remarks" name="remarks" maxlength="1000"></textarea>
+                            <p ng-show="vm.achievementForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 1000</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <br />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="givenByType" class="custom-label">Given By</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.givenByTypes">
+
+                                <label>
+                                    <input type="radio" id="givenByType" ng-model="vm.achievement.givenByType"
+                                           ng-change="vm.givenByType(vm.achievement.givenByType)"
+                                           value="{{status.value}}" required> {{status.text}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label"> PNo</label>
+                            <input type="text" id="pNo" ng-keypress="$event.keyCode ==13 && vm.searchEmployee(vm.achievement.employee1.pNo)" class="form-control custom-form-control" ng-model="vm.achievement.employee1.pNo" name="pNo" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameEng" class="custom-label">Name</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.achievement.employee1.fullNameEng" name="fullNameEng" maxlength="250" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Rank</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.achievement.employee1.rank.fullName" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Batch</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.achievement.employee1.batch.name" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="givenTransferId" class="custom-label">Office</label>
+                            <select name="givenTransferId" id="givenTransferId" class="form-control" ng-model="vm.achievement.officeId"
+                                    ng-options="option.value as option.text for option in vm.insideOffices">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <label for="navyOfficerDesignation" class="custom-label">Appointment</label>
+                            <input type="text" id="navyOfficerDesignation" class="form-control custom-form-control"
+                                   ng-model="vm.achievement.navyOfficerDesignation"
+                                   name="officerDesignation" maxlength="250" />
+                            <p ng-show="vm.achievementForm.navyOfficerDesignation.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="patternId" class="custom-label">Org. Pattern</label>
+                            <select name="patternId" id="patternId" class="form-control" ng-model="vm.achievement.patternId"
+                                    ng-options="option.value as option.text for option in vm.patterns" ng-change="vm.getChildOfficeSelectModel(vm.achievement.patternId)"
+                                    ng-disabled="vm.othersDisabled">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <label for="officeId" class="custom-label">Org. Name</label>
+                            <select name="officeId" id="officeId" class="form-control" ng-model="vm.achievement.officeId"
+                                    ng-options="option.value as option.text for option in vm.offices"
+                                    ng-disabled="vm.othersDisabled">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <label for="officerName" class="custom-label">Officer Name</label>
+                            <input type="text" id="officerName" class="form-control custom-form-control" ng-model="vm.achievement.officerName"
+                                   name="officerName" maxlength="250" ng-disabled="vm.othersDisabled" />
+                            <p ng-show="vm.achievementForm.officerName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <label for="otherOfficerDesignation" class="custom-label">Officer Designation</label>
+                            <input type="text" id="otherOfficerDesignation" class="form-control custom-form-control"
+                                   ng-model="vm.achievement.otherOfficerDesignation"
+                                   name="otherOfficerDesignation" maxlength="250" ng-disabled="vm.othersDisabled" />
+                            <p ng-show="vm.achievementForm.otherOfficerDesignation.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Achievement File Upload</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="panel" nv-file-drop="" uploader="uploader">
+                            <div class="panel-body" style="padding-top: 0;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-wrapper table-responsive">
+                                            <div class="col-sm-12">
+                                                <h4>Upload only Image File</h4>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <img src="{{vm.url}}{{vm.achievement.fileName}}" class="img-responsive" style="width: 200%;max-width: 200px;height: 200%;max-height: 200px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                                                </div>
+                                                Upload progress:
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group" style="min-height: 50px;">
+                                                    <div class="panel-default">
+                                                        <div ng-show="uploader.isHTML5">
+                                                            <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                                                <input type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="pull-right">
+                                                    <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

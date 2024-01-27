@@ -1,0 +1,78 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officer's Status Change<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.statusChangeForm">
+                    <employee-search ng-model="vm.statusChange.employee"></employee-search>
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+                    
+                    <div ng-show="vm.statusChange.employee.employeeId !=null">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="statusType" class="custom-label">Status Type</label>
+                                <select name="statusType" id="statusType" class="form-control" ng-model="vm.statusChange.statusType"
+                                        ng-options="option.value as option.text for option in vm.statusTypes" required
+                                        ng-change="vm.statusTypeSelectModels(vm.statusChange.statusType,vm.statusChange.employee.employeeId)">
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.statusChangeForm.statusType.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="courseCategoryId" class="custom-label">Current</label>
+                                <select name="courseCategoryId" id="courseCategoryId" class="form-control" ng-model="vm.statusChange.previousId"
+                                        ng-options="option.value as option.text for option in vm.selectModels" 
+                                        ng-change="vm.getCourseSubCategory(vm.statusChange.courseCategoryId)" disabled>
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="newId" class="custom-label">New</label>
+                                <select name="newId" id="newId" class="form-control" ng-model="vm.statusChange.newId"
+                                        ng-options="option.value as option.text for option in vm.selectModels" required>
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.statusChangeForm.newId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="date" class="custom-label">  Date</label>
+                                <input kendo-date-picker id="date" class="form-control custom-form-control" k-ng-model="vm.statusChange.date" k-format="'dd-MM-yyyy'" name="date" required />
+                                <p ng-show="vm.statusChangeForm.date.$error.required" class="help-block errormsg">Date is required.</p>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-xs-12">
+                            <br />
+                            <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.statusChangeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                            <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                        </div>
+
+                    </div>         
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+
+                <form name="vm.employeeOtherForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Other's Information<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nationalId" class="custom-label"> National Id</label>
+                                <input type="text" id="nationalId" class="form-control custom-form-control" ng-model="vm.employeeOther.nationalId" name="nationalId" maxlength="250" />
+                                <p ng-show="vm.employeeOtherForm.nationalId.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="idIssueDate" class="custom-label"> National Id Issue Date</label>
+                                <input kendo-date-picker id="idIssueDate" class="form-control custom-form-control" k-ng-model="vm.employeeOther.idIssueDate" k-format="'dd-MM-yyyy'" name="idIssueDate" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="serviceId" class="custom-label"> Service Id</label>
+                                <input type="text" id="serviceId" class="form-control custom-form-control" ng-model="vm.employeeOther.serviceId" name="serviceId" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="serIssueDate" class="custom-label"> Service Id Issue date</label>
+                                <input kendo-date-picker id="serIssueDate" class="form-control custom-form-control" k-ng-model="vm.employeeOther.serIssueDate" k-format="'dd-MM-yyyy'" name="serIssueDate" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="passportNo" class="custom-label"> Passport No</label>
+                                <input type="text" id="passportNo" class="form-control custom-form-control" ng-model="vm.employeeOther.passportNo" name="passportNo" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="passIssuePlace" class="custom-label">Passport Issue Place</label>
+                                <input type="text" id="passIssuePlace" class="form-control custom-form-control" ng-model="vm.employeeOther.passIssuePlace" name="passIssuePlace" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="passIssueDate" class="custom-label"> Passport Issue Date</label>
+                                <input kendo-date-picker id="passIssueDate" class="form-control custom-form-control" k-ng-model="vm.employeeOther.passIssueDate" k-format="'dd-MM-yyyy'" name="passIssueDate" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="expiryDate" class="custom-label"> Passport Expiry Date</label>
+                                <input kendo-date-picker id="expiryDate" class="form-control custom-form-control" k-ng-model="vm.employeeOther.expiryDate" k-format="'dd-MM-yyyy'" name="expiryDate" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="oldPassportNo" class="custom-label">Old Passport No</label>
+                                <input type="text" id="oldPassportNo" class="form-control custom-form-control" ng-model="vm.employeeOther.oldPassportNo" name="oldPassportNo" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="birthCertificateNo" class="custom-label">Birth Certificate No</label>
+                                <input type="text" id="birthCertificateNo" class="form-control custom-form-control" ng-model="vm.employeeOther.birthCertificateNo" name="birthCertificateNo" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="hasDrivingLicense" class="custom-label">Driving License</label>
+                                <input type="radio" name="hasDrivingLicense" ng-model="vm.employeeOther.hasDrivingLicense" ng-value="true">Yes
+                                <input type="radio" name="hasDrivingLicense" ng-model="vm.employeeOther.hasDrivingLicense" ng-value="false">No
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="drivingLicenseNo" class="custom-label">Driving License No</label>
+                                <input type="text" id="drivingLicenseNo" class="form-control custom-form-control" ng-model="vm.employeeOther.drivingLicenseNo" name="drivingLicenseNo" ng-disabled="!vm.employeeOther.hasDrivingLicense" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="dlIssueDate" class="custom-label"> Driving License Issue Date</label>
+                                <input kendo-date-picker id="dlIssueDate" class="form-control custom-form-control" k-ng-model="vm.employeeOther.dlIssueDate" k-format="'dd-MM-yyyy'" name="dlIssueDate" ng-disabled="!vm.employeeOther.hasDrivingLicense" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="dlExpiryDate" class="custom-label"> Driving License Expiry Date</label>
+                                <input kendo-date-picker id="dlExpiryDate" class="form-control custom-form-control" k-ng-model="vm.employeeOther.dlExpiryDate" k-format="'dd-MM-yyyy'" name="dlExpiryDate"  ng-disabled="!vm.employeeOther.hasDrivingLicense"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="isFreedomFighter" class="custom-label">Freedom Fighter</label>
+                                <input type="radio" name="isFreedomFighter" ng-model="vm.employeeOther.isFreedomFighter" ng-value="true">Yes
+                                <input type="radio" name="isFreedomFighter" ng-model="vm.employeeOther.isFreedomFighter" ng-value="false">No
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="certificateNo" class="custom-label">Freedom Fighter Certificate No.</label>
+                                <input type="text" id="certificateNo" class="form-control custom-form-control" ng-model="vm.employeeOther.certificateNo" name="certificateNo" ng-disabled="!vm.employeeOther.isFreedomFighter" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="sectorNo" class="custom-label">Sector No.</label>
+                                <input type="text" id="sectorNo" class="form-control custom-form-control" ng-model="vm.employeeOther.sectorNo" name="sectorNo" ng-disabled="!vm.employeeOther.isFreedomFighter" />
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeOtherForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                            <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

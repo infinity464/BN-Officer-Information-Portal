@@ -1,0 +1,36 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Certificate<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.certificateForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullName" class="custom-label">FullName</label>
+                            <input type="text" id="fullName" class="form-control custom-form-control" ng-model="vm.certificate.fullName" name="fullName" maxlength="250" required />
+                            <p ng-show="vm.certificateForm.fullName.$error.required" class="help-block errormsg">Full name is required</p>
+                            <p ng-show="vm.certificateForm.fullName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label">Short Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.certificate.shortName" name="shortName" maxlength="50"  />
+                            <p ng-show="vm.certificateForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+
+                   
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.certificateForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

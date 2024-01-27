@@ -1,0 +1,79 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">LPR/Retirement/Termination<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeeLPRForm">
+                    <employee-search ng-model="vm.employeeLpr.employee"></employee-search>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="lprStatus" class="custom-label">Type</label>
+                            <select name="lprStatus" id="lprStatus" class="form-control" ng-model="vm.employeeLpr.currentStatus" ng-options="option.value as option.text for option in vm.currentStatusType" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeLPRForm.lprStatus.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="terminationTypeId" class="custom-label">Reason</label>
+                            <select name="terminationTypeId" id="terminationTypeId" class="form-control" ng-model="vm.employeeLpr.terminationTypeId" ng-options="option.value as option.text for option in vm.terminationType" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeLPRForm.terminationTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-if="vm.employeeLpr.currentStatus==vm.LPR">
+                        <div class="form-group">
+                            <label for="lprDate" class="custom-label">LPR Date</label>
+                            <input kendo-date-picker id="lprDate" class="form-control custom-form-control" k-ng-model="vm.employeeLpr.lprDate" k-format="'dd-MM-yyyy'" name="lprDate" required />
+                            <p ng-show="vm.employeeLPRForm.lprDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-if="vm.employeeLpr.currentStatus==vm.LPR">
+                        <div class="form-group">
+                            <label for="duration" class="custom-label">LPR Duration</label>
+                            <input type="number" id="duration" class="form-control form-control-mini" ng-model="vm.employeeLpr.durationMonth" ng-change="vm.getRetiredDate(vm.employeeLpr.durationDay,vm.employeeLpr.durationMonth)" name="durationMonth" /> Month
+                            <input type="number" id="duration" class="form-control form-control-mini" ng-model="vm.employeeLpr.durationDay" ng-change="vm.getRetiredDate(vm.employeeLpr.durationDay,vm.employeeLpr.durationMonth)" name="durationDay" /> Days
+                            <!--<div class="radio-inline " ng-repeat=" status in vm.durationType">
+                <input type="radio" ng-model="vm.employeeLpr.durationType" ng-change="vm.clearDuration()" value="{{status.value}}" required> {{status.text}}
+            </div>-->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-if="vm.employeeLpr.currentStatus!=vm.Termination">
+                        <div class="form-group">
+                            <label class="custom-label">Retirement Date</label>
+                            <input kendo-date-picker class="form-control custom-form-control" k-ng-model="vm.employeeLpr.retireDate" k-format="'dd-MM-yyyy'" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.employeeLpr.remarks" name="remarks" maxlength="1000"  />
+                           
+                            <p ng-show="vm.batchForm.name.$error.maxlength" class="help-block errormsg">Maximum character 1000</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-if="vm.employeeLpr.currentStatus==vm.Termination">
+                        <div class="form-group">
+                            <label for="terminationDate" class="custom-label">Termination Date</label>
+                            <input kendo-date-picker id="terminationDate" class="form-control custom-form-control" k-ng-model="vm.employeeLpr.terminationDate" k-format="'dd-MM-yyyy'" name="terminationDate" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-confirmation-click="vm.save()" ng-confirmation-message="Do you want to Save LPR/Retirement/Termination Information ?" ng-confirmation-title="Save LPR/Retirement/Termination ?" ng-confirmation-yes-text="Yes" ng-confirmation-cancel-text="No" ng-disabled="vm.districtForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="page-header">
+				    <h2 class="warning page-header-item">Leave Type <span class="pull-right text-success">{{vm.title}}</span></h2>
+				</div>
+				<form name="vm.leaveTypeForm">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="typeName" class="custom-label">Name</label>
+							<input type="text" id="typeName" class="form-control" ng-model="vm.leaveType.typeName" name="typeName" ng-maxlength="248" required />
+							<p ng-show="vm.leaveTypeForm.typeName.$error.required" class="help-block errormsg">Leave type is required</p>
+							<p ng-show="vm.leaveTypeForm.typeName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="shartName" class="custom-label">Short Name</label>
+							<input type="text" id="shartName" class="form-control" ng-model="vm.leaveType.shartName" name="shartName" ng-maxlength="248" required />
+							<p ng-show="vm.leaveTypeForm.shartName.$error.required" class="help-block errormsg">Short Name is required</p>
+							<p ng-show="vm.leaveTypeForm.shartName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="description" class="custom-label">Remarks</label>
+                            <textarea type="text" id="description" class="form-control" ng-model="vm.leaveType.description" name="description"></textarea>
+                        </div>
+					</div>
+					<div class="col-xs-12">
+						<button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.leaveTypeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+						<button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

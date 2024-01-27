@@ -1,0 +1,42 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">District<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.districtForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="divisionId" class="custom-label">Division</label>
+                            <select name="divisionId" id="divisionId" class="form-control" ng-model="vm.district.divisionId" ng-options="option.value as option.text for option in vm.districts" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.districtForm.divisionId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label"> District</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.district.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.districtForm.name.$error.required" class="help-block errormsg">District is required</p>
+                            <p ng-show="vm.districtForm.name.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="description" class="custom-label">Description</label>
+                            <textarea type="text" id="description" class="form-control custom-form-control" ng-model="vm.district.description" name="description" maxlength="250" />
+                            <p ng-show="vm.districtForm.description.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.districtForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

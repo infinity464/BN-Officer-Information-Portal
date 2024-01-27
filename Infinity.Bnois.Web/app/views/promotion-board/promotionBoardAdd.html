@@ -1,0 +1,64 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{ vm.typeName}} Board<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.promotionBoardForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="boardName" class="custom-label">Board Name</label>
+                            <input type="text" id="boardName" class="form-control custom-form-control" ng-model="vm.promotionBoard.boardName" name="boardName" maxlength="250" required />
+                            <p ng-show="vm.promotionBoardForm.boardName.$error.required" class="help-block errormsg">Board Name is required</p>
+                            <p ng-show="vm.promotionBoardForm.boardName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-show="vm.promotionHide">
+                        <div class="form-group">
+                            <label for="ltCdrLevel" class="custom-label">Officer Rank</label>
+                            <select name="ltCdrLevel" id="ltCdrLevel" class="form-control" ng-model="vm.promotionBoard.ltCdrLevel" ng-options="option.value as option.text for option in vm.ltCdrLevels">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotionBoardForm.ltCdrLevel.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.promotionHide">
+                        <div class="form-group">
+                            <label for="fromRankId" class="custom-label">From Rank</label>
+                            <select name="fromRankId" id="fromRankId" class="form-control" ng-model="vm.promotionBoard.fromRankId" ng-options="option.value as option.text for option in vm.fromConfirmRanks" ng-required="vm.promotionHide">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotionBoardForm.fromRankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-show="vm.promotionHide">
+                        <div class="form-group">
+                            <label for="toRankId" class="custom-label">To Rank</label>
+                            <select name="toRankId" id="toRankId" class="form-control" ng-model="vm.promotionBoard.toRankId" ng-options="option.value as option.text for option in vm.toActingRanks" ng-required="vm.promotionHide">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotionBoardForm.toRankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="formationDate" class="custom-label">Formation Date</label>
+                            <input del kendo-date-picker id="formationDate" class="form-control custom-form-control" k-ng-model="vm.promotionBoard.formationDate" k-format="'dd-MM-yyyy'" name="formationDate" required />
+                            <p ng-show="vm.promotionBoardForm.formationDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.promotionBoardForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.traceSettingForm">
+                    <div class="page-header">
+                        <h2 class="warning page-header-item">Trace Setting<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+                    <div class="row">
+                        <div class="page-header">
+                            <h4 class="warning page-header-sub-item">GENERAL</h4>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="creationDate" class="custom-label">Creation Date</label>
+                                <input kendo-date-picker id="creationDate" class="form-control custom-form-control" k-ng-model="vm.traceSetting.creationDate" k-format="'dd-MM-yyyy'" name="creationDate" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input type="checkbox" ng-model="vm.traceSetting.active" /> Active
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="opr" class="custom-label">OPR</label>
+                                <input type="text" id="opr" class="form-control custom-form-control" ng-model="vm.traceSetting.opr" name="opr" min="1" max="100" />
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="course" class="custom-label">Course</label>
+                                <input type="text" id="course" class="form-control custom-form-control" ng-model="vm.traceSetting.course" name="course" min="1" max="100" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="pft" class="custom-label">PFT</label>
+                                <input type="text" id="pft" class="form-control custom-form-control" ng-model="vm.traceSetting.pft" name="pft" min="1" max="100" />
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="totalPoint" class="custom-label">Total Points</label>
+                                <input type="text" id="totalPoint" class="form-control custom-form-control" ng-model="vm.traceSetting.totalPoint" name="totalPoint" min="1" max="100" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="page-header">
+                            <h4 class="warning page-header-sub-item">OPR WEIGHTAGE SETTINGS</h4>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="weightPreRank" class="custom-label">Weightage for Present Rank Service</label>
+                                <input type="text" id="weightPreRank" class="form-control custom-form-control" ng-model="vm.traceSetting.weightPreRank" name="weightPreRank" min="1" max="100" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="oprCount" class="custom-label">OPR Count For</label>
+                                <input type="radio" name="oprCount" ng-model="vm.traceSetting.oprCount" ng-value="'A'" /> All
+                                <input type="radio" name="oprCount" ng-model="vm.traceSetting.oprCount" ng-value="'L'" /> Last
+                                <input type="text" id="oprLastYear" class="form-control form-control-mini" ng-model="vm.traceSetting.oprLastYear" name="oprLastYear" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="weightPrevRank" class="custom-label">Weightage for Previous Rank Service</label>
+                                <input type="text" id="weightPrevRank" class="form-control custom-form-control" ng-model="vm.traceSetting.weightPrevRank" name="weightPrevRank" />
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="divisionalFactor" class="custom-label">Divisional Factor</label>
+                                <input type="text" id="divisionalFactor" class="form-control custom-form-control" ng-model="vm.traceSetting.divisionalFactor" name="divisionalFactor" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="page-header">
+                            <h4 class="warning page-header-sub-item">PFT SETTINGS</h4>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="pftCountYear" class="custom-label">PFT Count For Last</label>
+                                <input type="text" id="pftCountYear" class="form-control custom-form-control" ng-model="vm.traceSetting.pftCountYear" name="pftCountYear" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="dductPtPerPft" class="custom-label">Deduct/Add Point for each PFT</label>
+                                <input type="text" id="dductPtPerPft" class="form-control custom-form-control" ng-model="vm.traceSetting.dductPtPerPft" name="dductPtPerPft" />
+                            </div>
+                        </div>
+
+
+                        <div class="page-header">
+                            <h4 class="warning page-header-sub-item">PENALTY FOR OVER-WEIGHT (OBESITY)</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="owPenalCLOpr" class="custom-label">Penalty Count for Last (OPR)</label>
+                                <input type="text" id="owPenalCLOpr" class="form-control custom-form-control" ng-model="vm.traceSetting.owPenalCLOpr" name="owPenalCLOpr" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="dductPtPerOWKG" class="custom-label">Deduct Point For Each Over Weight in Kgs</label>
+                                <input type="text" id="dductPtPerOWKG" class="form-control custom-form-control" ng-model="vm.traceSetting.dductPtPerOWKG" name="dductPtPerOWKG" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.traceSettingForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

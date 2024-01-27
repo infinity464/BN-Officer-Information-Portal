@@ -1,0 +1,153 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                   
+                    <h2 class="warning page-header-item"> Observation & Intelligent Report<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.observationIntelligentForm">
+                    <employee-search ng-model="vm.observationIntelligent.employee"></employee-search>
+
+
+
+                    <div class="col-sm-6" ng-if="vm.observationIntelligent.employee.employeeId>0">
+                        <div class="form-group">
+                            <input type="checkbox" id="isBackLog" class="form-check-input" ng-model="vm.observationIntelligent.isBackLog" name="isBackLog" ng-change="vm.isBackLogChecked(vm.observationIntelligent.isBackLog)" />
+                            <label for="isBackLog" class="custom-label"> Back Log </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-show="vm.observationIntelligent.isBackLog">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.observationIntelligent.rankId"
+                                    ng-options="option.value as option.text for option in vm.ranks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.observationIntelligent.isBackLog">
+                        <div class="form-group">
+                            <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                            <select name="transferId" id="transferId" class="form-control" ng-model="vm.observationIntelligent.transferId"
+                                    ng-options="option.value as option.text for option in vm.transfers">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="type" class="custom-label">Type</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.observationIntelligentTypes">
+
+                                <label>
+                                    <input type="radio" id="type" ng-model="vm.observationIntelligent.type"
+                                           value="{{status.value}}" ng-change="vm.observationIntelligentType(vm.observationIntelligent.type)"
+                                           required> {{status.text}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12">
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="date" class="custom-label"> Date</label>
+                            <input kendo-date-picker id="date" class="form-control custom-form-control" k-ng-model="vm.observationIntelligent.date" k-format="'dd-MM-yyyy'" name="date" required />
+                            <p ng-show="vm.observationIntelligentForm.date.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.observationIntelligent.remarks" name="remarks" maxlength="250"></textarea>
+                            <p ng-show="vm.observationIntelligentForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-12 text-center">
+                        <h4>Given By</h4>
+                        <hr />
+
+                    </div>
+
+
+
+                    <!-- <employee-search ng-model="vm.observationIntelligent.employee1"></employee-search> -->
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label"> PNo</label>
+                            <input type="text" id="pNo" ng-keypress="$event.keyCode ==13 && vm.searchEmployee(vm.observationIntelligent.employee1.pNo)" class="form-control custom-form-control" ng-model="vm.observationIntelligent.employee1.pNo" name="pNo" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameEng" class="custom-label">Name</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.observationIntelligent.employee1.fullNameEng" name="fullNameEng" maxlength="250" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Rank</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.observationIntelligent.employee1.rank.fullName" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Batch</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.observationIntelligent.employee1.batch.name" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="givenTransferId" class="custom-label">Born/Attach/Appointment</label>
+                            <select name="givenTransferId" id="givenTransferId" class="form-control" ng-model="vm.observationIntelligent.givenTransferId"
+                                    ng-options="option.value as option.text for option in vm.givenTransfers">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-disabled="vm.observationIntelligentForm.$invalid" ng-click="vm.save()"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+    .card {
+        margin: auto !important;
+        font-size: 18px;
+        width: 40%;
+        padding: 10px;
+        border-radius: 25px !important;
+        padding: 0px !important;
+        top: 30%;
+        height: 40%;
+        background-color: #ffffffe6 !important;
+    }
+
+        .card .card-body {
+            padding: 10px 15px 0px 15px !important;
+        }
+
+    .card-title {
+        color: #000066 !important;
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .card-body p {
+        font-size: 25px !important;
+    }
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+    }
+    @media screen and (max-width: 900px) and (min-width: 576px) {
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+
+        .card {
+            width: 60%;
+        }
+    }
+    @media screen and (max-width: 575px) {
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+        .card {
+            width: 95%;
+            top: 20%;
+            /*height: 60%;*/
+        }
+    }
+
+    
+</style>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title text-center">Notifications</h3>
+
+
+        <!--<p>Your Messages</p>--><hr />
+        <div style="max-height:49%; overflow-y:auto">
+            <p>
+                {{vm.notification}}
+            </p>
+        </div>
+
+    </div>
+</div>

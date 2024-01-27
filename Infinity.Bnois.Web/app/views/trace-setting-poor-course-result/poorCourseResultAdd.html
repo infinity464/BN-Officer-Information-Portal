@@ -1,0 +1,52 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.poorCourseResultForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Penalty for Poor course result<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="resultTypeId" class="custom-label">Result</label>
+                            <select name="resultTypeId" id="resultTypeId" class="form-control" ng-model="vm.poorCourseResult.resultTypeId" ng-options="option.value as option.text for option in vm.resultTypes">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.poorCourseResultForm.resultTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="deductPoint" class="custom-label">Deduct Point</label>
+                            <input type="text" id="deductPoint" class="form-control custom-form-control" ng-model="vm.poorCourseResult.deductPoint" name="deductPoint" />
+                        </div>
+                    </div>
+
+                    <!--<div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="poorCourseReport" class="custom-label">Poor Course Report</label>
+                            <input type="text" id="poorCourseReport" class="form-control custom-form-control" ng-model="vm.poorCourseResult.poorCourseReport" name="poorCourseReport" />
+                        </div>
+                    </div>-->
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryType" class="custom-label">Country Type</label>
+                            <input type="radio" name="countryType" ng-model="vm.poorCourseResult.countryType" ng-value=1>Home
+                            <input type="radio" name="countryType" ng-model="vm.poorCourseResult.countryType" ng-value=2>Abroad
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.poorCourseResultForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

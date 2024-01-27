@@ -1,0 +1,60 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+	        <div class="panel-body">
+
+	            <h4 class="text-center" style="margin-top: -5px;">Category wise Officer Summary</h4>
+               
+	         <div class="col-sm-12">    
+	            <div class="col-sm-5">
+	                <div class="form-group">
+	                    <label for="categoryId" class="custom-label">Type</label>
+                        <select name="categoryId" id="categoryId" class="form-control" ng-model="vm.categoryId"
+                                ng-change="vm.getEmployeeListByOffice(vm.categoryId)"
+                                ng-options="option.value as option.text for option in vm.categories" >
+                            <option value="">--Select an Option--</option>
+                        </select>
+	                </div>
+	            </div>
+               </div> 
+
+	            <div class="col-sm-12"></div>
+		        <div class="table-wrapper table-responsive" >
+			        <table class="table table-bordered">
+				        <thead>
+				        <tr class="tableHeading">
+					        
+					        <th>Name</th>
+					        <th>X</th>
+					        <th>E</th>
+					        <th>S</th>
+					        <th>Edu</th>
+					        <th>Med</th>
+					        <th>L</th>
+					        
+					        <th>Total</th>
+					      
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <tr  ng-repeat="category in vm.dashboardCategories">
+							<td><strong>{{category.name}}</strong></td>
+					        <td style="text-align: center" ><a href="" ng-if="category.xValue>0" ng-click="vm.getOfficerList(category.id,category.x)"><strong>{{category.xValue}}</strong></a> </td>
+							<td style="text-align: center" ><a href="" ng-if="category.eValue>0" ng-click="vm.getOfficerList(category.id,category.e)"><strong>{{category.eValue}}</strong></a></td>
+							<td style="text-align: center"><a href="" ng-if="category.sValue>0" ng-click="vm.getOfficerList(category.id,category.s)"><strong>{{category.sValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="category.eduValue>0" ng-click="vm.getOfficerList(category.id,category.edu)"><strong>{{category.eduValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="category.medValue>0" ng-click="vm.getOfficerList(category.id,category.med)"><strong>{{category.medValue}}</strong></a></td>
+							<td style="text-align: center"><a href="" ng-if="category.lValue>0" ng-click="vm.getOfficerList(category.id,category.l)"><strong>{{category.lValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="category.total>0" ng-click="vm.getOfficerList(category.id, null)"><strong>{{category.total}}</strong></a></td>
+							
+				        </tr>
+                  
+				        </tbody>
+			        </table>
+
+		        </div>
+		
+	        </div>
+        </div>
+    </div>
+</div>

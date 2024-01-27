@@ -1,0 +1,85 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.otherImageUploadForm">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="page-header">
+                                <h2 class="warning page-header-item">
+                                    National Id Upload
+                                </h2>
+                            </div>
+                            <div class="form-group">
+                                <img ng-src={{vm.employeeOther.nationalIdImageUrl}} ng-model="fileModel.fileName" class="img-responsive" style="width: 200%;max-width: 200px;height: 200%;max-height: 200px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                            </div>
+                            <div class="form-group">
+                                <div class="panel-default">
+                                    <div ng-show="uploader.isHTML5">
+                                        <div class="btn custom-btn-default fileinput-button" style="display:block;">
+                                            <input id="Image2" type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" /><br />
+                                            <button type="button" class="btn btn-xs btn-success pull-left" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="page-header">
+                                <h2 class="warning page-header-item">
+                                    Driving License Upload
+                                </h2>
+                            </div>
+                            <div class="form-group">
+                                <img ng-src={{vm.employeeOther.drivingLicenseImageUrl}} ng-model="fileModel.fileName" class="img-responsive" style="width: 200%;max-width: 200px;height: 200%;max-height: 200px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                            </div>
+                            <div class="form-group">
+                                <div class="panel-default">
+                                    <div ng-show="uploader1.isHTML5">
+                                        <div class="btn custom-btn-default fileinput-button" style="display:block;">
+                                            <input id="Image2" type="file" nv-file-select="" uploader="uploader1" style="opacity: 1;" /><br />
+                                            <button type="button" class="btn btn-xs btn-success pull-left" ng-click="uploader1.uploadAll()" ng-disabled="!uploader1.getNotUploadedItems().length">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="page-header">
+                                <h2 class="warning page-header-item">
+                                    Passport Image Upload
+                                </h2>
+                            </div>
+                            <div class="form-group">
+                                <img ng-src={{vm.employeeOther.passportImageUrl}} ng-model="fileModel.fileName" class="img-responsive" style="width: 200%;max-width: 200px;height: 200%;max-height: 200px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                            </div>
+                            <div class="form-group">
+                                <div class="panel-default">
+                                    <div ng-show="uploader2.isHTML5">
+                                        <div class="btn custom-btn-default fileinput-button" style="display:block;">
+                                            <input id="Image3" type="file" nv-file-select="" uploader="uploader2" style="opacity: 1;" /><br />
+                                            <button type="button" class="btn btn-xs btn-success pull-left" ng-click="uploader2.uploadAll()" ng-disabled="!uploader2.getNotUploadedItems().length">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

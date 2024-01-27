@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/site-login.css" rel="stylesheet" />
+    <link href="~/Content/registration.css" rel="stylesheet" />
+</head>
+<body id="mainBackground" style="font-family:Roboto-Regular !important;">
+
+    <div class="container body-content">
+        <div style="margin-bottom:60px;">
+       
+            @RenderBody()
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+ 
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,138 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+    .card-body {
+        padding: 0px !important;
+    }
+    .customeTableHead {
+        background-color: #0176D6;
+        color: #ffffff;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1em !important;
+        }
+    }
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    }
+</style>
+<div class="content commendation">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" ng-if="vm.publications[0].publication != undefined">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th>
+                                        Ser
+                                    </th>
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th>
+                                        Publication Name
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="P in vm.publications">
+                                    <td>
+                                        {{$index+1}}
+                                    </td>
+                                    <td>
+                                        {{P.publicationCategory}}
+                                    </td>
+                                    <td>
+                                        {{P.publication}}
+                                    </td>
+                                    <td>
+                                        {{P.date | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="card" ng-if="vm.appreciations.length>0">
+        <div class="card-header">
+            <h4 class="card-title">
+                Appreciation
+            </h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary">
+                        <tr>
+                            <th>
+                                Ser
+                            </th>
+                            <th>
+                                Appreciation
+                            </th>
+                            <th>
+                                Remarks
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="C in vm.appreciations">
+                            <td>
+                                {{$index+1}}
+                            </td>
+                            <td>
+                                {{A.commendation}}
+                            </td>
+                            <td>
+                                {{A.remarks}}
+                            </td>
+                            <td>
+                                {{A.date | date:"dd-MMM-yyyy"}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>-->
+            <div class="alert alert-danger" role="alert" ng-if="vm.publications[0].publication === undefined">
+                No data found..........!
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

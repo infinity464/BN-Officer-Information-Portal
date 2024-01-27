@@ -1,0 +1,135 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Service Exam Result<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeeServiceExamResultForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="serviceExamCategoryId" class="custom-label">Category</label>
+                            <select name="serviceExamCategoryId" id="serviceExamCategoryId" class="form-control" ng-model="vm.employeeServiceExamResult.serviceExamCategoryId"
+                                    ng-change="vm.getServiceExamByServiceExamCategory(vm.employeeServiceExamResult.serviceExamCategoryId)"
+                                    ng-options="option.value as option.text for option in vm.serviceExamCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeServiceExamResultForm.serviceExamCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="serviceExamId" class="custom-label">Service Exam</label>
+                            <select name="serviceExamId" id="serviceExamId" class="form-control" ng-model="vm.employeeServiceExamResult.serviceExamId" ng-options="option.value as option.text for option in vm.serviceExams" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeServiceExamResultForm.serviceExamId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <employee-search ng-model="vm.employeeServiceExamResult.employee"></employee-search>
+                    <div class="col-sm-6" ng-if="vm.employeeServiceExamResult.employee.employeeId>0">
+                        <div class="form-group">
+                            <input type="checkbox" id="isBackLog" class="form-check-input" ng-model="vm.employeeServiceExamResult.isBackLog" name="isBackLog" ng-change="vm.isBackLogChecked(vm.employeeServiceExamResult.isBackLog)" />
+                            <label for="isBackLog" class="custom-label"> Back Log </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.employeeServiceExamResult.isBackLog">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.employeeServiceExamResult.rankId"
+                                    ng-options="option.value as option.text for option in vm.ranks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.employeeServiceExamResult.isBackLog">
+                        <div class="form-group">
+                            <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                            <select name="transferId" id="transferId" class="form-control" ng-model="vm.employeeServiceExamResult.transferId"
+                                    ng-options="option.value as option.text for option in vm.transfers">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="numberOfSubject" class="custom-label">Number Of Subject</label>
+                            <input type="number" id="numberOfSubject" class="form-control custom-form-control" ng-model="vm.employeeServiceExamResult.numberOfSubject" name="percentage" />         
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="attTime" class="custom-label">Attempt Time</label>
+                            <input type="number" id="attTime" class="form-control custom-form-control" ng-model="vm.employeeServiceExamResult.attTime" name="attTime" />
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <label for="passFailResult" class="custom-label"> Result</label>
+                            <input type="radio" name="passFailResult" ng-model="vm.employeeServiceExamResult.passFailResult" ng-value="false">Failed
+                            <input type="radio" name="passFailResult" ng-model="vm.employeeServiceExamResult.passFailResult" ng-value="true">Qualified
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="examDate" class="custom-label"> Exam Appeared Date</label>
+                            <input kendo-date-picker id="examDate" class="form-control custom-form-control" k-ng-model="vm.employeeServiceExamResult.examDate" k-format="'dd-MM-yyyy'" name="examDate" required />
+                            <p ng-show="vm.employeeServiceExamResultForm.examDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <input type="checkbox" id="isExempted" class="form-check-input"
+                                   ng-model="vm.employeeServiceExamResult.isExempted" name="isExempted" />
+                            <label for="isExempted" class="custom-label"> Is Exempted</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+
+                            <label for="exemptedDate" class="custom-label">  Exempted Date</label>
+
+                            <input kendo-date-picker id="exemptedDate" class="form-control custom-form-control" k-ng-model="vm.employeeServiceExamResult.exemptedDate" k-format="'dd-MM-yyyy'" name="pDate" ng-disabled="!vm.employeeServiceExamResult.isExempted" />
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeServiceExamResultForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

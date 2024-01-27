@@ -1,0 +1,45 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Extracurricular</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addExtracurricular()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL No</th>
+                                <th>Extracurricular</th>
+                                <th>Hold any post</th>
+                                <th>Remarks</th>                       
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="extracurricular in vm.extracurriculars">
+                                <td>{{$index+1}}</td>
+                                <td>{{extracurricular.extracurricularType.name}}</td>
+                                <td>{{extracurricular.holdAnyPost}}</td>
+                                <td>{{extracurricular.remarks}}</td>
+                                <td class="text-right">
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateExtracurricular(extracurricular)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteExtracurricular(extracurricular)"
+                                       ng-confirmation-message="Do you want to delete Extracurricular ?"
+                                       ng-confirmation-title="Delete Extracurricular ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Extracurricular"></span></a>
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

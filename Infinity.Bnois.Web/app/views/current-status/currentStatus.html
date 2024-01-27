@@ -1,0 +1,261 @@
+﻿<style>
+    .helper {
+        background: #000066;
+        overflow: hidden !important;
+    }
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        font-size: 1.4rem !important;
+        padding: 0px 4px !important;
+    }
+    #contactNo, #email {
+        font-size: 25px;
+    }
+    input {
+        font-size: 1.4rem !important;
+        font-family: Roboto-Regular !important;
+    }
+    .lblTextBgColor {
+        background: #0070C0;
+        color: #fff;
+        border: 2px solid #b5b8c7 !important;
+        font-weight: 500;
+    }
+    .image-row {
+        width: 283px !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+    }
+    .lblValueBgColor {
+        background: #eef4fa;
+        color: #000;
+        border: 2px solid #b5b8c7 !important;
+    }
+    .on-mobile {
+        display:none;
+    }
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.2rem !important;
+            padding: 0px 4px !important;
+        }
+        img{
+            margin:5px !important;
+        }
+        .image-row {
+            width: 181px !important;
+        }
+        input {
+            font-size: 1.2rem !important;
+        }
+        .btn-sm {
+            font-size: 1.2rem !important;
+        }
+    }
+        @media screen and (max-width: 900px) and (min-width: 576px) {
+            .image-row {
+                width: 196px !important;
+            }
+            .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+                font-size: 1.25rem !important;
+            }
+            input {
+                font-size: 1.25rem !important;
+            }
+            .btn-sm {
+                font-size: 1.2rem !important;
+            }
+            .on-mobile {
+                display: none !important;
+            }
+
+            .except-mobile {
+                display: table-row !important;
+            }
+            .helper {
+                overflow: auto !important;
+            }
+            .profile-image {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media screen and (max-width: 575px) {
+            .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+                font-size: 1rem !important;
+            }
+            input {
+                font-size: 1rem !important;
+            }
+            .helper {
+                overflow: auto !important;
+            }
+            .except-mobile {
+                display: none !important;
+            }
+
+            .on-mobile {
+                display: table-row !important;
+            }
+
+            .profile-image {
+                margin-bottom: 17px;
+            }
+
+            .helper {
+                overflow: auto;
+                padding: 0px 20px 20px 20px;
+            }
+
+            .table {
+                margin-bottom: 2rem !important;
+            }
+        }
+    .form-control {
+        padding:0px !important;
+    }
+    .btn-sm {
+        padding: 0px 15px !important;
+    }
+</style>
+<h3 style="text-align:center" class="print-content">Officer Current Status</h3>
+<!--<pre>{{vm.photo | json}}</pre>-->
+    <table class="table" style="min-height: 100%;">
+        <tbody>
+            <tr class="on-mobile" style="background-color:transparent !important;">
+                <td colspan="2" class="" style="width: 215px !important; text-align:center;background-color:transparent !important;border-top:none">
+                    <img ng-if="vm.currentStatus.photo != null" style="height: 235px; border:2px solid #fff;" class="avatar border-gray profile-image" src="{{vm.currentStatus.photo}}">
+                    <img ng-if="vm.currentStatus.photo==null" style="height: 235px; border:2px solid #fff;" class="avatar border-gray profile-image" src="../../../Images/officer.png">
+                </td>
+            </tr>
+            <tr>
+                <td class="lblTextBgColor">Rank & Name</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.rankAndName}}</td>
+            </tr>
+            <tr class="except-mobile">
+                <td class="lblTextBgColor">P No</td>
+                <td class="lblValueBgColor">{{vm.currentStatus.pNo}}</td>
+                <td rowspan="6" class="lblValueBgColor image-row" style="background-image:url({{vm.photo}})">
+                    <!--<img ng-if="vm.currentStatus.photo != null" class="avatar border-gray" src="{{vm.currentStatus.photo}}">
+                    <img ng-if="vm.currentStatus.photo==null" class="avatar border-gray" src="../../../Images/officer.png">-->
+                </td>
+            </tr>
+            <tr class="except-mobile">
+                <td class="lblTextBgColor">Batch</td>
+                <td class="lblValueBgColor">{{vm.currentStatus.batch}}</td>
+
+            </tr>
+            <tr class="except-mobile">
+                <td class="lblTextBgColor">Category</td>
+                <td class="lblValueBgColor">{{vm.currentStatus.category}}</td>
+
+            </tr>
+            <tr class="except-mobile">
+                <td class="lblTextBgColor">Sub-Category</td>
+                <td class="lblValueBgColor">{{vm.currentStatus.subCategory}}</td>
+
+            </tr>
+            <tr class="except-mobile">
+                <td class="lblTextBgColor">D.O.C</td>
+                <td class="lblValueBgColor">{{vm.currentStatus.dateOfCommission | date :  &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr class="except-mobile">
+                <td class="lblTextBgColor">D.O.S</td>
+                <td class="lblValueBgColor">{{vm.currentStatus.seniorityDate | date :  &quot dd-MMM-yyyy &quot }}</td>
+
+            </tr>
+            <tr class="except-mobile">
+                <td class="lblTextBgColor">Service Limit</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.serviceLimit|date: &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+
+
+
+            <tr class="on-mobile">
+                <td class="lblTextBgColor">P No</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.pNo}}</td>
+            </tr>
+            <tr class="on-mobile">
+                <td class="lblTextBgColor">Batch</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.batch}}</td>
+            </tr>
+            <tr class="on-mobile">
+                <td class="lblTextBgColor">Category</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.category}}</td>
+
+            </tr>
+            <tr class="on-mobile">
+                <td class="lblTextBgColor">Sub-Category</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.subCategory}}</td>
+
+            </tr>
+            <tr class="on-mobile">
+                <td class="lblTextBgColor">D.O.C</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.dateOfCommission | date :  &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr class="on-mobile">
+                <td class="lblTextBgColor">D.O.S</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.seniorityDate | date :  &quot dd-MMM-yyyy &quot }}</td>
+
+            </tr>
+            <tr class="on-mobile">
+                <td class="lblTextBgColor">Service Limit</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.serviceLimit|date: &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="lblTextBgColor">Age Limit</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.ageLimit|date: &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr>
+                <td class="lblTextBgColor">Attached</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.attached}}</td>
+            </tr>
+            <tr>
+                <td class="lblTextBgColor">Borne Date</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.bornDate | date: &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr>
+                <td class="lblTextBgColor">Appointment</td>
+                <td colspan="2" class="lblValueBgColor">{{vm.currentStatus.appointment}}</td>
+            </tr>
+            <form name="vm.ContactForm">
+                <tr>
+                    <td style="background:#66CCFF !important;color: black;" class="lblTextBgColor">E-mail</td>
+                    <td colspan="2" class="lblValueBgColor">
+                        <input type="text" style="color: black;" id="email" class="form-control custom-form-control no-print" ng-model="vm.currentStatus.email" name="email" required />
+                        <span class="print-content">{{vm.currentStatus.email}}</span>
+                        <p ng-show="vm.countryForm.email.$error.required" class="help-block errormsg">Email is required</p>
+                    </td>
+                </tr>
+                <tr class="except-mobile">
+                    <td style="background:#66CCFF !important;color: black;" class="lblTextBgColor">Mobile No</td>
+                    <td class="lblValueBgColor">
+                        <input type="text" style="color: black;" id="contactNo" class="form-control custom-form-control no-print" ng-model="vm.currentStatus.contactNo" name="contactNo" maxlength="11" required />
+                        <span class="print-content">{{vm.currentStatus.contactNo}}</span>
+                        <p ng-show="vm.countryForm.contactNo.$error.required" class="help-block errormsg">Mobile No is required</p>
+                        <p ng-show="vm.countryForm.contactNo.$error.maxlength" class="help-block errormsg">Maximum length 11 characters</p>
+                    </td>                   
+                    <td style="background:#66CCFF; color: black; border: 1px solid #fff;">
+                        <button type="button" style="background:#66CCFF !important;color: black; margin-left:30%;font-weight:500;" class="btn btn-danger btn-sm no-print" ng-click="vm.UpdateEmployeeEmailContact()">Update</button>
+                    </td>
+                </tr>
+                <tr class="on-mobile">
+                    <td style="background:#66CCFF !important;color: black;" class="lblTextBgColor">Mobile No</td>
+                    <td colspan="2" class="lblValueBgColor">
+                        <input type="text" style="color: black;" id="contactNo" class="form-control custom-form-control" ng-model="vm.currentStatus.contactNo" name="contactNo" maxlength="11" required />
+                        <p ng-show="vm.countryForm.contactNo.$error.required" class="help-block errormsg">Mobile No is required</p>
+                        <p ng-show="vm.countryForm.contactNo.$error.maxlength" class="help-block errormsg">Maximum length 11 characters</p>
+                    </td>
+                </tr>
+                <tr class="on-mobile">
+                    <td colspan="3" style="background:#66ff99; padding-left: 58px; text-align:center;color: black;border: 1px solid #fff;">
+                        <button type="button" style="background:#66ff99 !important;color: #000080;font-weight:500;" class="btn btn-danger btn-sm" ng-click="vm.UpdateEmployeeEmailContact()">Update</button>
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table>

@@ -1,0 +1,332 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.employeeGeneralForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">General Information<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="shortName" class="custom-label"> Short Name</label>
+                                <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.employeeGeneral.shortName" name="shortName" maxlength="250" />
+                                <p ng-show="vm.employeeGeneralForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="shortNameBan" class="custom-label"> Short Name(বাংলা)</label>
+                                <input type="text" id="shortNameBan" class="form-control custom-form-control" ng-model="vm.employeeGeneral.shortNameBan" name="shortNameBan" maxlength="250" />
+                                <p ng-show="vm.employeeGeneralForm.shortNameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nickName" class="custom-label"> Nick Name</label>
+                                <input type="text" id="nickName" class="form-control custom-form-control" ng-model="vm.employeeGeneral.nickName" name="nickName" maxlength="250" />
+                                <p ng-show="vm.employeeGeneralForm.nickName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nickNameBan" class="custom-label"> Nick Name (বাংলা)</label>
+                                <input type="text" id="nickNameBan" class="form-control custom-form-control" ng-model="vm.employeeGeneral.nickNameBan" name="nickNameBan" maxlength="250" />
+                                <p ng-show="vm.employeeGeneralForm.nickNameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="doB" class="custom-label"> Date of Birth</label>
+                                <input kendo-date-picker id="doB" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.doB" k-format="'dd-MM-yyyy'" name="doB" required />
+                                <p ng-show="vm.employeeGeneralForm.doB.$error.required" class="help-block errormsg">Date of Birth is required</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="birthPlace" class="custom-label"> Birth Place</label>
+                                <input type="text" id="birthPlace" class="form-control custom-form-control" ng-model="vm.employeeGeneral.birthPlace" name="birthPlace" maxlength="250" />
+                                <p ng-show="vm.employeeGeneralForm.birthPlace.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="migrationDate" class="custom-label">Migration Date</label>
+                                <input kendo-date-picker id="migrationDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.migrationDate" k-format="'dd-MM-yyyy'" name="migrationDate" ng-disabled="!vm.employeeGeneral.isBirthOutside" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="migrationReason" class="custom-label">Migration Reason</label>
+                                <input type="text" id="migrationReason" class="form-control custom-form-control" ng-model="vm.employeeGeneral.migrationReason" name="migrationReason" maxlength="250" ng-disabled="!vm.employeeGeneral.isBirthOutside" />
+                                <p ng-show="vm.employeeGeneralForm.migrationReason.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="maritalTypeId" class="custom-label">Marital Status</label>
+                                <select name="maritalTypeId" id="maritalTypeId" class="form-control" ng-model="vm.employeeGeneral.maritalTypeId" ng-options="option.value as option.text for option in vm.maritalTypes" ng-change="vm.getMaritalStatus(vm.employeeGeneral)">
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.maritalTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="marriageDate" class="custom-label">Marriage Date</label>
+                                <input kendo-date-picker id="marriageDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.marriageDate" k-format="'dd-MM-yyyy'" name="marriageDate" ng-disabled="!vm.isMarried" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="contactNo" class="custom-label">Contact No</label>
+                                <input type="text" id="contactNo" class="form-control custom-form-control" ng-model="vm.employeeGeneral.contactNo" name="contactNo" maxlength="100" />
+                                <p ng-show="vm.employeeGeneralForm.contactNo.$error.maxlength" class="help-block errormsg">Maximum character 100</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="emailAddress" class="custom-label">Email</label>
+                                <input type="text" id="emailAddress" class="form-control custom-form-control" ng-model="vm.employeeGeneral.emailAddress" name="emailAddress" maxlength="50" />
+                                <p ng-show="vm.employeeGeneralForm.emailAddress.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nationalityId" class="custom-label">Nationality</label>
+                                <select name="nationalityId" id="nationalityId" class="form-control" ng-model="vm.employeeGeneral.nationalityId" ng-options="option.value as option.text for option in vm.nationalities" required>
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.nationalityId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="religionId" class="custom-label">Religion</label>
+                                <select name="religionId" id="religionId" class="form-control" ng-model="vm.employeeGeneral.religionId" ng-change="vm.getReligionCastByReligionId(vm.employeeGeneral.religionId)" ng-options="option.value as option.text for option in vm.religions" required>
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.religionId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="religionCastId" class="custom-label">Religion Caste</label>
+                                <select name="religionCastId" id="religionCastId" class="form-control" ng-model="vm.employeeGeneral.religionCastId" ng-options="option.value as option.text for option in vm.religionCasts">
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.religionCastId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="isDead" class="custom-label">Status</label>
+                                <input type="radio" name="isDead" ng-model="vm.employeeGeneral.isDead" ng-value="false">Alive
+                                <input type="radio" name="isDead" ng-model="vm.employeeGeneral.isDead" ng-value="true">Dead
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="deadDate" class="custom-label">Dead Date</label>
+                                <input kendo-date-picker id="deadDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.deadDate" k-format="'dd-MM-yyyy'" name="deadDate" ng-disabled="!vm.employeeGeneral.isDead" />
+                                <p ng-show="vm.employeeGeneralForm.deadDate.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="deadReason" class="custom-label">Dead Reason</label>
+                                <input type="text" id="deadReason" class="form-control custom-form-control" ng-model="vm.employeeGeneral.deadReason" name="deadReason" maxlength="250" ng-disabled="!vm.employeeGeneral.isDead" />
+                                <p ng-show="vm.employeeGeneralForm.deadReason.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                    </div>           
+
+
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Service Information</h2>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="categoryId" class="custom-label">Category</label>
+                                <select name="categoryId" id="categoryId" class="form-control" ng-model="vm.employeeGeneral.categoryId" ng-change="vm.getSubCategoryByCategoryId(vm.employeeGeneral.categoryId)" ng-options="option.value as option.text for option in vm.categories" required>
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.categoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="subCategoryId" class="custom-label">Sub Category</label>
+                                <select name="subCategoryId" id="subCategoryId" class="form-control" ng-model="vm.employeeGeneral.subCategoryId" ng-options="option.value as option.text for option in vm.subCategories">
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.subCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="commissionTypeId" class="custom-label">Commission Type</label>
+                                <select name="commissionTypeId" id="commissionTypeId" class="form-control" ng-model="vm.employeeGeneral.commissionTypeId" ng-options="option.value as option.text for option in vm.commissionTypes" required>
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.commissionTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="commissionDate" class="custom-label">Commission Date</label>
+                                <input kendo-date-picker id="commissionDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.commissionDate" k-format="'dd-MM-yyyy'" name="commissionDate" required />
+                                <p ng-show="vm.employeeGeneralForm.commissionDate.$error.required" class="help-block errormsg">Date of commission is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="branchId" class="custom-label">Branch</label>
+                                <select name="branchId" id="branchId" class="form-control" ng-model="vm.employeeGeneral.branchId" ng-options="option.value as option.text for option in vm.branches" required>
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.commissionTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="subBranchId" class="custom-label">Sub Branch</label>
+                                <select name="subBranchId" id="subBranchId" class="form-control" ng-model="vm.employeeGeneral.subBranchId" ng-options="option.value as option.text for option in vm.subBranches">
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.subBranchId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="subjectId" class="custom-label">Subject</label>
+                                <select name="subjectId" id="subjectId" class="form-control" ng-model="vm.employeeGeneral.subjectId" ng-options="option.value as option.text for option in vm.subjects">
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.subjectId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="joiningDate" class="custom-label">Joining Date</label>
+                                <input kendo-date-picker id="joiningDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.joiningDate" k-format="'dd-MM-yyyy'" name="joiningDate" required />
+                                <p ng-show="vm.employeeGeneralForm.joiningDate.$error.required" class="help-block errormsg">Joining Date is required</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="seniorityDate" class="custom-label"> Seniority Date</label>
+                                <input kendo-date-picker id="seniorityDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.seniorityDate" k-format="'dd-MM-yyyy'" name="seniorityDate" required />
+                                <p ng-show="vm.employeeGeneralForm.seniorityDate.$error.required" class="help-block errormsg">Seniority Date is required</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="officerStreamId" class="custom-label">Stream</label>
+                                <select name="officerStreamId" id="officerStreamId" class="form-control" ng-model="vm.employeeGeneral.officerStreamId" ng-options="option.value as option.text for option in vm.officerStreams">
+                                    <option value="">--Select an Option--</option>
+                                </select>
+                                <p ng-show="vm.employeeGeneralForm.officerStreamId.$error.required" class="help-block errormsg">Please select an Option</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lieutenantDate" class="custom-label">Lieutenant Date</label>
+                                <input kendo-date-picker id="lieutenantDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.lieutenantDate" k-format="'dd-MM-yyyy'" name="lieutenantDate" />
+                                <p ng-show="vm.employeeGeneralForm.lieutenantDate.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastRLAvailedDate" class="custom-label">Last RL Availed</label>
+                                <input kendo-date-picker id="lastRLAvailedDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.lastRLAvailedDate" k-format="'dd-MM-yyyy'" name="lastRLAvailedDate" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="contractEndDate" class="custom-label"></label>
+                                <input type="checkbox" id="isContract" name="isContract" ng-model="vm.employeeGeneral.isContract" /> <strong>Officer is on contract basis</strong>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="contractEndDate" class="custom-label">Contract End Date</label>
+                                <input kendo-date-picker id="contractEndDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.contractEndDate" k-format="'dd-MM-yyyy'" name="contractEndDate" ng-disabled="!vm.employeeGeneral.isContract" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--<div class="col-sm-12">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="executionRemarkId" class="custom-label">Execution Remark</label>
+                <select name="executionRemarkId" id="executionRemarkId" class="form-control" ng-model="vm.employeeGeneral.executionRemarkId" ng-options="option.value as option.text for option in vm.executionRemarks">
+                    <option value="">--Select an Option--</option>
+                </select>
+                <p ng-show="vm.employeeGeneralForm.executionRemarkId.$error.required" class="help-block errormsg">Please select an Option</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="bExecutionDate" class="custom-label"> Board Execution Date</label>
+                <input kendo-date-picker id="bExecutionDate" class="form-control custom-form-control" k-ng-model="vm.employeeGeneral.bExecutionDate" k-format="'dd-MM-yyyy'" name="bExecutionDate" />
+                <p ng-show="vm.employeeGeneralForm.bExecutionDate.$error.required" class="help-block errormsg">Board Execution Date is required</p>
+            </div>
+        </div>
+    </div>-->
+                    <!--<div class="col-sm-12">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="bspRemarks" class="custom-label">Special Remarks </label>
+                <input type="text" id="bspRemarks" class="form-control custom-form-control" ng-model="vm.employeeGeneral.bspRemarks" name="bspRemarks" maxlength="1000" />
+                <p ng-show="vm.employeeGeneralForm.bspRemarks.$error.maxlength" class="help-block errormsg">Maximum character 1000</p>
+            </div>
+        </div>
+    </div>-->
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeGeneralForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

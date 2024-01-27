@@ -1,0 +1,60 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.examSubjectForm">
+                    <header class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Examination Subject<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </header>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="examCategoryId" class="custom-label">Examination Category</label>
+                            <select name="examCategoryId" id="examCategoryId" class="form-control" ng-model="vm.examCategoryId" ng-change="vm.getExaminationByExamCategory(vm.examCategoryId)" ng-options="option.value as option.text for option in vm.examCategories" min="1" required>
+                                <option value="">--Select--</option>
+                            </select>
+                            <p ng-show="vm.examSubjectForm.examCategoryId.$error.required" class="help-block errormsg">Please select an option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="examinationId" class="custom-label">Examination</label>
+                            <select name="examinationId" id="examinationId" class="form-control" ng-model="vm.examSubject.examinationId" ng-options="option.value as option.text for option in vm.examinations" min="1" required>
+                                <option value="">--Select--</option>
+                            </select>
+                            <p ng-show="vm.examSubjectForm.examinationId.$error.required" class="help-block errormsg">Please select an option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="subjectId" class="custom-label">Subject</label>
+                            <angucomplete-alt id="subjectId"
+                                              placeholder="Search Subjects"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="3"
+                                              selected-object="vm.selected"
+                                              remote-url={{vm.remoteUrl}}
+                                              remote-url-data-field="result"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="true"
+                                              input-name="subjectId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Subject Not Found"
+                                              input-class="form-control form-control-small" />
+                            <p ng-show="vm.examSubjectForm.subjectId.$error.required" class="help-block errormsg">Subject is required</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.examSubjectForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

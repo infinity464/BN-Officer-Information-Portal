@@ -1,0 +1,76 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Retired Age List Policy<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.retiredAgeForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="categoryId" class="custom-label">Category</label>
+                            <select name="categoryId" id="categoryId" class="form-control" ng-model="vm.retiredAge.categoryId"
+                                    ng-change="vm.getSubCategoryByCategoryId(vm.retiredAge.categoryId)"
+                                    ng-options="option.value as option.text for option in vm.categories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.retiredAgeForm.categoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="subCategoryId" class="custom-label">Sub Category</label>
+                            <select name="subCategoryId" id="subCategoryId" class="form-control" ng-model="vm.retiredAge.subCategoryId" ng-options="option.value as option.text for option in vm.subCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.retiredAgeForm.subCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.retiredAge.rankId" ng-options="option.value as option.text for option in vm.ranks" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.retiredAgeForm.rankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rStatus" class="custom-label">List Type</label>
+                            <select name="rStatus" id="rStatus" class="form-control" ng-model="vm.retiredAge.rStatus" ng-options="option.value as option.text for option in vm.listTypes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.retiredAgeForm.rStatus.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="ageLimit" class="custom-label">Age Limit</label>
+                            <input type="number" id="ageLimit" class="form-control custom-form-control" ng-model="vm.retiredAge.ageLimit" name="ageLimit" required />
+                            <p ng-show="vm.retiredAgeForm.ageLimit.$error.required" class="help-block errormsg">Age Limit is required.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label"> Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.retiredAge.remarks" name="remarks" maxlength="250"></textarea>
+                            <p ng-show="vm.retiredAgeForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.retiredAgeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

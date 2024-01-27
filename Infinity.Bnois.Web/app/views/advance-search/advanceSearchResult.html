@@ -1,0 +1,50 @@
+﻿
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <h3 class="text-center">Advance Search Result</h3>
+                <hr />
+
+                <h4 class="text-center">Total Officer Found: {{vm.totalResult}}  </h4>
+                <!--{{vm.searchResults}}-->
+                <div>
+                    <!--<select class="form-control" style="width: 120px; height: 30px;color: navy; float: left; margin-right: 10px;" ng-model="vm.reportType" ng-options="option.value as option.text for option in vm.reportTypes"></select>
+                    <select class="form-control" style="width: 120px; height: 30px;color: navy; float: left;margin-right: 10px;" ng-model="vm.orientation" ng-options="option.value as option.text for option in vm.pageOrientations"></select>-->
+
+
+                    <div class="input-group col-sm-4" style="margin-bottom: 10px;">
+                        <input type="text" class="form-control" style="text-align: center" placeholder="Header" ng-model="vm.header">
+                        <span class="input-group-btn">
+                            <button class="btn btn btn-success" type="button" ng-disabled="vm.header==null" ng-click="vm.fnExcelReport(vm.header)">Download</button>
+                        </span>
+                    </div>
+                </div>
+              
+
+
+                <iframe id="txtArea1" style="display:none"></iframe>
+
+                <div class="table-wrapper table-responsive" ng-bind-html="vm.columnlengthset()">
+
+
+                </div>
+                <!--Rifat Code Start -->
+
+
+
+            </div>
+
+            <!--Rifat Code End -->
+
+
+
+
+            <div class="col-sm-12" style="margin-bottom: 50px;"></div>
+
+
+
+        </div>
+    </div>
+</div>

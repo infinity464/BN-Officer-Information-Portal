@@ -1,0 +1,100 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.addressForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Address<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="addressType" class="custom-label">Address Type</label>
+                            <select name="addressType" id="addressType" class="form-control" ng-model="vm.address.addressType" ng-options="option.value as option.text for option in vm.addressTypes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.addressForm.addressType.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="addressDetailEnglish" class="custom-label">Address (English)</label>
+                            <textarea id="addressDetailEnglish" class="form-control custom-form-control" ng-model="vm.address.addressDetailEnglish" name="addressDetailEnglish" maxlength="300" required />
+                            <p ng-show="vm.addressForm.addressDetailEnglish.$error.required" class="help-block errormsg">Address Detail is required</p>
+                            <p ng-show="vm.addressForm.addressDetailEnglish.$error.maxlength" class="help-block errormsg">Maximum length 300 characters</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="addressDetailBangla" class="custom-label">Address (Bangla)</label>
+                            <input type="text" id="addressDetailBangla" class="form-control custom-form-control" ng-model="vm.address.addressDetailBangla" name="addressDetailBangla" maxlength="300" />
+                            <p ng-show="vm.addressForm.addressDetailBangla.$error.maxlength" class="help-block errormsg"> Maximum length 300 characters </p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="divisionId" class="custom-label">Division</label>
+                            <select name="divisionId" id="divisionId" class="form-control" ng-model="vm.address.divisionId" ng-change="vm.getDistrictsByDivision(vm.address.divisionId)" ng-options="option.value as option.text for option in vm.divisions" min="1" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.addressForm.divisionId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="districtId" class="custom-label">District</label>
+                            <select name="districtId" id="districtId" class="form-control" ng-model="vm.address.districtId" ng-change="vm.getUpazilasByDistrict(vm.address.districtId)" ng-options="option.value as option.text for option in vm.districts" min="1" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.addressForm.districtId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="upazilaId" class="custom-label">Upazila</label>
+                            <select name="upazilaId" id="upazilaId" class="form-control" ng-model="vm.address.upazilaId" ng-options="option.value as option.text for option in vm.upazilas" min="1" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.addressForm.upazilaId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="postOfficeName" class="custom-label">Post Office</label>
+                            <input type="text" id="postOfficeName" class="form-control custom-form-control" ng-model="vm.address.postOfficeName" name="postOfficeName" maxlength="250" />
+                            <p ng-show="vm.addressForm.postOfficeName.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="postCode" class="custom-label">Post Code</label>
+                            <input type="text" id="postCode" class="form-control custom-form-control" ng-model="vm.address.postCode" name="postCode" maxlength="50" />
+                            <p ng-show="vm.addressForm.postCode.$error.maxlength" class="help-block errormsg">Maximum length 50 characters</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="phone" class="custom-label">Contact No</label>
+                            <input type="text" id="phone" class="form-control custom-form-control" ng-model="vm.address.phone" name="phone" maxlength="100" />
+                            <p ng-show="vm.addressForm.phone.$error.maxlength" class="help-block errormsg">Maximum length 100 characters</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.addressForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿
+<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="col-md-12">
+					<div class="col-md-2">
+						<div kendo-tree-view="tree"
+						     k-data-source="vm.reports"
+						     k-on-change="selectedItem = dataItem">
+							<span k-template>
+								<a ng-click="vm.openReport(dataItem)"> <strong>{{dataItem.text}}</strong> </a>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<form class="form-horizontal" style="height: 100%;">
+							<div style=" height:100%; background-color: transparent">
+								<iframe allowfullscreen frameborder="0" src="{{vm.url+'pages/Viewer.aspx?id=' + vm.reportId+'&reportName='+vm.reportName | trustAsResourceUrl}}" style="width:100%;height:600px"></iframe>
+							</div>
+						</form>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+</div>
+
+

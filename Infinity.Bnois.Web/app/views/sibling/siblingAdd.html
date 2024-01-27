@@ -1,0 +1,65 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.siblingForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Siblings Information<span class="pull-right text-success">{{vm.title}}</span></h2>
+                   </div>
+                    <div class="col-sm-6">
+                        
+                        <div class="form-group">
+                        <label for="siblingType" class="custom-label"> Sibling Type</label>
+                        <div class="radio-inline " ng-repeat=" status in vm.siblingTypes">
+                            <label>  <input type="radio" ng-model="vm.sibling.siblingType" value="{{status.value}}" required> {{status.text}}</label>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.sibling.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.siblingForm.name.$error.required" class="help-block errormsg">Name is required</p>
+                            <p ng-show="vm.siblingForm.name.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="spouseName" class="custom-label">Name of the spouse</label>
+                            <input type="text" id="spouseName" class="form-control custom-form-control" ng-model="vm.sibling.spouseName" name="spouseName" maxlength="250"  />
+                            <p ng-show="vm.siblingForm.spouseName.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dateOfBirth" class="custom-label">Date of Birth</label>
+                            <input kendo-date-picker id="dateOfBirth" class="form-control custom-form-control" k-ng-model="vm.sibling.dateOfBirth" k-format="'dd-MM-yyyy'" name="dateOfBirth" />
+                            <p ng-show="vm.siblingForm.dateOfBirth.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="occupationId" class="custom-label">Occupation</label>
+                            <select name="occupationId" id="occupationId" class="form-control" ng-model="vm.sibling.occupationId"  ng-options="option.value as option.text for option in vm.occupations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.siblingForm.occupationId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.siblingForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

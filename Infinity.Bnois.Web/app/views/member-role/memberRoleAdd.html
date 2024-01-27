@@ -1,0 +1,38 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.memberRoleForm">
+                    <header class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Member Role<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </header>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.memberRole.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.memberRoleForm.name.$error.required" class="help-block errormsg">Full Name is required</p>
+                            <p ng-show="vm.memberRoleForm.name.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks </label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.memberRole.remarks" name="remarks" maxlength="250" required></textarea>
+                            <p ng-show="vm.memberRoleForm.remarks.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.memberRoleForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

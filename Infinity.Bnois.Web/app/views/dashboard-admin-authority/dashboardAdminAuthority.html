@@ -1,0 +1,143 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+
+                <h4 class="text-center" style="margin-top: -5px;">Admin Authority wise Office Summary</h4>
+
+                <div class="col-sm-12"></div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="tableHeading">
+
+                                <th style="vertical-align: middle; text-align: center;">Admin Authority</th>
+                                <th style="vertical-align: middle; text-align: center;">Admiral</th>
+                                <th style="vertical-align: middle; text-align: center;">Vice Admiral</th>
+                                <th style="vertical-align: middle; text-align: center;">Rear Admiral</th>
+                                <th style="vertical-align: middle; text-align: center;">Cdre</th>
+                                <th style="vertical-align: middle; text-align: center;">Capt</th>
+                                <th style="vertical-align: middle; text-align: center;">Cdr</th>
+                                <th style="vertical-align: middle; text-align: center;">Lt Cdr</th>
+                                <th style="vertical-align: middle; text-align: center;">Lt</th>
+                                <th style="vertical-align: middle; text-align: center;">Sub Lt</th>
+                                <th style="vertical-align: middle; text-align: center;">Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="adminAuthority in vm.dashboardAdminAuthorities">
+                                <td><strong>{{adminAuthority.name}}</strong></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.admiral_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.admiral_Level)"><strong>{{adminAuthority.admiral_Value}}</strong></a> </td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.viceAdmiral_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.viceAdmiral_Level)"><strong>{{adminAuthority.viceAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.rearAdmiral_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.rearAdmiral_Level)"><strong>{{adminAuthority.rearAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.cdre_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.cdre_Level)"><strong>{{adminAuthority.cdre_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.capt_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.capt_Level)"><strong>{{adminAuthority.capt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.cdr_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.cdr_Level)"><strong>{{adminAuthority.cdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.ltCdr_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.ltCdr_Level)"><strong>{{adminAuthority.ltCdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.lt_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.lt_Level)"><strong>{{adminAuthority.lt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.subLt_Value>0" ng-click="vm.getOfficerList(adminAuthority.id,adminAuthority.subLt_Level)"><strong>{{adminAuthority.subLt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.total>0" ng-click="vm.getOfficerList(adminAuthority.id,-1)"><strong>{{adminAuthority.total}}</strong></a></td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+                <h4 class="text-center">Organization (Inside Navy)</h4>
+
+                <div class="col-sm-12"></div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="tableHeading">
+
+                                <th>Organization</th>
+                                <th>Admiral</th>
+                                <th>Vice Admiral</th>
+                                <th>Rear Admiral</th>
+                                <th>Cdre</th>
+                                <th>Capt</th>
+                                <th>Cdr</th>
+                                <th>Lt Cdr</th>
+                                <th>Lt</th>
+                                <th>Sub Lt</th>
+                                <th>Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="adminAuthority in vm.dashboardInsideNavyOrganizations">
+                                <td><strong>{{adminAuthority.name}}</strong></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.admiral_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.admiral_Level)"><strong>{{adminAuthority.admiral_Value}}</strong></a> </td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.viceAdmiral_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.viceAdmiral_Level)"><strong>{{adminAuthority.viceAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.rearAdmiral_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.rearAdmiral_Level)"><strong>{{adminAuthority.rearAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.cdre_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.cdre_Level)"><strong>{{adminAuthority.cdre_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.capt_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.capt_Level)"><strong>{{adminAuthority.capt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.cdr_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.cdr_Level)"><strong>{{adminAuthority.cdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.ltCdr_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.ltCdr_Level)"><strong>{{adminAuthority.ltCdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.lt_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.lt_Level)"><strong>{{adminAuthority.lt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.subLt_Value>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,adminAuthority.subLt_Level)"><strong>{{adminAuthority.subLt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.total>0" ng-click="vm.getInsideNavyOfficerList(adminAuthority.id,-1)"><strong>{{adminAuthority.total}}</strong></a></td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <h4 class="text-center">Organization (BCG)</h4>
+
+                <div class="col-sm-12"></div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="tableHeading">
+
+                                <th>Organization</th>
+                                <th>Admiral</th>
+                                <th>Vice Admiral</th>
+                                <th>Rear Admiral</th>
+                                <th>Cdre</th>
+                                <th>Capt</th>
+                                <th>Cdr</th>
+                                <th>Lt Cdr</th>
+                                <th>Lt</th>
+                                <th>Sub Lt</th>
+                                <th>Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="adminAuthority in vm.dashboardBCGOrganizations">
+                                <td><strong>{{adminAuthority.name}}</strong></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.admiral_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.admiral_Level)"><strong>{{adminAuthority.admiral_Value}}</strong></a> </td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.viceAdmiral_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.viceAdmiral_Level)"><strong>{{adminAuthority.viceAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.rearAdmiral_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.rearAdmiral_Level)"><strong>{{adminAuthority.rearAdmiral_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.cdre_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.cdre_Level)"><strong>{{adminAuthority.cdre_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.capt_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.capt_Level)"><strong>{{adminAuthority.capt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.cdr_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.cdr_Level)"><strong>{{adminAuthority.cdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.ltCdr_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.ltCdr_Level)"><strong>{{adminAuthority.ltCdr_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.lt_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.lt_Level)"><strong>{{adminAuthority.lt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.subLt_Value>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,adminAuthority.subLt_Level)"><strong>{{adminAuthority.subLt_Value}}</strong></a></td>
+                                <td style="text-align: center; width: 60px;"><a href="" ng-if="adminAuthority.total>0" ng-click="vm.getBCGOfficerList(adminAuthority.id,-1)"><strong>{{adminAuthority.total}}</strong></a></td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

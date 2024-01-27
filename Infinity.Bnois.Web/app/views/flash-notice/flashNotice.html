@@ -1,0 +1,151 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: #ffffff;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1em !important;
+        }
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    }
+</style>
+<div class="content courseAttendeds">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!--<pre>{{vm.flashNotices | json}}</pre>-->
+                <div class="card-body">
+                    <div class="form-group" style="text-align:right">
+                        <button type="submit" class="btn btn-primary mb-2" ng-click="vm.createFlashNotice()">Add</button>
+                    </div>
+                    <div class="table-responsive" ng-if="vm.activeflashNotices[0].flashNotice1 != undefined">
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th colspan="5" style="width:100%; text-align:center;">
+                                        Active Notices
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th style="width:5%; text-align:center;">
+                                        Ser
+                                    </th>
+                                    <th style="width:15%; text-align:center;">
+                                        From Date
+                                    </th>
+                                    <th style="width:15%; text-align:center;">
+                                        To Date
+                                    </th>
+                                    <th style="width:55%; text-align:center;">
+                                        Notice
+                                    </th>
+                                    <th style="width:10%; text-align:center;">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="FN in vm.activeflashNotices">
+                                    <td style="text-align:center;">
+                                        {{$index+1}}
+                                    </td>
+                                    <td>
+                                        {{FN.fromDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td>
+                                        {{FN.toDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td>
+                                        {{FN.flashNotice1}}
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" title="Update Notice" ng-click="vm.updateFlashNotice(FN.flashNoticeId)">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="btn custom-btn btn-delete btn-danger btn-xs action-button ng-isolate-scope" id="deleteNotice" title="Delete Notice" style="cursor:pointer" ng-confirmation-click="vm.deleteFlashNotice(FN.flashNoticeId)" ng-confirmation-message="Do you want to delete Notice" ng-confirmation-title="Delete Notice" ng-confirmation-yes-text="Yes" ng-confirmation-cancel-text="No"><i class="fa fa-ban" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive" ng-if="vm.inActiveflashNotices[0].flashNotice1 != undefined">
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th colspan="5" style="width:100%; text-align:center;">
+                                        In Active Notices
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th style="width:5%; text-align:center;">
+                                        Ser
+                                    </th>
+                                    <th style="width:15%; text-align:center;">
+                                        From Date
+                                    </th>
+                                    <th style="width:15%; text-align:center;">
+                                        To Date
+                                    </th>
+                                    <th style="width:65%; text-align:center;">
+                                        Notice
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="FN in vm.inActiveflashNotices">
+                                    <td style="text-align:center;">
+                                        {{$index+1}}
+                                    </td>
+                                    <td>
+                                        {{FN.fromDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td>
+                                        {{FN.toDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td>
+                                        {{FN.flashNotice1}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{vm.title}}</h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.updatePhysicalCondition()"><span class="glyphicon glyphicon-user"></span>Update</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                        <tr>
+                            <td style="font-weight:bold">Eye Color</td>
+                            <td>{{vm.physicalCondition.color.name}}</td>
+                            <td style="font-weight:bold">Skin Color</td>
+                            <td>{{vm.physicalCondition.color2.name}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Hair Color</td>
+                            <td>{{vm.physicalCondition.color1.name}}</td>
+                            <td style="font-weight:bold">Eye Vision</td>
+                            <td>{{vm.physicalCondition.eyeVision.name}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Blood Group</td>
+                            <td>{{vm.physicalCondition.bloodGroup.name}}</td>
+                            <td style="font-weight:bold">Physical Structure</td>
+                            <td>{{vm.physicalCondition.physicalStructure.name}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Medical Category</td>
+                            <td>{{vm.physicalCondition.medicalCategory.name}}</td>
+                            <td style="font-weight:bold">Is Permanent Medical Category</td>
+                            <td>{{vm.physicalCondition.isPerMedicalCategory==1?"Yes":"No"}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold">Height</td>
+                            <td>{{vm.physicalCondition.heightInFeet}} feets {{vm.physicalCondition.heightInInc}} inches </td>
+                            <td style="font-weight:bold">Weight</td>
+                            <td>{{vm.physicalCondition.weight}} Kg</td>
+                        </tr>
+
+                        <tr>
+                            <td style="font-weight:bold">Identification Mark</td>
+                            <td>{{vm.physicalCondition.identificationMark}}</td>
+                            <td style="font-weight:bold">Remarks</td>
+                            <td>{{vm.physicalCondition.remarks}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="col-md-12">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">
+                           Medical Category Upload
+                        </h2>
+                    </div>
+                    <div class="form-group">
+                        <img ng-src={{vm.fileModel.filePath}} ng-model="fileModel.fileName" class="img-responsive" style="width: 200%; max-width: 200px; height: 200%; max-height: 200px; padding: 10px; background: #fff; border-radius: 2px;" alt="Image" />
+                    </div>
+                    <div class="form-group">
+                        <div class="panel-default">
+                            <div ng-show="uploader.isHTML5">
+                                <div class="btn custom-btn-primary fileinput-button" style="display: block;">
+                                    <input id="Image2" type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                        </div>
+                        <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button>
+                    </div>
+
+                </div>
+
+
+                
+
+            </div>
+        </div>
+    </div>
+</div>

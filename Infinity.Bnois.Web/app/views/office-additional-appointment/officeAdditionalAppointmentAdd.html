@@ -1,0 +1,62 @@
+﻿
+
+<form name="vm.officeAppointmentForm">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="aptNatId" class="custom-label">Appointment Nature</label>
+            <select name="aptNatId" id="aptNatId" class="form-control" ng-model="vm.officeAppointment.aptNatId"
+                    ng-options="option.value as option.text for option in vm.aptNats" required
+                    ng-change="vm.getCategoryByNature(vm.officeAppointment.aptNatId)">
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeAppointmentForm.aptNatId.$error.required" class="help-block errormsg">Please select an Option</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="aptCatId" class="custom-label">Appointment Category</label>
+            <select name="aptCatId" id="aptCatId" class="form-control" ng-model="vm.officeAppointment.aptCatId"
+                    ng-options="option.value as option.text for option in vm.aptCats" required>
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeAppointmentForm.aptCatId.$error.required" class="help-block errormsg">Please select an Option</p>
+        </div>
+    </div>
+	
+	<div class="col-sm-6">
+		<div class="form-group">
+			<label for="isAdditional" class="custom-label">Type</label>
+			<input type="radio" name="isAdditional" ng-model="vm.officeAppointment.isAdditional" ng-value="false" ng-change="vm.setAppointmentName(vm.officeAppointment.isAdditional)">Additional
+			<input type="radio" name="isAdditional" ng-model="vm.officeAppointment.isAdditional" ng-value="true" ng-change="vm.setAppointmentName(vm.officeAppointment.isAdditional)">Additional For Retirement
+		</div>
+	</div>
+
+	<div class="col-sm-6">
+        <div class="form-group">
+            <label for="name" class="custom-label"> Name</label>
+            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.officeAppointment.name" name="name" maxlength="150" disabled />
+
+        </div>
+    </div>
+
+
+
+	<div class="col-sm-6">
+        <div class="form-group">
+            <label for="shortName" class="custom-label">Short Name</label>
+            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.officeAppointment.shortName" name="shortName" maxlength="150" disabled />
+
+        </div>
+    </div>
+
+
+
+
+    <div class="col-xs-12">
+        <br />
+        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.officeAppointmentForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+    </div>
+
+</form>

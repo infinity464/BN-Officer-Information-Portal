@@ -1,0 +1,235 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .customeTableHead1 {
+        background-color: rgb(102,255,153);
+        color: black;
+        text-align: center;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+
+    .table > thead > tr > th {
+        font-weight: 400 !important;
+    }
+
+    .table-responsive {
+        padding-bottom: 2px !important;
+    }
+
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1em !important;
+        }
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    }
+</style>
+<div class="content leaveInfo">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!--<div class="card-header">
+                    <h4 class="card-title">
+                        DETAILS OF LEAVE
+                    </h4>
+                </div>-->
+                <!--<pre>{{vm.leaveInfo | json}}</pre>
+                <pre>{{vm.leaveInfos | json}}</pre>-->
+                <div class="card-body">
+                    <div class="card-body" ng-if="vm.intialHide1 === true">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td class="customeTableHead" colspan="7">
+                                        Current Leave Status
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 16.6%;">PL Available this year</td>
+                                    <td ng-if="vm.leaveInfo.plAvailable>=0" style="width: 16.6%;">
+                                        {{vm.leaveInfo.plAvailable}} days
+                                    </td>
+                                    <td ng-if="vm.leaveInfo.plAvailable<0" style="width: 16.6%;"> 0 days <br /> <span style="color: red; font-size: 10px;"> (This Officer already availed {{vm.plAvailable}} days more than due.)</span></td>
+                                    <td style="width:16.6%">Last RL Availed Date</td>
+                                    <td style="width:16.6%">{{vm.leaveInfo.lastRlAvailed |date:"dd-MMM-yyyy"}}</td>
+                                    <td style="width:16.6%">RL Due Date</td>
+                                    <td style="width:16.6%">{{vm.leaveInfo.rlDue |date:"dd-MMM-yyyy"}} <span ng-if="vm.leaveInfo.isTrue" style="color:red;font-weight:bold">(Already Over Due)</span></td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="card-body" ng-if="vm.intialHide1 === true">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td class="customeTableHead" colspan="4">
+                                        Leave Summary
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:33.2%">Privilege Leave Balance</td>
+                                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.totalPlAvailable}}</td>
+                                    <td style="width:33.2%">Recreation Leave Balance</td>
+                                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.recreationLeaveDue}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:33.2%">Furlough Leave Balance</td>
+                                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.totalFurloughLeave}}</td>
+                                    <td style="width:33.2%">Terminal Leave Balance</td>
+                                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.terminalLeave}}</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td style="width:33.2%">Casual Leave Balance</td>
+                                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.casualLeave}}</td>
+                                    <td style="width:33.2%">Survey Leave Balance</td>
+                                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.surveyLeave}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:33.2%">Leave on Medical Certificate Balance</td>
+                                    <td ng-if="vm.leaveInfo.medicalLeave>=0" style="width: 16.6%;text-align: center">{{vm.leaveInfo.medicalLeave}} </td>
+                                    <td ng-if="vm.leaveInfo.medicalLeave<0" style="width: 16.6%;text-align: center"> 0 </td>
+                                    <!--style="width: 80px; text-align: center">{{vm.leaveInfo.medicalLeave}}</td>-->
+                                    <td style="width:33.2%">Sick Leave Balance</td>
+                                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.sickLeave}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td style="width:33.2%">Maternity Leave Balance</td>
+                                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.maternyLeave}}</td>
+                                    <td style="width:33.2%">Wound, Injury or Disability Leave Balance</td>
+                                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.woundLeave}}</td>
+                                </tr>
+                            </table>
+                            <!-- -->
+                        </div>
+                    </div>
+
+                    <!--Other Leave Details comes here-->
+                    <!--<div class="col-sm-12 pageWidth">-->
+                    <div ng-repeat="parent in vm.leaveInfos">
+                        <!--<div ng-if="parent.leaveTypeId == '1'" class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" style="text-align:center">
+                                    <thead>
+                                        <tr>
+                                            <td class="customeTableHead" colspan="7">
+                                                {{parent.leaveTypeName}}&nbsp;&nbsp;({{parent.shartName}})
+                                            </td>
+                                        </tr>
+                                        <tr class="customeTableHead1">
+                                            <th style="width:20%;">From</th>
+                                            <th style="width:20%;">To</th>
+                                            <th style="width:10%;">Days</th>
+                                            <th style="width:15%;">Leave Slot</th>
+                                            <th style="width:35%;">Ex. BD Leave</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="child in parent.spGetEmployeeLeaveInfoes | orderBy:'fromDate'">
+                                            <td style="text-align: center">{{child.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                            <td style="text-align: center">{{child.toDate | date: "dd-MMM-yyyy"}}</td>
+                                            <td style="text-align: center" ng-init="$parent.total = $parent.total + child.duration">{{child.duration}}</td>
+                                            <td>{{child.slot}}</td>
+                                            <td>{{child.country}}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center"><b>Total</b></td>
+                                            <td></td>
+                                            <td style="text-align: center"><b>{{ total }}</b></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>-->
+                        <div ng-if="parent.leaveTypeId !=  '2' && parent.leaveTypeId !=  '1'" class="card-body">
+                            <!--<pre>{{parent.spGetEmployeeLeaveInfoes | json}}</pre>-->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td class="customeTableHead" colspan="5">
+                                                {{parent.leaveTypeName +' ('+parent.shartName +')'}}
+                                                <!--Recreation Leave (RL)-->
+                                            </td>
+                                        </tr>
+                                        <tr class="customeTableHead1">
+                                            <th style="width:20%;">From</th>
+                                            <th style="width:20%;">To</th>
+                                            <th style="width:10%;">Days</th>
+                                            <th style="width:50%;">Remarks</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="child in parent.spGetEmployeeLeaveInfoes | orderBy:'fromDate'">
+                                            <td style="text-align: center">{{child.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                            <td style="text-align: center">{{child.toDate | date: "dd-MMM-yyyy"}}</td>
+                                            <td style="text-align: center" ng-init="$parent.total = $parent.total + child.duration">{{child.duration}}</td>
+                                            <td>{{child.remarks}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center"><b>Total</b></td>
+                                            <td></td>
+                                            <td style="text-align: center"><b>{{ total }}</b></td>
+                                            <td></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" role="alert" ng-if="vm.intialHide === true">
+                        No data found..........!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

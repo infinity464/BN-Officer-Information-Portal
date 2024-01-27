@@ -1,0 +1,55 @@
+﻿
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Office</h2>
+                </div>
+
+                <!--  -->
+
+
+                <div class="col-md-12">
+                    <div class="col-md-3">
+
+                        <h4>Office List</h4>
+                        <!-- <input id="filterText" class="text-center" type="text" placeholder="Search Office" ng-keyup="vm.search(typedText)" ng-model="typedText" /> -->
+                        <div kendo-tree-view="treeview"
+                             k-data-source="offices"
+                             k-on-change="selectedItem = dataItem"
+                             k-data-bound="onDataBound"
+                            
+                             >
+                            <span k-template>
+                                <a ng-click="vm.officeDetails(dataItem.officeId)"> <strong>{{dataItem.shortName}}</strong> </a>
+                                <a ng-show="vm.permission.add" ng-click="vm.addOffice(dataItem.officeId)">
+                                    <span style="color:green" class="glyphicon glyphicon-plus-sign"></span>
+                                </a> 
+                                <a ng-show="vm.permission.delete" ng-click="vm.deleteOffice(dataItem.officeId)">
+                                    <span style="color:red" class="glyphicon glyphicon-remove-sign"></span>
+                                </a>
+                               
+
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-9" style="margin-left: -30px;">
+
+                        <div class="container-fluid">
+                            <ul class="nav nav-tabs">
+                                <li><a ui-sref="office-tabs.office-general({id:officeId})" ui-sref-active="active"><strong>General</strong></a></li>
+                                <li><a ui-sref="office-tabs.office-appointments({id:officeId})" ui-sref-active="active"> <strong>Appointment</strong> </a></li>
+                                <!-- <li><a ui-sref="office-tabs.office-additional-appointments({id:officeId})" ui-sref-active="active">Additional Appointment</a></li> -->
+                            </ul>
+                            <div ui-view></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item"><span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.divisionForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.spouseForeignVisit.countryId" ng-options="option.value as option.text for option in vm.countries" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.spouseForeignVisitForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="purpose" class="custom-label">Purpose</label>
+                            <input type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.spouseForeignVisit.purpose" name="purpose" maxlength="250" required />
+                            <p ng-show="vm.spouseForeignVisitForm.purpose.$error.required" class="help-block errormsg">Purpose is required.</p>
+                            <p ng-show="vm.spouseForeignVisitForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="accompaniedBy" class="custom-label">Accompanied By</label>
+                            <input type="text" id="accompaniedBy" class="form-control custom-form-control" ng-model="vm.spouseForeignVisit.accompaniedBy" name="accompaniedBy" maxlength="250" />
+                            <p ng-show="vm.spouseForeignVisitForm.accompaniedBy.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12"></div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="stayFromDate" class="custom-label"> From Date</label>
+                                <input kendo-date-picker id="stayFromDate" class="form-control custom-form-control" k-ng-model="vm.spouseForeignVisit.stayFromDate" k-format="'dd-MM-yyyy'" name="stayFromDate" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="stayToDate" class="custom-label">To Date</label>
+                                <input kendo-date-picker id="stayToDate" class="form-control custom-form-control" k-ng-model="vm.spouseForeignVisit.stayToDate" k-format="'dd-MM-yyyy'" name="stayToDate" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.divisionForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                            <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                        </div>
+</form>
+            </div>
+        </div>
+    </div>
+</div>

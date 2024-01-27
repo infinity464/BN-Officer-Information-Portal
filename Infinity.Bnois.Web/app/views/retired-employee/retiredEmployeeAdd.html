@@ -1,0 +1,93 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.retiredEmployeeForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Retired Officer Information<span class="pull-right text-success">{{vm.title}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ng-show="vm.retiredEmployee.employee.fullNameEng != null">({{vm.retiredEmployee.employee.fullNameEng}}) ( P.No - {{vm.retiredEmployee.employee.pNo}} )</span></h2>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="tsNo" class="custom-label"> TS No</label>
+                            <input type="text" id="tsNo" class="form-control custom-form-control" ng-model="vm.retiredEmployee.tsNo" name="tsNo" maxlength="250" required />
+                            <p ng-show="vm.retiredEmployeeForm.tsNo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            <p ng-show="vm.retiredEmployeeForm.tsNo.$error.required" class="help-block errormsg">TS No is required</p>
+                        </div>
+                    </div>
+                   
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isVisitAbroad" class="custom-label"> Permission to Visit Abroad</label>
+                            <input type="radio" name="isVisitAbroad" ng-model="vm.retiredEmployee.isVisitAbroad" ng-value="false">No
+                            <input type="radio" name="isVisitAbroad" ng-model="vm.retiredEmployee.isVisitAbroad" ng-value="true">Yes
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isPensionIssued" class="custom-label"> Pension Issued</label>
+                            <input type="radio" name="isPensionIssued" ng-model="vm.retiredEmployee.isPensionIssued" ng-value="false">No
+                            <input type="radio" name="isPensionIssued" ng-model="vm.retiredEmployee.isPensionIssued" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bookNo" class="custom-label"> Book No</label>
+                            <input type="text" id="bookNo" class="form-control custom-form-control" ng-model="vm.retiredEmployee.bookNo" name="bookNo" maxlength="250" ng-disabled="!vm.retiredEmployee.isPensionIssued" />
+                            <p ng-show="vm.retiredEmployeeForm.bookNo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="issueDate" class="custom-label">Issue Date</label>
+                            <input kendo-date-picker id="commissionDate" class="form-control custom-form-control" k-ng-model="vm.retiredEmployee.issueDate" k-format="'dd-MM-yyyy'" name="issueDate" ng-disabled="!vm.retiredEmployee.isPensionIssued" />
+
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isJobAbroad" class="custom-label"> Permission to Job Aboard</label>
+                            <input type="radio" name="isJobAbroad" ng-model="vm.retiredEmployee.isJobAbroad" ng-value="false">No
+                            <input type="radio" name="isJobAbroad" ng-model="vm.retiredEmployee.isJobAbroad" ng-value="true">Yes
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryIds" class="custom-label"> Country</label>
+                            <select kendo-multi-select k-options="vm.countryOptions" k-ng-model="vm.retiredEmployee.countryIds" k-ng-disabled="!(vm.retiredEmployee.isJobAbroad)"></select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="certificateIds" class="custom-label"> Certificate Given For</label>
+                            <select kendo-multi-select k-options="vm.certificateOptions" k-ng-model="vm.retiredEmployee.certificateIds" ></select>
+                        </div>
+                    </div>
+
+                  
+                    
+
+                 
+
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.retiredEmployeeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

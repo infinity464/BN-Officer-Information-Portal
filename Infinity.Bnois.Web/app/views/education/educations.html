@@ -1,0 +1,51 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Education</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addEducation()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Examination</th>
+                                <th>Board/University</th>
+                                <th>Institution</th>
+                                <th>Subject/Group</th>
+                                <!-- <th>Migrated Exam</th> -->
+                                <th>Result/GPA</th>
+                                <th>Grade</th>
+                                <th style="width:100px" class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="education in vm.educations">
+                                <td>{{education.examination.name}}</td>
+                                <td>{{education.board.name}}</td>
+                                <td>{{education.institute.name}}</td>
+                                <td>{{education.subject.name}}</td>
+                                <!-- <td>{{education.otherSubjectName}}</td> -->
+                                <td>{{education.resultText}}</td>
+                                <td>{{education.resultGrade.name}}</td>
+
+                                <td class="text-right">
+                                    <a  class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.uploadCertificate(education)"><span class="fa fa-image" aria-hidden="true" title="Upload Certificate"></span></a>
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateEducation(education)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteEducation(education)"
+                                       ng-confirmation-message="Do you want to delete Education ?"
+                                       ng-confirmation-title="Delete Education ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Education"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

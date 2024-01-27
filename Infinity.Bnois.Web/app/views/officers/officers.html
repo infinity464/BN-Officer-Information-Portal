@@ -1,0 +1,42 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officer List</h2>
+                    <div ng-include="'app/templates/search.html'" class="search-wrapper"></div>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-bordered pdfReportTable" border="1">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th>SL</th>
+                                <th>Officer Name</th>
+                                <th>PNo</th>
+                                <th>Billet-Appointment</th>
+                                <th>Since</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="item in vm.employees">
+                                <td class="reportTD" style="text-align: center; width: 50px;"><strong> {{$index+1}}</strong> </td>
+                                <td class="reportTD hideElement"><a href="" ng-click="vm.officerDetails(item.pNo)"> <strong>{{item.officerName}}</strong></a> </td>
+                                <td class="reportTD noScreen"><strong>{{item.officerName}}</strong></td>
+                                <td class="reportTD" style="text-align: center"> <strong>{{item.pNo}}</strong> </td>
+                                <td class="reportTD"><strong>{{item.presentBillet}} </strong> </td>
+                                <td class="reportTD" style="text-align: center; width: 100px;"><strong> {{item.since | date:'dd/MM/yyyy'}}</strong>  </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagenation-wrapper" ng-if="vm.employees.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

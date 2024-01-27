@@ -1,0 +1,136 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.heirNextOfKinInfoForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Heir & Next Of Kin Information <span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="custom-label">Type</label>
+                            <div class="radio-inline " ng-repeat=" status in vm.heirKinTypes">
+                                <input type="radio" ng-model="vm.heirNextOfKinInfo.heirKinType" value="{{status.value}}"
+                                       required ng-change="vm.showHeirType(vm.heirNextOfKinInfo.heirKinType)"> {{status.text}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-show="vm.isHeirType">
+                        <div class="form-group">
+                            <label for="heirTypeId" class="custom-label">Heir Type</label>
+                            <select name="heirTypeId" id="heirTypeId" class="form-control" ng-model="vm.heirNextOfKinInfo.heirTypeId" ng-options="option.value as option.text for option in vm.heirTypes">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.heirNextOfKinInfoForm.heirTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameEng" class="custom-label">Name</label>
+                            <input type="text" id="nameEng" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.nameEng" name="nameEng" maxlength="250" required />
+                            <p ng-show="vm.heirNextOfKinInfoForm.nameEng.$error.required" class="help-block errormsg">Name is required</p>
+                            <p ng-show="vm.heirNextOfKinInfoForm.nameEng.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameBan" class="custom-label">Name (বাংলা)</label>
+                            <input type="text" id="nameBan" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.nameBan" name="nameBan" maxlength="250" />
+                            <p ng-show="vm.heirNextOfKinInfoForm.nameBan.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="genderId" class="custom-label">Gender</label>
+                            <select name="genderId" id="genderId" class="form-control" ng-model="vm.heirNextOfKinInfo.genderId" ng-options="option.value as option.text for option in vm.genders" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.heirNextOfKinInfoForm.genderId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="relationId" class="custom-label">Relation</label>
+                            <select name="relationId" id="relationId" class="form-control" ng-model="vm.heirNextOfKinInfo.relationId" ng-options="option.value as option.text for option in vm.relations" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.heirNextOfKinInfoForm.relationId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="email" class="custom-label">Email</label>
+                            <input type="text" id="email" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.email" name="name" maxlength="250" />
+                            <p ng-show="vm.heirNextOfKinInfoForm.name.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="contactNumber" class="custom-label">Contact Number</label>
+                            <input type="text" id="contactNumber" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.contactNumber" name="contactNumber" maxlength="250" />
+                            <p ng-show="vm.heirNextOfKinInfoForm.contactNumber.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="presentAddress" class="custom-label">Present Address</label>
+                            <textarea id="presentAddress" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.presentAddress" name="presentAddress" maxlength="350"  ></textarea>
+                            <p ng-show="vm.heirNextOfKinInfoForm.presentAddress.$error.required" class="help-block errormsg">Present Address is required</p>
+                            <p ng-show="vm.heirNextOfKinInfoForm.presentAddress.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="permanentAddress" class="custom-label">Permanent Address</label>
+                            <textarea id="permanentAddress" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.permanentAddress" name="permanentAddress" maxlength="350" ></textarea>
+                            <p ng-show="vm.heirNextOfKinInfoForm.permanentAddress.$error.required" class="help-block errormsg">Permanent Address is required</p>
+                            <p ng-show="vm.heirNextOfKinInfoForm.permanentAddress.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="passportNumber" class="custom-label">Passport Number</label>
+                            <input type="text" id="passportNumber" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.passportNumber" name="passportNumber" maxlength="250" />
+                            <p ng-show="vm.heirNextOfKinInfoForm.passportNumber.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="occupationId" class="custom-label">Occupation</label>
+                            <select name="occupationId" id="occupationId" class="form-control" ng-model="vm.heirNextOfKinInfo.occupationId" ng-options="option.value as option.text for option in vm.occupations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.heirNextOfKinInfoForm.occupationId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-show="vm.isHeirType">
+                        <div class="form-group">
+                            <label for="pradhikar" class="custom-label">Pradhikar (% of Wealth)</label>
+                            <input type="text" id="pradhikar" class="form-control custom-form-control" ng-model="vm.heirNextOfKinInfo.pradhikar" name="pradhikar"   />
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.heirNextOfKinInfoForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning " ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

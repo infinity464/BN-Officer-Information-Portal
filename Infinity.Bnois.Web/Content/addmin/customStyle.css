@@ -1,0 +1,249 @@
+﻿body {
+    background: #FAFAFA;
+    font-size: 13px;
+}
+
+#sidebar-wrapper {
+    background: #3F51B5;
+    height: 100%;
+    position: fixed;
+    float: left;
+    z-index: 1;
+    max-width: 200px;
+}
+
+.fixed-header-section {
+    /* background:linear-gradient(to right, #0C7586, #0C7586, #155F8C); */
+    /*background: #1C4E80;*/
+    background: #3F51B5;
+    height: 46px;
+    border: none;
+}
+
+.col-sm-12 > hr {
+    margin-top: 15px;
+    border: 1px solid #1A237E;
+}
+
+
+hr {
+    margin-top: -9px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 2px solid #1A237E;
+}
+
+
+
+
+
+
+
+
+
+
+
+.sidebar-nav li a {
+    color: #E7E7E7;
+}
+
+.header-wrapper .logo {
+    width: 40px;
+}
+
+.footer-section {
+    /* background: linear-gradient(to right, #0C7586, #0C7586, #155F8C); */
+    background: #3F51B5;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.form-group {
+    min-height: 25px;
+    margin-bottom: 5px;
+}
+
+    .form-group label {
+        width: 35%;
+        display: inline-block;
+        font-size: 13px;
+    }
+
+    .form-group .form-control {
+        width: 60%;
+        display: inline-block;
+        font-size: 13px;
+        /*padding:4px;*/
+    }
+
+.form-control-half {
+    width: 15%;
+    display: inline-block;
+    font-size: 13px;
+    /*padding:4px;*/
+}
+
+/*Designed by Ripon*/
+.form-group .form-control-mini {
+    width: 8%;
+    display: inline-block;
+    font-size: 12px;
+    /*padding:4px;*/
+}
+
+.customPageWidth {
+    width: 81% !important;
+}
+
+.table > tbody > tr > td {
+    border: 1px solid black;
+    color: black;
+
+}
+.custom-width {
+    width: 85% !important;
+}
+
+.table > thead > tr > th {
+    border: 1px solid black !important;
+}
+
+.table {
+    border: 1px solid #EEEEEE;
+    text-transform:none;
+}
+
+.table-wrapper table thead tr th {
+    background: #1565C0;
+    color: #E7E7E7;
+    border-top: 1px solid black !important;
+    border-bottom: 1px solid black !important;
+}
+
+.sidebar-nav li a.active, .sidebar-nav li a:active, .sidebar-nav li a:focus {
+    background-color: #424949;
+}
+
+.sidebar-nav li a:hover {
+    background-color: #424949;
+}
+
+#sidebar-wrapper ul.sub-menu li {
+    background-color: #E3E5CA;
+}
+
+.panel-body .page-header {
+    padding: 5px;
+}
+
+.panel-body form {
+    background: #F7F6F6;
+}
+
+.nav-tabs {
+    margin-top: 5px;
+    border-bottom: none;
+    background: #1976D2;
+}
+
+    .nav-tabs li {
+        margin-bottom: 1px;
+        /*background: #5cb85c;*/
+    }
+
+        .nav-tabs li a {
+            color: #EEEEEE;
+            border-left: 1px solid #6a73b5;
+        }
+
+            .nav-tabs li a:hover {
+                background: #2094CF;
+                border-color: transparent;
+            }
+
+            .nav-tabs li a:focus {
+                color: black;
+            }
+           
+
+.form-group .search-section {
+    width: 100%;
+    display: block;
+}
+
+.form-group textarea {
+    height: 30px;
+    resize: vertical;
+    overflow: hidden;
+}
+
+.errormsg {
+    color: #ff0000;
+    position: relative;
+    left: 36%;
+}
+
+.custom-btn-primary {
+    background-color: #11374E;
+    border: none;
+}
+
+.pagination > .active > a {
+    border-color: #084771;
+}
+
+.pagination > a:focus, a:hover {
+}
+
+.form-group select {
+    background: #ffffff url('../../Images/down-arrow.png') no-repeat 98% center !important;
+}
+
+.k-picker-wrap .k-input {
+    height: 22px;
+}
+
+.form-control {
+    padding: 4px;
+}
+
+.tableHeading>th {
+    text-align: center;
+    
+}
+
+.tableData > td {
+    text-align: center;
+}
+
+
+.input-group-btn .btn {
+    padding: 4px 12px;
+}
+
+
+.container-fluid {
+    /*margin-left: -10px !important;*/
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #18247d;
+    border-color: #343f91;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #2094CF;
+    border-color: #54bff6;
+}
+
+
+/* */
+/* textarea { */
+/*      */
+/*     width: 275px !important; */
+/*     height: 100px !important; */
+/* } */

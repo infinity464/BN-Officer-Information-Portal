@@ -1,0 +1,675 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .customeTableHead1 {
+        background-color: rgb(102,255,153);
+        color: black;
+        text-align: center;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+
+    .table > thead > tr > th {
+        font-weight: 400 !important;
+    }
+
+    .table-responsive {
+        padding-bottom: 2px !important;
+    }
+
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1em !important;
+        }
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    } 
+</style>
+
+<div class="content content-header" style="margin-bottom:15px !important;background-color:#66ff99 !important;padding: 15px;border-radius: 5px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group" style="margin:0px !important;">
+                <div class="col-md-4">
+                    <input type="text" style="color: black; height: fit-content !important; padding: 10px 5px !important;" id="contactNo" class="form-control custom-form-control" ng-model="vm.searchText" placeholder="Search with P No" name="contactNo" maxlength="11" required />
+                </div>
+                <div class="col-md-4">
+                    <select name="searchSubject" id="searchSubject" class="custom-select" ng-model="vm.searchSubject"
+                            ng-options="option.value as option.text for option in vm.options">
+                        <option value="">--Select an Option--</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-outline-secondary" type="button" style="margin: 0px 10px;" ng-click="vm.SearchEmployee()"> Search </button>
+                    <button class="btn btn-outline-secondary" type="button" style="margin: 0px 10px;" ng-click="vm.ClearEmployee();vm.clearSearch(); "> Clear Search </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body" ng-if="vm.currentStatus.pNo != undefined">
+                    <style>
+                        #employeePhoto {
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 150px;
+                            padding-bottom: 10px;
+                        }
+
+                        #customers {
+                            background-color: #eef4fa;
+                            border-collapse: collapse;
+                            width: 98%;
+                            margin: 2px;
+                        }
+
+                            #customers td, #customers th {
+                                border: 2px solid #b5b8c7 !important;
+                                padding: 8px;
+                                font-size: 12pt;
+                            }
+
+                        tbody tr td:first-child {
+                            width: 8em;
+                            min-width: 8em;
+                            max-width: 8em;
+                            word-break: break-all;
+                        }
+
+                        #customers td:first-child {
+                            width: 30px;
+                            min-width: 30px;
+                            max-width: 30px;
+                            text-align: center;
+                        }
+
+                        #customers tr:nth-child(even) {
+                            /*background-color: #f2f2f2;*/
+                        }
+
+                        #customers tr:hover {
+                            /*background-color: #ddd;*/
+                        }
+
+                        #customers th {
+                            padding-top: 12px;
+                            padding-bottom: 12px;
+                            text-align: left;
+                            /*background-color: #04AA6D;*/
+                            /*color: white;*/
+                        }
+
+                        .titleCol {
+                            width: 30%;
+                            text-align: left !important;
+                            background-color: #0176D6 !important;
+                            font-weight: 500;
+                            color: white;
+                        }
+                        .dataCol {
+                            width: 70%;
+                            text-align: left;
+                        }
+                    </style>
+                    <div class="table-responsive">
+                        <img id="employeePhoto" alt="" src="{{vm.currentStatus.photo}}" />
+                        <table id="customers">
+                            <tr>
+                                <td class="titleCol">Rank & Name :</td>
+                                <td class="dataCol">{{vm.currentStatus.rankAndName}} ( P No {{vm.currentStatus.pNo}} )</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Batch :</td>
+                                <td class="dataCol">{{vm.currentStatus.batch}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Category :</td>
+                                <td class="dataCol">{{vm.currentStatus.category}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Sub-Category :</td>
+                                <td class="dataCol">{{vm.currentStatus.subCategory}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">D.O.C :</td>
+                                <td class="dataCol">{{vm.currentStatus.dateOfCommission | date :  &quot dd-MMM-yyyy &quot}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">D.O.S :</td>
+                                <td class="dataCol">{{vm.currentStatus.seniorityDate | date :  &quot dd-MMM-yyyy &quot }}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Service Limit :</td>
+                                <td class="dataCol">{{vm.currentStatus.serviceLimit|date: &quot dd-MMM-yyyy &quot}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Age Limit :</td>
+                                <td class="dataCol">{{vm.currentStatus.ageLimit|date: &quot dd-MMM-yyyy &quot}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Attached :</td>
+                                <td class="dataCol">{{vm.currentStatus.attached}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Born Date :</td>
+                                <td class="dataCol">{{vm.currentStatus.bornDate | date: &quot dd-MMM-yyyy &quot}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Appointment :</td>
+                                <td class="dataCol">{{vm.currentStatus.appointment}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">E-mail :</td>
+                                <td class="dataCol">{{vm.currentStatus.email}}</td>
+                            </tr>
+                            <tr>
+                                <td class="titleCol">Mobile No :</td>
+                                <td class="dataCol">{{vm.currentStatus.contactNo}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card-body" ng-show="vm.permanentTransferHistories.length > 0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th style="width:5%; text-align:center;">
+                                        Ser
+                                    </th>
+                                    <th style="width:15%;text-align:center;">
+                                        Appt
+                                    </th>
+                                    <th style="width:10%; text-align:center;">
+                                        Rank
+                                    </th>
+                                    <th style="width:36%; text-align:center;">
+                                        Unit
+                                    </th>
+                                    <th style="width:17%; text-align:center;">
+                                        From
+                                    </th>
+                                    <th style="width:17%; text-align:center;">
+                                        To
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="permanentTransferHistory in vm.permanentTransferHistories">
+                                    <td style="text-align:center;">
+                                        {{$index+1}}
+                                    </td>
+                                    <td>
+                                        {{permanentTransferHistory.appointment}}
+                                    </td>
+                                    <td>
+                                        {{permanentTransferHistory.rank}}
+                                    </td>
+                                    <td>
+                                        {{permanentTransferHistory.unit}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        {{permanentTransferHistory.fromDate|date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span ng-if="permanentTransferHistory.toDate !=null">{{permanentTransferHistory.toDate |date:"dd-MMM-yyyy"}}</span><span ng-if="permanentTransferHistory.toDate ==null">Till Now</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card-body" ng-if="vm.courseAttendeds.length > 0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th style="width:5%; text-align:center;">
+                                        Ser
+                                    </th>
+                                    <th style="width:25%; text-align:center;">
+                                        Course
+                                    </th>
+                                    <th style="width:30%; text-align:center;">
+                                        Institute
+                                    </th>
+                                    <th style="width:20%; text-align:center;">
+                                        From
+                                    </th>
+                                    <th style="width:20%; text-align:center;">
+                                        To
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="CA in vm.courseAttendeds">
+                                    <td style="text-align:center;">
+                                        {{$index+1}}
+                                    </td>
+                                    <td>
+                                        {{CA.course}}
+                                    </td>
+                                    <td>
+                                        {{CA.institute}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        {{CA.fromDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        {{CA.toDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="t"></div>
+
+                <div class="card-body" ng-if="vm.getOprIndexs.length>0">
+                    <div class="table-responsive">
+                        <table class="table w-100">
+                            <thead class="customeTableHead">
+                                <tr style="background-color:skyblue; color:aqua">
+                                    <td class="customeTableHead" colspan="5">
+                                       OPR Index
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!--<th style="width: 5%; text-align:center">
+                                        Ser
+                                    </th>-->
+                                    <th style="width: 30%; text-align:center">
+                                        Present Year
+                                    </th>
+                                    <th style="width: 15%; text-align:center">
+                                        Count
+                                    </th>
+                                    <th style="width: 30%; text-align:center">
+                                        Previous Year
+                                    </th>
+                                    <th style="width: 15%; text-align:center">
+                                        Count
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="OPRI in vm.getOprIndexs">
+                                    <!--<td style="text-align:center">
+                                        {{$index+1}}
+                                    </td>-->
+                                    <td style="text-align:center">
+                                        {{OPRI.this_year}}
+                                    </td>
+                                    <td style="text-align:center">
+                                        {{OPRI.this_year_count}}
+                                    </td>
+                                    <td style="text-align:center">
+                                        {{OPRI.prevous_year}}
+                                    </td>
+                                    <td style="text-align:center">
+                                        {{OPRI.previous_count}}
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="card-body" ng-if="vm.oprGradings.length>0">
+                        <div class="table-responsive">
+                            <table class="table w-100">
+                                <thead class="customeTableHead">
+                                    <tr>
+                                        <th style="width: 5%; text-align:center">
+                                            Ser
+                                        </th>
+                                        <th style="width: 15%; text-align:center">
+                                            Year
+                                        </th>
+                                        <th style="width: 30%; text-align:center">
+                                            Occasion
+                                        </th>
+                                        <th style="width: 50%; text-align:center">
+                                            Unit
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="OPR in vm.oprGradings">
+                                        <td style="text-align:center">
+                                            {{$index+1}}
+                                        </td>
+                                        <td style="text-align:center">
+                                            {{OPR.year}}
+                                        </td>
+                                        <td>
+                                            {{OPR.occasion}}
+                                        </td>
+                                        <td>
+                                            <span ng-if="OPR.unit !=null">{{OPR.unit}}</span><span ng-if="OPR.unit ==null">-</span>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-body" ng-if="vm.publications[0].publication != undefined">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="customeTableHead">
+                                    <tr>
+                                        <th>
+                                            Ser
+                                        </th>
+                                        <th>
+                                            Category
+                                        </th>
+                                        <th>
+                                            Publication Name
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="P in vm.publications">
+                                        <td>
+                                            {{$index+1}}
+                                        </td>
+                                        <td>
+                                            {{P.publicationCategory}}
+                                        </td>
+                                        <td>
+                                            {{P.publication}}
+                                        </td>
+                                        <td>
+                                            {{P.date | date:"dd-MMM-yyyy"}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-body" ng-if="vm.commendations[0].commendation != undefined">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="customeTableHead">
+                                    <tr>
+                                        <th style="width:5%; text-align:center;">
+                                            Ser
+                                        </th>
+                                        <th style="width:20%;">
+                                            Commendation
+                                        </th>
+                                        <th style="width:55%;">
+                                            Remarks
+                                        </th>
+                                        <th style="width:20%;">
+                                            Date
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="C in vm.commendations">
+                                        <td style="text-align:center;">
+                                            {{$index+1}}
+                                        </td>
+                                        <td>
+                                            {{C.commendation}}
+                                        </td>
+                                        <td style="text-align:left;">
+                                            {{C.remarks}}
+                                        </td>
+                                        <td>
+                                            {{C.date | date:"dd-MMM-yyyy"}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-body" ng-if="vm.appreciations[0].commendation != undefined">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead class="customeTableHead">
+                                    <tr>
+                                        <th style="width:5%; text-align:center;">
+                                            Ser
+                                        </th>
+                                        <th style="width:20%;">
+                                            Appreciation
+                                        </th>
+                                        <th style="width:55%;">
+                                            Remarks
+                                        </th>
+                                        <th style="width:20%;">
+                                            Date
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="A in vm.appreciations">
+                                        <td style="text-align:center;">
+                                            {{$index+1}}
+                                        </td>
+                                        <td>
+                                            {{A.commendation}}
+                                        </td>
+                                        <td style="text-align:left;">
+                                            {{A.remarks}}
+                                        </td>
+                                        <td>
+                                            {{A.date | date:"dd-MMM-yyyy"}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-body" ng-if="vm.leaveInfo.isTrue === true || vm.leaveInfo.isTrue === false">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <td class="customeTableHead" colspan="7">
+                                            Current Leave Status
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 16.6%;">PL Available this year</td>
+                                        <td ng-if="vm.leaveInfo.plAvailable>=0" style="width: 16.6%;">
+                                            {{vm.leaveInfo.plAvailable}} days
+                                        </td>
+                                        <td ng-if="vm.leaveInfo.plAvailable<0" style="width: 16.6%;"> 0 days <br /> <span style="color: red; font-size: 10px;"> (This Officer already availed {{vm.plAvailable}} days more than due.)</span></td>
+                                        <td style="width:16.6%">Last RL Availed Date</td>
+                                        <td style="width:16.6%">{{vm.leaveInfo.lastRlAvailed |date:"dd-MMM-yyyy"}}</td>
+                                        <td style="width:16.6%">RL Due Date</td>
+                                        <td style="width:16.6%">{{vm.leaveInfo.rlDue |date:"dd-MMM-yyyy"}} <span ng-if="vm.leaveInfo.isTrue" style="color:red;font-weight:bold">(Already Over Due)</span></td>
+
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="card-body" ng-if="vm.leaveInfo.isTrue === true || vm.leaveInfo.isTrue === false">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <td class="customeTableHead" colspan="4">
+                                            Leave Summary
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:33.2%">Privilege Leave Balance</td>
+                                        <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.totalPlAvailable}}</td>
+                                        <td style="width:33.2%">Recreation Leave Balance</td>
+                                        <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.recreationLeaveDue}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:33.2%">Furlough Leave Balance</td>
+                                        <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.totalFurloughLeave}}</td>
+                                        <td style="width:33.2%">Terminal Leave Balance</td>
+                                        <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.terminalLeave}}</td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width:33.2%">Casual Leave Balance</td>
+                                        <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.casualLeave}}</td>
+                                        <td style="width:33.2%">Survey Leave Balance</td>
+                                        <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.surveyLeave}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:33.2%">Leave on Medical Certificate Balance</td>
+                                        <td ng-if="vm.leaveInfo.medicalLeave>=0" style="width: 16.6%;text-align: center">{{vm.leaveInfo.medicalLeave}} </td>
+                                        <td ng-if="vm.leaveInfo.medicalLeave<0" style="width: 16.6%;text-align: center"> 0 </td>
+                                        <!--style="width: 80px; text-align: center">{{vm.leaveInfo.medicalLeave}}</td>-->
+                                        <td style="width:33.2%">d Sick Leave Balance</td>
+                                        <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.sickLeave}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width:33.2%">Maternity Leave Balance</td>
+                                        <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.maternyLeave}}</td>
+                                        <td style="width:33.2%">Wound, Injury or Disability Leave Balance</td>
+                                        <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.woundLeave}}</td>
+                                    </tr>
+                                </table>
+                                <!-- -->
+                            </div>
+                        </div>
+
+                        <!--Other Leave Details comes here-->
+                        <!--<div class="col-sm-12 pageWidth">-->
+                        <div ng-repeat="parent in vm.leaveInfos">
+                            <!--<div ng-if="parent.leaveTypeId == '1'" class="card-body">
+                <div class="table-responsive">
+                    <table class="table" style="text-align:center">
+                        <thead>
+                            <tr>
+                                <td class="customeTableHead" colspan="7">
+                                    {{parent.leaveTypeName}}&nbsp;&nbsp;({{parent.shartName}})
+                                </td>
+                            </tr>
+                            <tr class="customeTableHead1">
+                                <th style="width:20%;">From</th>
+                                <th style="width:20%;">To</th>
+                                <th style="width:10%;">Days</th>
+                                <th style="width:15%;">Leave Slot</th>
+                                <th style="width:35%;">Ex. BD Leave</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="child in parent.spGetEmployeeLeaveInfoes | orderBy:'fromDate'">
+                                <td style="text-align: center">{{child.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                <td style="text-align: center">{{child.toDate | date: "dd-MMM-yyyy"}}</td>
+                                <td style="text-align: center" ng-init="$parent.total = $parent.total + child.duration">{{child.duration}}</td>
+                                <td>{{child.slot}}</td>
+                                <td>{{child.country}}</td>
+
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><b>Total</b></td>
+                                <td></td>
+                                <td style="text-align: center"><b>{{ total }}</b></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+                            <div ng-if="parent.leaveTypeId !=  '2' && parent.leaveTypeId !=  '1'" class="card-body">
+                                <!--<pre>{{parent.spGetEmployeeLeaveInfoes | json}}</pre>-->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td class="customeTableHead" colspan="5">
+                                                    {{parent.leaveTypeName +' ('+parent.shartName +')'}}
+                                                    <!--Recreation Leave (RL)-->
+                                                </td>
+                                            </tr>
+                                            <tr class="customeTableHead1">
+                                                <th style="width:20%;">From</th>
+                                                <th style="width:20%;">To</th>
+                                                <th style="width:10%;">Days</th>
+                                                <th style="width:50%;">Remarks</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="child in parent.spGetEmployeeLeaveInfoes | orderBy:'fromDate'">
+                                                <td style="text-align: center">{{child.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                                <td style="text-align: center">{{child.toDate | date: "dd-MMM-yyyy"}}</td>
+                                                <td style="text-align: center" ng-init="$parent.total = $parent.total + child.duration">{{child.duration}}</td>
+                                                <td>{{child.remarks}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center"><b>Total</b></td>
+                                                <td></td>
+                                                <td style="text-align: center"><b>{{ total }}</b></td>
+                                                <td></td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

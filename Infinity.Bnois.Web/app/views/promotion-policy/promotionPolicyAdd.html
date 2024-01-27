@@ -1,0 +1,75 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Promotion Policy<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.promotionPolicyForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankFromId" class="custom-label">Rank From</label>
+                            <select name="rankFromId" id="rankFromId" class="form-control" ng-model="vm.promotionPolicy.rankFromId" ng-options="option.value as option.text for option in vm.ranks" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotionPolicyForm.rankFromId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankToId" class="custom-label">Rank To</label>
+                            <select name="rankToId" id="rankToId" class="form-control" ng-model="vm.promotionPolicy.rankToId" ng-options="option.value as option.text for option in vm.ranks" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotionPolicyForm.rankToId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="serviceYear" class="custom-label">Commission Service (Year)</label>
+                            <input type="text"  id="serviceYear" class="form-control custom-form-control" ng-model="vm.promotionPolicy.serviceYear" name="serviceYear" min="1" max="5" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isOneYearPreRank" class="custom-label">1 Year in Present Rank</label>
+                            <input type="radio" name="isOneYearPreRank" ng-model="vm.promotionPolicy.isOneYearPreRank" ng-value="false">No
+                            <input type="radio" name="isOneYearPreRank" ng-model="vm.promotionPolicy.isOneYearPreRank" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isOprRecom" class="custom-label">OPR Recommendation in Present Rank</label>
+                            <input type="radio" name="isOprRecom" ng-model="vm.promotionPolicy.isOprRecom" ng-value="false">No
+                            <input type="radio" name="isOprRecom" ng-model="vm.promotionPolicy.isOprRecom" ng-value="true">Yes
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isPassLfCdrQExam" class="custom-label">Lt Cdr Q-Exam Pass</label>
+                            <input type="radio" name="isPassLfCdrQExam" ng-model="vm.promotionPolicy.isPassLfCdrQExam" ng-value="false">No
+                            <input type="radio" name="isPassLfCdrQExam" ng-model="vm.promotionPolicy.isPassLfCdrQExam" ng-value="true">Yes
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isSpcialCourse" class="custom-label">Specialization Course</label>
+                            <input type="radio" name="isSpcialCourse" ng-model="vm.promotionPolicy.isSpcialCourse" ng-value="false">No
+                            <input type="radio" name="isSpcialCourse" ng-model="vm.promotionPolicy.isSpcialCourse" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.promotionPolicyForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

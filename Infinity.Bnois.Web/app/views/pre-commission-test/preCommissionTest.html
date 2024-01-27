@@ -1,0 +1,32 @@
+﻿
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <button class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+            <div class="panel-body pdfReportFormCover" id="print">
+                <h3>Pre Commission Test</h3>
+                <hr />
+                <h4 class="noScreen" style="border-bottom: 3px solid blue;font-family: Arial">{{vm.officerName}} ({{vm.pNo}})</h4>
+
+                <div class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable">
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight:bold">ISSB</td>
+
+                            <td class="reportTD" style="color:green;font-weight:bold;" ng-if="vm.preCommissionTest.issbText =='Attained'">{{vm.preCommissionTest.issbText}}</td>
+                            <td class="reportTD" style="color:red;font-weight:bold;" ng-if="vm.preCommissionTest.issbText =='Not Attained'">{{vm.preCommissionTest.issbText}}</td>
+                            <td class="reportTD" ng-if="vm.preCommissionTest.issb ==1" style="font-weight:bold">Result</td>
+                            <td class="reportTD" style="color:green;font-weight:bold;" ng-if="vm.preCommissionTest.issbResult =='Not Qualified'">{{vm.preCommissionTest.issbResult}}</td>
+                            <td class="reportTD" style="color:green;font-weight:bold;" ng-if="vm.preCommissionTest.issbResult =='Qualified'">{{vm.preCommissionTest.issbResult}}</td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

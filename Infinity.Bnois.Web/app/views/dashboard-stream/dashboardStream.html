@@ -1,0 +1,60 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+	        <div class="panel-body">
+
+	            <h4 class="text-center" style="margin-top: -5px;">Stream wise Officer Summary</h4>
+               
+          <div class="col-sm-12">      
+	            <div class="col-sm-5">
+	                <div class="form-group">
+	                    <label for="streamId" class="custom-label">Stream</label>
+	                    <select name="streamId" id="streamId" class="form-control" ng-model="vm.streamId"
+	                            ng-change="vm.getEmployeeListByOffice(vm.streamId)"
+	                            ng-options="option.value as option.text for option in vm.streams"  ng-init="vm.streamId=1">
+	                       
+	                    </select>
+	                </div>
+	            </div>
+                
+          </div>
+	          
+		        <div class="table-wrapper table-responsive" >
+			        <table class="table table-bordered">
+				        <thead>
+				        <tr class="tableHeading">
+					        
+					        <th>Name</th>
+					        <th>X</th>
+					        <th>E</th>
+					        <th>S</th>
+					        <th>Edu</th>
+					        <th>Med</th>
+					        <th>L</th>
+					        
+					        <th>Total</th>
+					      
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <tr  ng-repeat="stream in vm.dashboardStreams">
+							<td><strong>{{stream.name}}</strong></td>
+					        <td style="text-align: center" ><a href="" ng-if="stream.xValue>0" ng-click="vm.getOfficerList(stream.id,stream.x)"><strong>{{stream.xValue}}</strong></a> </td>
+							<td style="text-align: center" ><a href="" ng-if="stream.eValue>0" ng-click="vm.getOfficerList(stream.id,stream.e)"><strong>{{stream.eValue}}</strong></a></td>
+							<td style="text-align: center"><a href="" ng-if="stream.sValue>0" ng-click="vm.getOfficerList(stream.id,stream.s)"><strong>{{stream.sValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="stream.eduValue>0" ng-click="vm.getOfficerList(stream.id,stream.edu)"><strong>{{stream.eduValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="stream.medValue>0" ng-click="vm.getOfficerList(stream.id,stream.med)"><strong>{{stream.medValue}}</strong></a></td>
+							<td style="text-align: center"><a href="" ng-if="stream.lValue>0" ng-click="vm.getOfficerList(stream.id,stream.l)"><strong>{{stream.lValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="stream.total>0" ng-click="vm.getOfficerList(stream.id, null)"><strong>{{stream.total}}</strong></a></td>
+							
+				        </tr>
+                  
+				        </tbody>
+			        </table>
+
+		        </div>
+		
+	        </div>
+        </div>
+    </div>
+</div>

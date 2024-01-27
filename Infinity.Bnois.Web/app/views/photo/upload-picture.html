@@ -1,0 +1,76 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel" nv-file-drop="" uploader="uploader">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <img ng-src={{vm.fileModel.filePath}} ng-model="fileModel.fileName" class="img-responsive" style="width: 100%;max-width: 300px;height: 100%;max-height: 300px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                        </div>
+                        <div class="form-group">
+                            <div class="panel-default">
+                                <div ng-show="uploader.isHTML5">
+                                    <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                        <input type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="table-wrapper table-responsive">
+                            <div class="col-sm-12">
+                                <h2>Upload only image (with canvas preview)</h2>
+                                <h4>Only jpg, png, jpeg, bmp  and gif file is allowed with maximum 100 KB</h4>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th ng-show="uploader.isHTML5">Size</th>
+                                        <th ng-show="uploader.isHTML5">Progress</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in uploader.queue">
+                                        <td>
+                                            <strong>{{ item.file.name }}</strong>
+                                        </td>
+                                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                        <td ng-show="uploader.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-sm-12" style="margin-bottom: 20px">
+                                Upload progress:
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                </div>
+                                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                                <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

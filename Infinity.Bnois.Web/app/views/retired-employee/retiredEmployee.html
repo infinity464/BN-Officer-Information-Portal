@@ -1,0 +1,87 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{vm.title}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ng-show="vm.retiredEmployee.employee.fullNameEng != null">({{vm.retiredEmployee.employee.fullNameEng}}) ( P.No - {{vm.retiredEmployee.employee.pNo}} )</span></h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.updateRetiredEmployee()"><span class="glyphicon glyphicon-user"></span>Update</button>
+                    <button class="btn custom-btn btn-danger btn-margin-right pull-right" type="button" data-ng-click="vm.backToRetiredEmployees()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>
+
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                        <tr>
+                            <td style="font-weight:bold">TS No</td>
+                            <td>: </td>
+                            <td>{{vm.retiredEmployee.tsNo}}</td>
+                             
+                        </tr>
+                        
+                        <tr>
+                            <td style="font-weight:bold">Certificated Given For:</td>
+                            <td>: </td>
+                            <td>
+                                <ul ng-repeat="certificateName in vm.certificateNames">
+                                    <li>{{certificateName}}</li>
+
+                                </ul>
+                                
+
+                            </td>
+                               
+                        </tr>
+
+                        <tr>
+                                <td style="font-weight:bold">Permission to Visit Aboard</td>
+                                <td>: </td>
+                                <td>{{vm.retiredEmployee.isVisitAbroad==1?"Yes":"No"}}</td>
+                               
+                            </tr>
+                        <tr>
+                            <td style="font-weight:bold">Permission to Job Aboard</td>
+                            <td>: </td>
+                            <td>{{vm.retiredEmployee.isJobAbroad==1?"Yes":"No"}}</td>
+                               
+                        </tr>
+                        
+                        <tr>
+                            <td style="font-weight:bold">Country</td>
+                            <td>: </td>
+                            <td>
+                                <ul ng-repeat="countryName in vm.countryNames">
+                                    <li>{{countryName}}</li>
+
+                                </ul>
+                                
+
+                            </td>
+                               
+                        </tr>
+                            
+                        <tr>
+                            <td style="font-weight:bold">Pension Issued</td>
+                            <td>: </td>
+                            <td>{{vm.retiredEmployee.isPensionIssued==1?"Yes":"No"}}</td>
+                        </tr>
+
+                        <tr>
+                                <td style="font-weight:bold">Pension Book No</td>
+                                <td>: </td>
+                                <td>{{vm.retiredEmployee.bookNo}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Pension Issue Date</td>
+                                <td>: </td>
+                                <td>{{vm.retiredEmployee.issueDate| date: "dd-MMM-yyyy"}}</td>
+                                
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="pNo" class="custom-label"> PNo</label>
+            <input type="text" id="pNo" ng-keypress="$event.keyCode ==13 && searchEmployee()" class="form-control custom-form-control" ng-model="employee.pNo" name="pNo" required />
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="fullNameEng" class="custom-label">Name</label>
+            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="employee.fullNameEng" name="fullNameEng" maxlength="250" required />
+        </div>
+    </div>
+
+
+
+<div class="col-sm-6">
+	<div class="form-group">
+		<label for="fullNameBan" class="custom-label">Rank</label>
+		<input type="text" readonly="readonly"style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="employee.rank.fullName" name="fullNameBan" maxlength="250" required />
+	</div>
+</div>
+
+<div class="col-sm-6">
+    <div class="form-group">
+        <label for="fullNameBan" class="custom-label">Batch</label>
+        <input type="text" readonly="readonly"style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="employee.batch.name" name="fullNameBan" maxlength="250" required />
+    </div>
+</div>
+<!-- <div class="col-sm-6"> -->
+<!--     <div class="form-group"> -->
+<!--         <label for="born" class="custom-label">Born</label> -->
+<!--         <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="preBornOffice" /> -->
+<!--     </div> -->
+<!-- </div> -->
+<!-- <div class="col-sm-6"> -->
+<!--     <div class="form-group"> -->
+<!--         <label for="Attach" class="custom-label">Attach</label> -->
+<!--         <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="preAttachOffice" /> -->
+<!--     </div> -->
+<!-- </div> -->
+<!-- <div class="col-sm-6"> -->
+<!--     <div class="form-group"> -->
+<!--         <label for="Appointment" class="custom-label">Appointment</label> -->
+<!--         <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="preAppointment" /> -->
+<!--     </div> -->
+<!-- </div> -->

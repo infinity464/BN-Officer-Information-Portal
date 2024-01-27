@@ -1,0 +1,51 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Future Plan For Course</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addCourseFuturePlan()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Course Category</th> 
+                                <th>Course Sub Category</th>
+                                <th>Course </th>
+                                <th>Plan Date</th>
+                                <th>End Date </th>
+                                <th>Remarks </th>
+                               
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="courseFuturePlan in vm.courseFuturePlans">
+                                <td>{{$index+1}}</td>
+                                 <td>{{courseFuturePlan.courseCategory.name}}</td>
+                                 <td>{{courseFuturePlan.courseSubCategory.name}}</td> 
+                                <td>{{courseFuturePlan.course.fullName}}</td>
+                                <td style="width: 100px;">{{courseFuturePlan.planDate | date: "dd-MMM-yyyy"}}</td>
+                                <td style="width: 100px;">{{courseFuturePlan.endDate | date: "dd-MMM-yyyy"}}</td>
+                                <td>{{courseFuturePlan.remarks}}</td>
+                                <td class="text-right">
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateCourseFuturePlan(courseFuturePlan)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteCourseFuturePlan(courseFuturePlan)"
+                                       ng-confirmation-message="Do you want to delete Course Future Plan ?"
+                                       ng-confirmation-title="Delete Course Future Plan ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Course Future Plan"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

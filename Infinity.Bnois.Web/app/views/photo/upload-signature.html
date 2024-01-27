@@ -1,0 +1,66 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <img ng-src={{vm.fileModel.filePath}} ng-model="vm.fileModel.fileName" class="img-responsive" style="width: 200%;max-width: 200px;height: 80%;max-height: 80px;padding: 5px;background: #fff;border-radius: 2px;" alt="Image" />
+                        </div>
+                        <div class="form-group">
+                            <div class="panel-default">
+                                <div ng-show="vm.uploader.isHTML5">
+                                    <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                        <input type="file" nv-file-select="" uploader="vm.uploader" style="opacity: 1;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="table-wrapper table-responsive">
+                            <div class="col-sm-12">
+                                <h2>Upload only image (with canvas preview)</h2>
+                                <h4>Only jpg, png, jpeg, bmp  and gif file is allowed with maximum 60 KB</h4>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th width="20%" ng-show="vm.uploader.isHTML5">Sizes</th>
+                                        <th width="10%">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in vm.uploader.queue">
+                                        <td>
+                                            <strong>{{ item.file.name }}</strong>
+                                        </td>
+                                        <td ng-show="vm.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                        <td class="text-center">
+                                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="" class="custom-label">Upload progress:</label>
+                                    <div class="progress" style="">
+                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': vm.uploader.progress + '%' }"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn custom-btn btn-info" ng-click="vm.uploader.uploadAll()" ng-disabled="!vm.uploader.getNotUploadedItems().length"><span class="glyphicon glyphicon-cloud-upload"></span>Upload</button>
+                                    <button type="button" class="btn custom-btn btn-danger" ng-click="vm.uploader.clearQueue()" ng-disabled="!vm.uploader.queue.length"><span class="glyphicon glyphicon-off"></span>Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

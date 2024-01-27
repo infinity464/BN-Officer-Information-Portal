@@ -1,0 +1,77 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Training Institute<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.trainingInstituteForm">
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryType" class="custom-label">Country Type</label>
+
+                            <div class="radio-inline" ng-repeat=" status in vm.countryTypes">
+
+                                <label>    <input type="radio" id="countryType" ng-model="vm.trainingInstitute.countryType" ng-change="vm.countriesName(vm.trainingInstitute.countryType)" value="{{status.value}}" required> {{status.text}}  </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.trainingInstitute.countryId" 
+                                    ng-options="option.value as option.text for option in vm.countries" required  ng-disabled="vm.countryDisable"  >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.trainingInstituteForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullName" class="custom-label"> Institute Name</label>
+                            <input type="text" id="fullName" class="form-control custom-form-control" ng-model="vm.trainingInstitute.fullName" name="fullName" maxlength="250"  required />
+                            <p ng-show="vm.trainingInstituteForm.fullName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            <p ng-show="vm.trainingInstituteForm.fullName.$error.required" class="help-block errormsg">Name is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameInBangla" class="custom-label">Name In Bangla</label>
+                            <input type="text" id="nameInBangla" class="form-control custom-form-control" ng-model="vm.trainingInstitute.nameInBangla" name="nameInBangla" maxlength="250" />
+                            <p ng-show="vm.trainingInstituteForm.nameInBangla.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label"> Short Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.trainingInstitute.shortName" name="shortName" maxlength="250" />
+                            <p ng-show="vm.trainingInstituteForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="addressInfo" class="custom-label"> Address</label>
+                            <input type="text" id="addressInfo" class="form-control custom-form-control" ng-model="vm.trainingInstitute.addressInfo" name="addressInfo" maxlength="250" />
+                            <p ng-show="vm.trainingInstituteForm.addressInfo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.trainingInstituteForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

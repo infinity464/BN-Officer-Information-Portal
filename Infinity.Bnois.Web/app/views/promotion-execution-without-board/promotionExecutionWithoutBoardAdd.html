@@ -1,0 +1,67 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Promotion Execution Without Board<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.promotinExecutionWithoutBoardForm">
+                    <employee-search ng-model="vm.promotionNomination.employee"></employee-search>
+
+                    <div class="col-sm-6" ng-if="vm.promotionNomination.employee.employeeId>0">
+                        <div class="form-group">
+                            <input type="checkbox" id="isBackLog" class="form-check-input" ng-model="vm.promotionNomination.isBackLog" name="isBackLog" ng-change="vm.isBackLogChecked(vm.promotionNomination.isBackLog)" />
+                            <label for="isBackLog" class="custom-label"> Back Log </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.promotionNomination.isBackLog">
+                        <div class="form-group">
+                            <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                            <select name="transferId" id="transferId" class="form-control" ng-model="vm.promotionNomination.transferId"
+                                    ng-options="option.value as option.text for option in vm.transfers">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                 
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fromRankId" class="custom-label">Rank From</label>
+                            <select name="fromRankId" id="fromRankId" class="form-control" ng-model="vm.promotionNomination.fromRankId" ng-options="option.value as option.text for option in vm.ranks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotinExecutionWithoutBoardForm.fromRankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="toRankId" class="custom-label">Rank To</label>
+                            <select name="toRankId" id="toRankId" class="form-control" ng-model="vm.promotionNomination.toRankId" ng-options="option.value as option.text for option in vm.ranks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.promotinExecutionWithoutBoardForm.toRankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="effectiveDate" class="custom-label">Effective Date</label>
+                            <input kendo-date-picker id="effectiveDate" class="form-control custom-form-control" k-ng-model="vm.promotionNomination.effectiveDate" k-format="'dd-MM-yyyy'" name="effectiveDate" required/>
+                            <p ng-show="vm.promotinExecutionWithoutBoardForm.effectiveDate.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.promotinExecutionWithoutBoardForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

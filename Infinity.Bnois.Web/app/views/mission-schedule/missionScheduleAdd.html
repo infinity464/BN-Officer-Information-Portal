@@ -1,0 +1,91 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Mission Schedule<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.missionScheduleForm">
+
+					
+	                <div class="col-sm-6">
+		                <div class="form-group">
+			                <label for="titleName" class="custom-label">Title</label>
+			                <input type="text" id="title" class="form-control custom-form-control" ng-model="vm.missionSchedule.titleName" name="title" maxlength="250" required />
+			                <p ng-show="vm.missionScheduleForm.titleName.$error.requird" class="help-block errormsg">Title is required.</p>
+			                <p ng-show="vm.missionScheduleForm.titleName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+		                </div>
+	                </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.missionSchedule.countryId"
+                                    ng-options="option.value as option.text for option in vm.countries" required >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.missionScheduleForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+					
+	                <div class="col-sm-6">
+		                <div class="form-group">
+			                <label for="location" class="custom-label">Location</label>
+			                <textarea type="text" id="location" class="form-control custom-form-control" ng-model="vm.missionSchedule.location" name="location" maxlength="250"></textarea>
+			                <p ng-show="vm.missionScheduleForm.location.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+		                </div>
+	                </div>
+
+	                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fromDate" class="custom-label">  From Date</label>
+                            <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.missionSchedule.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                            <p ng-show="vm.missionScheduleForm.fromDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="toDate" class="custom-label">  To Date</label>
+                            <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.missionSchedule.toDate" k-format="'dd-MM-yyyy'" name="toDate" required />
+                            <p ng-show="vm.missionScheduleForm.toDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="numberOfPost" class="custom-label">Number of Post</label>
+                            <input type="number" id="numberOfPost" class="form-control custom-form-control" ng-model="vm.missionSchedule.numberOfPost" name="numberOfPost" maxlength="250"  />
+                            <p ng-show="vm.missionScheduleForm.numberOfPost.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                   
+	                <div class="col-sm-6">
+		                <div class="form-group">
+			                <label for="purpose" class="custom-label">Purpose</label>
+			                <textarea type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.missionSchedule.purpose" name="purpose" maxlength="250"></textarea>
+			                <p ng-show="vm.missionScheduleForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+		                </div>
+	                </div>
+					
+	                <div class="col-sm-6">
+		                <div class="form-group">
+			                <label for="remarks" class="custom-label">Remarks</label>
+			                <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.missionSchedule.remarks" name="remarks" maxlength="250"></textarea>
+			                <p ng-show="vm.missionScheduleForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+		                </div>
+	                </div>
+
+
+
+
+	                <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.missionScheduleForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

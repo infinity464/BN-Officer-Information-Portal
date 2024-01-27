@@ -1,0 +1,60 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+                <form name="vm.appointmentNatureForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Appointment Nature<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aNatNm" class="custom-label">Appointment Nature</label>
+                            <input type="text" id="aNatNm" class="form-control custom-form-control" ng-model="vm.appointmentNature.aNatNm" name="aNatNm" maxlength="60" required />
+                            <p ng-show="vm.appointmentNatureForm.aNatNm.$error.required" class="help-block errormsg">This is required</p>
+                            <p ng-show="vm.appointmentNatureForm.aNatNm.$error.maxlength" class="help-block errormsg">Maximum length 60 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aNatNmBng" class="custom-label">Appointment Nature(Bangla)</label>
+                            <input type="text" id="aNatNmBng" class="form-control custom-form-control" ng-model="vm.appointmentNature.aNatNmBng" name="aNatNmBng" maxlength="80" />
+                            <p ng-show="vm.appointmentNatureForm.aNatNmBng.$error.maxlength" class="help-block errormsg">Maximum length 80 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="anatShnm" class="custom-label">Short Name</label>
+                            <input type="text" id="aNatShnm" class="form-control custom-form-control" ng-model="vm.appointmentNature.aNatShnm" name="aNatShnm" maxlength="250" />
+                            <p ng-show="vm.appointmentNatureForm.aNatShnm.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aNatShnmBng" class="custom-label">Short Name(Bangla)</label>
+                            <input type="text" id="aNatShnmBng" class="form-control custom-form-control" ng-model="vm.appointmentNature.aNatShnmBng" name="aNatShnmBng" maxlength="250" />
+                            <p ng-show="vm.appointmentNatureForm.aNatShnmBng.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="custom-label"></label>
+                            <input type="checkbox" ng-model="vm.appointmentNature.aptFr" /> <b>Outside Navy</b>
+                            <input type="checkbox" ng-model="vm.appointmentNature.isStaffDuty" /> <b>Staff Duties</b>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.appointmentNatureForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right " ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+			</div>
+		</div>
+	</div>
+</div>

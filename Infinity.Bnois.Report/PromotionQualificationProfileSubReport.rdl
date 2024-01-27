@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="QualificationProfileDS">
+      <DataSourceReference>BnoisDataSource</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>b508f709-83cb-4dfc-8f3b-432be043aaf5</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="BasicCourseDSet">
+      <Query>
+        <DataSourceName>QualificationProfileDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@EmployeeId">
+            <Value>=Parameters!EmployeeId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>
+
+	   select 
+case
+when CT.CountryId=12 and TR.Positon='' then  CAST(ROUND(TR.Percentage,2) as varchar(20))+'%'
+when CT.CountryId&lt;&gt;12  then CT.FullName
+else  CAST( ROUND(TR.Percentage,2) as varchar(20))+'%'+ isnull(', '+CAST(TR.Positon as varchar(20))+'/'+cast((select count(TrainingPlanId) from TrainingResult where TrainingPlanId=TR.TrainingPlanId) as varchar(20)),'') 
+end as Result ,
+
+ISNULL((SELECT stuff((
+select top(2)
+ ', ' + cast(crs.FullName as varchar(max)) 
+from TrainingResult TR
+inner join CourseCategory  CC on TR.CourseCategoryId=CC.CourseCategoryId
+inner join TrainingPlan TP on TR.TrainingPlanId=TP.TrainingPlanId
+inner join Course crs on TP.CourseId=crs.CourseId
+where TR.EmployeeId=315 and crs.SplQualification=1
+    FOR XML PATH('')
+	   ), 1, 2, '')),'Not done') as SplQualification
+
+from TrainingResult TR
+inner join CourseCategory  CC on TR.CourseCategoryId=CC.CourseCategoryId
+inner join TrainingPlan TP on TR.TrainingPlanId=TP.TrainingPlanId
+inner join Country CT on TP.CountryId=CT.CountryId
+where CC.CourseCategoryId=1 and TR.EmployeeId=@EmployeeId</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Result">
+          <DataField>Result</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SplQualification">
+          <DataField>SplQualification</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="JSCCourseDSet">
+      <Query>
+        <DataSourceName>QualificationProfileDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@EmployeeId">
+            <Value>=Parameters!EmployeeId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>select 
+case
+when CT.CountryId=12 and TR.Positon=null then CAST(ROUND(TR.Percentage, 2) as varchar(20))+'%'
+when CT.CountryId&lt;&gt;12  then CT.FullName
+else CAST( ROUND(TR.Percentage,2) as varchar(20))+'%'
++ isnull(', '+CAST(TR.Positon as varchar(20))+'/'+cast((select count(TrainingPlanId) from TrainingResult where TrainingPlanId=TR.TrainingPlanId) as varchar(20)),'') 
+end as Result 
+from TrainingResult TR
+inner join CourseCategory  CC on TR.CourseCategoryId=CC.CourseCategoryId
+inner join TrainingPlan TP on TR.TrainingPlanId=TP.TrainingPlanId
+inner join Country CT on TP.CountryId=CT.CountryId
+inner join ResultType RT on TR.ResultTypeId=RT.ResultTypeId
+where CC.CourseCategoryId=2 and TR.EmployeeId=@EmployeeId and RT.ResultTypeId&lt;&gt;1</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Result">
+          <DataField>Result</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SpecializationCourseDSet">
+      <Query>
+        <DataSourceName>QualificationProfileDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@EmployeeId">
+            <Value>=Parameters!EmployeeId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        CASE WHEN CT.CountryId = 12 AND TR.Positon = NULL THEN LTRIM(STR(TR.Percentage, 25, 2)) + '%' WHEN CT.CountryId &lt;&gt; 12 THEN CT.FullName ELSE CAST(ROUND(TR.Percentage, 2) AS varchar(20)) 
+                         + '%' + isnull(', ' + CAST(TR.Positon AS varchar(20)) + '/' + CAST
+                             ((SELECT        COUNT(TrainingPlanId)
+                                 FROM            TrainingResult
+                                 WHERE        TrainingPlanId = TR.TrainingPlanId) AS varchar(20)), '') END AS Result
+FROM            TrainingResult AS TR INNER JOIN
+                         CourseCategory AS CC ON TR.CourseCategoryId = CC.CourseCategoryId INNER JOIN
+                         TrainingPlan AS TP ON TR.TrainingPlanId = TP.TrainingPlanId INNER JOIN
+                         Country AS CT ON TP.CountryId = CT.CountryId
+WHERE        (CC.CourseCategoryId = 3) AND (TR.EmployeeId = @EmployeeId)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Result">
+          <DataField>Result</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="StaffCourseDSet">
+      <Query>
+        <DataSourceName>QualificationProfileDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@EmployeeId">
+            <Value>=Parameters!EmployeeId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>select 
+case
+when CT.CountryId=12 and TR.Positon=NULL then CAST(ROUND(TR.Percentage,2) AS varchar(20)) +'%'
+when CT.CountryId&lt;&gt;12  then CT.FullName
+else  CAST(ROUND(TR.Percentage,2) as varchar(20)) +'%'+ isnull(', '+CAST(TR.Positon as varchar(20)) +'/'+cast((select count(TrainingPlanId) from TrainingResult where TrainingPlanId=TR.TrainingPlanId) as varchar(20)),'') 
+end as Result
+from TrainingResult TR
+inner join CourseCategory  CC on TR.CourseCategoryId=CC.CourseCategoryId
+inner join TrainingPlan TP on TR.TrainingPlanId=TP.TrainingPlanId
+inner join Country CT on TP.CountryId=CT.CountryId
+where CC.CourseCategoryId=4 and TR.EmployeeId=@EmployeeId</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Result">
+          <DataField>Result</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="CommandCourseDSet">
+      <Query>
+        <DataSourceName>QualificationProfileDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@EmployeeId">
+            <Value>=Parameters!EmployeeId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>select 
+case
+when CT.CountryId=12 and (TR.Positon=null or TR.Positon=0) then cast( round(TR.Percentage, 2) as varchar(30))+'%'+', '+  isnull(', '+TR.DsRecom,'')
+when CT.CountryId&lt;&gt;12  then CT.FullName+', '+ isnull(TR.DsRecom,'')
+else  cast( round(TR.Percentage, 2) as varchar(30))+'%, '+  cast(TR.Positon as varchar(30))+ isnull('/'+cast((select count(TrainingPlanId) from TrainingResult where TrainingPlanId=TR.TrainingPlanId) as varchar(20)),'th') + isnull(', '+TR.DsRecom,'')
+end as Result 
+from TrainingResult TR
+inner join CourseCategory  CC on TR.CourseCategoryId=CC.CourseCategoryId
+inner join TrainingPlan TP on TR.TrainingPlanId=TP.TrainingPlanId
+inner join Country CT on TP.CountryId=CT.CountryId
+where CC.CourseCategoryId=5 and TR.EmployeeId=@EmployeeId</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Result">
+          <DataField>Result</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HigherCmdCourseDSet">
+      <Query>
+        <DataSourceName>QualificationProfileDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@EmployeeId">
+            <Value>=Parameters!EmployeeId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>select
+case when  (select count(CC.name)  
+from TrainingResult TR
+inner join CourseCategory  CC on TR.CourseCategoryId=CC.CourseCategoryId
+inner join TrainingPlan TP on TR.TrainingPlanId=TP.TrainingPlanId
+inner join Country CT on TP.CountryId=CT.CountryId
+where CC.CourseCategoryId=25 and TR.EmployeeId=@EmployeeId) =1 then 'Done'
+else 'Not Done' end as Result</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Result">
+          <DataField>Result</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="BatchPositionDSet">
+      <Query>
+        <DataSourceName>QualificationProfileDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@EmployeeId">
+            <Value>=Parameters!EmployeeId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        ISNULL(BatchPosition, 0) AS BatchPosition,
+                             (SELECT        COUNT(BatchId) AS Expr1
+                               FROM            Employee
+                               WHERE        (BatchId = Employee_1.BatchId) AND (EmployeeStatusId = 1)) AS OutOf
+FROM            Employee AS Employee_1
+WHERE        (EmployeeId = @EmployeeId)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="BatchPosition">
+          <DataField>BatchPosition</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OutOf">
+          <DataField>OutOf</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.36459in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.18646in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="BatchPosition">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Batch Posn : </Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Label>BPostion</Label>
+                                  <Value>=Fields!BatchPosition.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>/</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!OutOf.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>BatchPosition</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.34271in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Basic Course</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Basic</Label>
+                                  <Value>=iif(isnothing(First(Fields!Result.Value, "BasicCourseDSet")),"Not Done",First(Fields!Result.Value, "BasicCourseDSet"))</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.35521in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox10">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>JSC</Label>
+                                  <Value>JSC</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>JSC</Label>
+                                  <Value>=iif(isnothing(First(Fields!Result.Value, "JSCCourseDSet")),"Not Done",First(Fields!Result.Value, "JSCCourseDSet"))</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.32188in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox16">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Specialization</Label>
+                                  <Value>Specialization Course</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Specialization</Label>
+                                  <Value>=iif(isnothing(First(Fields!Result.Value, "SpecializationCourseDSet")),"Not Done",First(Fields!Result.Value, "SpecializationCourseDSet"))</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox16</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.30105in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Staff</Label>
+                                  <Value>Staff Course</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Staff</Label>
+                                  <Value>=iif(isnothing(First(Fields!Result.Value, "StaffCourseDSet")),"Not Done",(First(Fields!Result.Value, "StaffCourseDSet")))</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.3323in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox19">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Command</Label>
+                                  <Value>Command Course</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Command</Label>
+                                  <Value>=iif(isnothing(First(Fields!Result.Value, "CommandCourseDSet")),"Not Done",First(Fields!Result.Value, "CommandCourseDSet"))</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.3448in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox22">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Higer Command</Label>
+                                  <Value>Higher Command Course</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Higer Command</Label>
+                                  <Value>=iif(isnothing(First(Fields!Result.Value, "HigherCmdCourseDSet")),"Not Done",First(Fields!Result.Value, "HigherCmdCourseDSet"))</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox22</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.35521in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Spl Qualitication</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>SplQualification</Label>
+                                  <Value>=First(Fields!SplQualification.Value, "BasicCourseDSet")</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Details" />
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>BatchPositionDSet</DataSetName>
+            <Top>0.0175in</Top>
+            <Left>0.01958in</Left>
+            <Height>2.53962in</Height>
+            <Width>1.36459in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>2.5925in</Height>
+        <Style />
+      </Body>
+      <Width>1.39458in</Width>
+      <Page>
+        <PageHeight>11.69in</PageHeight>
+        <PageWidth>8.27in</PageWidth>
+        <LeftMargin>0.1in</LeftMargin>
+        <RightMargin>0.1in</RightMargin>
+        <TopMargin>0.1in</TopMargin>
+        <BottomMargin>0.1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="EmployeeId">
+      <DataType>Integer</DataType>
+      <Prompt>Employee Id</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>EmployeeId</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>06888bf0-1e41-435e-b132-131a5bcb686f</rd:ReportID>
+</Report>

@@ -1,0 +1,75 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.childrenImageUploadForm">
+
+                    
+                    <button class="btn custom-btn btn-danger btn-margin-right pull-right" type="button" data-ng-click="vm.back()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-sm-12 page-header">
+                                <h2 class="warning page-header-item">
+                                    Children Image Upload
+                                </h2>
+                            </div>
+                            <div class="form-group">
+                                <img ng-src={{vm.fileModel.filePath}} ng-model="fileModel.fileName" class="img-responsive" style="width: 200%; max-width: 200px; height: 200%; max-height: 200px; padding: 10px; background: #fff; border-radius: 2px;" alt="Image" />
+                            </div>
+                            <div class="form-group">
+                                <div class="panel-default">
+                                    <div ng-show="uploader.isHTML5">
+                                        <div class="btn custom-btn-primary fileinput-button" style="display: block;">
+                                            <input id="Image2" type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                </div>
+                                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-12"></div>
+                        <div class="col-md-6">
+                            <div class="col-sm-12 page-header">
+                                <h2 class="warning page-header-item">
+                                    Children Gen Form Upload
+                                </h2>
+                            </div>
+                            <div class="form-group">
+                                <img ng-src={{vm.fileModel1.filePath}} ng-model="fileModel.fileName" class="img-responsive" style="width: 200%; max-width: 200px; height: 200%; max-height: 200px; padding: 10px; background: #fff; border-radius: 2px;" alt="Image" />
+                            </div>
+                            <div class="form-group">
+                                <div class="panel-default">
+                                    <div ng-show="uploader1.isHTML5">
+                                        <div class="btn custom-btn-primary fileinput-button" style="display: block;">
+                                            <input id="Image2" type="file" nv-file-select="" uploader="uploader1" style="opacity: 1;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader1.progress + '%' }"></div>
+                                </div>
+                                <button type="button" class="btn btn-success btn-s" ng-click="uploader1.uploadAll()" ng-disabled="!uploader1.getNotUploadedItems().length">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                            </div>
+
+                        </div>
+
+                       
+
+                    </div>
+                    
+                 
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>

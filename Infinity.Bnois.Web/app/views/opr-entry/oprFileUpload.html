@@ -1,0 +1,222 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.oprFileUploadForm">
+
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">OPR File Upload</h2>
+                        <button class="btn custom-btn btn-danger btn-margin-right pull-right" type="button" data-ng-click="vm.back()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>
+                    </div>
+                    <div class="row">
+                        <div class="panel" nv-file-drop="" uploader="uploader2">
+                            <div class="panel-body" style="padding-top: 0;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-wrapper table-responsive">
+                                            <div class="col-sm-12">
+                                                <h3>Upload only PDF File</h3>
+                                            </div>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th ng-show="uploader2.isHTML5">Size</th>
+                                                        <th ng-show="uploader2.isHTML5">Progress</th>
+                                                        <th>Status</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in uploader2.queue">
+                                                        <td ng-show="uploader2.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                                        <td ng-show="uploader2.isHTML5">
+                                                            <div class="progress" style="margin-bottom: 0;">
+                                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="col-sm-12">
+                                                Upload progress:
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader2.progress + '%' }"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group" style="min-height: 50px;">
+                                                    <div class="panel-default">
+                                                        <div ng-show="uploader2.isHTML5">
+                                                            <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                                                <input type="file" nv-file-select="" uploader="uploader2" style="opacity: 1;" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="pull-right">
+                                                    <button type="button" class="btn btn-success btn-s" ng-click="uploader2.uploadAll()" ng-disabled="!uploader2.getNotUploadedItems().length">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader2.clearQueue()" ng-disabled="!uploader2.queue.length">
+                                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">OPR Section II Upload</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img ng-src={{vm.employeeOpr.section2ImageUrl||"Images/FileIcon.png"}} ng-model="fileModel.fileName" class="img-responsive" style="width: 300%;max-width: 300px;height: 100%;max-height: 100px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                            </div>
+                            <div class="form-group">
+                                <div class="panel-default">
+                                    <div ng-show="uploader.isHTML5">
+                                        <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                            <input id="Image2" type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="table-wrapper table-responsive">
+                                <div class="col-sm-12">
+                                    <h2>Upload only image</h2>
+                                    <h4>Only jpg, png, jpeg, bmp  and gif file is allowed</h4>
+                                </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th ng-show="uploader.isHTML5">Size</th>
+                                            <th ng-show="uploader.isHTML5">Progress</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in uploader.queue">
+                                            <td>
+                                                <strong>{{ item.file.name }}</strong>
+                                            </td>
+                                            <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                            <td ng-show="uploader.isHTML5">
+                                                <div class="progress" style="margin-bottom: 0;">
+                                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm-12" style="margin-bottom: 20px">
+                                    Upload progress:
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                    </div>
+                                    <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">OPR Section IV Upload</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img ng-src={{vm.employeeOpr.section4ImageUrl||"Images/FileIcon.png"}} ng-model="fileModel.fileName" class="img-responsive" style="width: 300%;max-width: 300px;height: 100%;max-height: 100px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                            </div>
+                            <div class="form-group">
+                                <div class="panel-default">
+                                    <div ng-show="uploader1.isHTML5">
+                                        <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                            <input id="Image4" type="file" nv-file-select="" uploader="uploader1" style="opacity: 1;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="table-wrapper table-responsive">
+                                <div class="col-sm-12">
+                                    <h2>Upload only image</h2>
+                                    <h4>Only jpg, png, jpeg, bmp  and gif file is allowed</h4>
+                                </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th ng-show="uploader1.isHTML5">Size</th>
+                                            <th ng-show="uploader1.isHTML5">Progress</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in uploader1.queue">
+                                            <td>
+                                                <strong>{{ item.file.name }}</strong>
+                                            </td>
+                                            <td ng-show="uploader1.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                            <td ng-show="uploader1.isHTML5">
+                                                <div class="progress" style="margin-bottom: 0;">
+                                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm-12" style="margin-bottom: 20px">
+                                    Upload progress:
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                    </div>
+                                    <button type="button" class="btn btn-success btn-s" ng-click="uploader1.uploadAll()" ng-disabled="!uploader1.getNotUploadedItems().length">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader1.clearQueue()" ng-disabled="!uploader1.queue.length">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

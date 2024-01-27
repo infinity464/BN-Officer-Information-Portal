@@ -1,0 +1,78 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+
+                <form name="vm.ageServicePolicyForm">
+                    <div class="col-sm-12 page-header">
+                    <h2 class="warning page-header-item">Service Age Policy<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="categoryId" class="custom-label">Category</label>
+                            <select name="categoryId" id="categoryId" class="form-control" ng-model="vm.ageServicePolicy.categoryId"
+                                    ng-change="vm.getSubCategoryByCategoryId(vm.ageServicePolicy.categoryId)"
+                                    ng-options="option.value as option.text for option in vm.categories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.ageServicePolicyForm.categoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="subCategoryId" class="custom-label">Sub Category</label>
+                            <select name="subCategoryId" id="subCategoryId" class="form-control" ng-model="vm.ageServicePolicy.subCategoryId" ng-options="option.value as option.text for option in vm.subCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.ageServicePolicyForm.subCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.ageServicePolicy.rankId" ng-options="option.value as option.text for option in vm.ranks" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.ageServicePolicyForm.rankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="serviceLimit" class="custom-label"> Service Limit (In years)</label>
+                            <input type="number" id="serviceLimit" class="form-control custom-form-control" ng-model="vm.ageServicePolicy.serviceLimit" name="serviceLimit" required/>
+                            <p ng-show="vm.ageServicePolicyForm.serviceLimit.$error.required" class="help-block errormsg">Service Limit is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="ageLimit" class="custom-label">Age Limit (In years)</label>
+                            <input type="number" id="ageLimit" class="form-control custom-form-control" ng-model="vm.ageServicePolicy.ageLimit" name="ageLimit" required/>
+                            <p ng-show="vm.ageServicePolicyForm.ageLimit.$error.required" class="help-block errormsg">Age Limit is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="earlyStatus" class="custom-label">Status</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.earlyStatus">
+
+                                <input type="radio" ng-model="vm.ageServicePolicy.earlyStatus" required value="{{status.value}}"> {{status.text}}
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.ageServicePolicyForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

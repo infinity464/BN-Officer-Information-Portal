@@ -1,0 +1,58 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Pre Commission Course <span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.preCommissionCourseDetailForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="moduleName" class="custom-label">Module Name</label>
+                            <input type="text" id="moduleName" class="form-control custom-form-control" ng-model="vm.preCommissionCourseDetail.moduleName" name="moduleName" maxlength="250" />
+                            <p ng-show="vm.preCommissionCourseDetailForm.moduleName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="outOfMark" class="custom-label">Out Of</label>
+                            <input type="text" id="outOfMark" class="form-control custom-form-control" ng-model="vm.preCommissionCourseDetail.outOfMark" name="outOfMark" maxlength="250" />
+                            <p ng-show="vm.preCommissionCourseDetailForm.outOfMark.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="achievedMark" class="custom-label">Achieved Mark</label>
+                            <input type="text" id="achievedMark" class="form-control custom-form-control" ng-model="vm.preCommissionCourseDetail.achievedMark" name="achievedMark" maxlength="250" />
+                            <p ng-show="vm.preCommissionCourseDetailForm.achievedMark.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="position" class="custom-label">Position</label>
+                            <input type="text" id="position" class="form-control custom-form-control" ng-model="vm.preCommissionCourseDetail.position" name="position" maxlength="250" />
+                            <p ng-show="vm.preCommissionCourseDetailForm.position.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <input type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.preCommissionCourseDetail.remarks" name="remarks" maxlength="250" />
+                            <p ng-show="vm.preCommissionCourseDetailForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.preCommissionCourseDetailForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

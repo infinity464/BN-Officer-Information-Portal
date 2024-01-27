@@ -1,0 +1,66 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Proposal Detail<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.proposalDetailForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="transferType" class="custom-label">Transfer Type</label>
+                            <select name="transferType" id="transferType" class="form-control" ng-model="vm.proposalDetail.transferType" ng-options="option.value as option.text for option in vm.transferTypes" ng-change="vm.getOfficeSelectModelByType(vm.proposalDetail.transferType)" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.proposalDetailForm.transferType.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="attachOfficeId" class="custom-label">Attach Office</label>
+                            
+                            <angucomplete-alt id="attachOfficeId"
+                                              placeholder="Search Attach Office"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selectedAttach"
+                                              local-data="vm.offices"
+                                              local-search="vm.localSearchAttach"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="true"
+                                              input-name="attachOfficeId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Office Not Found"
+                                              input-class="form-control form-control-small" />
+                            
+
+                            <!-- <select name="attachOfficeId" id="attachOfficeId" class="form-control" ng-model="vm.proposalDetail.attachOfficeId" ng-options="option.value as option.text for option in vm.offices" ng-change="vm.getOfficeAppointmentByOffice(vm.proposalDetail.attachOfficeId)"> -->
+                            <!--     <option value="">--Select an Option--</option> -->
+                            <!-- </select> -->
+                            <p ng-show="vm.proposalDetailForm.attachOfficeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="appointmentId" class="custom-label">Appointment</label>
+                            <select name="appointmentId" id="appointmentId" class="form-control" ng-model="vm.proposalDetail.appointmentId" ng-options="option.value as option.text for option in vm.officeAppointments">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.proposalDetailForm.appointmentId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.proposalDetailForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

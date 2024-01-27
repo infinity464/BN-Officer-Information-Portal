@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7A45385-2798-4CF2-89D8-A2530A6D9456}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infinity.Bnois.Api</RootNamespace>
+    <AssemblyName>Infinity.Bnois.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Infinity.Bnois.Api.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.v12.12.0.0.0\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.6\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BackLogController.cs" />
+    <Compile Include="Controllers\BasicSearchController.cs" />
+    <Compile Include="Controllers\BulkUserController.cs" />
+    <Compile Include="Controllers\DownloadController.cs" />
+    <Compile Include="Controllers\EmployeeHajjDetailController.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
+    <Compile Include="Controllers\FlashNoticeController.cs" />
+    <Compile Include="Controllers\SpecialAptTypesController.cs" />
+    <Compile Include="Controllers\DailyProcessesController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\QuickLinksController.cs" />
+    <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\PreviousPunishmentsController.cs" />
+    <Compile Include="Controllers\PreviousMissionsController.cs" />
+    <Compile Include="Controllers\PreviousTransfersController.cs" />
+    <Compile Include="Controllers\PreviousLeavesController.cs" />
+    <Compile Include="Controllers\RemarksController.cs" />
+    <Compile Include="Controllers\ForeignProjectsController.cs" />
+    <Compile Include="Controllers\ShipMovementController.cs" />
+    <Compile Include="Controllers\ResultGradesController.cs" />
+    <Compile Include="Controllers\StatusChangesController.cs" />
+    <Compile Include="Controllers\ExtraAppointmentsController.cs" />
+    <Compile Include="Controllers\UsedStoreProceduresController.cs" />
+    <Compile Include="Controllers\UsedReportsController.cs" />
+    <Compile Include="Controllers\BloodGroupsController.cs" />
+    <Compile Include="Controllers\CertificatesController.cs" />
+    <Compile Include="Controllers\BonusPtAwardsController.cs" />
+    <Compile Include="Controllers\BonusPtComAppsController.cs" />
+    <Compile Include="Controllers\BonusPtMedalsController.cs" />
+    <Compile Include="Controllers\BonusPtPublicsController.cs" />
+    <Compile Include="Controllers\BraCtryCoursePointsController.cs" />
+    <Compile Include="Controllers\ProposalCandidatesController.cs" />
+    <Compile Include="Controllers\ProposalDetailsController.cs" />
+    <Compile Include="Controllers\TransferProposalsController.cs" />
+    <Compile Include="Controllers\EmployeeReportsController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\RetiredEmployeesController.cs" />
+    <Compile Include="Controllers\EmployeeTransferFuturePlansController.cs" />
+    <Compile Include="Controllers\OPRAppointmentsController.cs" />
+    <Compile Include="Controllers\PtDeductPunishmentsController.cs" />
+    <Compile Include="Controllers\PoorCourseResultsController.cs" />
+    <Compile Include="Controllers\CurrentStatusController.cs" />
+    <Compile Include="Controllers\CoursePointsController.cs" />
+    <Compile Include="Controllers\TraceSettingsController.cs" />
+    <Compile Include="Controllers\PromotionPoliciesController.cs" />
+    <Compile Include="Controllers\EmployeeChildrensController.cs" />
+    <Compile Include="Controllers\EmployeePftsController.cs" />
+    <Compile Include="Controllers\LeavePurposeController.cs" />
+    <Compile Include="Controllers\ServiceExamsController.cs" />
+    <Compile Include="Controllers\ServiceExamCategoriesController.cs" />
+    <Compile Include="Controllers\SecurityClearanceReasonsController.cs" />
+    <Compile Include="Controllers\EmployeeLeaveBreakDownController.cs" />
+    <Compile Include="Controllers\EmployeeSecurityClearancesController.cs" />
+    <Compile Include="Controllers\NominationsController.cs" />
+    <Compile Include="Controllers\MissionAppointmentsController.cs" />
+    <Compile Include="Controllers\PreCommissionCourseDetailsController.cs" />
+    <Compile Include="Controllers\PreCommissionCoursesController.cs" />
+    <Compile Include="Controllers\PunishmentAccidentsController.cs" />
+    <Compile Include="Controllers\ObservationIntelligentReportsController.cs" />
+    <Compile Include="Controllers\MedalAwardsController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\AgeServicePoliciesController.cs" />
+    <Compile Include="Controllers\AppointmentCategoryController.cs" />
+    <Compile Include="Controllers\AppointmentNatureController.cs" />
+    <Compile Include="Controllers\AwardsController.cs" />
+    <Compile Include="Controllers\BoardMembersController.cs" />
+    <Compile Include="Controllers\CommendationsController.cs" />
+    <Compile Include="Controllers\EmployeeLprController.cs" />
+    <Compile Include="Controllers\PromotionExecutionsController.cs" />
+    <Compile Include="Controllers\SportsController.cs" />
+    <Compile Include="Controllers\SpouseForeignVisitsController.cs" />
+    <Compile Include="Controllers\EmployeeServiceExamResultsController.cs" />
+    <Compile Include="Controllers\OPREntriesController.cs" />
+    <Compile Include="Controllers\SeaServicesController.cs" />
+    <Compile Include="Controllers\EmployeeCourseFuturePlansController.cs" />
+    <Compile Include="Controllers\VisitCategoriesController.cs" />
+    <Compile Include="Controllers\PunishmentNaturesController.cs" />
+    <Compile Include="Controllers\PunishmentCategoriesController.cs" />
+    <Compile Include="Controllers\VisitSubCategoriesController.cs" />
+    <Compile Include="Controllers\PunishmentSubCategoriesController.cs" />
+    <Compile Include="Controllers\PublicationsController.cs" />
+    <Compile Include="Controllers\PublicationCategoriesController.cs" />
+    <Compile Include="Controllers\MemberRolesController.cs" />
+    <Compile Include="Controllers\MedalsController.cs" />
+    <Compile Include="Controllers\ExecutionRemarksController.cs" />
+    <Compile Include="Controllers\BatchesController.cs" />
+    <Compile Include="Controllers\LprCalculateInfoController.cs" />
+    <Compile Include="Controllers\OfficesController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\PromotionBoardsController.cs" />
+    <Compile Include="Controllers\PromotionNominationsController.cs" />
+    <Compile Include="Controllers\ShipCategoriesController.cs" />
+    <Compile Include="Controllers\OfficeAppointmentsController.cs" />
+    <Compile Include="Controllers\AchievementsController.cs" />
+    <Compile Include="Controllers\NominationDetailsController.cs" />
+    <Compile Include="Controllers\OfficerTransfersController.cs" />
+    <Compile Include="Controllers\NominationSchedulesController.cs" />
+    <Compile Include="Controllers\ZonesController.cs" />
+    <Compile Include="Controllers\EmployeeSeviceExtensionsController.cs" />
+    <Compile Include="Controllers\HeirTypesController.cs" />
+    <Compile Include="Controllers\PatternController.cs" />
+    <Compile Include="Controllers\PreviousExperiencesController.cs" />
+    <Compile Include="Controllers\RelationsController.cs" />
+    <Compile Include="Controllers\PreCommissionRanksController.cs" />
+    <Compile Include="Controllers\AdvanceSearchController.cs" />
+    <Compile Include="Controllers\BoardsController.cs" />
+    <Compile Include="Controllers\BranchsController.cs" />
+    <Compile Include="Controllers\CourseCategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ColorsController.cs" />
+    <Compile Include="Controllers\CommissionTypesController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\HeirNextOfKinInfoController.cs" />
+    <Compile Include="Controllers\SpousesController.cs" />
+    <Compile Include="Controllers\SiblingsController.cs" />
+    <Compile Include="Controllers\ExtracurricularsController.cs" />
+    <Compile Include="Controllers\ExtracurricularTypesController.cs" />
+    <Compile Include="Controllers\ParentsController.cs" />
+    <Compile Include="Controllers\OccupationsController.cs" />
+    <Compile Include="Controllers\SocialAttributesController.cs" />
+    <Compile Include="Controllers\EmployeeSportsController.cs" />
+    <Compile Include="Controllers\TrainingResultsController.cs" />
+    <Compile Include="Controllers\TrainingPlansController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\DistrictsController.cs" />
+    <Compile Include="Controllers\ResultTypesController.cs" />
+    <Compile Include="Controllers\DivisionsController.cs" />
+    <Compile Include="Controllers\EducationsController.cs" />
+    <Compile Include="Controllers\EmployeeGeneralsController.cs" />
+    <Compile Include="Controllers\EmployeeLeaveController.cs" />
+    <Compile Include="Controllers\EmployeeOthersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EmpRejoinsController.cs" />
+    <Compile Include="Controllers\EmpRunMissingsController.cs" />
+    <Compile Include="Controllers\ExamCategoriesController.cs" />
+    <Compile Include="Controllers\ExaminationController.cs" />
+    <Compile Include="Controllers\ExamSubjectsController.cs" />
+    <Compile Include="Controllers\EyeVisionsController.cs" />
+    <Compile Include="Controllers\GendersController.cs" />
+    <Compile Include="Controllers\InstitutesController.cs" />
+    <Compile Include="Controllers\InstituteTypesController.cs" />
+    <Compile Include="Controllers\LeavePolicyiesController.cs" />
+    <Compile Include="Controllers\LeaveTypesController.cs" />
+    <Compile Include="Controllers\MaritalTypesController.cs" />
+    <Compile Include="Controllers\MedicalCategoriesController.cs" />
+    <Compile Include="Controllers\NationalitiesController.cs" />
+    <Compile Include="Controllers\PhysicalConditionsController.cs" />
+    <Compile Include="Controllers\PhysicalStructuresController.cs" />
+    <Compile Include="Controllers\RankCategoriesController.cs" />
+    <Compile Include="Controllers\RankMapsController.cs" />
+    <Compile Include="Controllers\RanksController.cs" />
+    <Compile Include="Controllers\OfficerStreamsController.cs" />
+    <Compile Include="Controllers\ReligionCastsController.cs" />
+    <Compile Include="Controllers\ReligionsController.cs" />
+    <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Controllers\TrainingInstitutesController.cs" />
+    <Compile Include="Controllers\RetiredAgesController.cs" />
+    <Compile Include="Controllers\SubBranchesController.cs" />
+    <Compile Include="Controllers\CourseSubCategoriesController.cs" />
+    <Compile Include="Controllers\SubCategoriesController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\TerminationTypesController.cs" />
+    <Compile Include="Controllers\UpazilasController.cs" />
+    <Compile Include="Models\EmployeeHajjDetailViewModel.cs" />
+    <Compile Include="Models\FlashNoticeViewModel.cs" />
+    <Compile Include="Models\OfficeViewModel.cs" />
+    <Compile Include="Models\PreviousTransferViewModel.cs" />
+    <Compile Include="Models\PreviousMissionViewModel.cs" />
+    <Compile Include="Models\PreviousLeaveViewModel.cs" />
+    <Compile Include="Models\ExtraAppointmentViewModel.cs" />
+    <Compile Include="Models\ForeignProjectViewModel.cs" />
+    <Compile Include="Models\StatusChangeViewModel.cs" />
+    <Compile Include="Models\BackLogViewModel.cs" />
+    <Compile Include="Models\ShipMovementViewModel.cs" />
+    <Compile Include="Models\BasicSearchViewModel.cs" />
+    <Compile Include="Models\AdvanceSearchViewModel.cs" />
+    <Compile Include="Models\EmployeeReportViewModel.cs" />
+    <Compile Include="Models\ProposalDetailViewModel.cs" />
+    <Compile Include="Models\RetiredEmployeeViewModel.cs" />
+    <Compile Include="Models\BonusPtAwardViewModel.cs" />
+    <Compile Include="Models\BonusPtComAppViewModel.cs" />
+    <Compile Include="Models\BonusPtMedalViewModel.cs" />
+    <Compile Include="Models\BonusPtPublicViewModel.cs" />
+    <Compile Include="Models\BraCtryCoursePointViewModel.cs" />
+    <Compile Include="Models\CoursePointViewModel.cs" />
+    <Compile Include="Models\EmployeeChildrenViewModel.cs" />
+    <Compile Include="Models\EmployeeTransferFuturePlanViewModel.cs" />
+    <Compile Include="Models\EmployeePftViewModel.cs" />
+    <Compile Include="Models\EmployeeServiceExamResultViewModel.cs" />
+    <Compile Include="Models\EmployeeSportViewModel.cs" />
+    <Compile Include="Models\EmployeeSecurtiyClearanceViewModel.cs" />
+    <Compile Include="Models\MissionAppointmentViewModel.cs" />
+    <Compile Include="Models\OPRAppointmentViewModel.cs" />
+    <Compile Include="Models\PoorCourseResultViewModel.cs" />
+    <Compile Include="Models\PromotionPolicyViewModel.cs" />
+    <Compile Include="Models\PtDeductPunishmentViewModel.cs" />
+    <Compile Include="Models\CurrentStatusViewModel.cs" />
+    <Compile Include="Models\ServiceExamViewModel.cs" />
+    <Compile Include="Models\SpouseForeignVisitViewModel.cs" />
+    <Compile Include="Models\OPREntryViewModel.cs" />
+    <Compile Include="Models\SeaServiceViewModel.cs" />
+    <Compile Include="Models\EmployeeCourseFuturePlanViewModel.cs" />
+    <Compile Include="Models\userLogModel.cs" />
+    <Compile Include="Models\VisitSubCategoryViewModel.cs" />
+    <Compile Include="Models\TransferViewModel.cs" />
+    <Compile Include="Models\EmployeeLprViewModel.cs" />
+    <Compile Include="Models\NominationViewModel.cs" />
+    <Compile Include="Models\PreCommissionCourseViewModel.cs" />
+    <Compile Include="Models\PunishmentAccidentViewModel.cs" />
+    <Compile Include="Models\ObservationIntelligentViewModel.cs" />
+    <Compile Include="Models\MedalAwardViewModel.cs" />
+    <Compile Include="Models\AchievementViewModel.cs" />
+    <Compile Include="Models\BoardMemberViewModel.cs" />
+    <Compile Include="Models\CommendationViewModel.cs" />
+    <Compile Include="Models\LeaveBreakDownViewModel.cs" />
+    <Compile Include="Models\PunishmentSubCategoryViewModel.cs" />
+    <Compile Include="Models\PublicationViewModel.cs" />
+    <Compile Include="Models\MedalViewModel.cs" />
+    <Compile Include="Models\LprCalculateInfoViewModel.cs" />
+    <Compile Include="Models\AddressViewModel.cs" />
+    <Compile Include="Models\AgeServicePolicyViewModel.cs" />
+    <Compile Include="Models\AppointmentCategoryViewModel.cs" />
+    <Compile Include="Models\HeirNextOfKinInfoViewModel.cs" />
+    <Compile Include="Models\PreviousExperienceViewModel.cs" />
+    <Compile Include="Models\PromotionBoardViewModel.cs" />
+    <Compile Include="Models\PromotionNominationViewModel.cs" />
+    <Compile Include="Models\SouseViewModel.cs" />
+    <Compile Include="Models\SiblingViewModel.cs" />
+    <Compile Include="Models\BoardViewModel.cs" />
+    <Compile Include="Models\ColorViewModel.cs" />
+    <Compile Include="Models\CourseViewModel.cs" />
+    <Compile Include="Models\CourseSubCategoryViewModel.cs" />
+    <Compile Include="Models\DistrictViewModel.cs" />
+    <Compile Include="Models\EducationViewModel.cs" />
+    <Compile Include="Models\EmployeeGeneralViewModel.cs" />
+    <Compile Include="Models\EmployeeLeaveViewModel.cs" />
+    <Compile Include="Models\EmployeeOtherViewModel.cs" />
+    <Compile Include="Models\EmployeeViewModel.cs" />
+    <Compile Include="Models\EmpRejoinViewModel.cs" />
+    <Compile Include="Models\EmpRunMissingViewModel.cs" />
+    <Compile Include="Models\ExaminationViewModel.cs" />
+    <Compile Include="Models\ExamSubjectViewModel.cs" />
+    <Compile Include="Models\ExtracurricularViewModel.cs" />
+    <Compile Include="Models\InstituteViewModel.cs" />
+    <Compile Include="Models\LeavePolicyViewModel.cs" />
+    <Compile Include="Models\MonthParameter.cs" />
+    <Compile Include="Models\ParentViewModel.cs" />
+    <Compile Include="Models\PhysicalConditionViewModel.cs" />
+    <Compile Include="Models\RankViewModel.cs" />
+    <Compile Include="Models\ReligionCastViewModel.cs" />
+    <Compile Include="Models\ResultViewModel.cs" />
+    <Compile Include="Models\TrainingInstituteViewModel.cs" />
+    <Compile Include="Models\RetiredAgeViewModel.cs" />
+    <Compile Include="Models\SubCategoryViewModel.cs" />
+    <Compile Include="Models\OfficeAppointmentViewModel.cs" />
+    <Compile Include="Models\TrainingResultViewModel.cs" />
+    <Compile Include="Models\TrainingPlanViewModel.cs" />
+    <Compile Include="Models\NominationScheduleModel.cs" />
+    <Compile Include="Models\UpazilaViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BnoisRoutePrefix.cs" />
+    <Compile Include="Right\MASTER_SETUP.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infinity.Bnois.Api.Core\Infinity.Bnois.Api.Core.csproj">
+      <Project>{975b5546-2948-462e-924e-9d327a36eb38}</Project>
+      <Name>Infinity.Bnois.Api.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.ApplicationService\Infinity.Bnois.ApplicationService.csproj">
+      <Project>{349CA3D5-71A7-4D06-80CD-5C54EBCF292D}</Project>
+      <Name>Infinity.Bnois.ApplicationService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.Configuration\Infinity.Bnois.Configuration.csproj">
+      <Project>{748102B5-6482-4C1B-B486-A4945FE8DDDC}</Project>
+      <Name>Infinity.Bnois.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.Data\Infinity.Bnois.Data.csproj">
+      <Project>{9214c2e2-e377-4917-a8d3-0cb61c37d72e}</Project>
+      <Name>Infinity.Bnois.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.Shared\Infinity.Bnois.Shared.csproj">
+      <Project>{32f92eea-af33-46e8-af45-de4c401ac6a6}</Project>
+      <Name>Infinity.Bnois.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,52 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officer Sports<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeeSportForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="sportId" class="custom-label">Sports</label>
+                            <select name="sportId" id="sportId" class="form-control" ng-model="vm.employeeSport.sportId" ng-options="option.value as option.text for option in vm.sports" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeSportForm.sportId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="teamName" class="custom-label">Team Name</label>
+                            <input type="text" id="teamName" class="form-control custom-form-control" ng-model="vm.employeeSport.teamName" name="teamName" ng-maxlength="250" />
+                            <p ng-show="vm.employeeSportForm.teamName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dateOfParticipation" class="custom-label">Date Of Participation</label>
+                            <input kendo-date-picker id="dateOfParticipation" class="form-control custom-form-control" k-ng-model="vm.employeeSport.dateOfParticipation" k-format="'dd-MM-yyyy'" name="dateOfParticipation" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="award" class="custom-label">Award</label>
+                            <input type="text" id="award" class="form-control custom-form-control" ng-model="vm.employeeSport.award" name="award" ng-maxlength="250" />
+                            <p ng-show="vm.employeeSportForm.award.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeSportForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

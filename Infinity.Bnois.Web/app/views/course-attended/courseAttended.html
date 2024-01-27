@@ -1,0 +1,99 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: #ffffff;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1em !important;
+        }
+    }
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    }
+</style>
+<div class="content courseAttendeds">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!--<div class="card-header">
+                    <h4 class="card-title">
+                        COURSE HISTORY
+                    </h4>
+                </div>-->
+                <!--<pre>{{vm.courseAttendeds | json}}</pre>-->
+                <div class="card-body" ng-if="vm.courseAttendeds.length > 0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th style="width:5%; text-align:center;">
+                                        Ser
+                                    </th>
+                                    <th style="width:25%; text-align:center;">
+                                        Course
+                                    </th>
+                                    <th style="width:30%; text-align:center;">
+                                        Institute
+                                    </th>
+                                    <th style="width:20%; text-align:center;">
+                                        From
+                                    </th>
+                                    <th style="width:20%; text-align:center;">
+                                        To
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="CA in vm.courseAttendeds">
+                                    <td style="text-align:center;">
+                                        {{$index+1}}
+                                    </td>
+                                    <td>
+                                        {{CA.course}}
+                                    </td>
+                                    <td>
+                                        {{CA.institute}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        {{CA.fromDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        {{CA.toDate | date:"dd-MMM-yyyy"}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="alert alert-danger" role="alert" ng-if="vm.intialHide === true">
+                    No data found..........!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

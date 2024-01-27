@@ -1,0 +1,185 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Medal, Award & Publication<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.medalAwardForm">
+                    <employee-search ng-model="vm.medalAward.employee"></employee-search>
+                    <div class="col-sm-6" ng-if="vm.medalAward.employee.employeeId>0">
+                        <div class="form-group">
+                            <input type="checkbox" id="isBackLog" class="form-check-input" ng-model="vm.medalAward.isBackLog" name="isBackLog" ng-change="vm.isBackLogChecked(vm.medalAward.isBackLog)" />
+                            <label for="isBackLog" class="custom-label"> Back Log </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.medalAward.isBackLog">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.medalAward.rankId"
+                                    ng-options="option.value as option.text for option in vm.ranks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.medalAward.isBackLog">
+                        <div class="form-group">
+                            <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                            <select name="transferId" id="transferId" class="form-control" ng-model="vm.medalAward.transferId"
+                                    ng-options="option.value as option.text for option in vm.transfers">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="type" class="custom-label">Type</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.medalAwardTypes">
+
+                                <label>
+                                    <input type="radio" id="type" ng-model="vm.medalAward.type"
+                                           value="{{status.value}}" ng-change="vm.medalAwardType(vm.medalAward.type)"
+                                           required> {{status.text}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="awardId" class="custom-label">Award</label>
+                            <select name="awardId" id="awardId" class="form-control"
+                                    ng-model="vm.medalAward.awardId" ng-disabled="vm.awardDisabled"
+                                    ng-options="option.value as option.text for option in vm.awards">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="medalId" class="custom-label">Medal</label>
+                            <select name="medalId" id="medalId" class="form-control" ng-model="vm.medalAward.medalId"
+                                    ng-options="option.value as option.text for option in vm.medals"
+                                    ng-disabled="vm.medalDisabled">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="publicationCategoryId" class="custom-label">Publication Category</label>
+                            <select name="publicationCategoryId" id="publicationCategoryId" class="form-control" ng-model="vm.medalAward.publicationCategoryId"
+                                    ng-options="option.value as option.text for option in vm.publicationCategories"
+                                    ng-disabled="vm.publicationCategoryDisabled"
+                                    ng-change="vm.publicationsByCategory(vm.medalAward.publicationCategoryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="publicationId" class="custom-label">Publication</label>
+                            <select name="publicationId" id="publicationId" class="form-control" ng-model="vm.medalAward.publicationId"
+                                    ng-options="option.value as option.text for option in vm.publications"
+                                    ng-disabled="vm.publicationDisabled ">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="date" class="custom-label"> Date</label>
+                            <input kendo-date-picker id="date" class="form-control custom-form-control" k-ng-model="vm.medalAward.date" k-format="'dd-MM-yyyy'" name="date" required />
+                            <p ng-show="vm.medalAwardForm.date.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.medalAward.remarks" name="remarks" maxlength="250"></textarea>
+                            <p ng-show="vm.medalAwardForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Achievement File Upload</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="panel" nv-file-drop="" uploader="uploader">
+                            <div class="panel-body" style="padding-top: 0;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-wrapper table-responsive">
+                                            <div class="col-sm-12">
+                                                <h4>Upload only Image File</h4>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <img src="{{vm.url}}{{vm.medalAward.fileName}}" class="img-responsive" style="width: 200%;max-width: 200px;height: 200%;max-height: 200px;padding: 10px;background: #fff;border-radius: 2px;" alt="Image" />
+                                                </div>
+                                                Upload progress:
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group" style="min-height: 50px;">
+                                                    <div class="panel-default">
+                                                        <div ng-show="uploader.isHTML5">
+                                                            <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                                                <input type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="pull-right">
+                                                    <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-xs-12 ">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-disabled="vm.medalAwardForm.$invalid" ng-click="vm.save()"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

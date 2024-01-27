@@ -1,0 +1,74 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{vm.title}}</h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.uploadEmployeeOther()" title="NId & Driving Licese Image Upload"><span class="fa fa-image"></span></button>
+                    <button style="margin-right:10px" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.updateEmployeeOther()"><span class="glyphicon glyphicon-user"></span>Update</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:bold">National Id</td>
+                                <td>{{vm.employeeOther.nationalId}}</td>
+                                <td style="font-weight:bold">Id Issue Date</td>
+                                <td>{{vm.employeeOther.idIssueDate| date:"dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Service Id</td>
+                                <td>{{vm.employeeOther.serviceId}}</td>
+                                <td style="font-weight:bold">Service Id Issue Date</td>
+                                <td>{{vm.employeeOther.serIssueDate| date:"dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Passport No</td>
+                                <td>{{vm.employeeOther.passportNo}}</td>
+                                <td style="font-weight:bold">Passport Issue Date</td>
+                                <td>{{vm.employeeOther.passIssueDate| date:"dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Issue Place</td>
+                                <td>{{vm.employeeOther.passIssuePlace}}</td>
+                                <td style="font-weight:bold">Passport Expire Date</td>
+                                <td>{{vm.employeeOther.expiryDate | date:"dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Old Passport No.</td>
+                                <td>{{vm.employeeOther.oldPassportNo}}</td>
+                                <td style="font-weight:bold">Freedom Fighter</td>
+                                <td>{{vm.employeeOther.isFreedomFighter==1?"Yes":"No"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Freedom Fighter Certificate No.</td>
+                                <td>{{vm.employeeOther.certificateNo}}</td>
+                                <td style="font-weight:bold">Sector No.</td>
+                                <td>{{vm.employeeOther.sectorNo}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Driving License</td>
+                                <td>{{vm.employeeOther.hasDrivingLicense==1?"Yes":"No"}}</td>
+                                <td style="font-weight:bold">Driving License No.</td>
+                                <td>{{vm.employeeOther.drivingLicenseNo}}</td>
+                            </tr>
+                          
+                            <tr>
+                                <td style="font-weight:bold">Driving License Issue Date</td>
+                                <td>{{vm.employeeOther.dlIssueDate| date:"dd-MMM-yyyy"}}</td>
+                                <td style="font-weight:bold">Driving License Expiry Date</td>
+                                <td>{{vm.employeeOther.dlExpiryDate| date:"dd-MMM-yyyy"}}</td>
+                            </tr>
+
+                        <tr>
+                            <td style="font-weight:bold">Birth Certificate No.</td>
+                            <td>{{vm.employeeOther.birthCertificateNo}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

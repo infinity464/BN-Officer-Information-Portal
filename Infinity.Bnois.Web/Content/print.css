@@ -1,0 +1,542 @@
+﻿@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('fonts/Roboto-Regular.ttf') format('truetype');
+}
+.header, .footer {
+    display: none;
+}
+table {
+    page-break-inside: auto
+}
+
+tr {
+    page-break-inside: avoid;
+    page-break-after: auto
+}
+
+thead {
+    display: table-header-group;
+}
+
+tbody {
+    display: table-footer-group;
+}
+
+
+
+
+body {
+    font-family: Arial !important;
+    width: 100%;
+    background-color: white !important;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0mm;
+}
+
+#headerTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #headerTable th {
+        padding: 16px;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        color: black !important;
+    }
+
+    #headerTable .leftChild {
+        text-align: left;
+        color: black !important;
+    }
+
+    #headerTable .rightChild {
+        text-align: right;
+        color: black !important;
+    }
+
+h1 {
+    font-size: 12pt;
+    color: black;
+    text-decoration: underline;
+    text-align: center;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 12pt;
+    color: black;
+    text-align: center;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+}
+    
+/*Current Status section*/
+#employeePhoto {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    padding-bottom: 10px;
+}
+
+#customers {
+    /*display: block;*/
+    /*margin-left: auto;
+    margin-right: auto;*/
+    border-collapse: collapse;
+    width: 98%;
+    margin: 2px;
+}
+
+    #customers td, #customers th {
+        /*border: 1px solid #ddd;*/
+        padding: 8px;
+        font-size: 12pt;
+    }
+
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+#customers td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    text-align: center;
+}
+
+#customers tr:nth-child(even) {
+    /*background-color: #f2f2f2;*/
+}
+
+#customers tr:hover {
+    /*background-color: #ddd;*/
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /*background-color: #04AA6D;*/
+    /*color: white;*/
+}
+
+
+
+/*Appoinment section*/
+#appoinmentTable {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 2px;
+}
+
+    #appoinmentTable td, #appoinmentTable th {
+        border: 1px solid black;
+        padding: 8px;
+        font-size: 12pt;
+    }
+
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+#appoinmentTable td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    text-align: center;
+}
+
+#appoinmentTable tr:nth-child(even) {
+    /*background-color: #f2f2f2;*/
+}
+
+#appoinmentTable tr:hover {
+    background-color: #ddd;
+}
+
+#appoinmentTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #D9D9D9;
+    color: black;
+    text-transform: capitalize;
+    font-weight:600;
+}
+
+
+/*Course section*/
+
+#courseTable {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 2px;
+}
+
+    #courseTable td, #courseTable th {
+        border: 1px solid black;
+        padding: 8px;
+        font-size: 12pt;
+    }
+
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+#courseTable td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    text-align: center;
+}
+
+#courseTable tr:nth-child(even) {
+    /*background-color: #f2f2f2;*/
+}
+
+#courseTable tr:hover {
+    background-color: #ddd;
+}
+
+#courseTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #D9D9D9;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+/*#courseTable {
+    
+    width: 98%;
+    margin: 2px;
+    background-color: white;
+}
+    #courseTable thead tr th {
+        background-color: #0176D6;
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: middle;
+        font-size: 22.4px;
+    
+    }
+
+    #courseTable td, #courseTable th {
+        border: 1px solid #B5B8C7;
+        padding: 8px;
+        font-size: 22.4px;
+    }
+
+#courseTable tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+#courseTable td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    text-align: center;
+}*/
+
+/*#courseTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#courseTable tr:hover {
+    background-color: #ddd;
+}*/
+
+/*#courseTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}*/
+
+
+
+/*publication section*/
+
+#publicationTable {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 2px;
+}
+
+    #publicationTable td, #publicationTable th {
+        border: 1px solid black;
+        padding: 8px;
+        font-size: 12pt;
+    }
+
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+#publicationTable td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    text-align: center;
+}
+
+#publicationTable tr:nth-child(even) {
+    /*background-color: #f2f2f2;*/
+}
+
+#publicationTable tr:hover {
+    background-color: #ddd;
+}
+
+#publicationTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #D9D9D9;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+
+/*#publicationTable {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 2px;
+}
+
+    #publicationTable td, #publicationTable th {
+        border: 1px solid #B5B8C7;
+        padding: 8px;
+        font-size: 22.4px;
+    }
+
+    #publicationTable tbody tr td:first-child {
+        width: 8em;
+        min-width: 8em;
+        max-width: 8em;
+        word-break: break-all;
+    }
+
+    #publicationTable td:first-child {
+        width: 30px;
+        min-width: 30px;
+        max-width: 30px;
+        text-align: center;
+    }
+
+    #publicationTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #publicationTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #publicationTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #0176d6;
+        color: white;
+        text-transform: uppercase;
+    }*/
+
+
+
+
+/*commendation section*/
+
+#commendationTable {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 2px;
+}
+
+    #commendationTable td, #commendationTable th {
+        border: 1px solid black;
+        padding: 8px;
+        font-size: 12pt;
+    }
+
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+#commendationTable td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    text-align: center;
+}
+
+#commendationTable tr:nth-child(even) {
+    /*background-color: #f2f2f2;*/
+}
+
+#commendationTable tr:hover {
+    background-color: #ddd;
+}
+
+#commendationTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #D9D9D9;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+
+
+
+/*#commendationTable {
+    width: 98%;
+    margin: 2px;
+    background-color: white;
+}
+
+    #commendationTable td, #commendationTable th {
+        border: 1px solid #B5B8C7;
+        padding: 8px;
+        font-size: 22.4px;
+    }
+
+    #commendationTable tbody tr td:first-child {
+        width: 8em;
+        min-width: 8em;
+        max-width: 8em;
+        word-break: break-all;
+    }
+
+
+
+    #commendationTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #0176d6;
+        color: white;
+        text-transform: uppercase;
+    }*/
+
+.min-width {
+    white-space: nowrap;
+}
+
+
+
+/*commendation1 section*/
+
+#commendationTable1 {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 2px;
+}
+
+    #commendationTable1 td, #commendationTable1 th {
+        border: 1px solid black;
+        padding: 8px;
+        font-size: 12pt;
+    }
+
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+#commendationTable1 td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    text-align: center;
+}
+
+#commendationTable1 tr:nth-child(even) {
+    /*background-color: #f2f2f2;*/
+}
+
+#commendationTable1 tr:hover {
+    background-color: #ddd;
+}
+
+#commendationTable1 th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #D9D9D9;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+
+
+
+/*#commendationTable {
+    width: 98%;
+    margin: 2px;
+    background-color: white;
+}
+
+    #commendationTable td, #commendationTable th {
+        border: 1px solid #B5B8C7;
+        padding: 8px;
+        font-size: 22.4px;
+    }
+
+    #commendationTable tbody tr td:first-child {
+        width: 8em;
+        min-width: 8em;
+        max-width: 8em;
+        word-break: break-all;
+    }
+
+
+
+    #commendationTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #0176d6;
+        color: white;
+        text-transform: uppercase;
+    }*/
+
+.min-width {
+    white-space: nowrap;
+}
+
+
+
+
+
+

@@ -1,0 +1,154 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">General Information</h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.updateEmployeeGeneral()" ><span class="glyphicon glyphicon-user"></span>Update</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:bold">ShortName</td>
+                                <td>{{vm.employeeGeneral.shortName}}</td>
+                                <td style="font-weight:bold">ShortName (বাংলা)</td>
+                                <td>{{vm.employeeGeneral.shortNameBan}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Nick Name</td>
+                                <td>{{vm.employeeGeneral.nickName}}</td>
+                                <td style="font-weight:bold">Nick Name (বাংলা)</td>
+                                <td>{{vm.employeeGeneral.nickNameBan}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Date of Birth</td>
+                                <td>{{vm.employeeGeneral.doB| date: "dd-MMM-yyyy"}} |<strong> Age: </strong> {{vm.employeeGeneral.age}}</td>
+                                <td style="font-weight:bold">Birth Place </td>
+                                <td>{{vm.employeeGeneral.birthPlace}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Nationality</td>
+                                <td>{{vm.employeeGeneral.nationality.name}}</td>
+
+                                <td style="font-weight:bold">Birth</td>
+                                <td>{{vm.employeeGeneral.isBirthOutside==1?"Outside Bangladesh":"Inside Bangladesh"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Migration Reason</td>
+                                <td>{{vm.employeeGeneral.migrationReason}}</td>
+                                <td style="font-weight:bold">Migration Date</td>
+                                <td>{{vm.employeeGeneral.migrationDate | date: "dd-MMM-yyyy"}}</td>
+                            </tr>                        
+                            <tr>
+                                <td style="font-weight:bold">Marital Status</td>
+                                <td>{{vm.employeeGeneral.maritalType.name}}</td>
+                                <td style="font-weight:bold">Marriage Date</td>
+                                <td>{{vm.employeeGeneral.marriageDate| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Conact No</td>
+                                <td>{{vm.employeeGeneral.contactNo}}</td>
+                                <td style="font-weight:bold">Email</td>
+                                <td>{{vm.employeeGeneral.emailAddress}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Religion</td>
+                                <td>{{vm.employeeGeneral.religion.name}}</td>
+                                <td style="font-weight:bold">Religion Caste</td>
+                                <td>{{vm.employeeGeneral.religionCast.name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Current Status</td>
+                                <td>{{vm.employeeGeneral.isDead==1?"Dead":"Alive"}}</td>
+                                <td style="font-weight:bold">Dead Date</td>
+                                <td>{{vm.employeeGeneral.deadDate| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Dead Reason</td>
+                                <td>{{vm.employeeGeneral.deadReason}}</td>
+                                <td style="font-weight:bold"></td>
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Service Information</h2>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:bold">Category</td>
+                                <td>{{vm.employeeGeneral.category.name}}</td>
+                                <td style="font-weight:bold">Sub Category</td>
+                                <td>{{vm.employeeGeneral.subCategory.name}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Commission Type</td>
+                                <td>{{vm.employeeGeneral.commissionType.typeName}}</td>
+                                <td style="font-weight:bold">Commission Date</td>
+                                <td>{{vm.employeeGeneral.commissionDate| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Branch</td>
+                                <td>{{vm.employeeGeneral.branch.name}}</td>
+                                <td style="font-weight:bold">Sub Branch</td>
+                                <td>{{vm.employeeGeneral.subBranch.fullName}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Joining Date</td>
+                                <td>{{vm.employeeGeneral.joiningDate| date: "dd-MMM-yyyy"}}</td>
+                                <td style="font-weight:bold">Lieutenant Date</td>
+                                <td>{{vm.employeeGeneral.lieutenantDate| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+                     
+                            <tr>
+                                <td style="font-weight:bold">Anti Date Seniority</td>
+                                <td>{{vm.employeeGeneral.seniorityDate| date: "dd-MMM-yyyy"}}</td>
+                                <td style="font-weight:bold">Subject</td>
+                                <td>{{vm.employeeGeneral.subject.name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Stream</td>
+                                <td> {{vm.employeeGeneral.officerStream.name}}</td>
+                                <td style="font-weight:bold">Age Limit</td>
+                                <td>{{vm.employeeGeneral.ageLimit|date:"dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+
+                                <td style="font-weight:bold">Service Limit</td>
+                                <td> {{vm.employeeGeneral.serviceLimit|date:"dd-MMM-yyyy"}}</td>
+                                <td style="font-weight:bold">LPR Date</td>
+                                <td>{{vm.employeeGeneral.lprDate| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Is Contract</td>
+                                <td> {{vm.employeeGeneral.isContract==1?"Yes":"No"}}</td>
+                                <td style="font-weight:bold">Contract End Date</td>
+                                <td> {{vm.employeeGeneral.contractEndDate| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight:bold">Last RL Availed</td>
+                                <td>{{vm.employeeGeneral.lastRLAvailedDate| date: "dd-MMM-yyyy"}}</td>
+                                <td style="font-weight:bold"></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

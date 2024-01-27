@@ -1,0 +1,47 @@
+﻿<div class="container-fluid" ng-hide="vm.empoloyeeLeaves[0]  === 1">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Employee Leave - Status</h2>
+
+
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addEmployeeLeave()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                    
+                </div>
+
+                <!--<pre>{{vm.empoloyeeLeaves[0] |json}}</pre>-->
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th class="text-center">SL</th>
+                                <th class="text-center">P No</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Appoinment</th>
+                                <th class="text-center">Tranfer Type</th>
+                                <th class="text-center">Leave Status</th>
+                                <th class="text-center">Start Date</th>
+                                <th class="text-center">End Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="EL in vm.empoloyeeLeaves" style="{{EL.leaveStatus ? 'background-color: #3fb5aa;' : '' }}">
+                                <td>{{$index + 1}}</td>
+                                <td>{{EL.pNo }}</td>
+                                <td>{{EL.fullNameEng}}</td>
+                                <td>{{EL.appoinment}}</td>
+                                <td>{{EL.tranferType}}</td>
+                                <!--<td>{{EL.leaveStatus}}</td>-->
+                                <td>{{EL.leaveStatus ? 'On Leave' : '-' }}</td>
+                                <td style="width: 100px;">{{EL.leaveStartDate | date: "dd-MMM-yyyy"}}</td>
+                                <td style="width: 100px;">{{EL.leaveEndDate | date: "dd-MMM-yyyy"}}</td>
+                                <!-- Modal -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

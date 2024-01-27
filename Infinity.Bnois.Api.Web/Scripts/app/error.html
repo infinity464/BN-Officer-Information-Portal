@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" ng-controller="LayoutCtrl">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{siteName}</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../Content/Site.css" rel="stylesheet" />
+    <link href="../../Content/site-login.css" rel="stylesheet" />
+</head>
+<body lang="en">
+ 
+    <div class="login-section">
+        <div class="login-wrapper">
+            <div class="error-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="error-leftbar">
+                                <h2>404</h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="error-rightbar">
+                                <h4>Sorry, the page not found</h4>
+                                <p>The link you followed probably broken, or the page has been removed.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script id='modelJson' type='application/json'>
+        {model}
+    </script>
+    <script src="../../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/angular.min.js"></script>
+    <script src="../../Scripts/encoder.min.js"></script>
+    <script src="../../Scripts/app/app.js"></script>
+</body>
+</html>
+

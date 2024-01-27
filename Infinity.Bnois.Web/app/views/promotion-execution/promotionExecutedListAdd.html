@@ -1,0 +1,49 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{ vm.typeName}} Candidate List<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.promotinNominationForm">
+
+                    <div class="table-wrapper table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Personal No.</th>
+                                    <th>Name</th>
+                                    <th>Execution Remark</th>
+                                    <th>Effective Date</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="promotionNomination in vm.promotionNominations">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{promotionNomination.employee.pNo}}</td>
+                                    <td>{{promotionNomination.employee.fullNameEng}}</td>
+                                    <td>
+                                        <select name='executionRemarkId_{{$index}}' class="form-control" ng-model="promotionNomination.executionRemarkId" ng-options="option.value as option.text for option in vm.executionRemarks" ng-change="vm.disableDate(promotionNomination.executionRemarkId,$index)" required>
+                                            <option value="">--Select an Option--</option>
+                                        </select>
+                                        <p ng-show="vm.promotionNominationForm.executionRemarkId.$error.required" class="help-block errormsg">Please select an Option</p>
+                                    </td>
+                                    <!--<td><input kendo-date-picker name='effectiveDate_{{$index}}' class="form-control custom-form-control" k-ng-model="promotionNomination.effectiveDate" k-format="'dd-MM-yyyy'" ng-disabled="!vm.isDisableEffectiveDate[$index]" required /></td>-->
+                                    <td><input kendo-date-picker name='effectiveDate_{{$index}}' class="form-control custom-form-control" k-ng-model="promotionNomination.effectiveDate" k-format="'dd-MM-yyyy'"  required /></td>
+                                    <td><input type="text" name="remarks_{{$index}}" class="form-control custom-form-control" ng-model="promotionNomination.remarks" maxlength="250" required /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.promotionNominationForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> Update</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.goToList()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

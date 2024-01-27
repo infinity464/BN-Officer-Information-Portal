@@ -1,0 +1,93 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Nomination Approvals</h2>
+
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="type" class="custom-label">Nomination Type</label>
+                            <select name="type" id="type" class="form-control"
+                                    ng-model="type" 
+                                    ng-options="option.value as option.text for option in vm.nominationTypes"
+                                    ng-change="vm.getNominationResultsByType(type) ">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="nominationId" class="custom-label">Nomination For</label>
+                            <angucomplete-alt id="nominationId"
+                                              placeholder="Search Born Office"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selected"
+                                              local-data="vm.nominationTypeResults"
+                                              local-search="vm.localSearch"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="true"
+                                              input-name="nominationId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Nomination Not Found"
+                                              input-class="form-control form-control-small custom-width" />
+
+                            <!-- <select name="nominationId" id="nominationId" class="form-control" -->
+                            <!--         ng-model="nominationId"  -->
+                            <!--         ng-options="option.value as option.text for option in vm.nominationTypeResults" -->
+                            <!--         ng-change="vm.getNominationDetailsByNomination(nominationId) "> -->
+                            <!--     <option value="">--Select an Option--</option> -->
+                            <!-- </select> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <br />
+                <div ng-show="vm.listShow">
+                    
+                    <div class="table-wrapper table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Office PNo</th>
+                                <th>Officer Name</th>
+                                <th>Approved/Declined</th>
+                                <th>Remarks</th>
+       
+                                <th class="text-center"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="nominationDetail in vm.nominationDetails">
+                                <td>{{$index+1}}</td>
+                                <td>{{nominationDetail.employee.pNo}}</td>
+                                <td>{{nominationDetail.employee.fullNameEng}}</td>
+                                <td>
+                                    <input type="checkbox" id="isApproved" class="form-check-input"
+                                           ng-model="nominationDetail.isApporved" name="isApproved" />
+                                </td>
+                                <td><textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="nominationDetail.remarks" name="remarks" maxlength="250" ng-disabled="nominationDetail.isApporved"></textarea> </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    
+                        <div class="col-xs-12 text-center" ng-show="vm.buttonShow">
+                            <button style="margin-bottom: 25px;" type="button" class="btn btn-md custom-btn btn-info" ng-disabled="vm.nominationForm.$invalid" ng-click="vm.update()"><span class="glyphicon glyphicon-floppy-disk"></span> Update All</button>
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

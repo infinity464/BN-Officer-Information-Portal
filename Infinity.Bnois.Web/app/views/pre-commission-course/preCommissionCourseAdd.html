@@ -1,0 +1,93 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.preCommissionCourseForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Pre Commission Test<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bnaNo" class="custom-label">BNA No.</label>
+                            <input type="text" id="bnaNo" class="form-control custom-form-control" ng-model="vm.preCommissionCourse.bnaNo" name="bnaNo" maxlength="250" required />
+                            <p ng-show="vm.preCommissionCourseForm.bnaNo.$error.required" class="help-block errormsg">BNA No is required</p>
+                            <p ng-show="vm.preCommissionCourseForm.bnaNo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isAbroad" class="custom-label">Course Place</label>
+                            <input type="radio" name="isAbroad" ng-model="vm.preCommissionCourse.isAbroad" ng-value="false">Inside Bangladesh
+                            <input type="radio" name="isAbroad" ng-model="vm.preCommissionCourse.isAbroad" ng-value="true">Outside Bangladesh
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.preCommissionCourse.countryId" ng-options="option.value as option.text for option in vm.countries" ng-disabled="!vm.preCommissionCourse.isAbroad">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.preCommissionCourseForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="medalId" class="custom-label">Medal</label>
+                            <select name="medalId" id="medalId" class="form-control" ng-model="vm.preCommissionCourse.medalId" ng-options="option.value as option.text for option in vm.medals">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="appointmentHeld" class="custom-label">Appointment Held</label>
+                            <input type="text" id="appointmentHeld" class="form-control custom-form-control" ng-model="vm.preCommissionCourse.appointmentHeld" name="appointmentHeld" maxlength="250"  />
+                            <p ng-show="vm.preCommissionCourseForm.appointmentHeld.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="moduleD" class="custom-label">Module D</label>
+                            <input type="text" id="moduleD" class="form-control custom-form-control" ng-model="vm.preCommissionCourse.moduleD" name="moduleD" maxlength="250" required />
+                            <p ng-show="vm.preCommissionCourseForm.moduleD.$error.required" class="help-block errormsg">Module D Result is required</p>
+                            <p ng-show="vm.preCommissionCourseForm.moduleD.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="total" class="custom-label">Total</label>
+                            <input type="text" id="total" class="form-control custom-form-control" ng-model="vm.preCommissionCourse.total" name="total" maxlength="250" required />
+                            <p ng-show="vm.preCommissionCourseForm.total.$error.required" class="help-block errormsg">Total is required</p>
+                            <p ng-show="vm.preCommissionCourseForm.total.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="finalPosition" class="custom-label">Final Position</label>
+                            <input type="text" id="finalPosition" class="form-control custom-form-control" ng-model="vm.preCommissionCourse.finalPosition" name="finalPosition" maxlength="250" required />
+                            <p ng-show="vm.preCommissionCourseForm.finalPosition.$error.required" class="help-block errormsg">Final Position is required</p>
+                            <p ng-show="vm.preCommissionCourseForm.finalPosition.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    
+                    
+               
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.preCommissionCourseForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning " ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item pull-left">Pre Commission Service</h2>
+                    <button class="btn custom-btn btn-success pull-left" type="button" style="margin-left: 15px;" data-ng-click="vm.previousLeave()">Leave</button>
+                    <button class="btn custom-btn btn-success pull-left" type="button" style="margin-left: 15px;" data-ng-click="vm.previousTransfer()">Transfer</button>
+                    <button class="btn custom-btn btn-success pull-left" type="button" style="margin-left: 15px;" data-ng-click="vm.previousPunishment()">Punishment/Achievement</button>
+                    <button class="btn custom-btn btn-success pull-left" type="button" style="margin-left: 15px;" data-ng-click="vm.previousMission()">UN Mission</button>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button"  data-ng-click="vm.updatePreviousExperience()"><span class="glyphicon glyphicon-user"></span>Update</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:bold">Pre Commission Rank</td>
+                                <td>{{vm.previousExperience.preCommissionRank.name}}</td>
+                                <td style="font-weight:bold">Service No</td>
+                                <td>{{vm.previousExperience.serviceNo}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Joining Date</td>
+                                <td>{{vm.previousExperience.joiningDate | date:"dd-MM-yyyy"}}</td>
+                                <td style="font-weight:bold">Category</td>
+                                <td>{{vm.previousExperience.category.name}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold">Description</td>
+                             
+                                <td>{{vm.previousExperience.remarks}}</td>
+                                <td style="font-weight:bold">Balance Leave for SD/Honorary Officer</td>
+                             
+                                <td><span ng-if="vm.previousExperience.leaveMonths !=null"> {{vm.previousExperience.leaveMonths}} Months </span> <span ng-if="vm.previousExperience.leaveDays !=null">{{vm.previousExperience.leaveDays}} Days</span> </td>
+                        </tr> 
+                            <tr>
+                                <td style="font-weight:bold">
+                                    Reason for Leaving Service
+                                </td>
+                                <td colspan="3"> {{vm.previousExperience.leavingReason}}  </td>
+                            </tr>
+                        
+                        <tr>
+                            <td style="font-weight:bold">ISSB</td>
+                             
+                            <td>{{vm.previousExperience.issb==1?"Attained":vm.previousExperience.issb==2?"Not Attained":""}}</td>
+                            <td ng-if="vm.previousExperience.issb ==1" style="font-weight:bold">Result</td>
+                             
+                            <td><span ng-if="vm.previousExperience.issb ==1"> {{vm.previousExperience.issbResult==1?"Qualified":"Not Qualified"}}  </span>  </td>
+                        </tr> 
+                        
+
+                      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

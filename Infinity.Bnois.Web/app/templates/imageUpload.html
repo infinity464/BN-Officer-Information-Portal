@@ -1,0 +1,58 @@
+﻿
+    <div class="panel">
+        <div class="panel-body">
+            <div class="">
+                <div class="form-group">
+                    <img ng-src={{vm.fileModel.filePath||'/Images/FileIcon.png'}} ng-model="vm.fileModel.fileName" alt="Image" height="auto" width="100%" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="panel-default">
+                    <div ng-show="vm.uploader.isHTML5">
+                        <div class="well my-drop-zone fileinput-button" nv-file-over="" uploader="vm.uploader">
+                            <div class="text-center">
+                                <span class="glyphicon glyphicon-cloud-upload cloud-upload-icon"></span>
+                                <h3 class="drop-text-color">DROP_IMAGE_HERE</h3>
+                            </div>
+                        </div>
+                        <div class="btn btn-primary fileinput-button" style="display:block">
+                            <input type="file" nv-file-select="" uploader="vm.uploader" style="opacity: 1;" />
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Image Name</th>
+                        <th width="20%" ng-show="vm.uploader.isHTML5">Sizes</th>
+                        <th width="10%">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in vm.uploader.queue">
+                        <td><strong>{{ item.file.name }}</strong></td>
+                        <td ng-show="vm.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                        <td class="text-center">
+                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                Upload progress:
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': vm.uploader.progress + '%' }"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn custom-btn btn-info" ng-click="vm.uploader.uploadAll()" ng-disabled="!vm.uploader.getNotUploadedItems().length"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</button>
+                <button type="button" class="btn custom-btn btn-warning" ng-click="vm.uploader.cancelAll()" ng-disabled="!vm.uploader.isUploading"><span class="glyphicon glyphicon-off"></span> Cancel</button>
+            </div>
+        </div>
+    </div>

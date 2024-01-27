@@ -1,0 +1,27 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Promotion Execution<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.promotinNominationForm">
+                    <employee-search ng-model="vm.promotionNomination.employee"></employee-search>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bnaNo" class="custom-label">BNA No.</label>
+                            <input type="text" id="bnaNo" class="form-control custom-form-control" ng-model="vm.promotionNomination.bnaNo" name="bnaNo" maxlength="250" required />
+                            <p ng-show="vm.promotionNominationForm.remarks.$error.required" class="help-block errormsg">Remarks is required</p>
+                            <p ng-show="vm.promotionNominationForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.promotionNominationForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

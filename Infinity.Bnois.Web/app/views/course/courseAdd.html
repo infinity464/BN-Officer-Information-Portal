@@ -1,0 +1,97 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Course<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.courseForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseCategoryId" class="custom-label">Category</label>
+                            <select name="courseCategoryId" id="courseCategoryId" class="form-control" ng-model="vm.course.courseCategoryId"
+                                    ng-options="option.value as option.text for option in vm.courseCategories" required
+                                    ng-change="vm.getCourseSubCategory(vm.course.courseCategoryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.courseForm.courseCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseSubCategoryId" class="custom-label">Sub Category</label>
+                            <select name="courseSubCategoryId" id="courseSubCategoryId" class="form-control" ng-model="vm.course.courseSubCategoryId" ng-options="option.value as option.text for option in vm.courseSubCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.courseForm.courseSubCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.course.countryId" ng-options="option.value as option.text for option in vm.countries" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.courseForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullName" class="custom-label"> Course Full Name</label>
+                            <input type="text" id="fullName" class="form-control custom-form-control" ng-model="vm.course.fullName" name="name" maxlength="250" required />
+                            <p ng-show="vm.courseForm.fullName.$error.required" class="help-block errormsg">course is required</p>
+                            <p ng-show="vm.courseForm.fullName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameInBangla" class="custom-label">Name in Bangla </label>
+                            <input type="text" id="nameInBangla" class="form-control custom-form-control" ng-model="vm.course.nameInBangla" name="nameInBangla" maxlength="250" />
+                            <p ng-show="vm.courseForm.nameInBangla.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label">Short Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.course.shortName" name="shortName" maxlength="250" />
+                            <p ng-show="vm.courseForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="priority" class="custom-label">Priority</label>
+                            <input type="number" id="priority" class="form-control custom-form-control" ng-model="vm.course.priority" name="priority" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="angf" class="form-check-input"
+                                   ng-model="vm.course.angf" name="angf" />
+                            <label for="angf" class="custom-label"> ANGF</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="splQualification" class="form-check-input"
+                                   ng-model="vm.course.splQualification" name="splQualification" />
+                            <label for="splQualification" class="custom-label"> Spl Qualification</label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.courseForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

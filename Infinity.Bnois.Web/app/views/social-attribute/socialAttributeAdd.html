@@ -1,0 +1,68 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <form name="vm.socialAttributeForm" style="margin-top: 30px;">
+            <h2 class="warning page-header-item">Social Attributes & Hobby<span class="pull-right text-success">{{vm.title}}</span></h2>
+            
+            <table class="table table-bordered table-condensed table-striped" style="margin-top: 35px;">
+                <thead>
+                <tr>
+                    <th>Activity</th>
+                    <th>Status</th>
+                    <th>Comments</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Highly Accepted Social Qualities and Happy Family Record</td>
+                    <td>
+                        <input type="radio" name="isSocialAttribute" ng-model="vm.socialAttribute.isSocialAttribute" ng-value="true">Yes
+                        <input type="radio" name="isSocialAttribute" ng-model="vm.socialAttribute.isSocialAttribute" ng-value="false">No
+                    </td>
+                    <td>
+                        <input type="text" id="saRemarks" class="form-control custom-form-control" ng-model="vm.socialAttribute.saRemarks" name="saRemarks" maxlength="300" />
+                        <p ng-show="vm.socialAttributeForm.saRemarks.$error.maxlength" class="help-block errormsg">Maximum character 300</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Good Circulation Value</td>
+                    <td>
+                        <input type="radio" name="isCirculationValue" ng-model="vm.socialAttribute.isCirculationValue" ng-value="true">Yes
+                        <input type="radio" name="isCirculationValue" ng-model="vm.socialAttribute.isCirculationValue" ng-value="false">No
+                    </td>
+                    <td>
+                        <input type="text" id="cvRemarks" class="form-control custom-form-control" ng-model="vm.socialAttribute.cvRemarks" name="cvRemarks" maxlength="300" />
+                        <p ng-show="vm.socialAttributeForm.cvRemarks.$error.maxlength" class="help-block errormsg">Maximum character 300</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Personality and Personal Character </td>
+                    <td>
+                        <input type="radio" name="isPersonalityPerChar" ng-model="vm.socialAttribute.isPersonalityPerChar" ng-value="true">Yes
+                        <input type="radio" name="isPersonalityPerChar" ng-model="vm.socialAttribute.isPersonalityPerChar" ng-value="false">No
+                    </td>
+                    <td>
+                        <input type="text" id="ppcRemarks" class="form-control custom-form-control" ng-model="vm.socialAttribute.ppcRemarks" name="ppcRemarks" maxlength="300" />
+                        <p ng-show="vm.socialAttributeForm.ppcRemarks.$error.maxlength" class="help-block errormsg">Maximum character 300</p>
+                    </td>
+                </tr>
+                <tr>
+                    
+                </tr>
+                </tbody>
+            </table>
+            
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="hobby" class="custom-label">Hobby</label>
+                    <input type="text" id="hobby" class="form-control custom-form-control" ng-model="vm.socialAttribute.hobby" name="hobby" />
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.socialAttribute.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+            </div>
+        </form>
+            </div>
+        </div>
+ 

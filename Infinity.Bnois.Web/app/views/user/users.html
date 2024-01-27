@@ -1,0 +1,174 @@
+<style>
+    .helper {
+        background: #000066;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: #ffffff;
+    }
+    .btn, .navbar .navbar-nav > a.btn {
+        margin: 0px 1px !important;
+        padding: 11px 22px !important;
+    }
+    /*.btn, .navbar .navbar-nav > a.btn {
+        padding: 4px 10px !important;
+    }*/
+    .action-button {
+        margin: 0px 1px !important;
+        padding: 4px 11px !important;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+    /*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 8px 4px !important;
+    }*/
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+        .action-button {
+            margin: 0px 1px !important;
+            padding: 4px 11px !important;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: .9rem !important;
+        }
+    }
+
+    #paging .pagination li {
+        padding: 7px 12px !important;
+        color: white !important;
+        border: 1px solid white !important;
+    }
+        #paging .pagination li:hover, .active {
+            background-color: #66ff99 !important;
+            color: black !important;
+            border-radius: 0px !important;
+        }
+            #paging .pagination li:hover a {
+                color: black !important;
+            }
+        #paging .pagination li a {
+            color: white !important;
+            text-decoration: none !important;
+        }
+    .icon-dashboard .menu ul li a:hover, .active {
+        border-radius: 10px !important;
+    }
+
+</style>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <!--<pre>{{vm.users | json}}</pre>-->
+                    <div ng-include="'app/templates/search.html'"></div>
+
+                    <!--<label>
+                        <input type="radio" ng-model="vm.userStatus" value="true" ng-checked="true" />Active
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="vm.userStatus" value="false" ng-checked="false" />Inactive
+                    </label>-->
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th style="width: 5%; text-align:center">
+                                        Ser
+                                    </th>
+                                    <th style="width: 10%; text-align:center">
+                                        P No
+                                    </th>
+                                    <th style="width: 25%; text-align:center">
+                                        Name
+                                    </th>
+                                    <th style="width: 15%; text-align:center">
+                                        Email
+                                    </th>
+                                    <th style="width: 15%; text-align:center">
+                                        Phone Number
+                                    </th>
+                                    <th style="width: 5%; text-align:center">
+                                        Status
+                                    </th>
+                                    <th style="width: 25%; text-align:center"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in vm.users">
+                                    <td style="text-align:center">
+                                        {{$index+1}}
+                                    </td>
+                                    <td style="text-align:center">
+                                        {{user.pNo}}
+                                    </td>
+                                    <td>
+                                        {{user.firstName}}{{" "}}{{user.lastName}}
+                                    </td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.phoneNumber}}</td>
+                                    <td style="text-align:center"><active-inactive is-active="{{user.isActive}}"></active-inactive></td>
+                                    <td class="text-center action-button">
+
+                                        <!--<a class="btn custom-btn btn-edit btn-info btn-xs" ng-disabled="vm.loginUserId==user.id" ng-click="vm.loginUserId!=user.id&&vm.addUserRoles(user)"><span class="glyphicon glyphicon-wrench" ng-disabled="vm.loginUserId==user.id" aria-hidden="true" title="User In Role"></span></a>-->
+                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs action-button" title="Update user information" ng-click="vm.updateUser(user)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <!--reset password-->
+                                        <a class="btn custom-btn btn-delete btn-warning btn-xs action-button" id="deleteUser" title="Reset password" style="cursor:pointer" ng-confirmation-click="vm.resetUserPasswordByUserId(user)"
+                                           ng-confirmation-message="Do you want to reset password"
+                                           ng-confirmation-title="Reset password"
+                                           ng-confirmation-yes-text="Yes"
+                                           ng-confirmation-cancel-text="No"><i class="fa fa-key" aria-hidden="true"></i></a>
+                                        <!--activate user-->
+                                        <a class="btn custom-btn btn-delete btn-success btn-xs action-button" id="deleteUser" title="Activate user" style="cursor:pointer" ng-confirmation-click="vm.activateUser(user)" ng-show="user.isActive === false"
+                                           ng-confirmation-message="Do you want to activate User"
+                                           ng-confirmation-title="Activate User"
+                                           ng-confirmation-yes-text="Yes"
+                                           ng-confirmation-cancel-text="No"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+                                        <!--deactive user-->
+                                        <a class="btn custom-btn btn-delete btn-danger btn-xs action-button" id="deleteUser" title="Inactivate user" style="cursor:pointer" ng-confirmation-click="vm.deleteUser(user)" ng-show="user.isActive === true"
+                                           ng-confirmation-message="Do you want to inactivate User"
+                                           ng-confirmation-title="Inactivate User"
+                                           ng-confirmation-yes-text="Yes"
+                                           ng-confirmation-cancel-text="No"><i class="fa fa-ban" aria-hidden="true"></i></a>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-if="vm.users.length > 0" id="paging">
+                            <ul uib-pagination items-per-page="vm.pageSize" style="float:right !important;border-radius: 0px !important;" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

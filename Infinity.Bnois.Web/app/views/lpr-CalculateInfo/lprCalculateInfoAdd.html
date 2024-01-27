@@ -1,0 +1,58 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+				<form name="vm.lprCalculateInfoForm">
+					<div class="col-sm-12 page-header">
+					    <h2 class="warning page-header-item">LPR Calculate <span class="pull-right text-success">{{vm.title}}</span></h2>
+
+					</div>
+					<employee-search ng-model="vm.lprCalculate.employee"></employee-search>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="sailorDue" class="custom-label">Leave as Sailor</label>
+							<input type="text" id="sailorDue" class="form-control custom-form-control" ng-model="vm.lprCalculate.sailorDue" name="sailorDue" />
+
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="lpr" class="custom-label">Privilege Leave</label>
+							<input type="number" id="lpr" class="form-control custom-form-control" ng-model="vm.lprCalculate.lpr" name="lpr" required />
+							<p ng-show="vm.lprCalculateInfoForm.lPR.$error.required" class="help-block errormsg">This is required</p>
+
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="flLeave" class="custom-label">Furlough Leave</label>
+							<input type="text" id="flLeave" class="form-control custom-form-control" ng-model="vm.lprCalculate.flLeave" name="flLeave" />
+
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="terminalLeave" class="custom-label">Terminal Leave</label>
+							<input type="text" id="terminalLeave" class="form-control custom-form-control" ng-model="vm.lprCalculate.terminalLeave" name="terminalLeave" />
+
+						</div>
+					</div>
+
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label for="surveyLeave" class="custom-label">Survey Leave</label>
+				            <input type="number" id="surveyLeave" class="form-control custom-form-control" ng-model="vm.lprCalculate.surveyLeave" name="surveyLeave" />
+
+				        </div>
+				    </div>
+                    
+				    <div class="col-sm-12">
+				        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.lprCalculateInfoForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+				        <button type="button" class="btn custom-btn btn-warning " ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+				    </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

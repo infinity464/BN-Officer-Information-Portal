@@ -1,0 +1,60 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+	        <div class="panel-body">
+
+	            <h4 class="text-center" style="margin-top: -5px;">Gender wise Officer Summary</h4>
+               
+	         <div class="col-sm-12">      
+	            <div class="col-sm-5">
+	                <div class="form-group">
+	                    <label for="genderId" class="custom-label">Gender</label>
+                        <select name="genderId" id="genderId" class="form-control" ng-model="vm.genderId"
+                                ng-change="vm.getEmployeeListByOffice(vm.genderId)"
+                                ng-options="option.value as option.text for option in vm.genders">
+                            <option value="">--Select an Option--</option>
+                        </select>
+	                </div>
+	            </div>
+                </div>
+
+	          
+		        <div class="table-wrapper table-responsive" >
+			        <table class="table table-bordered">
+				        <thead>
+				        <tr class="tableHeading">
+					        
+					        <th>Name</th>
+					        <th>X</th>
+					        <th>E</th>
+					        <th>S</th>
+					        <th>Edu</th>
+					        <th>Med</th>
+					        <th>L</th>
+					        
+					        <th>Total</th>
+					      
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <tr  ng-repeat="gender in vm.dashboardGenders">
+							<td><strong>{{gender.name}}</strong></td>
+					        <td style="text-align: center" ><a href="" ng-if="gender.xValue>0" ng-click="vm.getOfficerList(gender.id,gender.x)"><strong>{{gender.xValue}}</strong></a> </td>
+							<td style="text-align: center" ><a href="" ng-if="gender.eValue>0" ng-click="vm.getOfficerList(gender.id,gender.e)"><strong>{{gender.eValue}}</strong></a></td>
+							<td style="text-align: center"><a href="" ng-if="gender.sValue>0" ng-click="vm.getOfficerList(gender.id,gender.s)"><strong>{{gender.sValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="gender.eduValue>0" ng-click="vm.getOfficerList(gender.id,gender.edu)"><strong>{{gender.eduValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="gender.medValue>0" ng-click="vm.getOfficerList(gender.id,gender.med)"><strong>{{gender.medValue}}</strong></a></td>
+							<td style="text-align: center"><a href="" ng-if="gender.lValue>0" ng-click="vm.getOfficerList(gender.id,gender.l)"><strong>{{gender.lValue}}</strong></a></td>
+							<td style="text-align: center" ><a href="" ng-if="gender.total>0" ng-click="vm.getOfficerList(gender.id, null)"><strong>{{gender.total}}</strong></a></td>
+							
+				        </tr>
+                  
+				        </tbody>
+			        </table>
+
+		        </div>
+		
+	        </div>
+        </div>
+    </div>
+</div>

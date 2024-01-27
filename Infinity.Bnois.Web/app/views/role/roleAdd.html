@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <header class="page-header">
+                        <h2 class="warning page-header-item">Role<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </header>
+                    <form name="vm.roleForm">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 custom-col-height">
+                                <div class="form-group">
+                                    <label for="name" class="custom-label">Role Name</label>
+                                    <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.role.name" name="name" ng-maxlength="256" required />
+                                    <span ng-show="vm.roleForm.name.$error.required" class="help-block">Role Name is required</span>
+                                    <span ng-show="vm.roleForm.name.$error.maxlength" class="help-block">Maximum character 256</span>
+                                </div>
+                            </div>    
+                            
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="companyId" class="custom-label">Order No</label>
+                                    <input type="text" id="companyId" class="form-control custom-form-control" ng-model="vm.role.companyId" name="companyId" maxlength="250" />
+                                    <!-- <p ng-show="vm.trainingPlanForm.maxParticipant.$error.maxlength" class="help-block errormsg">Maximum character 250</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="button" class="btn custom-btn btn-primary" ng-click="vm.save()" ng-disabled="vm.roleForm.$invalid"><i class="fa fa-floppy-o" aria-hidden="true"></i> {{vm.saveButtonText}}</button>
+                            <button type="button" class="btn custom-btn btn-primary" ng-click="vm.close()"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

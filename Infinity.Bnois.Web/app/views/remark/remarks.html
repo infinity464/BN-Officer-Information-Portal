@@ -1,0 +1,81 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{vm.typeName}}s</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addRemark()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <!-- <th>Officer PNo</th> -->
+                                <!-- <th>Officer Name</th> -->
+                                <th>{{vm.typeName}}</th>
+                                <th>Date </th>
+
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="remark in vm.remarks">
+                                <td>{{$index+1}}</td>
+                                <!-- <td>{{remark.employee.pNo}}</td> -->
+                                <!-- <td>{{remark.employee.fullNameEng}}</td> -->
+                                <td ng-if="remark.noteType==null">{{remark.remarks}}</td>
+                                <td ng-if="remark.noteType==1" style="color: green"><strong>{{remark.remarks}}</strong></td>
+                                <td ng-if="remark.noteType==2" style="color: red"><strong>{{remark.remarks}}</strong></td>
+                                <td style="width: 100px;">{{remark.date | date: "dd-MMM-yyyy"}}</td>
+
+                                <td class="text-right" style="width: 120px;">
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateRemark(remark)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteRemark(remark)"
+                                       ng-confirmation-message="Do you want to delete Training Result ?"
+                                       ng-confirmation-title="Delete Training Result ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Training Result"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagenation-wrapper" ng-if="vm.remarks.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+                <div ng-show="vm.type==1">
+                    <div class="page-header">
+                        <h2 class="warning page-header-item">Promotion Board Remark</h2>
+                    </div>
+                    <div class="table-wrapper table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Promotion Remark</th>
+                                    <th>Execution Date</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-if="vm.employeeinfo.executionRemark.name != null">
+                                    <td>1</td>
+                                    <td>{{vm.employeeinfo.executionRemark.name}}</td>
+                                    <td>{{vm.employeeinfo.bExecutionDate | date: "dd-MMM-yyyy"}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+
+     
+
+      
+    </div>
+</div>
+
+

@@ -1,0 +1,136 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Mission Appointment<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+
+                <form name="vm.missionAppointmentForm">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="missionScheduleId" class="custom-label">Mission</label>
+                            <angucomplete-alt id="missionScheduleId"
+                                              placeholder="Search Mission"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selected"
+                                              local-data="vm.missions"
+                                              local-search="vm.localSearch"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="true"
+                                              input-name="entityId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Mission Not Found"
+                                              input-class="form-control form-control-small" />
+                            <!-- <select name="missionScheduleId" id="missionScheduleId" class="form-control" ng-model="vm.missionAppointment.missionScheduleId" -->
+                            <!--         ng-options="option.value as option.text for option in vm.missions" required> -->
+                            <!--     <option value="">--Select an Option--</option> -->
+                            <!-- </select> -->
+                            <p ng-show="vm.missionAppointmentForm.missionScheduleId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="appointmentNatureId" class="custom-label">Appointment Nature</label>
+                            <select name="appointmentNatureId" id="appointmentNatureId" class="form-control" ng-model="vm.missionAppointment.appointmentNatureId"
+                                    ng-options="option.value as option.text for option in vm.aptNats" required
+                                    ng-change="vm.getCategoryByNature(vm.missionAppointment.appointmentNatureId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.missionAppointmentForm.appointmentNatureId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="appointmentCategoryId" class="custom-label">Appointment Category</label>
+                            <select name="appointmentCategoryId" id="appointmentCategoryId" class="form-control" ng-model="vm.missionAppointment.appointmentCategoryId"
+                                    ng-options="option.value as option.text for option in vm.aptCats" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.missionAppointmentForm.appointmentCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label"> Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.missionAppointment.name" name="name" maxlength="150" required />
+                            <p ng-show="vm.missionAppointmentForm.name.$error.required" class="help-block errormsg">Appointment name is required.</p>
+                            <p ng-show="vm.missionAppointmentForm.name.$error.maxlength" class="help-block errormsg">Maximum character 150</p>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-4">
+                            <h4 class="text-center">Rank</h4>
+                            <div class="table-wrapper table-responsive" style="overflow-y:scroll; height:250px;">
+                                <table class="table table-hover table-striped">
+
+
+                                    <tbody>
+
+                                        <tr ng-repeat="rank in  vm.rankList">
+                                            <td>
+                                                <label><input type="checkbox" checklist-model="vm.missionAppointment.rankIds" checklist-value="rank.value"> {{rank.text}}</label>
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+
+                        <div class="col-sm-4">
+
+                            <h4 class="text-center">Branch</h4>
+                            <div class="table-wrapper table-responsive" style="overflow-y:scroll; height:250px;">
+                                <table class="table table-hover table-striped">
+
+                                    <tbody>
+                                        <tr ng-repeat="branch in  vm.branchList">
+                                            <td>
+                                                <label><input type="checkbox" checklist-model="vm.missionAppointment.branchIds" checklist-value="branch.value"> {{branch.text}}</label>
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.missionAppointmentForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+

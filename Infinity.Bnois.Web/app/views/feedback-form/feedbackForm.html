@@ -1,0 +1,137 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+
+    .card {
+        margin: auto !important;
+        font-size: 23px;
+        width: 40%;
+        padding: 10px;
+        border-radius: 25px !important;
+        padding: 0px !important;
+        top: 30%;
+        background-color: #ffffffe6 !important;
+    }
+
+        .card .card-body {
+            padding: 10px 15px 0px 15px !important;
+        }
+
+    .card-title {
+        color: #000066 !important;
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    address {
+        padding-left: 5px;
+    }
+
+    .card-body p {
+        font-size: 25px !important;
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .card {
+            font-size: 18px;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .card {
+            font-size: 18px;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+
+        .card {
+            width: 95%;
+            top: 20%;
+        }
+    }
+
+    @media screen and (max-width: 900px) and (min-width: 576px) {
+        .card {
+            font-size: 18px;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+
+        .card {
+            width: 60%;
+        }
+    }
+
+    img {
+        width: 22px;
+        margin: 5px 0px 0px 0px;
+    }
+
+    .footer {
+        padding: 0px !important;
+    }
+
+        .footer.content > img,
+        .footer.content > address {
+            display: inline-block;
+        }
+
+    .content {
+        padding-left: 10px !important;
+    }
+
+        .content img {
+            width: 26px;
+            margin: 0px 0px 0px 0px;
+        }
+    .form-group button {
+        background-color: #66ff99 !important;
+        color: white !important;
+    }
+</style>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-center">
+            Contact/ Feedback Form
+        </h5>
+        <form name="vm.feedBackForm">
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" ng-model="vm.feedBack.subject" placeholder="Enter Feedback Subject." required>
+                <p ng-show="vm.feedBackForm.subject.$error.required" class="help-block errormsg">Subject is required</p>
+            </div>
+            <div class="form-group">
+                <label for="description">
+                    Please state your request
+                </label>
+                <textarea class="form-control" id="description" ng-model="vm.feedBack.description" rows="3" required></textarea>
+                <p ng-show="vm.feedBackForm.description.$error.required" class="help-block errormsg">Message is required</p>
+            </div>
+            <div class="form-group" style="text-align:center">
+                <button type="submit" class="btn btn-primary mb-2" ng-click="vm.insertFeedBack()" ng-disabled="vm.feedBackForm.$invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

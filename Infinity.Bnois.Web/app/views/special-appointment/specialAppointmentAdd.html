@@ -1,0 +1,36 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">specialAppointment<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.specialAppointmentForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="spAptType" class="custom-label">Special Appointment</label>
+                            <input type="text" id="spAptType" class="form-control custom-form-control" ng-model="vm.specialAppointment.spAptType" name="spAptType" maxlength="250" required />
+                            <p ng-show="vm.specialAppointmentForm.spAptType.$error.required" class="help-block errormsg">specialAppointment name is required</p>
+                            <p ng-show="vm.specialAppointmentForm.spAptType.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="position" class="custom-label">Position</label>
+                            <input type="number" id="position" class="form-control custom-form-control" ng-model="vm.specialAppointment.position" name="position"   />
+                            <p ng-show="vm.specialAppointmentForm.position.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                   
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.specialAppointmentForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

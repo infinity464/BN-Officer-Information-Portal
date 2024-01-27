@@ -1,0 +1,120 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.employeeChildrenForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Children Information<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="childrenType" class="custom-label">Children Type</label>
+                            <select name="childrenType" id="childrenType" class="form-control" ng-model="vm.employeeChildren.childrenType" ng-options="option.value as option.text for option in vm.childrenTypes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeChildrenForm.employeeChildrenType.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="child" class="custom-label">Own/Spouse Child</label>
+                            <select name="child" id="child" class="form-control" ng-model="vm.employeeChildren.child" ng-options="option.value as option.text for option in vm.spouses" >
+                                <option value="">Own Child</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Name (English)</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.employeeChildren.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.employeeChildrenForm.name.$error.required" class="help-block errormsg">Name is required</p>
+                            <p ng-show="vm.employeeChildrenForm.name.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameBan" class="custom-label">Name (Bangla)</label>
+                            <input type="text" id="nameBan" class="form-control custom-form-control" ng-model="vm.employeeChildren.nameBan" name="nameBan" maxlength="250"  />
+                            <p ng-show="vm.employeeChildrenForm.nameBan.$error.maxlength" class="help-block errormsg">Maximum length 350 characters</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dateOfBirth" class="custom-label">Date Of Birth</label>
+                            <input kendo-date-picker id="commissionDate" class="form-control custom-form-control" k-ng-model="vm.employeeChildren.dateOfBirth" k-format="'dd-MM-yyyy'" name="dateOfBirth" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="livingWith" class="custom-label">Living With</label>
+                            <input type="text" id="livingWith" class="form-control custom-form-control" ng-model="vm.employeeChildren.livingWith" name="livingWith" maxlength="50" />
+                            <p ng-show="vm.employeeChildrenForm.livingWith.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="contactAddress" class="custom-label">Contact Address</label>
+                            <textarea  id="contactAddress" class="form-control custom-form-control" ng-model="vm.employeeChildren.contactAddress" name="contactAddress" maxlength="250" ></textarea>
+                            <p ng-show="vm.employeeChildrenForm.contactAddress.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="occupationId" class="custom-label">Occupation</label>
+                            <select name="occupationId" id="occupationId" class="form-control" ng-model="vm.employeeChildren.occupationId" ng-options="option.value as option.text for option in vm.occupations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="officeAddress" class="custom-label">Office Address</label>
+                            <input type="text" id="officeAddress" class="form-control custom-form-control" ng-model="vm.employeeChildren.officeAddress" name="officeAddress" maxlength="250" />
+                            <p ng-show="vm.employeeChildrenForm.officeAddress.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="birthPlace" class="custom-label">Status</label>
+                            <input type="radio" name="isDead" ng-model="vm.employeeChildren.isDead" ng-value="true">Dead
+                            <input type="radio" name="isDead" ng-model="vm.employeeChildren.isDead" ng-value="false">Alive
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="deadDate" class="custom-label">Dead Date</label>
+                            <input kendo-date-picker id="deadDate" class="form-control custom-form-control" k-ng-model="vm.employeeChildren.deadDate" k-format="'dd-MM-yyyy'" name="deadDate" ng-readonly="!vm.employeeChildren.isDead"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="deadReason" class="custom-label">Dead Reason</label>
+                            <input type="text" id="deadReason" class="form-control custom-form-control" ng-model="vm.employeeChildren.deadReason" name="deadReason" maxlength="250"  ng-readonly="!vm.employeeChildren.isDead" />
+                            <p ng-show="vm.employeeChildrenForm.deadReason.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeChildrenForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

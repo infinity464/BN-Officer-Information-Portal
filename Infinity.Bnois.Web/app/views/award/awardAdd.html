@@ -1,0 +1,115 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Award<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.awardForm">
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameEng" class="custom-label">Name</label>
+                            <input type="text" id="nameEng" class="form-control custom-form-control" ng-model="vm.award.nameEng" name="nameEng" maxlength="250" required />
+                            <p ng-show="vm.awardForm.nameEng.$error.required" class="help-block errormsg">Name is required.</p>
+                            <p ng-show="vm.awardForm.nameEng.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameBan" class="custom-label">Name (বাংলা)</label>
+                            <input type="text" id="nameBan" class="form-control custom-form-control" ng-model="vm.award.nameBan" name="nameBan" maxlength="250" />
+                            <p ng-show="vm.awardForm.nameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortNameEng" class="custom-label">Short Name</label>
+                            <input type="text" id="shortNameEng" class="form-control custom-form-control" ng-model="vm.award.shortNameEng" name="shortNameEng" maxlength="250" />
+                            <p ng-show="vm.awardForm.shortNameEng.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortNameBan" class="custom-label">Short Name (বাংলা)</label>
+                            <input type="text" id="shortNameBan" class="form-control custom-form-control" ng-model="vm.award.shortNameBan" name="shortNameBan" maxlength="250" />
+                            <p ng-show="vm.awardForm.shortNameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="priority" class="custom-label">Priority</label>
+                            <input type="number" id="priority" class="form-control custom-form-control" ng-model="vm.award.priority" name="priority" required />
+                            <p ng-show="vm.awardForm.priority.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="goToOPR" class="form-check-input"
+                                   ng-model="vm.award.goToOPR" name="goToOPR" />
+                            <label for="goToOPR" class="custom-label"> Go To OPR</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="goToTrace" class="form-check-input"
+                                   ng-model="vm.award.goToTrace" name="goToTrace" />
+                            <label for="goToTrace" class="custom-label"> Go To Trace</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="goToSASB" class="form-check-input"
+                                   ng-model="vm.award.goToSASB" name="goToSASB" />
+                            <label for="goToSASB" class="custom-label"> Go To SASB</label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="aNmCon" class="form-check-input"
+                                   ng-model="vm.award.aNmCon" name="aNmCon" />
+                            <label for="aNmCon" class="custom-label"> ANGF</label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="nmRGF" class="form-check-input"
+                                   ng-model="vm.award.nmRGF" name="nmRGF" />
+                            <label for="nmRGF" class="custom-label"> NmRGF</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="description" class="custom-label">Description</label>
+                            <textarea type="text" id="description" class="form-control custom-form-control" ng-model="vm.award.description" name="description" maxlength="250"></textarea>
+                            <p ng-show="vm.awardForm.description.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.awardForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

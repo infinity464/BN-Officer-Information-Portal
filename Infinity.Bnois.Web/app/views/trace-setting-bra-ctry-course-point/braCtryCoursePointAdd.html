@@ -1,0 +1,82 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.braCtryCoursePointForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Branch and Country Wise Course Point Settings<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseCategoryId" class="custom-label">Course Category</label>
+                            <select name="courseCategoryId" id="courseCategoryId" class="form-control" ng-change="vm.getCourseSubCategoryByCourseCategory(vm.braCtryCoursePoint.courseCategoryId)" ng-model="vm.braCtryCoursePoint.courseCategoryId" ng-options="option.value as option.text for option in vm.courseCategories">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.braCtryCoursePointForm.courseCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseSubCategoryId" class="custom-label">Course Sub Category</label>
+                            <select name="courseSubCategoryId" id="courseSubCategoryId" class="form-control" ng-model="vm.braCtryCoursePoint.courseSubCategoryId" ng-options="option.value as option.text for option in vm.courseSubCategories">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.braCtryCoursePointForm.courseSubCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankCategoryId" class="custom-label">Organization</label>
+                            <select name="rankCategoryId" id="rankCategoryId" class="form-control" ng-model="vm.braCtryCoursePoint.rankCategoryId" ng-options="option.value as option.text for option in vm.rankCategories">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.braCtryCoursePointForm.rankCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="branchId" class="custom-label">Branch</label>
+                            <select name="branchId" id="branchId" class="form-control" ng-model="vm.braCtryCoursePoint.branchId" ng-options="option.value as option.text for option in vm.branches">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.braCtryCoursePointForm.branchId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.braCtryCoursePoint.countryId" ng-options="option.value as option.text for option in vm.countries">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.braCtryCoursePointForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="max" class="custom-label">Max</label>
+                            <input type="text" id="max" class="form-control custom-form-control" ng-model="vm.braCtryCoursePoint.max" name="max" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="min" class="custom-label">Min</label>
+                            <input type="text" id="min" class="form-control custom-form-control" ng-model="vm.braCtryCoursePoint.min" name="min" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.braCtryCoursePointForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officer Naming Convention<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.subCategoryForm">
+	                <div class="col-sm-6">
+		                <div class="form-group">
+			                <label for="categoryName" class="custom-label">Category</label>
+			                <input type="text" id="categoryName" class="form-control custom-form-control" ng-model="vm.subCategory.category.name" name="name"  readonly />
+			             
+		                </div>
+	                </div>
+	                <div class="col-sm-6">
+		                <div class="form-group">
+			                <label for="shortName" class="custom-label"> Sub Category</label>
+			                <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.subCategory.shortName" name="name"  readonly />
+			        
+		                </div>
+	                </div>
+					
+	                <div class="col-sm-12">
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="prefix" class="form-check-input" 
+				                       ng-model="vm.subCategory.prefix" name="prefix"  ng-change="vm.setPrefix(vm.subCategory.prefix)"
+				                />
+				                <label for="prefix" class="custom-label"> Prefix</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="rank" class="form-check-input" 
+				                       ng-model="vm.subCategory.rank" name="rank"   ng-change="vm.setRank(vm.subCategory.rank)"
+				                />
+				                <label for="rank" class="custom-label"> Rank</label>
+			                </div>
+		                </div>
+						
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				               
+				                <label for="name" class="custom-label"> Name</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="prefix2" class="form-check-input" 
+				                       ng-model="vm.subCategory.prefix2" name="prefix2"   ng-change="vm.setPrefix2(vm.subCategory.prefix2)"
+				                />
+				                <label for="prefix2" class="custom-label"> Prefix-2</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="branch" class="form-check-input" 
+				                       ng-model="vm.subCategory.branch" name="branch"   ng-change="vm.setBranch(vm.subCategory.branch)"
+				                />
+				                <label for="branch" class="custom-label"> Branch</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="subBranch" class="form-check-input" 
+				                       ng-model="vm.subCategory.subBranch" name="subBranch"   ng-change="vm.setSubBranch(vm.subCategory.subBranch)"
+				                />
+				                <label for="subBranch" class="custom-label"> All Branch</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="medal" class="form-check-input" 
+				                       ng-model="vm.subCategory.medal" name="medal"   ng-change="vm.setMedal(vm.subCategory.medal)"
+				                />
+				                <label for="medal" class="custom-label"> Medal</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="award" class="form-check-input" 
+				                       ng-model="vm.subCategory.award" name="award"   ng-change="vm.setAward(vm.subCategory.award)"
+				                />
+				                <label for="award" class="custom-label"> Award</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="course" class="form-check-input" 
+				                       ng-model="vm.subCategory.course" name="course"   ng-change="vm.setCourse(vm.subCategory.course)"
+				                />
+				                <label for="course" class="custom-label"> Course</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="bn" class="form-check-input" 
+				                       ng-model="vm.subCategory.bn" name="bn"   ng-change="vm.setBN(vm.subCategory.bn)"
+				                />
+				                <label for="bn" class="custom-label"> BN</label>
+			                </div>
+		                </div>
+		                <div class="col-sm-2">
+			                <div class="form-group">
+				                <input type="checkbox" id="bnvr" class="form-check-input" 
+				                       ng-model="vm.subCategory.bnvr" name="bnvr"   ng-change="vm.setBNVR(vm.subCategory.bnvr)"
+				                />
+				                <label for="bnvr" class="custom-label"> Instead of BN</label>
+			                </div>
+		                </div>
+	                </div>
+                    
+                    <div class="col-sm-12">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="nmConEx" class="custom-label"> Naming Convention Example</label>
+                                <input type="text" id="nmConEx" class="form-control custom-form-control" ng-model="vm.subCategory.nmConEx" name="nmConEx" maxlength="250" readonly  />
+                                <p ng-show="vm.subCategoryForm.nmConEx.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                    </div>
+                   
+					
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.categoryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

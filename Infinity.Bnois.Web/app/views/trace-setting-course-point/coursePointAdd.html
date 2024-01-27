@@ -1,0 +1,43 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.coursePointForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Course Point<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseCategoryId" class="custom-label">Course Category</label>
+                            <select name="courseCategoryId" id="courseCategoryId" class="form-control" ng-model="vm.coursePoint.courseCategoryId" ng-options="option.value as option.text for option in vm.courseCategories">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.coursePointForm.courseCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="max" class="custom-label">Max</label>
+                            <input type="text" id="max" class="form-control custom-form-control" ng-model="vm.coursePoint.max" name="max" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="min" class="custom-label">Min</label>
+                            <input type="text" id="min" class="form-control custom-form-control" ng-model="vm.coursePoint.min" name="max" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.coursePointForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

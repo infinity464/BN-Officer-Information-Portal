@@ -1,0 +1,52 @@
+﻿<style>
+    div.scrollmenu {
+        background-color: #FFFFFF;
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu > .active {
+            color: #4527A0;
+        }
+
+        div.scrollmenu a:hover {
+            color: #673AB7;
+        }
+</style>
+
+<div class="container-fluid">
+
+    <div style="margin-top: 15px;">
+        <div class="scrollmenu">
+
+            <a ui-sref="trace-setting-tabs.trace-setting-modify({id:vm.traceSettingId})" ui-sref-active="active">Basic</a>
+            <a ui-sref="trace-setting-tabs.course-points()" ui-sref-active="active">Course Points</a>
+            <a ui-sref="trace-setting-tabs.poor-course-results()" ui-sref-active="active">Poor Course Results</a>
+            <a ui-sref="trace-setting-tabs.branch-country-course-points()" ui-sref-active="active">Branch and Country Wise Course Points</a>
+            <a ui-sref="trace-setting-tabs.point-deduction-punishments()" ui-sref-active="active">Point Deduction for Punishments</a>
+            <a ui-sref="trace-setting-tabs.bonus-point-medals()" ui-sref-active="active">Bonus Points for Medal</a>
+            <a ui-sref="trace-setting-tabs.bonus-point-awards()" ui-sref-active="active">Bonus Points for Award</a>
+            <a ui-sref="trace-setting-tabs.bonus-point-publications()" ui-sref-active="active">Bonus Points for Publications</a>
+            <a ui-sref="trace-setting-tabs.bonus-point-com-apps()" ui-sref-active="active">Bonus Points for Commendations/Appriciations</a>
+        </div>
+
+        <div class="tab-content">
+            <div ui-view></div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+

@@ -1,0 +1,37 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Dollar Sign ($)<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeeForm">
+                    <employee-search ng-model="vm.employee"></employee-search>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reason" class="custom-label">Reason</label>
+                            <textarea type="text" id="reason" class="form-control custom-form-control" ng-model="vm.employee.reason" ng-readonly="vm.employee.hasDollarSign" name="reason" maxlength="250"></textarea>
+                            <p ng-show="vm.employeeForm.reason.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dateOfDollarSign" class="custom-label">Date of Dollar Sign ($)</label>
+                            <input kendo-date-picker id="dateOfDollarSign" class="form-control custom-form-control" ng-readonly="vm.employee.hasDollarSign" k-ng-model="vm.employee.dateOfDollarSign" k-format="'dd-MM-yyyy'" name="dateOfDollarSign" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="hasDollarSign" class="custom-label">Has($)Sign</label>
+                            <input id="hasDollarSign" type="checkbox"  ng-model="vm.employee.hasDollarSign"  name="hasDollarSign" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

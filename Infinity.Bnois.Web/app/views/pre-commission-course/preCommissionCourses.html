@@ -1,0 +1,58 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Pre Commission Test</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addPreCommissionCourse()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL No</th>
+                                <th>Name</th>
+                                <th>BNA No</th>
+                                <th>Outside Bangladesh</th>
+                                <th>Country</th>
+                                <th>Medal</th>
+                                <th>Module D</th>
+                                <th>Appointment Held</th>
+                                <th>Total</th>
+                                <th>Final Position</th>
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="preCommissionCourse in vm.preCommissionCourses">
+                                <td>{{$index+1}}</td>
+                                <td>{{preCommissionCourse.employee.fullNameEng}}</td>
+                                <td>{{preCommissionCourse.bnaNo}}</td>
+                                <td>{{preCommissionCourse.isAbroad==1?'Yes':'No'}}</td>
+                                <td>{{preCommissionCourse.country.fullName}}</td>
+                                <td>{{preCommissionCourse.medal.nameEng}}</td>
+                                <td>{{preCommissionCourse.moduleD}}</td>
+                                <td>{{preCommissionCourse.appointmentHeld}}</td>
+                                <td>{{preCommissionCourse.total}}</td>
+                                <td>{{preCommissionCourse.finalPosition}}</td>
+                                <td class="text-right">
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.getPreCommissionCourseDetails(preCommissionCourse)"><span class="fa fa-wrench" aria-hidden="true" title="Pre Commission Course"></span></a>
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updatePreCommissionCourse(preCommissionCourse)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deletePreCommissionCourse(preCommissionCourse)"
+                                       ng-confirmation-message="Do you want to delete Pre Commission Course ?"
+                                       ng-confirmation-title="Delete Pre Commission Course ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Pre Commission Course"></span></a>
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

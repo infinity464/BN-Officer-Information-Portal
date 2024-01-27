@@ -1,0 +1,199 @@
+﻿<div class="container-fluid" ng-if="vm.empoloyeeLeaves.length > 0">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Employee Leave - Inbox</h2>
+
+
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addEmployeeLeave()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                    <div ng-include="'app/templates/search.html'" class="search-wrapper"></div>
+                    <div class="pull-right">
+
+                        <!--Leave Type-->
+                        <select class="form-control" ng-model="vm.leaveTypeId" ng-options="option.value as option.text for option in vm.leaveTypes">
+                            <option value="">--Select Leave Type--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--<pre>{{vm.empoloyeeLeaves|json}}</pre>-->
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">SL</th>
+                                <th class="text-center">P No.</th>
+                                <th class="text-center">Full Name</th>
+                                <th class="text-center">Leave Type</th>
+                                <th class="text-center">From Date</th>
+                                <th class="text-center">To Date</th>
+                                <th class="text-center">Duration</th>
+                                <!--<th>Approved Status</th>
+                                <th>Approved By</th>-->
+
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="EL in vm.empoloyeeLeaves">
+                                <td class="text-center">{{$index + 1}}</td>
+                                <td class="text-center">{{EL.pNo}}</td>
+                                <td>{{EL.fullNameEng}}</td>
+                                <td class="text-center">{{EL.typeName}}</td>
+                                <td style="width: 100px;">{{EL.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                <td style="width: 100px;">{{EL.toDate | date: "dd-MMM-yyyy"}}</td>
+                                <td class="text-center">{{EL.duration}}</td>
+
+                                <td class="text-center">
+                                    <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-if="EL.isEditable == true" ng-click="vm.updateEmployeeLeave(employee)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <button type="button" class="btn custom-btn btn-edit custom-btn-primary btn-xs" data-toggle="modal" data-target="#{{EL.pNo}}"><span><i class="fa fa-eye" aria-hidden="true"></i></span></button>
+                                    <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.leaveApprove(EL)"><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></a>
+                                    <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.leaveDeny(EL)"><span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></span></a>
+
+
+                                    <div class="modal fade" id="{{EL.pNo}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Leave Application - Officers</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4 class="text-center text-capitalize font-weight-bold" style="border-left: 0;font-weight: 800;">Leave application - officer</h4>
+                                                    <h6 class="text-left text-primary" style="color: #444242;">(To be faxed to NHQ by the originator if the effecting date is less than 10 working days from the date of signing)</h6>
+                                                    </p>
+                                                    <table border="0" px cellpadding="10" class="text-left">
+                                                        <tr class="row">
+                                                            <td>1. </td>
+                                                            <td colspan="4">Name in block capitals</td>
+                                                            <td colspan="10" class="border-bottom text-left">{{EL.fullNameEng}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td>2. </td>
+                                                            <td>P. No</td>
+                                                            <td colspan="4" class="border-bottom text-left">{{EL.pNo}}</td>
+                                                            <td>Rank</td>
+                                                            <td colspan="4" class="border-bottom text-left">{{EL.rankName}}</td>
+                                                            <td>Branch</td>
+                                                            <td colspan="4" class="border-bottom text-left">{{EL.branchName}}</td>
+
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td>3. </td>
+                                                            <td>Ship / Estb</td>
+                                                            <td colspan="8" class="border-bottom text-left">{{EL.shipEstbls}}</td>
+                                                            <td>Appt / Duties</td>
+                                                            <td colspan="4" class="border-bottom text-left">{{EL.apptDuties}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td>4. </td>
+                                                            <td colspan="14">Particulars of leave requested</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td> </td>
+                                                            <td>a.</td>
+                                                            <td colspan="7">Type and amount of leave requested</td>
+                                                            <td colspan="6" class="border-bottom text-left"><b>{{EL.typeAmountLeaveRequested}}</b></td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td> </td>
+                                                            <td>b.</td>
+                                                            <td colspan="7">Amount of leave due</td>
+                                                            <td colspan="6" class="border-bottom text-left">{{EL.amountLeaveDues}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td> </td>
+                                                            <td>c.</td>
+                                                            <td colspan="7">Date from which desired</td>
+                                                            <td colspan="6" class="border-bottom text-left">{{EL.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td>5. </td>
+                                                            <td colspan="8">Special Reason, If any, for applying : </td>
+                                                            <td colspan="6">{{EL.typeName}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td>6. </td>
+                                                            <td colspan="8">Leave Address(Blank not to be given) : </td>
+                                                            <td colspan="6">NA</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td> </td>
+                                                            <td>a.</td>
+                                                            <td colspan="7">Tel No (if any)</td>
+                                                            <td colspan="6" class="border-bottom text-left">{{EL.typeAmountLeaveRequested}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td> </td>
+                                                            <td>b.</td>
+                                                            <td colspan="7">Mobile No (if any)</td>
+                                                            <td colspan="6" class="border-bottom text-left">{{EL.mobileNo}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td> </td>
+                                                            <td>c.</td>
+                                                            <td colspan="7">Email (if any)</td>
+                                                            <td colspan="6" class="border-bottom text-left">{{EL.email}}</td>
+
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td>7. </td>
+                                                            <td colspan="8">Details of all leave availed if any in the current year : </td>
+                                                            <td colspan="6">NA{{EL.detailsOfLeaveAvailed}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td colspan="5">{{EL.detailsOfLeaveAvailed}}</td>
+                                                        </tr>
+                                                        <tr class="row">
+                                                            <td colspan="3">Date</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td colspan="5">Signature</td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!--<a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateEmployeeLeave(employee)"><span><i class="fa fa-close" aria-hidden="true"></i> Close </span></a>-->
+                                                    <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.leaveDeny(EL)"><span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Decline </span></a>
+
+                                                    <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.leaveApprove(EL)"><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Approved </span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- Modal -->
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagenation-wrapper" ng-if="vm.empoloyeeLeaves.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

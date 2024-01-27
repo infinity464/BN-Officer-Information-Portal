@@ -1,0 +1,486 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Mission Transfer</h2>
+                </div>
+
+                <form name="vm.officerTransferForm">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="nominationId" class="custom-label">Mission Nomination</label>
+
+
+                            <angucomplete-alt id="nominationId"
+                                              placeholder="Search Nomination"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selected"
+                                              local-data="vm.nominationList"
+                                              local-search="vm.localSearch"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="true"
+                                              input-name="entityId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Nomination Not Found"
+                                              input-class="form-control form-control-small custom-width" />
+
+
+                            <!-- <select style="margin-left: -195px;" name="nominationId" id="nominationId" class="form-control" ng-model="vm.officerTransfer.nominationId" -->
+                            <!--         ng-options="option.value as option.text for option in vm.nominationList" -->
+                            <!--         ng-change="vm.getNominatedList(vm.officerTransfer.nominationId)"> -->
+                            <!--     <option value="">--Select an Option--</option> -->
+                            <!-- </select> -->
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="transferType" class="custom-label">Nominated Officer</label>
+                            <select name="transferType" id="transferType" class="form-control" ng-model="employeeId"
+                                    ng-options="option.value as option.text for option in vm.nominatedList"
+                                    ng-change="vm.getEmployeeInfo(employeeId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label"> PNo</label>
+                            <input type="text" id="pNo" readonly="readonly" class="form-control custom-form-control" style="background-color:skyblue" ng-model="vm.officerTransfer.employee.pNo" name="pNo" required />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameEng" class="custom-label"> Name</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.officerTransfer.employee.fullNameEng" name="fullNameEng" maxlength="250" required />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Rank</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.officerTransfer.employee.rank.fullName" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Batch</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.officerTransfer.employee.batch.name" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="born" class="custom-label">Born</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="preBornOffice" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="Attach" class="custom-label">Attach</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="preAttachOffice" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="Appointment" class="custom-label">Appointment</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="preAppointment" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="transferMode" class="custom-label">Transfer Mode</label>
+                            <select name="transferMode" id="transferMode" class="form-control" ng-model="vm.officerTransfer.transferMode"
+                                    ng-options="option.value as option.text for option in vm.transferModes"
+                                    ng-change="vm.getTransferMode(vm.officerTransfer.transferMode)" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.officerTransferForm.transferMode.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                <div class="col-sm-6">
+                    <div class="form-group" ng-show="vm.backLog">
+                        <input type="checkbox" id="isBackLog" class="form-check-input"
+                               ng-model="vm.officerTransfer.isBackLog" name="isBackLog" />
+                        <label for="isBackLog" class="custom-label"> Back Log </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12"></div>
+
+                <div class="col-sm-6" ng-show="vm.officerTransfer.isBackLog">
+                    <div class="form-group">
+                        <label for="rankId" class="custom-label">Rank</label>
+                        <select name="rankId" id="rankId" class="form-control" ng-model="vm.officerTransfer.rankId"
+                                ng-options="option.value as option.text for option in vm.ranks">
+                            <option value="">--Select an Option--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="tempTransferType" class="custom-label">Temporary Transfer Type</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.temporaryTransferTypes">
+                                <input type="radio" id="tempTransferType" ng-model="vm.officerTransfer.tempTransferType" ng-disabled="vm.temporaryDisabled" value="{{status.value}}"> {{status.text}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12"></div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fromDate" class="custom-label"> From Date</label>
+                            <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.officerTransfer.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                            <p ng-show="vm.officerTransferForm.fromDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="toDate" class="custom-label"> To Date</label>
+                            <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.officerTransfer.toDate" k-format="'dd-MM-yyyy'" name="toDate" ng-disabled="vm.temporaryDisabled" />
+                        </div>
+                    </div>
+
+
+
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="currentBornOfficeId" class="custom-label"> New Born Office</label>
+                           
+                        <angucomplete-alt id="currentBornOfficeId"
+                                          placeholder="Search Born Office"
+                                          pause="400"
+                                          maxlength="250"
+                                          minlength="2"
+                                          selected-object="vm.selectedBorn"
+                                          local-data="vm.newBorns"
+                                          local-search="vm.localSearchBorn"
+                                          title-field="text"
+                                          match-class="highlight"
+                                          field-required="true"
+                                          input-name="currentBornOfficeId"
+                                          override-suggestions="true"
+                                          auto-match="true"
+                                          text-no-results="Office Not Found"
+                                          input-class="form-control form-control-small" />
+                            
+                        <!-- <select name="currentBornOfficeId" id="currentBornOfficeId" class="form-control" ng-model="vm.officerTransfer.currentBornOfficeId" ng-options="option.value as option.text for option in vm.newBorns" required> -->
+                        <!--     <option value="">--Select an Option--</option> -->
+                        <!-- </select> -->
+                    </div>
+                </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" id="uploadPdf" class="form-check-input"
+                                   ng-model="vm.officerTransfer.uploadPdf" name="uploadPdf" />
+                            <label for="uploadPdf" class="custom-label"> Upload Transfer File </label>
+                        </div>
+                    </div>
+                    <div ng-show="vm.officerTransfer.uploadPdf">
+
+                        <br />
+
+
+                        <div class="col-sm-12 page-header">
+                            <h2 class="warning page-header-item">Officer's Mission Transfer File Upload</h2>
+                        </div>
+                        <div class="row">
+                            <div class="panel" nv-file-drop="" uploader="uploader">
+                                <div class="panel-body" style="padding-top: 0;">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="table-wrapper table-responsive">
+                                                <div class="col-sm-12">
+                                                    <h4>Upload only PDF File</h4>
+                                                </div>
+                                               
+                                                <div class="col-sm-12">
+                                                    Upload progress:
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group" style="min-height: 50px;">
+                                                        <div class="panel-default">
+                                                            <div ng-show="uploader.isHTML5">
+                                                                <div class="btn custom-btn-primary fileinput-button" style="display:block;">
+                                                                    <input type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="pull-right">
+                                                        <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                                            <span class="glyphicon glyphicon-upload"></span> Upload
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                                            <span class="glyphicon glyphicon-trash"></span> Remove
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.officerTransferForm.$invalid "><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+                    </div>
+                </form>
+
+
+
+                <div class="modal fade" id="myModal" role="dialog" data-keyboard="false" data-backdrop="static">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" ng-click="vm.close()">&times;</button>
+                                <h4 class="modal-title">Mission Transfer</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="transferMode" class="custom-label">Transfer Mode</label>
+                                        <select name="transferMode" id="transferMode" class="form-control" ng-model="vm.officerTransfer.transferMode"
+                                                ng-options="option.value as option.text for option in vm.transferModes" required
+                                                ng-change="vm.getTransferMode(vm.officerTransfer.transferMode)">
+                                            <option value="">--Select an Option--</option>
+                                        </select>
+                                        <p ng-show="vm.officerTransferForm.transferMode.$error.required" class="help-block errormsg">Please select an Option</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="tempTransferType" class="custom-label">Temporary Transfer Type</label>
+                                        <div class="radio-inline" ng-repeat=" status in vm.temporaryTransferTypes">
+                                            <label>   <input type="radio" id="tempTransferType" ng-model="vm.officerTransfer.tempTransferType" ng-disabled="vm.temporaryDisabled" value="{{status.value}}"> {{status.text}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="fromDate" class="custom-label"> From Date</label>
+                                        <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.officerTransfer.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                                        <p ng-show="vm.officerTransferForm.fromDate.$error.required" class="help-block errormsg">Date is required.</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="toDate" class="custom-label"> To Date</label>
+                                        <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.officerTransfer.toDate" k-format="'dd-MM-yyyy'" name="toDate" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-12 page-header">
+                                    <h2 class="warning page-header-item">Officer's Transfer File Upload</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="panel" nv-file-drop="" uploader="uploader">
+                                        <div class="panel-body" style="padding-top: 0;">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="table-wrapper table-responsive">
+                                                        <div class="col-sm-12">
+                                                            <h4>Upload only PDF File</h4>
+                                                        </div>
+
+                                                        <div class="col-sm-12">
+                                                            Upload progress:
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group" style="min-height: 50px;">
+                                                                <div class="panel-default">
+                                                                    <div ng-show="uploader.isHTML5">
+                                                                        <div class="btn custom-btn-primary fileinput-button" style="display: block;">
+                                                                            <input type="file" nv-file-select="" uploader="uploader" style="opacity: 1;" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="pull-right">
+                                                                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.close()">Close</button>
+                                <button type="button" class="btn btn-success pull-left" data-dismiss="modal" ng-click="vm.updateOfficeTransfer(vm.officerTransfer.transferId,vm.officerTransfer)">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-sm-12">
+                    <div class="table-wrapper table-responsive" ng-hide="itemValue">
+                        <table class="table table-hover table-striped">
+                            <caption><h3>Permanent Transfer</h3></caption>
+                            <thead>
+                                <tr>
+
+                                    <th>SL</th>
+                                    <!-- <th>Mode </th> -->
+                                    <th>Born Office</th>
+                                    <th>Attach Office</th>
+                                    <th>Appointment</th>
+                                    <th>From Date</th>
+                                    <th>To Date</th>
+
+
+                                    <th class="text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="officerTransfer in vm.officerTransfers">
+                                    <td>{{$index+1}}</td>
+                                    <!-- <td>{{officerTransfer.transferModeName}}</td> -->
+                                    <td>{{officerTransfer.bornOffice}}</td>
+                                    <td>{{officerTransfer.currentAttach}}</td>
+                                    <td>{{officerTransfer.appointment}}</td>
+                                    <td style="width: 100px;">{{officerTransfer.fromDate | date:"dd-MMM-yyyy"}}</td>
+                                    <td style="width: 100px;">{{officerTransfer.toDate | date:"dd-MMM-yyyy"}}</td>
+                                    <td class="text-right" style="width: 120px;">
+                                        <a href="{{vm.url+officerTransfer.fileName}}" ng-hide="officerTransfer.fileName ==null" class="btn custom-btn btn-edit custom-btn-primary btn-xs" target="_blank"><span class="fa fa-download" aria-hidden="true" title="Download File"></span></a>
+                                        <a disabled ng-hide="officerTransfer.fileName !=null" class="btn custom-btn btn-edit custom-btn-primary btn-xs"><span class="fa fa-download" aria-hidden="true" title="Download File"></span></a>
+                                        <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" data-toggle="modal" data-target="#myModal" ng-click="vm.getOfficeTransferInfo(officerTransfer)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                        <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor: pointer" ng-confirmation-click="vm.deleteOfficerTransfer(officerTransfer)"
+                                           ng-confirmation-message="Do you want to delete Transfer ?"
+                                           ng-confirmation-title="Delete Transfer ?"
+                                           ng-confirmation-yes-text="Yes"
+                                           ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Transfer"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            
+            
+            <div class="col-sm-12">
+                <hr />
+            </div>
+
+            
+
+            <div class="col-sm-12">
+                    <div class="table-wrapper table-responsive" ng-hide="itemValue">
+                        <table class="table table-hover table-striped">
+                            <caption><h3>Temporary Transfer</h3></caption>
+                            <thead>
+                                <tr>
+
+                                    <th>SL</th>
+                                    <!-- <th>Mode </th> -->
+                                    <th>Born Office</th>
+                                    <th>Attach Office</th>
+                                    <th>Appointment</th>
+                                    <th>From Date</th>
+                                    <th>To Date</th>
+
+
+                                    <th class="text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="officerTransfer in vm.officerTemporaryTransfers">
+                                    <td>{{$index+1}}</td>
+                                    <!-- <td>{{officerTransfer.transferModeName}}</td> -->
+                                    <td>{{officerTransfer.bornOffice}}</td>
+                                    <td>{{officerTransfer.currentAttach}}</td>
+                                    <td>{{officerTransfer.appointment}}</td>
+                                    <td style="width: 100px;">{{officerTransfer.fromDate | date:"dd-MMM-yyyy"}}</td>
+                                    <td style="width: 100px;">{{officerTransfer.toDate | date:"dd-MMM-yyyy"}}</td>
+                                    <td class="text-right" style="width: 120px;">
+                                        <a href="{{vm.url+officerTransfer.fileName}}" ng-hide="officerTransfer.fileName ==null" class="btn custom-btn btn-edit custom-btn-primary btn-xs" target="_blank"><span class="fa fa-download" aria-hidden="true" title="Download File"></span></a>
+                                        <a disabled ng-hide="officerTransfer.fileName !=null" class="btn custom-btn btn-edit custom-btn-primary btn-xs"><span class="fa fa-download" aria-hidden="true" title="Download File"></span></a>
+                                        <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" data-toggle="modal" data-target="#myModal" ng-click="vm.getOfficeTransferInfo(officerTransfer)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                        <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor: pointer" ng-confirmation-click="vm.deleteOfficerTransfer(officerTransfer)"
+                                           ng-confirmation-message="Do you want to delete Transfer ?"
+                                           ng-confirmation-title="Delete Transfer ?"
+                                           ng-confirmation-yes-text="Yes"
+                                           ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Transfer"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

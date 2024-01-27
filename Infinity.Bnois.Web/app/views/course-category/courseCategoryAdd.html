@@ -1,0 +1,122 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Course Category<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.courseCategoryForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Full Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.courseCategory.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.courseCategoryForm.name.$error.required" class="help-block errormsg">Course category name is required</p>
+                            <p ng-show="vm.courseCategoryForm.name.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nameBan" class="custom-label">Full Name (বাংলা)</label>
+                            <input type="text" id="nameBan" class="form-control custom-form-control" ng-model="vm.courseCategory.nameBan" name="nameBan" ng-maxlength="250" />
+                            <p ng-show="vm.courseCategoryForm.nameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label">Short Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.courseCategory.shortName" name="shortName" maxlength="250" />
+                            <p ng-show="vm.courseCategoryForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortNameBan" class="custom-label">Short Name (বাংলা)</label>
+                            <input type="text" id="shortNameBan" class="form-control custom-form-control" ng-model="vm.courseCategory.shortNameBan" name="shortNameBan" ng-maxlength="50" />
+                            <p ng-show="vm.courseCategoryForm.shortNameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="priority" class="custom-label">Priority</label>
+                            <input type="number" id="priority" class="form-control custom-form-control" ng-model="vm.courseCategory.priority" name="priority" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.courseCategory.remarks" name="remarks" maxlength="250" />
+                            <p ng-show="vm.courseCategoryForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="trace" class="custom-label"></label>
+                            <input type="checkbox" id="trace" class="form-check-input"
+                                   ng-model="vm.courseCategory.trace" name="trace" />
+                            <label for="trace" class="custom-label"> Trace</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="sasb" class="custom-label"></label>
+                            <input type="checkbox" id="sasb" class="form-check-input"
+                                   ng-model="vm.courseCategory.sasb" name="sasb" />
+                            <label for="sasb" class="custom-label"> SASB</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="promotionBoard" class="custom-label"></label>
+                            <input type="checkbox" id="promotionBoard" class="form-check-input"
+                                   ng-model="vm.courseCategory.promotionBoard" name="promotionBoard" />
+                            <label for="promotionBoard" class="custom-label"> Go To Promotion Board</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bnList" class="custom-label"></label>
+                            <input type="checkbox" id="bnList" class="form-check-input"
+                                   ng-model="vm.courseCategory.bnList" name="bnList" />
+                            <label for="bnList" class="custom-label"> BN List</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bnListPriority" class="custom-label">BN List Priority</label>
+                            <input type="number" id="bnListPriority" class="form-control custom-form-control" ng-model="vm.courseCategory.bnListPriority" name="bnListPriority" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="transferProposal" class="custom-label"></label>
+                            <input type="checkbox" id="transferProposal" class="form-check-input"
+                                   ng-model="vm.courseCategory.transferProposal" name="transferProposal" />
+                            <label for="transferProposal" class="custom-label">Transfer Proposal</label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.courseCategoryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

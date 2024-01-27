@@ -1,0 +1,210 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Training Schedule<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.trainingPlanForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseCategoryId" class="custom-label">Category</label>
+                            <select name="courseCategoryId" id="courseCategoryId" class="form-control" ng-model="vm.trainingPlan.courseCategoryId"
+                                    ng-options="option.value as option.text for option in vm.courseCategories" required
+                                    ng-change="vm.getCourseSubCategory(vm.trainingPlan.courseCategoryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.trainingPlanForm.courseCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseSubCategoryId" class="custom-label">Sub Category</label>
+                            <select name="courseSubCategoryId" id="courseSubCategoryId" class="form-control" ng-model="vm.trainingPlan.courseSubCategoryId"
+                                    ng-options="option.value as option.text for option in vm.courseSubCategories" required
+                                    ng-change="vm.getCourses(vm.trainingPlan.courseSubCategoryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.trainingPlanForm.courseSubCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryType" class="custom-label"> Venue</label>
+
+                            <div class="radio-inline" ng-repeat=" status in vm.countryTypes">
+
+                                <label>  <input type="radio" id="countryType" ng-model="vm.trainingPlan.countryType" ng-change="vm.countriesName(vm.trainingPlan.countryType)" value="{{status.value}}" required> {{status.text}}  </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.trainingPlan.countryId"
+                                    ng-options="option.value as option.text for option in vm.countries" required ng-disabled="vm.countryDisable"
+                                    ng-change="vm.getTrainingInstitute(vm.trainingPlan.countryId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.trainingPlanForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseId" class="custom-label"> Course</label>
+                            <select name="courseId" id="courseId" class="form-control" ng-model="vm.trainingPlan.courseId" ng-options="option.value as option.text for option in vm.courses" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.trainingPlanForm.courseId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseNo" class="custom-label">Course No</label>
+                            <input type="text" id="courseNo" class="form-control custom-form-control" ng-model="vm.trainingPlan.courseNo" name="courseNo" maxlength="250" />
+                            <p ng-show="vm.trainingPlanForm.maxParticipant.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                
+
+                  
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="instituteId" class="custom-label"> Training Institute</label>
+                            <select name="instituteId" id="instituteId" class="form-control" ng-model="vm.trainingPlan.instituteId" ng-options="option.value as option.text for option in vm.trainingInstitutes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.trainingPlanForm.instituteId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fromDate" class="custom-label">  From Date</label>
+                            <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.trainingPlan.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                            <p ng-show="vm.trainingPlanForm.fromDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="toDate" class="custom-label">  To Date</label>
+                            <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.trainingPlan.toDate" k-format="'dd-MM-yyyy'" name="toDate" required />
+                            <p ng-show="vm.trainingPlanForm.toDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="maxParticipant" class="custom-label">Maximum Participant</label>
+                            <input type="text" id="maxParticipant" class="form-control custom-form-control" ng-model="vm.trainingPlan.maxParticipant" name="maxParticipant" maxlength="250" />
+                            <p ng-show="vm.trainingPlanForm.maxParticipant.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-4">
+                            <h4 class="text-center">Rank</h4>
+                            <div class="table-wrapper table-responsive" style="overflow-y:scroll; height:250px;">
+                                <table class="table table-hover table-striped">
+
+
+                                    <tbody>
+
+                                    <tr ng-repeat="rank in  vm.rankList">
+                                        <td>
+                                            <label><input type="checkbox" checklist-model="vm.trainingPlan.rankIds" checklist-value="rank.value"> {{rank.text}}</label>  
+                                        </td>
+
+                           
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+
+                        <div class="col-sm-4">
+
+                            <h4 class="text-center">Branch</h4>
+                            <div class="table-wrapper table-responsive" style="overflow-y:scroll; height:250px;">
+                                <table class="table table-hover table-striped">
+
+                                    <tbody>
+                                    <tr ng-repeat="branch in  vm.branchList">
+                                        <td>
+                                            <label><input type="checkbox" checklist-model="vm.trainingPlan.branchIds" checklist-value="branch.value"> {{branch.text}}</label>
+                                        </td>
+
+                            
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="col-sm-12" style="margin-top: 25px;">
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="checkbox" id="isPostponed" class="form-check-input"
+                                       ng-model="vm.trainingPlan.isPostponed" name="isPostponed" />
+                                <label for="isPostponed" class="custom-label"> Postponed</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="pDate" class="custom-label">  Postponed From Date</label>
+                                <input kendo-date-picker id="pDate" class="form-control custom-form-control" k-ng-model="vm.trainingPlan.pDate" k-format="'dd-MM-yyyy'" name="pDate" ng-disabled="!vm.trainingPlan.isPostponed" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="pToDate" class="custom-label">  Postponed To Date</label>
+                                <input kendo-date-picker id="pToDate" class="form-control custom-form-control" k-ng-model="vm.trainingPlan.pToDate" k-format="'dd-MM-yyyy'" name="pToDate" ng-disabled="!vm.trainingPlan.isPostponed" />
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="purpose" class="custom-label">Purpose</label>
+                                <textarea type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.trainingPlan.purpose" name="purpose" maxlength="250" ng-disabled="!vm.trainingPlan.isPostponed"></textarea>
+                                <p ng-show="vm.trainingPlanForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.trainingPlanForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

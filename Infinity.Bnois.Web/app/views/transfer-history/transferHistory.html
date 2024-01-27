@@ -1,0 +1,103 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+    .content {
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: #ffffff;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+    /*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 8px 4px !important;
+    }*/
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    }
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: .9rem !important;
+        }
+    } 
+</style>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+               <!--<pre>{{vm.permanentTransferHistories|json}}</pre>-->
+                <div class="card-body" ng-show="vm.permanentTransferHistories.length > 0">
+                    <div class="table-responsive" >
+                        <table class="table">
+                            <thead class="customeTableHead">
+                                <tr>
+                                    <th style="width:5%; text-align:center;">
+                                        Ser
+                                    </th>
+                                    <th style="width:15%;text-align:center;">
+                                        Appt
+                                    </th>
+                                    <th style="width:10%; text-align:center;">
+                                        Rank
+                                    </th>
+                                    <th style="width:36%; text-align:center;">
+                                        Unit
+                                    </th>
+                                    <th style="width:17%; text-align:center;">
+                                        From
+                                    </th>
+                                    <th style="width:17%; text-align:center;">
+                                        To
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="permanentTransferHistory in vm.permanentTransferHistories">
+                                    <td style="text-align:center;">
+                                        {{$index+1}}
+                                    </td>
+                                    <td>
+                                        {{permanentTransferHistory.appointment}}
+                                    </td>
+                                    <td>
+                                        {{permanentTransferHistory.rank}}
+                                    </td>
+                                    <td>
+                                        {{permanentTransferHistory.unit}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        {{permanentTransferHistory.fromDate|date:"dd-MMM-yyyy"}}
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span ng-if="permanentTransferHistory.toDate !=null">{{permanentTransferHistory.toDate |date:"dd-MMM-yyyy"}}</span><span ng-if="permanentTransferHistory.toDate ==null">Till Now</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,845 @@
+﻿<style>
+    
+
+    .helper {
+        background: #000066;
+    }
+
+    .card {
+        margin: auto !important;
+        font-size: 18px;
+        width: 40%;
+        padding: 10px;
+        border-radius: 25px !important;
+        padding: 0px !important;
+        top: 30%;
+        height: 40%;
+        background-color: #ffffffe6 !important;
+    }
+
+    .content {
+        padding-left: 10px !important;
+        max-height: 72%;
+        overflow-y: auto;
+    }
+
+    .card .card-body {
+        padding: 10px 15px 0px 15px !important;
+    }
+
+    .card-body p {
+        font-size: 25px !important;
+    }
+
+    .card-title {
+        color: #000066 !important;
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    .content a {
+        padding-left: 5px;
+        vertical-align: middle;
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .content {
+            max-height: 65%;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 20px !important;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-body p {
+            font-size: 17px !important;
+        }
+
+        .card {
+            width: 95%;
+            top: 20%;
+            /*height: 60%;*/
+            font-size: 16px !important;
+        }
+
+        .content {
+            max-height: 70%;
+        }
+    }
+
+    @media screen and (max-width: 900px) and (min-width: 576px) {
+
+        .card {
+            width: 60%;
+        }
+        .content {
+            max-height: 50%;
+        }
+    }
+
+    img {
+        width: 22px;
+        margin: 5px 0px 0px 0px;
+    }
+
+    .footer {
+        padding: 0px !important;
+    }
+
+        .footer.content > img,
+        .footer.content > address {
+            display: inline-block;
+        }
+
+
+
+    .content img {
+        width: 26px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .footer div {
+        padding: 5px 0px !important;
+    }
+
+        .footer div a {
+            color: black !important;
+        }
+
+    #btn {
+        padding-left: 5px;
+        vertical-align: middle;
+        background-color: transparent;
+        border: none;
+        font-size: 18px;
+    }
+
+        #btn:hover {
+            text-decoration: underline;
+        }
+
+
+
+        /*Leave datalist print css*/
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: white;
+        text-align: center;
+        /*text-transform: uppercase;*/
+        font-weight: bold;
+    }
+
+    .customeTableHead1 {
+        background-color: rgb(102,255,153);
+        color: black;
+        text-align: center;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 1pt solid black !important;
+        padding: 8px 4px !important;
+        font-size: 12pt !important;
+        font-weight: 500 !important;
+    }
+
+    .table {
+        background-color: white;
+        font-size: 12pt !important;
+        font-family: Arial !important;
+    }
+        .table > thead > tr > th {
+            /*font-weight: 400 !important;*/
+        }
+
+    .table-responsive {
+        padding-bottom: 2px !important;
+    }
+    .headr {
+        color: black;
+        text-align: left;
+        text-transform: capitalize;
+        font-weight: 600 !important;
+        text-decoration: underline;
+        font-size: 12pt !important;
+    }
+    .min-width {
+        white-space: nowrap;
+    }
+    @media screen and (max-width: 575px) {
+        .content {
+            max-height: 50%;
+        }
+    }
+</style>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-center">Print</h5><hr />
+        <!--<p>Forms</p><hr />-->
+        <div class="footer content">
+            <div>
+                <div>
+                    <img src="../../../Images/Icons/Icons/Forms on downloads.png" />
+                    <input type='button' id='btn' value='Current Status' onclick='printCurrentStatus();'>
+                </div>
+                <div>
+                    <img src="../../../Images/Icons/Icons/Forms on downloads.png" />
+                    <input type='button' id='btn' value='Appointment History' onclick='printAppoinment();'>
+                </div>
+                <div>
+                    <img src="../../../Images/Icons/Icons/Forms on downloads.png" />
+                    <input type='button' id='btn' value='Course History' onclick='printCourse();'>
+                </div>
+                <div>
+                    <img src="../../../Images/Icons/Icons/Forms on downloads.png" />
+                    <input type='button' id='btn' value='Details of Leave' onclick='printLeave();'>
+                </div>
+                <!--printPublication-->
+                <div>
+                    <img src="../../../Images/Icons/Icons/Forms on downloads.png" />
+                    <input type='button' id='btn' value='Publication' onclick='printPublication();'>
+                </div>
+                <div>
+                    <img src="../../../Images/Icons/Icons/Forms on downloads.png" />
+                    <input type='button' id='btn' value='Commendation' onclick='printCommendation();'>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none;">
+    <div id="currentStatus">
+        <!--<table id="headerTable">
+            <tr>
+                <th class="leftChild">{{vm.date}}</th>
+                <th class="rightChild">BNOIP</th>
+            </tr>
+        </table>-->
+        <h1>CURRENT STATUS</h1>
+        <img id="employeePhoto" alt="" src="{{vm.currentStatus.photo}}" />
+        <!--<table id="currentStatusTable">-->
+        <table id="customers">
+            <tr>
+                <td>1. </td>
+                <td>Rank & Name :</td>
+                <td>{{vm.currentStatus.rankAndName}} ( P No {{vm.currentStatus.pNo}} )</td>
+            </tr>
+            <tr>
+                <td>2. </td>
+                <td>Batch :</td>
+                <td>{{vm.currentStatus.batch}}</td>
+            </tr>
+            <tr>
+                <td>3. </td>
+                <td>Category :</td>
+                <td>{{vm.currentStatus.category}}</td>
+            </tr>
+            <tr>
+                <td>4. </td>
+                <td>Sub-Category :</td>
+                <td>{{vm.currentStatus.subCategory}}</td>
+            </tr>
+            <tr>
+                <td>5. </td>
+                <td>D.O.C :</td>
+                <td>{{vm.currentStatus.dateOfCommission | date :  &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr>
+                <td>6. </td>
+                <td>D.O.S :</td>
+                <td>{{vm.currentStatus.seniorityDate | date :  &quot dd-MMM-yyyy &quot }}</td>
+            </tr>
+            <tr>
+                <td>7. </td>
+                <td>Service Limit :</td>
+                <td>{{vm.currentStatus.serviceLimit|date: &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr>
+                <td>8. </td>
+                <td>Age Limit :</td>
+                <td>{{vm.currentStatus.ageLimit|date: &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr>
+                <td>9. </td>
+                <td>Attached :</td>
+                <td>{{vm.currentStatus.attached}}</td>
+            </tr>
+            <tr>
+                <td>10. </td>
+                <td>Born Date :</td>
+                <td>{{vm.currentStatus.bornDate | date: &quot dd-MMM-yyyy &quot}}</td>
+            </tr>
+            <tr>
+                <td>11. </td>
+                <td>Appointment :</td>
+                <td>{{vm.currentStatus.appointment}}</td>
+            </tr>
+            <tr>
+                <td>12. </td>
+                <td>E-mail :</td>
+                <td>{{vm.currentStatus.email}}</td>
+            </tr>
+            <tr>
+                <td>13. </td>
+                <td>Mobile No :</td>
+                <td>{{vm.currentStatus.contactNo}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div style="display:none;">
+    <div id="appoinment">
+        <!--<table id="headerTable">
+            <tr>
+                <th class="leftChild">{{vm.date}}</th>
+                <th class="rightChild">BNOIP</th>
+            </tr>
+        </table>-->
+        <h1>Appointment History</h1>
+        <h2>{{vm.currentStatus.rankAndName}} ( P No {{vm.currentStatus.pNo}} )</h2>
+        <table id="appoinmentTable">
+            <thead>
+                <tr>
+                    <th>Ser</th>
+                    <th>Appt</th>
+                    <th class="min-width">Rank</th>
+                    <th>Unit</th>
+                    <th class="min-width">From</th>
+                    <th class="min-width">To</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr ng-repeat="permanentTransferHistory in vm.permanentTransferHistories">
+                    <td>
+                        {{$index+1}}
+                    </td>
+                    <td>
+                        {{permanentTransferHistory.appointment}}
+                    </td>
+                    <td class="min-width">
+                        {{permanentTransferHistory.rank}}
+                    </td>
+                    <td>
+                        {{permanentTransferHistory.unit}}
+                    </td>
+                    <td class="min-width">
+                        {{permanentTransferHistory.fromDate|date:"dd-MMM-yyyy"}}
+                    </td>
+                    <td class="min-width">
+                        <span ng-if="permanentTransferHistory.toDate !=null">{{permanentTransferHistory.toDate |date:"dd-MMM-yyyy"}}</span><span ng-if="permanentTransferHistory.toDate ==null">Till Now</span>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div style="display:none;">
+    <div id="course1234">
+        <!--<table id="headerTable">
+            <tr>
+                <th class="leftChild">{{vm.date}}</th>
+                <th class="rightChild">BNOIP</th>
+            </tr>
+        </table>-->
+        <h1>Course History</h1>
+        <h2>{{vm.currentStatus.rankAndName}} ( P No {{vm.currentStatus.pNo}} )</h2>
+        <table id="courseTable">
+            <thead>
+                <tr>
+                    <th>
+                        Ser
+                    </th>
+                    <th>
+                        Course
+                    </th>
+                    <th>
+                        Institute
+                    </th>
+                    <th class="min-width">
+                        From
+                    </th>
+                    <th class="min-width">
+                        To
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr ng-repeat="CA in vm.courseAttendeds">
+                    <td>
+                        {{$index+1}}
+                    </td>
+                    <td>
+                        {{CA.course}}
+                    </td>
+                    <td>
+                        {{CA.institute}}
+                    </td>
+                    <td class="min-width">
+                        {{CA.fromDate | date:"dd-MMM-yyyy"}}
+                    </td>
+                    <td class="min-width">
+                        {{CA.toDate | date:"dd-MMM-yyyy"}}
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div style="display:none;">
+    <div id="leave1234" style="background-color:white !important;">
+
+        <style>
+            @media print {
+
+                body {
+                    background-color: white !important;
+                    /*margin: 2cm;*/
+                }
+            }
+        </style>
+
+        <h1 style="font-size: 12pt !important;color: black;text-decoration: underline;font-weight:600;text-align: center;padding-bottom: 7px;text-transform: uppercase;">Details of Leave</h1>
+        <h2 style="font-size: 12pt !important;color: black;text-align: center;font-weight:600;padding-bottom: 5px;text-transform: capitalize;">{{vm.currentStatus.rankAndName}} ( P No {{vm.currentStatus.pNo}} )</h2>
+        <div class="table-responsive">
+            <p class="headr">Current Leave Status</p>
+            <table class="table" style="color:black !important;">
+                <!--<tr>
+                    <td colspan="7" class="headr">
+                        Current Leave Status
+                    </td>
+                </tr>-->
+                <tr>
+                    <td style="width: 16.6%;background-color: #D9D9D9 !important;">PL Available this year</td>
+                    <td ng-if="vm.leaveInfo.plAvailable>=0" style="width: 16.6%;">
+                        {{vm.leaveInfo.plAvailable}} days
+                    </td>
+                    <td ng-if="vm.leaveInfo.plAvailable<0" style="width: 16.6%;"> 0 days <br /> <span style="color: red; font-size: 12pt;"> (This Officer already availed {{vm.plAvailable}} days more than due.)</span></td>
+                    <td style="width:16.6%;background-color: #D9D9D9 !important;">Last RL Availed Date</td>
+                    <td style="width:16.6%">{{vm.leaveInfo.lastRlAvailed |date:"dd-MMM-yyyy"}}</td>
+                    <td style="width:16.6%;background-color: #D9D9D9 !important;">RL Due Date</td>
+                    <td style="width:16.6%">{{vm.leaveInfo.rlDue |date:"dd-MMM-yyyy"}} <span ng-if="vm.leaveInfo.isTrue" style="color:red;font-weight:bold">(Already Over Due)</span></td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="table-responsive">
+            <p class="headr">Leave Summary</p>
+            <table class="table">
+                <!--<tr>
+                    <td style="background-color: #0176D6 !important;color: white;text-align: center;text-transform: uppercase;font-weight: bold;" colspan="4">
+                        Leave Summary
+                    </td>
+                </tr>-->
+                <tr>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Privilege Leave Balance</td>
+                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.totalPlAvailable}}</td>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Recreation Leave Balance</td>
+                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.recreationLeaveDue}}</td>
+                </tr>
+                <tr>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Furlough Leave Balance</td>
+                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.totalFurloughLeave}}</td>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Terminal Leave Balance</td>
+                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.terminalLeave}}</td>
+
+
+                </tr>
+                <tr>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Casual Leave Balance</td>
+                    <td style="width: 16.6%;text-align: center">{{vm.leaveInfo.casualLeave}}</td>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Survey Leave Balance</td>
+                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.surveyLeave}}</td>
+                </tr>
+                <tr>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Leave on Medical Certificate Balance</td>
+                    <td ng-if="vm.leaveInfo.medicalLeave>=0" style="width: 16.6%;text-align: center">{{vm.leaveInfo.medicalLeave}} </td>
+                    <td ng-if="vm.leaveInfo.medicalLeave<0" style="width: 16.6%;text-align: center"> 0 </td>
+                    <!--style="width: 80px; text-align: center">{{vm.leaveInfo.medicalLeave}}</td>-->
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Sick Leave Balance</td>
+                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.sickLeave}}</td>
+
+                </tr>
+                <tr>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Maternity Leave Balance</td>
+                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.maternyLeave}}</td>
+                    <td style="width:33.2%;background-color: #D9D9D9 !important;">Wound, Injury or Disability Leave Balance</td>
+                    <td style="width: 16.6%; text-align: center">{{vm.leaveInfo.woundLeave}}</td>
+                </tr>
+            </table>
+        </div>
+        <div ng-repeat="parent in vm.leaveInfos">
+            <!--<div ng-if="parent.leaveTypeId == '1'">
+                <div class="table-responsive">
+                    <p class="headr">{{parent.leaveTypeName}}&nbsp;({{parent.shartName}})</p>
+                    <table class="table" style="text-align:center">
+                        <thead>
+                            <tr style="color: black;text-align: center; font-weight:600 !important">
+                                <th class="min-width" style="width:20%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">From</th>
+                                <th class="min-width" style="width:20%;background-color: #D9D9D9 !important; font-weight:600 !important">To</th>
+                                <th style="width:10%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">Days</th>
+                                <th style="width:15%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">Leave Slot</th>
+                                <th style="width:35%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">Ex. BD Leave</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="child in parent.spGetEmployeeLeaveInfoes | orderBy:'fromDate'">
+                                <td class="min-width" style="text-align: center">{{child.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                <td class="min-width" style="text-align: center">{{child.toDate | date: "dd-MMM-yyyy"}}</td>
+                                <td style="text-align: center" ng-init="$parent.total = $parent.total + child.duration">{{child.duration}}</td>
+                                <td>{{child.slot}}</td>
+                                <td>{{child.country}}</td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center; font-weight:600 !important"><b>Total</b></td>
+            <td style="text-align: center; font-weight:600 !important"><b>{{ total }}</b></td>
+            <td></td>
+            <td></td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>-->
+    <div ng-if="parent.leaveTypeId !=  '2' && parent.leaveTypeId !=  '1'">
+        <div class="table-responsive">
+            <p class="headr">{{parent.leaveTypeName +' ('+parent.shartName +')'}}</p>
+            <table class="table">
+                <thead>
+                    <!--<tr>
+                        <td style="background-color: #0176D6 !important;color: white;text-align: center;text-transform: uppercase;font-weight: bold;" colspan="5">
+                            Recreation Leave (RL)
+                        </td>
+                    </tr>-->
+                    <tr style="color: black;text-align: center; font-weight:600 !important; font-weight:600 !important">
+                        <th style="width:20%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">From</th>
+                        <th class="min-width" style="width:20%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">To</th>
+                        <th class="min-width" style="width:10%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">Days</th>
+                        <th style="width:50%;background-color: #D9D9D9 !important; font-weight:600 !important;text-transform:capitalize;">Remarks</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="child in parent.spGetEmployeeLeaveInfoes | orderBy:'fromDate'">
+                        <td class="min-width" style="text-align: center">{{child.fromDate | date: "dd-MMM-yyyy"}}</td>
+                        <td class="min-width" style="text-align: center">{{child.toDate | date: "dd-MMM-yyyy"}}</td>
+                        <td style="text-align: center" ng-init="$parent.total = $parent.total + child.duration">{{child.duration}}</td>
+                        <td>{{child.remarks}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center; font-weight:600 !important"><b>Total</b></td>
+                        <!--<td></td>-->
+                        <td style="text-align: center; font-weight:600 !important"><b>{{ total }}</b></td>
+                        <td></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+<div style="display:none;">
+    <div id="publication">
+        <h1>Publication</h1>
+        <h2>{{vm.currentStatus.rankAndName}} ( P No {{vm.currentStatus.pNo}} )</h2>
+        <table id="publicationTable">
+            <thead>
+                <tr>
+                    <th>
+                        Ser
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Publication Name
+                    </th>
+                    <th class="min-width">
+                        Date
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr ng-repeat="P in vm.publications">
+                    <td>
+                        {{$index+1}}
+                    </td>
+                    <td>
+                        {{P.publicationCategory}}
+                    </td>
+                    <td>
+                        {{P.publication}}
+                    </td>
+                    <td class="min-width">
+                        {{P.date | date:"dd-MMM-yyyy"}}
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div style="display:none;">
+    <div id="commendation1234">
+        <h1>Commendation / Appreciation</h1>
+        <h2>{{vm.currentStatus.rankAndName}} ( P No {{vm.currentStatus.pNo}} )</h2>
+        <table id="commendationTable" ng-if="vm.commendations[0].commendation != undefined">
+            <!--<table id="commendationTable">-->
+            <thead>
+                <tr>
+                    <th>
+                        Ser
+                    </th>
+                    <th>
+                        Commendation
+                    </th>
+                    <th>
+                        Remarks
+                    </th>
+                    <th class="min-width">
+                        Date
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr ng-repeat="C in vm.commendations">
+                    <td>
+                        {{$index+1}}
+                    </td>
+                    <td>
+                        {{C.commendation}}
+                    </td>
+                    <td>
+                        {{C.remarks}}
+                    </td>
+                    <td class="min-width">
+                        {{C.date | date:"dd-MMM-yyyy"}}
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <table id="commendationTable" ng-if="vm.appreciations[0].commendation != undefined">
+            <!--<table id="commendationTable1">-->
+            <thead>
+                <tr>
+                    <th>
+                        Ser
+                    </th>
+                    <th>
+                        Appreciation
+                    </th>
+                    <th>
+                        Remarks
+                    </th>
+                    <th class="min-width">
+                        Date
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr ng-repeat="C in vm.appreciations">
+                    <td>
+                        {{$index+1}}
+                    </td>
+                    <td>
+                        {{C.commendation}}
+                    </td>
+                    <td>
+                        {{C.remarks}}
+                    </td>
+                    <td class="min-width">
+                        {{C.date | date:"dd-MMM-yyyy"}}
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<script src="../../../Scripts/printThis.js"></script>
+<script>
+    function printCurrentStatus() {
+        $("#currentStatus").printThis({
+            debug: false,               // show the iframe for debugging
+            importCSS: false,            // import parent page css
+            importStyle: false,         // import style tags
+            printContainer: true,       // print outer container/$.selector
+            loadCSS: "../../../Content/print.css",                // path to additional css file - use an array [] for multiple
+            //pageTitle: "",              // add title to print page
+            removeInline: false,        // remove inline styles from print elements
+            removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+            printDelay: 333,            // variable print delay
+            header: "",               // prefix to html
+            footer: null,               // postfix to html
+            base: false,                // preserve the BASE tag or accept a string for the URL
+            formValues: true,           // preserve input/form values
+            canvas: false,              // copy canvas content
+            doctypeString: '',       // enter a different doctype for older markup
+            removeScripts: false,       // remove script tags from print content
+            copyTagClasses: true,      // copy classes from the html & body tag
+            beforePrintEvent: null,     // function for printEvent in iframe
+            beforePrint: null,          // function called before iframe is filled
+            afterPrint: null,           // function called before iframe is removed
+            //type: 'html',
+            //showModal: true,
+            //targetStyles: ['*']
+        });
+    }
+
+    function printAppoinment() {
+        $("#appoinment").printThis({
+            debug: false,               // show the iframe for debugging
+            importCSS: false,            // import parent page css
+            importStyle: false,         // import style tags
+            printContainer: true,       // print outer container/$.selector
+            loadCSS: "../../../Content/print.css",                // path to additional css file - use an array [] for multiple
+            pageTitle: "",              // add title to print page
+            removeInline: false,        // remove inline styles from print elements
+            removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+            printDelay: 333,            // variable print delay
+            //header: "<h1>Centered HeadingCentered Heading</h1>",               // prefix to html
+            //footer: null,               // postfix to html
+            base: false,                // preserve the BASE tag or accept a string for the URL
+            formValues: true,           // preserve input/form values
+            canvas: false,              // copy canvas content
+            doctypeString: '',       // enter a different doctype for older markup
+            removeScripts: false,       // remove script tags from print content
+            copyTagClasses: true,      // copy classes from the html & body tag
+            beforePrintEvent: null,     // function for printEvent in iframe
+            beforePrint: null,          // function called before iframe is filled
+            afterPrint: null,           // function called before iframe is removed
+            //type: 'html',
+            //showModal: true,
+            //targetStyles: ['*']
+        });
+    }
+
+    function printCourse() {
+        $("#course1234").printThis({
+            debug: false,               // show the iframe for debugging
+            importCSS: false,            // import parent page css
+            importStyle: false,         // import style tags
+            printContainer: true,       // print outer container/$.selector
+            loadCSS: "../../../Content/print.css",                // path to additional css file - use an array [] for multiple
+            //pageTitle: "",              // add title to print page
+            removeInline: false,        // remove inline styles from print elements
+            removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+            printDelay: 333,            // variable print delay
+            //header: "",               // prefix to html
+            //footer: null,               // postfix to html
+            base: false,                // preserve the BASE tag or accept a string for the URL
+            formValues: true,           // preserve input/form values
+            canvas: false,              // copy canvas content
+            doctypeString: '',       // enter a different doctype for older markup
+            removeScripts: false,       // remove script tags from print content
+            copyTagClasses: true,      // copy classes from the html & body tag
+            beforePrintEvent: null,     // function for printEvent in iframe
+            beforePrint: null,          // function called before iframe is filled
+            afterPrint: null,           // function called before iframe is removed
+            //type: 'html',
+            //showModal: true,
+            //targetStyles: ['*']
+        });
+    }
+    
+
+    function printLeave() {
+        $("#leave1234").printThis({
+            debug: false,               // show the iframe for debugging
+            importCSS: true,            // import parent page css
+            importStyle: true,         // import style tags
+            printContainer: true,       // print outer container/$.selector
+            loadCSS: "",                // path to additional css file - use an array [] for multiple
+            //pageTitle: "",              // add title to print page
+            removeInline: false,        // remove inline styles from print elements
+            removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+            printDelay: 333,            // variable print delay
+            //header: "",               // prefix to html
+            //footer: null,               // postfix to html
+            base: false,                // preserve the BASE tag or accept a string for the URL
+            formValues: true,           // preserve input/form values
+            canvas: false,              // copy canvas content
+            doctypeString: '',       // enter a different doctype for older markup
+            removeScripts: false,       // remove script tags from print content
+            copyTagClasses: true,      // copy classes from the html & body tag
+            beforePrintEvent: null,     // function for printEvent in iframe
+            beforePrint: null,          // function called before iframe is filled
+            afterPrint: null,           // function called before iframe is removed
+            //type: 'html',
+            //showModal: true,
+            //targetStyles: ['*']
+        });
+    }
+
+    function printPublication() {
+        $("#publication").printThis({
+            debug: false,               // show the iframe for debugging
+            importCSS: false,            // import parent page css
+            importStyle: false,         // import style tags
+            printContainer: true,       // print outer container/$.selector
+            loadCSS: "../../../Content/print.css",                // path to additional css file - use an array [] for multiple
+            //pageTitle: "",              // add title to print page
+            removeInline: false,        // remove inline styles from print elements
+            removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+            printDelay: 333,            // variable print delay
+            //header: "",               // prefix to html
+            //footer: null,               // postfix to html
+            base: false,                // preserve the BASE tag or accept a string for the URL
+            formValues: true,           // preserve input/form values
+            canvas: false,              // copy canvas content
+            doctypeString: '',       // enter a different doctype for older markup
+            removeScripts: false,       // remove script tags from print content
+            copyTagClasses: true,      // copy classes from the html & body tag
+            beforePrintEvent: null,     // function for printEvent in iframe
+            beforePrint: null,          // function called before iframe is filled
+            afterPrint: null,           // function called before iframe is removed
+            //type: 'html',
+            //showModal: true,
+            //targetStyles: ['*']
+        });
+    }
+    function printCommendation() {
+        $("#commendation1234").printThis({
+            debug: false,               // show the iframe for debugging
+            importCSS: false,            // import parent page css
+            importStyle: false,         // import style tags
+            printContainer: true,       // print outer container/$.selector
+            loadCSS: "../../../Content/print.css",                // path to additional css file - use an array [] for multiple
+            //pageTitle: "",              // add title to print page
+            removeInline: false,        // remove inline styles from print elements
+            removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+            printDelay: 333,            // variable print delay
+            //header: "",               // prefix to html
+            //footer: null,               // postfix to html
+            base: false,                // preserve the BASE tag or accept a string for the URL
+            formValues: true,           // preserve input/form values
+            canvas: false,              // copy canvas content
+            doctypeString: '',       // enter a different doctype for older markup
+            removeScripts: false,       // remove script tags from print content
+            copyTagClasses: true,      // copy classes from the html & body tag
+            beforePrintEvent: null,     // function for printEvent in iframe
+            beforePrint: null,          // function called before iframe is filled
+            afterPrint: null,           // function called before iframe is removed
+            //type: 'html',
+            //showModal: true,
+            //targetStyles: ['*']
+        });
+    }
+</script>

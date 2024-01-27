@@ -1,0 +1,173 @@
+﻿
+
+<form name="vm.officeAppointmentForm">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="aptNatId" class="custom-label">Appointment Nature</label>
+            <select name="aptNatId" id="aptNatId" class="form-control" ng-model="vm.officeAppointment.aptNatId"
+                    ng-options="option.value as option.text for option in vm.aptNats" required
+                    ng-change="vm.getCategoryByNature(vm.officeAppointment.aptNatId)">
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeAppointmentForm.aptNatId.$error.required" class="help-block errormsg">Please select an Option</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="aptCatId" class="custom-label">Appointment Category</label>
+            <select name="aptCatId" id="aptCatId" class="form-control" ng-model="vm.officeAppointment.aptCatId"
+                    ng-options="option.value as option.text for option in vm.aptCats" required>
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeAppointmentForm.aptCatId.$error.required" class="help-block errormsg">Please select an Option</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="name" class="custom-label"> Name</label>
+            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.officeAppointment.name" name="name" maxlength="150" required />
+            <p ng-show="vm.officeAppointmentForm.name.$error.required" class="help-block errormsg">Appointment name is required.</p>
+            <p ng-show="vm.officeAppointmentForm.name.$error.maxlength" class="help-block errormsg">Maximum character 150</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="shortName" class="custom-label">Short Name</label>
+            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.officeAppointment.shortName" name="shortName" maxlength="150" required />
+            <p ng-show="vm.officeAppointmentForm.shortName.$error.required" class="help-block errormsg">Short name is required.</p>
+            <p ng-show="vm.officeAppointmentForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 150</p>
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="nameBangla" class="custom-label"> Name (বাংলা)</label>
+            <input type="text" id="nameBangla" class="form-control custom-form-control" ng-model="vm.officeAppointment.nameBangla" name="nameBangla" maxlength="150" />
+            <p ng-show="vm.officeAppointmentForm.nameBangla.$error.maxlength" class="help-block errormsg">Maximum character 150</p>
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+
+        <div class="form-group">
+            <label for="shortNameBangla" class="custom-label">Short Name (বাংলা)</label>
+            <input type="text" id="shortNameBangla" class="form-control custom-form-control" ng-model="vm.officeAppointment.shortNameBangla" name="shortNameBangla" maxlength="250" />
+            <p ng-show="vm.officeAppointmentForm.shortNameBangla.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+        </div>
+    </div>
+
+
+    <!-- <div class="col-sm-6"> -->
+    <!--     <div class="form-group"> -->
+    <!--         <label for="parentOffAppId" class="custom-label">Parent Appointment</label> -->
+    <!--         <select name="parentOffAppId" id="parentOffAppId" class="form-control" ng-model="vm.officeAppointment.parentOffAppId" -->
+    <!--                 ng-options="option.value as option.text for option in vm.parentAppointments" > -->
+    <!--             <option value="">--Select an Option--</option> -->
+    <!--         </select> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+    <div class="col-md-12">
+        <h5>Office Appointment Type</h5>
+       
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="govtApproved" class="form-check-input"
+                   ng-model="vm.officeAppointment.govtApproved" name="govtApproved" />
+            <label for="govtApproved" class="custom-label"> Govt. Approved</label>
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="headofDpt" class="form-check-input"
+                   ng-model="vm.officeAppointment.headofDpt" name="headofDpt" />
+            <label for="headofDpt" class="custom-label">HOD</label>
+
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="officHead" class="form-check-input"
+                   ng-model="vm.officeAppointment.officeHead" name="officHead" />
+            <label for="officHead" class="custom-label"> Office Head</label>
+
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="isInstrServiceCount" class="form-check-input"
+                   ng-model="vm.officeAppointment.isInstrServiceCount" name="isInstrServiceCount" />
+            <label for="isInstrServiceCount" class="custom-label"> Instructor Service</label>
+
+        </div>
+      
+
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-4">
+            <h4 class="text-center">Rank</h4>
+            <div class="table-wrapper table-responsive" style="overflow-y:scroll; height:250px;">
+                <table class="table table-hover table-striped">
+
+
+                    <tbody>
+
+                        <tr ng-repeat="rank in  vm.rankList">
+                            <td>
+                                <label><input type="checkbox" checklist-model="vm.officeAppointment.rankIds" checklist-value="rank.value"> {{rank.text}}</label>  
+                            </td>
+
+                           
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+
+        <div class="col-sm-4">
+
+            <h4 class="text-center">Branch</h4>
+            <div class="table-wrapper table-responsive" style="overflow-y:scroll; height:250px;">
+                <table class="table table-hover table-striped">
+
+                    <tbody>
+                        <tr ng-repeat="branch in  vm.branchList">
+                            <td>
+                                <label><input type="checkbox" checklist-model="vm.officeAppointment.branchIds" checklist-value="branch.value"> {{branch.text}}</label>
+                            </td>
+
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="col-xs-12">
+        <br />
+        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.officeAppointmentForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+    </div>
+
+</form>

@@ -1,0 +1,207 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+            <div class="panel-body" id="print">
+			    <h3 class="reportHeader" >General Information</h3>
+                <hr />
+                <h4 class="noScreen" style="border-bottom: 3px solid blue;font-family: Arial">{{vm.officerName}} ({{vm.pNo}})</h4>
+                <div class="table-wrapper table-responsive reportCover">
+					<table class="table pdfReportTable" border="1">
+                        <tbody class="reportBody">
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Officer Name</td>
+                              
+                                <td class="reportTD">{{vm.generalInformation.officerNameEng}}</td>
+                                <td class="reportTD" style="font-weight:bold">Officer Name (বাংলা)</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.officerNameBan}}</td>
+                            </tr>
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Short Name</td>
+                              
+                                <td class="reportTD">{{vm.generalInformation.shortNameEng}}</td>
+                                <td class="reportTD" style="font-weight:bold">Nick Name </td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.nickNameEng}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Category</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.category}}</td>
+                                <td style="font-weight:bold">Sub Category</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.subCategory}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Commission Type</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.commissionType}}</td>
+                                <td class="reportTD" style="font-weight:bold">Subject</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.subject}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Branch</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.branch}}</td>
+                                <td class="reportTD" style="font-weight:bold">Sub Branch</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.subBranch}}</td>
+                            </tr>
+
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Commission Date</td>
+                                
+                                <td class="reportTD" >{{vm.generalInformation.commissionDate| date: "dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="font-weight:bold">Anti Date Seniority</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.anteDatedSeniority| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Lieutenant Date</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.lieutenantDate| date: "dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="font-weight: bold">Joining Date</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.joiningDate| date: "dd-MMM-yyyy"}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Present Address</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.preAddress}}</td>
+                                <td class="reportTD" style="font-weight: bold">Permanent Address</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.perAddress}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Birth Date</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.doB| date: "dd-MMM-yyyy"}} {<strong>Age:</strong> {{vm.generalInformation.age}}  }</td>
+                                <td style="font-weight:bold">Birth Place </td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.birthPlace}}</td>
+                            </tr>
+
+
+                            <tr class="reportTR">
+
+                                <td  class="reportTD" style="font-weight: bold">Birth Certificate No</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.birthCerNo | date: "dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="font-weight:bold">Passport No</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.passportNo}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Driving License No</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.drivingLicenseNo}}</td>
+
+
+                                <td class="reportTD" style="font-weight:bold">Marital Status</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.maritalType}}</td>
+                            </tr>
+
+
+                            <tr class="reportTR">
+
+                                <td class="reportTD" style="font-weight:bold">Marriage Date</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.maritalDate| date: "dd-MMM-yyyy"}}</td>
+                                <td style="font-weight:bold">Religion </td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.religion}} <span ng-if="vm.generalInformation.religionCast!=null">({{vm.generalInformation.religionCast}})</span>  </td>
+                            </tr>
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">Service Id</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.serviceId}}</td>
+                                <td style="font-weight:bold">SID issue Date</td>
+                               
+                                <td class="reportTD">{{vm.generalInformation.serIssueDate| date: "dd-MMM-yyyy"}}</td>
+
+                            </tr >
+
+
+
+                            <tr class="reportTR">
+                                <td class="reportTD" style="font-weight:bold">National Id</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.nationalId}}</td>
+                                <td style="font-weight:bold">NID issue Date</td>
+                                
+                                <td class="reportTD">{{vm.generalInformation.idIssueDate| date: "dd-MMM-yyyy"}}</td>
+
+                            </tr>
+
+
+                        </tbody>
+					</table>
+				</div>
+
+				<h4  class="reportHeader">Physical Structure</h4>
+                <hr />
+				<div class="table-wrapper table-responsive">
+					<table class="table pdfReportTable" border="1">
+                        <tbody class="reportBody">
+                            <tr class="reportTR">
+                                <td style="font-weight:bold">Eye Color</td>
+                                
+                                <td>{{vm.generalInformation.eyeColor}}</td>
+                                <td style="font-weight:bold">Skin Color</td>
+                               
+                                <td>{{vm.generalInformation.skinColor}}</td>
+                                <td style="font-weight:bold">Hair Color</td>
+                                
+                                <td>{{vm.generalInformation.hairColor}}</td>
+                            </tr>
+                            <tr class="reportTR">
+
+                                <td style="font-weight:bold">Eye Vision</td>
+                               
+                                <td>{{vm.generalInformation.eyeVision}}</td>
+                                <td style="font-weight:bold">Blood Group</td>
+                               
+                                <td>{{vm.generalInformation.bloodGroup}}</td>
+                                <td style="font-weight:bold">Physical Structure</td>
+                                
+                                <td>{{vm.generalInformation.physicalStructure}}</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td style="font-weight:bold">Medical Category</td>
+                                
+                                <td>{{vm.generalInformation.medicalCategory}}</td>
+                                <td style="font-weight:bold">Height</td>
+                               
+                                <td>{{vm.generalInformation.heightInFeet}} Feet {{vm.generalInformation.heightInInch}} Inches </td>
+                                <td style="font-weight:bold">Weight</td>
+                                
+                                <td>{{vm.generalInformation.weight}} Kg</td>
+                            </tr>
+
+                            <tr class="reportTR">
+                                <td style="font-weight:bold">IdentificationMark</td>
+                               
+                                <td colspan="5">{{vm.generalInformation.identificationMark}}</td>
+
+                            </tr>
+                        </tbody>
+					</table>
+				</div>
+
+			</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="body-section">
+    <div class="container body-content">
+        <div class="form" id="login">
+            <img class="bnlogo" src="../../Images/bn_logo.PNG" />
+            <h3 class="name">
+                Bangladesh Navy Officers' Information Portal
+
+            </h3>
+            <div class="iconheader col-sm-12" style="text-align:center">
+                <span tabindex="0" data-toggle="tooltip" data-placement="bottom" title="Appointment">
+                    <a href="#">
+                        <img src="../../Images/Appointment.png" />
+                    </a>
+                </span>
+                <span tabindex="0" data-toggle="tooltip" data-placement="bottom" title="Course">
+                    <a href="#">
+                        <img src="../../Images/Course.png" />
+                    </a>
+                </span>
+
+
+                <span tabindex="0" data-toggle="tooltip" data-placement="bottom" title="OPR">
+                    <a href="#">
+                        <img src="../../Images/OPR.png" />
+                    </a>
+                </span>
+
+
+                <span tabindex="0" data-toggle="tooltip" data-placement="bottom" title="Publication">
+                    <a href="#">
+                        <img src="../../Images/Publication.png" />
+                    </a>
+                </span>
+                <span tabindex="0" data-toggle="tooltip" data-placement="bottom" title="Commendation">
+                    <a href="#">
+                        <img src="../../Images/Commendation.png" />
+                    </a>
+                </span>
+
+
+                <span tabindex="0" data-toggle="tooltip" data-placement="bottom" title="Leave">
+                    <a href="#">
+                        <img src="../../Images/Leave.png" />
+                    </a>
+                </span>
+
+            </div>
+            <h1 class="form__title">Login</h1>
+            <!--<pre>{{model}}</pre>-->
+            <form method="post">
+                <div class="form__input-group">
+                    <input type="text" class="form__input" placeholder="Enter your code" id="code" name="code" required>
+                    @if (ViewData["message"] != null)
+                    {
+                        <span class="help-block" ng-show="ViewData[" message"]">@ViewData["message"]</span>
+                    }
+                </div>
+                <div class="form__input-group">
+                    <button type="submit" class="form__button"> Verify</button><br />
+                </div>
+                <div class="form-group">
+                    <div class="btnDiv">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    @*<div style="margin-top: 30px; padding:30px 10px 10px 10px;" class="register-form">
+        <h4 style="color:#000 !important; font-weight:bold; font-family: 'Segoe UI', sans-serif; text-align: center;">
+            Please enter the code sent to your mobile.
+        </h4>
+        <form method="post">
+            <div class="row">
+                <div class="col-md-6" style="top:auto; left:25%">
+                    <div class="form-group">
+                        <input type="text" id="code" class="form-control input-md" name="code" placeholder="Enter your code">
+                        @if (ViewData["message"] != null)
+                        {
+                            <span class="help-block" ng-show="ViewData[" message"]">@ViewData["message"]</span>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="btnDiv">
+                    <button type="submit" class="loginBtnSubmit btn btn-md custom-btn-primary"> Verify</button><br />
+                </div>
+            </div>
+        </form>
+    </div>*@
+</div>
+<footer class="footer-section" style="background-color:red; color: white; font-weight:500;">
+    <div class="row">
+        <div class="col-xs-12">
+            <marquee behavior="scroll" direction="left"><p style="color:white !important;margin:0px;font-size:14px;padding-top: 4px;">This web portal is open for BN officers only. Check your registered mobile number for OTP. To register new number, please contact Naval Secretariat (Mob no: 01769-702029, Email: bnoip_ns@navy.mil.bd)</p></marquee>        </div>
+    </div>
+</footer>
+   

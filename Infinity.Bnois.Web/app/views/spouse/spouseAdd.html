@@ -1,0 +1,317 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.spouseForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Spouse Information<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="relationType" class="custom-label">Marriage Type</label>
+                            <select name="relationType" id="relationType" class="form-control" ng-model="vm.spouse.relationType" ng-options="option.value as option.text for option in vm.relationTypes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.spouseForm.relationType.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bNameEng" class="custom-label">Name (Before Marriage)</label>
+                            <input type="text" id="bNameEng" class="form-control custom-form-control" ng-model="vm.spouse.bNameEng" name="bNameEng" maxlength="250" required />
+                            <p ng-show="vm.spouseForm.bNameEng.$error.required" class="help-block errormsg">Name is required.</p>
+                            <p ng-show="vm.spouseForm.bNameEng.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aNameEng" class="custom-label">Name (After Marriage)</label>
+                            <input type="text" id="aNameEng" class="form-control custom-form-control" ng-model="vm.spouse.aNameEng" name="aNameEng" maxlength="250" />
+                            <p ng-show="vm.spouseForm.aNameEng.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bNameBan" class="custom-label">Name (বাংলা) Before Marriage</label>
+                            <input type="text" id="bNameBan" class="form-control custom-form-control" ng-model="vm.spouse.bNameBan" name="bNameBan" maxlength="250" />
+                            <p ng-show="vm.spouseForm.bNameBan.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="aNameBan" class="custom-label">Name (বাংলা) After Marriage</label>
+                            <input type="text" id="aNameBan" class="form-control custom-form-control" ng-model="vm.spouse.aNameBan" name="aNameBan" maxlength="250" />
+                            <p ng-show="vm.spouseForm.aNameBan.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nickName" class="custom-label">Nick Name</label>
+                            <input type="text" id="nickName" class="form-control custom-form-control" ng-model="vm.spouse.nickName" name="nickName" maxlength="50" />
+                            <p ng-show="vm.spouseForm.nickName.$error.maxlength" class="help-block errormsg">Maximum length 50 characters</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="marriageDate" class="custom-label">Marriage Date</label>
+                            <input kendo-date-picker id="marriageDate" class="form-control custom-form-control" k-ng-model="vm.spouse.marriageDate" k-format="'dd-MM-yyyy'" name="marriageDate" required />
+                            <p ng-show="vm.spouseForm.marriageDate.$error.required" class="help-block errormsg">Marriage Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dateOfBirth" class="custom-label">Date of Birth</label>
+                            <input kendo-date-picker id="dateOfBirth" class="form-control custom-form-control" k-ng-model="vm.spouse.dateofBirth" k-format="'dd-MM-yyyy'" name="dateOfBirth" required />
+                            <p ng-show="vm.spouseForm.dateOfBirth.$error.required" class="help-block errormsg">Date of Birth is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="birthPlace" class="custom-label">Birth Place</label>
+                            <input type="text" id="birthPlace" class="form-control custom-form-control" ng-model="vm.spouse.birthPlace" name="birthPlace" maxlength="250" />
+                            <p ng-show="vm.spouseForm.birthPlace.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nid" class="custom-label">National ID </label>
+                            <input type="text" id="nId" class="form-control custom-form-control" ng-model="vm.spouse.nid" name="nId" maxlength="250" />
+                            <p ng-show="vm.spouseForm.nid.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="eduQualification" class="custom-label">Educational Qualification</label>
+                            <input type="text" id="eduQualification" class="form-control custom-form-control" ng-model="vm.spouse.eduQualification" name="eduQualification" maxlength="250"  /> 
+                            <p ng-show="vm.spouseForm.eduQualification.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="idMark" class="custom-label">Identification Mark</label>
+                            <input type="text" id="idMark" class="form-control custom-form-control" ng-model="vm.spouse.idMark" name="idMark" maxlength="250" />
+                            <p ng-show="vm.spouseForm.idMark.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rmrbType" class="custom-label"> Current Status</label>
+                            <div class="radio-inline" ng-repeat="status in vm.currentStatus">
+                                <label>
+                                    <input type="radio" ng-model="vm.spouse.currentStatus" value="{{status.value}}"
+                                           ng-change="vm.deadInformation(vm.spouse.currentStatus)" required> {{status.text}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="deadDate" class="custom-label">Dead/Divorce Date</label>
+                            <input kendo-date-picker id="deadDate" class="form-control custom-form-control" k-ng-model="vm.spouse.deadDate" k-format="'dd-MM-yyyy'" name="deadDate" ng-disabled="vm.deadDisabled" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="deadReason" class="custom-label">Dead/Divorce Reason</label>
+                            <input type="text" id="deadReason" class="form-control custom-form-control" ng-model="vm.spouse.deadReason" name="deadReason" maxlength="250" ng-disabled="vm.deadDisabled" />
+                            <p ng-show="vm.spouseForm.deadReason.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 page-header">
+                        <h4 class="warning page-header-item">Service/Professional Information</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="occupationId" class="custom-label">Profession</label>
+                            <select name="occupationId" id="occupationId" class="form-control" ng-model="vm.spouse.occupationId" ng-options="option.value as option.text for option in vm.occupations" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.spouseForm.occupationId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isArmedForceExp" class="custom-label">Currently Served in Armed Forces Organization</label>
+                            <input type="radio" ng-model="vm.spouse.isArmedForceExp" ng-value="false"> No
+                            <input type="radio" ng-model="vm.spouse.isArmedForceExp" ng-value="true"> Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label">PNo.</label>
+                            <input type="text" id="pNo" class="form-control custom-form-control" ng-model="vm.spouse.pNo" name="pNo" ng-disabled="!vm.spouse.isArmedForceExp" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankCategoryId" class="custom-label">Organization</label>
+                            <select name="rankCategoryId" id="rankCategoryId" class="form-control" ng-model="vm.spouse.rankCategoryId" ng-options="option.value as option.text for option in vm.rankCategories" ng-disabled="!vm.spouse.isArmedForceExp">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.spouseForm.rankCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="occuAddress" class="custom-label">Service Address</label>
+                            <input type="text" id="occuAddress" class="form-control custom-form-control" ng-model="vm.spouse.serviceAddress" name="occuAddress" maxlength="250" />
+                            <p ng-show="vm.spouseForm.occuAddress.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="degination" class="custom-label">Designation</label>
+                            <input type="text" id="degination" class="form-control custom-form-control" ng-model="vm.spouse.degination" name="degination" maxlength="250" />
+                            <p ng-show="vm.spouseForm.degination.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="socialActivity" class="custom-label">Other Information(Social Activities)</label>
+                            <textarea type="text" id="socialActivity" class="form-control custom-form-control" ng-model="vm.spouse.socialActivity" name="socialActivity" maxlength="528" />
+                            <p ng-show="vm.spouseForm.socialActivity.$error.maxlength" class="help-block errormsg">Maximum length 528 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 page-header">
+                        <h4 class="warning page-header-item">Spouse's Parents Information</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="birthPlace" class="custom-label">Father's Status</label>
+                            <input type="radio" name="isFatherDead" ng-model="vm.spouse.isFatherDead" ng-value="true">Dead
+                            <input type="radio" name="isFatherDead" ng-model="vm.spouse.isFatherDead" ng-value="false">Alive
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="birthPlace" class="custom-label">Mother's Status</label>
+                            <input type="radio" name="isMotherDead" ng-model="vm.spouse.isMotherDead" ng-value="true">Dead
+                            <input type="radio" name="isMotherDead" ng-model="vm.spouse.isMotherDead" ng-value="false">Alive
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fatherName" class="custom-label">Father's Name</label>
+                            <input type="text" id="fatherName" class="form-control custom-form-control" ng-model="vm.spouse.fatherName" name="fatherName" maxlength="250" />
+                            <p ng-show="vm.spouseForm.fatherName.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fatherNameBan" class="custom-label">Father's Name (বাংলা)</label>
+                            <input type="text" id="fatherNameBan" class="form-control custom-form-control" ng-model="vm.spouse.fatherNameBan" name="fatherNameBan" maxlength="250" />
+                            <p ng-show="vm.spouseForm.fatherNameBan.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="motherName" class="custom-label">Mother's Name</label>
+                            <input type="text" id="motherName" class="form-control custom-form-control" ng-model="vm.spouse.motherName" name="motherName" maxlength="250" />
+                            <p ng-show="vm.spouseForm.motherName.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="motherNameBan" class="custom-label">Mother's Name (বাংলা)</label>
+                            <input type="text" id="motherNameBan" class="form-control custom-form-control" ng-model="vm.spouse.motherNameBan" name="motherNameBan" maxlength="250" />
+                            <p ng-show="vm.spouseForm.motherNameBan.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fatherPreAddress" class="custom-label">Father's Present Address</label>
+                            <textarea id="fatherPreAddress" class="form-control custom-form-control" ng-model="vm.spouse.fatherPreAddress" name="fatherPreAddress" maxlength="300" />
+                            <p ng-show="vm.spouseForm.fatherPreAddress.$error.maxlength" class="help-block errormsg">Maximum length 300 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="motherPreAddress" class="custom-label">Mother's Present Address</label>
+                            <textarea id="motherPreAddress" class="form-control custom-form-control" ng-model="vm.spouse.motherPreAddress" name="motherPreAddress" maxlength="300" />
+                            <p ng-show="vm.spouseForm.motherPreAddress.$error.maxlength" class="help-block errormsg">Maximum length 300 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fatherPerAddress" class="custom-label">Father's Permanent Address</label>
+                            <textarea id="fatherPerAddress" class="form-control custom-form-control" ng-model="vm.spouse.fatherPerAddress" name="fatherPerAddress" maxlength="300" />
+                            <p ng-show="vm.spouseForm.fatherPerAddress.$error.maxlength" class="help-block errormsg">Maximum length 300 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="motherPerAddress" class="custom-label">Mother's Permanent Address</label>
+                            <textarea id="motherPerAddress" class="form-control custom-form-control" ng-model="vm.spouse.motherPerAddress" name="motherPerAddress" maxlength="300" />
+                            <p ng-show="vm.spouseForm.motherPerAddress.$error.maxlength" class="help-block errormsg">Maximum length 300 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fatherOccupationId" class="custom-label">Father's Occupation</label>
+                            <select name="fatherOccupationId" id="fatherOccupationId" class="form-control" ng-model="vm.spouse.fatherOccupationId" ng-options="option.value as option.text for option in vm.occupations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="motherOccupationId" class="custom-label">Mother's Occupation</label>
+                            <select name="motherOccupationId" id="motherOccupationId" class="form-control" ng-model="vm.spouse.motherOccupationId" ng-options="option.value as option.text for option in vm.occupations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fatherOtherInfo" class="custom-label">Father's Other Information</label>
+                            <input type="text" id="fatherOtherInfo" class="form-control custom-form-control" ng-model="vm.spouse.fatherOtherInfo" name="fatherOtherInfo" maxlength="250" />
+                            <p ng-show="vm.spouseForm.fatherOtherInfo.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="motherOtherInfo" class="custom-label">Mother's Other Information</label>
+                            <input type="text" id="motherOtherInfo" class="form-control custom-form-control" ng-model="vm.spouse.motherOtherInfo" name="motherOtherInfo" maxlength="250" />
+                            <p ng-show="vm.spouseForm.motherOtherInfo.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.spouseForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

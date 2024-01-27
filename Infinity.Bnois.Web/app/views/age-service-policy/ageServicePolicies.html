@@ -1,0 +1,53 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Service Age Policy</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addAgeServicePolicy()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                    <div ng-include="'app/templates/search.html'" class="search-wrapper"></div>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Category</th>
+                                <th>Sub Category</th>
+                                <th>Rank</th>
+                                <th>Service Limit</th>
+                                <th>Age Limit</th>
+                                <th>Early Status</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ageServicePolicy in vm.ageServicePolicies">
+                                <td>{{$index+1}}</td>
+                                <td>{{ageServicePolicy.category.name}}</td>
+                                <td>{{ageServicePolicy.subCategory.name}}</td>
+                                <td>{{ageServicePolicy.rank.fullName}}</td>
+                                <td>{{ageServicePolicy.serviceLimit}}</td>
+                                <td>{{ageServicePolicy.ageLimit}}</td>
+                                <td>{{ageServicePolicy.earlyStatusName}}</td>
+                                <td class="text-right">
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateAgeServicePolicy(ageServicePolicy)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteAgeServicePolicy(ageServicePolicy)"
+                                       ng-confirmation-message="Do you want to delete Age Service Policy ?"
+                                       ng-confirmation-title="Delete Age Service Policy ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Age Service Policy"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagenation-wrapper" ng-if="vm.ageServicePolicies.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

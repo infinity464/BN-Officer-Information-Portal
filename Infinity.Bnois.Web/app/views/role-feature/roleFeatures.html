@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <div class="page-header-dbl-btn">
+                        <button class="btn custom-btn btn-warning pull-right" type="button" data-ng-click="vm.close()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>
+                    </div>
+                    <h2 class="warning page-header-item">{{ vm.title}} at Roll :{{vm.role.name}} </h2>
+                </div>
+             
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <td><input type="text" class="form-control" placeholder="Module" ng-model="moduleKey" /></td>
+                                <td><input type="text" class="form-control" placeholder="Feature Name" ng-model="featureKey" /></td>
+                                <td>
+                                    <div class="form-group">
+                                        <select name="featureTypeId" id="featureTypeId" class="form-control" ng-model="vm.featureTypeId" ng-options="option.value as option.text for option in vm.featureTypes"></select>
+                                    </div>
+                                </td>
+                               
+                                <td>Add</td>
+                                <td>Update</td>
+                                <td>Delete</td>
+                                <td>Report</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="roleFeature in vm.roleFeatures  | filter:{featureTypeId:vm.featureTypeId,moduleName:moduleKey,featureName:featureKey} ">
+                                <td>{{roleFeature.moduleName}}</td>
+                                <td>{{roleFeature.featureName}}</td>
+                                <td>
+                                    <input type="checkbox" value="None" id="checkbox" ng-click="vm.assignFeature(roleFeature)" ng-model="roleFeature.isAssigned" />
+                                </td>
+                                <td>
+                                    <input type="checkbox" value="None" id="checkbox" ng-click="vm.assignFeature(roleFeature)" ng-model="roleFeature.add" />
+                                </td>
+                                <td>
+                                    <input type="checkbox" value="None" id="checkbox" ng-click="vm.assignFeature(roleFeature)" ng-model="roleFeature.update" />
+                                </td>
+                                <td>
+                                    <input type="checkbox" value="None" id="checkbox" ng-click="vm.assignFeature(roleFeature)" ng-model="roleFeature.delete" />
+                                </td>
+                                <td>
+                                    <input type="checkbox" value="None" id="checkbox" ng-click="vm.assignFeature(roleFeature)" ng-model="roleFeature.report" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

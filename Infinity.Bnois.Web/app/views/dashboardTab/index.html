@@ -1,0 +1,137 @@
+﻿<style>
+        .helper {
+            background: #000066;
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        .card-body {
+            padding: 0px !important;
+        }
+
+        .customeTableHead {
+            background-color: #0176D6;
+            color: #ffffff;
+        }
+
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            border: 2px solid #b5b8c7 !important;
+            padding: 8px 4px !important;
+            font-size: 1.2rem !important;
+            font-weight: 500 !important;
+        }
+        /*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+            padding: 8px 4px !important;
+        }*/
+        .table {
+            background-color: #eef4fa;
+        }
+
+        .card {
+            background-color: transparent !important;
+        }
+
+        @media screen and (max-width: 1366px) and (min-width: 901px) {
+            .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+                font-size: 1.1rem !important;
+            }
+        }
+
+        @media screen and (max-width: 575px) {
+            .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+                font-size: .9rem !important;
+            }
+        }
+
+
+
+        /** --------------------------------
+     -- statis
+    -------------------------------- */
+        .statis {
+            color: var(--dk-gray-100);
+        }
+
+            .statis .box {
+                position: relative;
+                overflow: hidden;
+                border-radius: 3px;
+            }
+
+                .statis .box h3:after {
+                    content: "";
+                    height: 2px;
+                    width: 70%;
+                    margin: auto;
+                    background-color: rgba(255, 255, 255, 0.12);
+                    display: block;
+                    margin-top: 10px;
+                }
+
+                .statis .box i {
+                    position: absolute;
+                    height: 70px;
+                    width: 70px;
+                    font-size: 22px;
+                    padding: 15px;
+                    top: -25px;
+                    left: -25px;
+                    background-color: rgba(255, 255, 255, 0.15);
+                    line-height: 60px;
+                    text-align: right;
+                    border-radius: 50%;
+                }
+
+
+
+
+
+        .main-color {
+            color: #ffc107
+        }
+</style>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!--<pre>{{vm.dashBoardData |json}}</pre>-->
+                <div class="card-body">
+                    <section class="statis mt-4 text-center">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                                <div class="box bg-primary p-3">
+                                    <i class="uil-eye"></i>
+                                    <h3>{{vm.dashBoardData[0].activeUser}}</h3>
+                                    <p class="lead">Active User</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                                <div class="box bg-danger p-3">
+                                    <i class="uil-user"></i>
+                                    <h3>{{vm.dashBoardData[0].activeEmployee}}</h3>
+                                    <p class="lead">Total Officer</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                                <div class="box bg-warning p-3">
+                                    <i class="uil-shopping-cart"></i>
+                                    <h3>{{vm.dashBoardData[0].inActiveUser}}</h3>
+                                    <p class="lead">Inactive User</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="box bg-success p-3">
+                                    <i class="uil-feedback"></i>
+                                    <h3>{{vm.dashBoardData[0].activeUser}}</h3>
+                                    <p class="lead">User</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

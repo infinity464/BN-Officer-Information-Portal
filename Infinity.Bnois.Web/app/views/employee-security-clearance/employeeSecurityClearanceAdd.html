@@ -1,0 +1,78 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officer Security Clearance<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeeSecurityClearanceForm">
+
+                    <employee-search ng-model="vm.employeeSecurityClearance.employee"></employee-search>
+
+                    <div class="col-sm-6" ng-if="vm.employeeSecurityClearance.employee.employeeId>0">
+                        <div class="form-group">
+                            <input type="checkbox" id="isBackLog" class="form-check-input" ng-model="vm.employeeSecurityClearance.isBackLog" name="isBackLog" ng-change="vm.isBackLogChecked(vm.employeeSecurityClearance.isBackLog)"/>
+                            <label for="isBackLog" class="custom-label"> Back Log </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.employeeSecurityClearance.isBackLog">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.employeeSecurityClearance.rankId"
+                                    ng-options="option.value as option.text for option in vm.ranks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" ng-show="vm.employeeSecurityClearance.isBackLog">
+                        <div class="form-group">
+                            <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                            <select name="transferId" id="transferId" class="form-control" ng-model="vm.employeeSecurityClearance.transferId"
+                                    ng-options="option.value as option.text for option in vm.transfers">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="clearanceDate" class="custom-label">  Security Clearance Date</label>
+                            <input kendo-date-picker id="clearanceDate" class="form-control custom-form-control" k-ng-model="vm.employeeSecurityClearance.clearanceDate" k-format="'dd-MM-yyyy'" name="clearanceDate" required />
+                            <p ng-show="vm.employeeSecurityClearanceForm.clearanceDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="securityClearanceReasonId" class="custom-label">Reason</label>
+                            <select name="securityClearanceReasonId" id="securityClearanceReasonId" class="form-control" ng-model="vm.employeeSecurityClearance.securityClearanceReasonId" ng-options="option.value as option.text for option in vm.securityClearanceReasons" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeSecurityClearanceForm.securityClearanceReasonId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="expiryDate" class="custom-label">  Expiry Date</label>
+                            <input kendo-date-picker id="expiryDate" class="form-control custom-form-control" k-ng-model="vm.employeeSecurityClearance.expirydate" k-format="'dd-MM-yyyy'" name="expiryDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.employeeSecurityClearance.remarks" name="remarks" maxlength="250" required></textarea>
+                            <p ng-show="vm.employeeSecurityClearanceForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            <p ng-show="vm.employeeSecurityClearanceForm.remarks.$error.required" class="help-block errormsg">Remarks is required</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeSecurityClearanceForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

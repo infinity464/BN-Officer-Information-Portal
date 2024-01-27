@@ -1,0 +1,382 @@
+﻿
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <h3 class="text-center">Basic Search</h3>
+                <hr />
+            <marquee><h1 class="text-center text-danger"> Basic Search under construction. Please visit later.</h1></marquee>
+
+                <div class="col-sm-12">
+                    <h4>Select Column For Filter<button ng-click="vm.columnFilterAction()" class="btn btn-sm btn-primary pull-right">Uncheck All</button>  </h4>
+
+                    <div class="col-sm-2" ng-repeat="columnFilter in vm.columnFilters">
+                        <input type="checkbox" id="columnFilter_{{$index}}" class="form-check-input"
+                               checklist-model="vm.columnFilterList" name="columnFilter_{{$index}}" ng-change="vm.getColumnFilterValue(columnFilter.value, checked)" checklist-value="columnFilter.value" />
+                        <label for="columnFilter_{{$index}}" class="custom-label"> {{columnFilter.text}}</label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <h4> Select Column For Display <button ng-click="vm.columnDisplayAction()" class="btn btn-sm btn-primary pull-right">Uncheck All</button> </h4>
+                    <div class="col-sm-2" ng-repeat="columnDisplay in vm.columnDisplays">
+                        <input type="checkbox" id="columnDisplay_{{$index}}" class="form-check-input"
+                               checklist-model="vm.columnDisplayList" name="columnDisplay_{{$index}}" ng-change="vm.getColumnDisplayValue(columnDisplay.value, checked)" checklist-value="columnDisplay.value" />
+                        <label for="columnDisplay_{{$index}}" class="custom-label"> {{columnDisplay.text}}</label>
+                    </div>
+                </div>
+
+                <div ng-show="vm.buttonShow" class="col-sm-12" style="margin-bottom: 15px; margin-top: 10px; border-top: 1px solid navy;"></div>
+
+                <div ng-show="vm.searchPanel">
+                    <div class="col-sm-3" ng-show="vm.areaShow">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label style="width: 100%">Area</label>
+
+                                <div ng-dropdown-multiselect="" options="vm.areas" selected-model="vm.basicSearch.areasSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-sm-2" ng-show="vm.adminShow">
+                        <div class="form-group">
+                            <label style="width: 100%">Admin Authority </label>
+                            <div ng-dropdown-multiselect="" options="vm.adminAuthorities" selected-model="vm.basicSearch.adminAuthoritiesSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-2" ng-show="vm.branchShow">
+                        <div class="form-group">
+                            <label style="width: 100%">Branch </label>
+                            <div ng-dropdown-multiselect="" options="vm.branches" selected-model="vm.basicSearch.branchesSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-2" ng-show="vm.subBranchShow">
+                        <div class="form-group">
+                            <label style="width: 100%">Sub Branch </label>
+                            <div ng-dropdown-multiselect="" options="vm.subBranches" selected-model="vm.basicSearch.subBranchesSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12" ng-show="vm.civilEducationShow">
+                        <h4>Educational Information</h4>
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label style="width: 100%">Exam/Degree</label>
+                                <div ng-dropdown-multiselect="" options="vm.exams" selected-model="vm.basicSearch.examsSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="fromYear" style="width: 100%">Passing Year</label><br />
+                                <label for="fromYear" class="custom-label"> From</label>
+                                <select name="fromYear" id="fromYear" class="form-control" ng-model="vm.basicSearch.fromYear" ng-options="option.value as option.text for option in vm.passingYears">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <br />
+                                <label for="toYear" class="custom-label">To</label>
+                                <select name="toYear" id="toYear" class="form-control" ng-model="vm.basicSearch.toYear" ng-options="option.value as option.text for option in vm.passingYears">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="result">Result</label> <br />
+                                <select name="result" id="result" class="form-control" ng-model="vm.basicSearch.result" ng-options="option.value as option.text for option in vm.results">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label style="width: 100%">Institute  </label>
+                                <div ng-dropdown-multiselect="" options="vm.institutes" selected-model="vm.basicSearch.institutesSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12" ng-show="vm.commSvcShow">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="commissionFromDate" style="width: 100%" class="custom-label ">Commission Date</label>
+                                <br />
+                                <label for="commissionFromDate" class="custom-label">  From </label>
+                                <input kendo-date-picker id="commissionFromDate" class="form-control custom-form-control" k-ng-model="vm.basicSearch.commissionFromDate" k-format="'dd-MM-yyyy'" name="commissionFromDate" />
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <br />
+                                <label for="commissionToDate" class="custom-label">  To </label>
+                                <input kendo-date-picker id="commissionToDate" class="form-control custom-form-control" k-ng-model="vm.basicSearch.commissionToDate" k-format="'dd-MM-yyyy'" name="commissionToDate" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="service" class="custom-label">Service </label><br />
+                                <select name="service" id="service" class="form-control" ng-model="vm.basicSearch.service">
+                                    <option value="">Select</option>
+                                    <option value="==">==</option>
+                                    <option value="=>">=></option>
+                                    <option value="=<">=<</option>
+                                    <option value="Between">Between</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label">Duration</label><br />
+                                <input type="number" id="" class="form-control custom-form-control" ng-model="vm.basicSearch.commissionDuration" /> <br />
+                                <label style=" width: 25%;"> <input class="radio-inline" type="radio" ng-model="vm.basicSearch.commissionDurationType" value="day" name="duration" ng-checked="true" /> Day(s)</label>
+                                <label> <input class="radio-inline" type="radio" ng-model="vm.basicSearch.commissionDurationType" value="month" name="commissionDurationType" ng-checked="false" /> Month(s)</label>
+                                <label>   <input class="radio-inline" type="radio" ng-model="vm.basicSearch.commissionDurationType" value="year" name="commissionDurationType" ng-checked="false" /> Year(s)</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-sm-2" ng-show="vm.commissionTypeShow">
+                        <div class="form-group">
+                            <label style="width: 100%">Commission Type </label>
+                            <div ng-dropdown-multiselect="" options="vm.commissionTypes" selected-model="vm.basicSearch.commissionTypesSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-12" ng-show="vm.courseShow">
+                        <h4>Course</h4>
+                        <div class="col-sm-6">
+                            <label><input type="checkbox" ng-model="vm.basicSearch.doneCourse" /> Done Course</label>
+                            <div ng-show="vm.basicSearch.doneCourse">
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Country </label>
+                                    <div ng-dropdown-multiselect="" options="vm.countries" selected-model="vm.basicSearch.courseCountriesSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Course Category (Done) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courseCategories" selected-model="vm.basicSearch.courseCategoriesDoneSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Course Sub Category (Done) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courseSubCategories" selected-model="vm.basicSearch.courseSubCategoriesDoneSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Course(Done) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courses" selected-model="vm.basicSearch.coursesDoneSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Institute</label>
+                                    <div ng-dropdown-multiselect="" options="vm.trainingInstitutes" selected-model="vm.basicSearch.trainingInstitutesSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <br />
+                                        <label for="courseFromDate" class="custom-label">  From Date </label>
+                                        <input kendo-date-picker id="courseFromDate" class="form-control custom-form-control" k-ng-model="vm.basicSearch.courseFromDate" k-format="'dd-MM-yyyy'" name="courseFromDate" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <br />
+                                        <label for="courseToDate" class="custom-label">  To Date </label>
+                                        <input kendo-date-picker id="courseToDate" class="form-control custom-form-control" k-ng-model="vm.basicSearch.courseToDate" k-format="'dd-MM-yyyy'" name="courseToDate" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label>Done Course Result  <input type="number" id="" ng-model="vm.basicSearch.fromResult" style="width: 100px;" /> % to  <input type="number" id="" ng-model="vm.basicSearch.toResult" style="width: 100px;" />%</label>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label><input type="checkbox" ng-model="vm.basicSearch.notDoneCourse" />Not Done Course</label>
+                            <div ng-show="vm.basicSearch.notDoneCourse">
+                                <div class="form-group">
+                                    <label style="width: 100%">Course Category (Not Done) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courseCategories" selected-model="vm.basicSearch.courseCategoriesNotDoneSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Course Sub Category (Not Done) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courseSubCategories" selected-model="vm.basicSearch.courseSubCategoriesNotDoneSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Course(Not Done) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courses" selected-model="vm.basicSearch.coursesNotDoneSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label><input type="checkbox" ng-model="vm.basicSearch.doingCourse" /> Doing Course</label>
+                            <div ng-show="vm.basicSearch.doingCourse">
+                                <div class="form-group">
+                                    <label style="width: 100%">Course Category (Doing) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courseCategories" selected-model="vm.basicSearch.courseCategoriesDoingSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Course Sub Category (Doing) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courseSubCategories" selected-model="vm.basicSearch.courseSubCategoriesDoingSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 100%">Course(Doing) </label>
+                                    <div ng-dropdown-multiselect="" options="vm.courses" selected-model="vm.basicSearch.coursesDoingSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-sm-4" ng-show="vm.officerNameShow">
+                        <div class="form-group">
+                            <label for="officerName" class="custom-label">Officer's Name</label> <br />
+                            <input type="text" id="officerName" class="form-control custom-form-control" ng-model="vm.basicSearch.officerName" name="officerName" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-4" ng-show="vm.pNoShow">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label">P No</label> <br />
+                            <input type="text" id="pNo" class="form-control custom-form-control" ng-model="vm.basicSearch.pNo" name="pNo" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" ng-show="vm.rankShow">
+                        <div class="form-group">
+                            <label style="width: 100%">Rank </label>
+                            <div ng-dropdown-multiselect="" options="vm.ranks" selected-model="vm.basicSearch.ranksSelected" checkboxes="true" extra-settings="vm.dropdownSetting"></div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-6" ng-show="vm.seaServiceShow">
+
+                        <label class="control-label">Sea Service</label><br />
+                        <label>
+                            <input type="radio" id="seaService" ng-model="vm.basicSearch.seaService" value="1" name="seaService" ng-checked="true" />Highest Sea Service Duration of  <input type="number" id="" ng-model="vm.basicSearch.noOfOfficer" ng-disabled="vm.basicSearch.seaService !=1" name="noOfOfficer" style="width: 60px;" /> Officers
+                        </label>
+                        <label>
+                            <input type="radio" id="seaService" ng-model="vm.basicSearch.seaService" value="2" name="seaService" ng-checked="false" />Sea Service Duration Between <input type="number" id="" ng-disabled="vm.basicSearch.seaService !=2" ng-model="vm.basicSearch.seaFromYear" name="seaFromYear" style="width: 80px;" /> to <input type="number" id="" ng-disabled="vm.basicSearch.seaService !=2" ng-model="vm.basicSearch.seaToYear" name="seaToYear" style="width: 80px;" /> Year(s)
+                        </label>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div ng-show="vm.buttonShow" class="col-sm-12" style="margin-bottom: 15px; margin-top: 10px; border-top: 1px solid navy;"></div>
+
+                    <div class="col-sm-12" ng-show="vm.buttonShow">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.searchOfficers()"><span class="glyphicon glyphicon-floppy-disk"></span> Search Officers</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.refreshButton()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+                        <a class="btn custom-btn btn-edit custom-btn-primary" ng-click="vm.downloadSearchResult()"><i class="fa fa-download" aria-hidden="true" title="Download File"></i></a>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom: 100px;"></div>
+
+                </div>
+
+
+
+
+
+                <div ng-show="vm.officerList">
+
+                    <h4 class="text-center">Total Officers found:{{}}</h4>
+                    <div class="table-wrapper table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="tableHeading">
+                                    <th>SL</th>
+                                    <th>Appointment</th>
+                                    <th>Rank</th>
+                                    <th>Unit</th>
+                                    <th>Duration</th>
+                                    <th>Total Duration</th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="permanentTransferHistory in vm.permanentTransferHistories">
+                                    <td style="text-align: center">{{$index+1}}</td>
+                                    <td>{{permanentTransferHistory.appointment}}</td>
+                                    <td>{{permanentTransferHistory.rank}}</td>
+                                    <td>{{permanentTransferHistory.unit}}</td>
+                                    <td style="text-align: center">{{permanentTransferHistory.fromDate|date:"dd-MMM-yyyy"}}</td>
+                                    <td style="text-align: center">{{permanentTransferHistory.toDate |date:"dd-MMM-yyyy"}}</td>
+                                    <td style="text-align: center">{{permanentTransferHistory.duration}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-sm-12" style="margin-bottom: 50px;"></div>
+
+            </div>
+        </div>
+    </div>
+</div>

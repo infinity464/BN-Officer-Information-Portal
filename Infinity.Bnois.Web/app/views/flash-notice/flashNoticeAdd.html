@@ -1,0 +1,137 @@
+﻿<style>
+    .helper {
+        background: #000066;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .btn, .navbar .navbar-nav > a.btn {
+        font-size: 1.1rem !important;
+        line-height: 2.2rem !important;
+    }
+
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .form-control {
+        font-size: 18px !important;
+    }
+
+    .customeTableHead {
+        background-color: #0176D6;
+        color: #ffffff;
+    }
+
+    .card label {
+        font-size: 1.2rem !important;
+        margin-bottom: 5px !important;
+        color: white !important;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+    /*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 8px 4px !important;
+    }*/
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: .9rem !important;
+        }
+    }
+
+    .btn, .navbar .navbar-nav > a.btn {
+        padding: 4px 10px !important;
+    }
+
+    .pagination li {
+        padding: 7px 12px !important;
+        color: white !important;
+        border: 1px solid white !important;
+    }
+
+        .pagination li:hover, .active {
+            background-color: #66ff99 !important;
+            color: black !important;
+            border-radius: 0px !important;
+        }
+
+            .pagination li:hover a {
+                color: black !important;
+            }
+
+        .pagination li a {
+            color: white !important;
+            text-decoration: none !important;
+        }
+
+    .form-group input[type=file] {
+        position: initial !important;
+    }
+</style>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <!--<pre>{{vm.flashNotice | json}}</pre>-->
+                    <form name="vm.flashNoticeIdForm">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="fromDate" class="custom-label">From Date</label>
+                                    <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.flashNotice.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="toDate" class="custom-label">To Date</label>
+                                    <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.flashNotice.toDate" k-format="'dd-MM-yyyy'" name="toDate" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 custom-col-height">
+                                <div class="form-group">
+                                    <label for="flashNotice1" class="custom-label">Notice</label>
+                                    <textarea class="form-control custom-form-control" id="flashNotice1" ng-model="vm.flashNotice.flashNotice1" rows="5" required></textarea>
+                                    <p ng-show="vm.flashNoticeIdForm.flashNotice1.$error.required" class="help-block errormsg">Notice is required</p>
+
+                                    <!--<input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.flashNotice.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" />-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height ">
+                                <button type="button" class="btn custom-btn btn-info pull-right" ng-disabled="vm.flashNoticeIdForm.$invalid" ng-click="vm.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> {{vm.saveButtonText}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

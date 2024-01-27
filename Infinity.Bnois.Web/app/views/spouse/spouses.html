@@ -1,0 +1,55 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Spouse Information</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addSpouse()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                    <!-- <div ng-include="'app/templates/search.html'" class="search-wrapper"></div> -->
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL No</th>
+                                <th>Relation Type</th>
+                                <th>Spouse Name </th>
+                                <th>Date of Birth</th>
+                                <th>Marriage Date</th>
+                                <th>Occupation</th>
+                                <th>Current Status</th>
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="spouse in vm.spouses">
+                                <td>{{$index+1}}</td>
+                                <td>{{spouse.relationTypeName}}</td>
+                                <td>{{spouse.aNameEng}}</td>
+                                <td style="width: 100px;">{{spouse.dateofBirth | date: "dd-MMM-yyyy"}}</td>
+                                <td>{{spouse.marriageDate | date: "dd-MM-yyyy"}}</td>
+                                <td>{{spouse.occupation.name}}</td>
+                                <td>{{spouse.currentStatusName}}</td>
+                                <td class="text-right">
+                                    <a  class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.getSpouseImage(spouse)"><span class="fa fa-image" aria-hidden="true" title="Spouse Image"></span></a>
+                                    <a  class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.getSpouseForeignVisit(spouse)"><span class="fa fa-wrench" aria-hidden="true" title="Foreign Visit"></span></a>
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateSpouse(spouse)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteSpouse(spouse)"
+                                       ng-confirmation-message="Do you want to delete Spouse ?"
+                                       ng-confirmation-title="Delete Spouse ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Spouse"></span></a>
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,281 @@
+
+html, body {
+    /* background: #082b4f url("login-bg.png") repeat fixed 0 0 / contain;
+  
+     background: linear-gradient(to bottom right, #082340, #cc6f2c);*/
+    background: #103d5b;
+    color: #fff;
+    font-family: "Open Sans",sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    height: 100%;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-rendering: optimizelegibility;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+
+[ng-cloak] {
+    display: none;
+}
+
+.page-error .request-id {
+    margin-left: 20px;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+    .page-error .request-id span {
+        font-weight: normal;
+    }
+
+.page-login .list-unstyled {
+    margin-left: 25px;
+}
+
+    .page-login .list-unstyled li {
+        margin-bottom: 10px;
+    }
+
+.page-login .login-remember {
+    padding-left: 16px;
+}
+
+    .page-login .login-remember input {
+        margin-right: 5px;
+    }
+
+.page-login .external-providers li:first-child {
+    padding-left: 5px;
+}
+
+.page-login .external-providers li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.page-loggedOut iframe.signout {
+    display: none;
+}
+
+.page-consent .client-logo {
+    float: left;
+}
+
+    .page-consent .client-logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+.page-consent .consent-buttons {
+    margin-top: 25px;
+}
+
+.page-consent .consent-form .consent-scopecheck {
+    display: inline-block;
+    margin-right: 5px;
+   
+}
+
+.page-consent .consent-form .consent-description {
+    margin-left: 25px;
+}
+
+    .page-consent .consent-form .consent-description label {
+        font-weight: normal;
+    }
+
+.page-consent .consent-form .consent-remember {
+    padding-left: 16px;
+}
+
+.page-permissions .page-header {
+    margin-bottom: 10px;
+}
+
+.page-permissions .permissions .permission {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+    .page-permissions .permissions .permission img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .page-permissions .permissions .permission .permission-clientname {
+        font-size: 140%;
+        font-weight: bold;
+    }
+
+    .page-permissions .permissions .permission .permission-type {
+        font-size: 120%;
+        font-weight: bold;
+    }
+
+    .page-permissions .permissions .permission li {
+        list-style-type: none;
+        display: inline;
+    }
+
+        .page-permissions .permissions .permission li:after {
+            content: ', ';
+        }
+
+        .page-permissions .permissions .permission li:last-child:after {
+            content: '';
+        }
+
+/*Login css*/
+
+
+a, a:focus, a:hover {
+    color: #fff;
+}
+
+.btn-default, .btn-default:hover, .btn-default:focus {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #333;
+    text-shadow: none;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Titillium Web",sans-serif;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+.form-control {
+    font-family: "Open Sans",sans-serif;
+    font-size: 17px;
+}
+
+.site-wrapper {
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5) inset;
+    display: table;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+
+.site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.cover-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inner {
+    padding: 30px;
+}
+
+.masthead-brand {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.masthead-nav > li {
+    display: inline-block;
+}
+
+    .masthead-nav > li + li {
+        margin-left: 20px;
+    }
+
+    .masthead-nav > li > a {
+        border-bottom: 2px solid transparent;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 16px;
+        font-weight: bold;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+        .masthead-nav > li > a:hover, .masthead-nav > li > a:focus {
+            background-color: transparent;
+            border-bottom-color: rgba(255, 255, 255, 0.25);
+        }
+
+.masthead-nav > .active > a, .masthead-nav > .active > a:hover, .masthead-nav > .active > a:focus {
+    border-bottom-color: #fff;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .masthead-brand {
+        float: left;
+    }
+
+    .masthead-nav {
+        float: right;
+    }
+}
+
+.cover {
+    padding: 0 20px;
+}
+
+    .cover .btn-lg {
+        font-weight: bold;
+        padding: 10px 20px;
+    }
+
+.lg-form {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.fip {
+    margin: 30px 0 0;
+}
+
+button.btn.signin {
+    background-color: #fff;
+    border-color: #fff;
+    color: #337ab7;
+}
+
+    button.btn.signin:hover {
+        background-color: #003254;
+        border-color: #204d74;
+        color: #e8e8e8;
+    }
+
+.mastfoot {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 768px) {
+    .masthead {
+        position: fixed;
+        top: 0;
+    }
+
+    .mastfoot {
+        bottom: 0;
+        position: fixed;
+    }
+
+    .site-wrapper-inner {
+        vertical-align: middle;
+    }
+
+    .masthead, .mastfoot, .cover-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .masthead, .mastfoot, .cover-container {
+        width: 700px;
+    }
+}

@@ -1,0 +1,91 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Rank<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.rankForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullName" class="custom-label"> Full  Name</label>
+                            <input type="text" id="fullName" class="form-control custom-form-control" ng-model="vm.rank.fullName" name="fullName" maxlength="250" required />
+                            <p ng-show="vm.rankForm.fullName.$error.required" class="help-block errormsg">FullRank name is required</p>
+                            <p ng-show="vm.rankForm.fullName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Full Name (বাংলা)</label>
+                            <input type="text" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.rank.fullNameBan" name="fullNameBan" ng-maxlength="250"  />
+                            <p ng-show="vm.rankForm.fullNameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label"> Short  Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.rank.shortName" name="shortName" maxlength="250" required />
+                            <p ng-show="vm.rankForm.shortName.$error.required" class="help-block errormsg">ShortRank name is required</p>
+                            <p ng-show="vm.rankForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortNameBan" class="custom-label"> Short Name (বাংলা)</label>
+                            <input type="text" id="shortNameBan" class="form-control custom-form-control" ng-model="vm.rank.shortNameBan" name="shortNameBan" maxlength="50" />
+                            <p ng-show="vm.rankForm.shortNameBan.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isConfirm" class="custom-label">Type</label>
+                            <input type="radio" name="isConfirm" ng-model="vm.rank.isConfirm" ng-value="true" />Confirm
+                            <input type="radio" name="isConfirm" ng-model="vm.rank.isConfirm" ng-value="false" />Acting
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="serviceYear" class="custom-label">Service Year</label>
+                            <input type="text" id="serviceYear" name="serviceYear"  class="form-control custom-form-control" ng-model="vm.rank.serviceYear" />
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankOrder" class="custom-label"> Rank Order</label>
+                            <input type="text" id="rankOrder" class="form-control custom-form-control" ng-model="vm.rank.rankOrder" name="rankOrder" required />
+                            <p ng-show="vm.rankForm.rankOrder.$error.required" class="help-block errormsg">RankOrder is required</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankLevel" class="custom-label">Rank Level</label>
+                            <input type="number" id="rankLevel" class="form-control custom-form-control" ng-model="vm.rank.rankLevel" name="rankLevel"   />
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.rank.remarks" name="remarks" maxlength="250" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.rankForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

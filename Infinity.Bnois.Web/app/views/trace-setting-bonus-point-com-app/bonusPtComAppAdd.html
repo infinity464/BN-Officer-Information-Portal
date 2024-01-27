@@ -1,0 +1,35 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.bonusPtComAppForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Bonus Point for Commendations/Appreciations<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="commendationId" class="custom-label">Commendation</label>
+                            <select name="commendationId" id="commendationId" class="form-control" ng-model="vm.bonusPtComApp.commendationId" ng-options="option.value as option.text for option in vm.commendations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.bonusPtComAppForm.commendationId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="point" class="custom-label">Point</label>
+                            <input type="text" id="point" class="form-control custom-form-control" ng-model="vm.bonusPtComApp.point" name="point" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.bonusPtComAppForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

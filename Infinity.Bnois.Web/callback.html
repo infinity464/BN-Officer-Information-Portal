@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script src="Scripts/oidc-token-manager/oidc-token-manager.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="app/common/common.services.js"></script>
+    <script>
+        var config = {
+            client_id: "infinity-bnois-api-client",
+            redirect_uri: window.location.protocol + "//" + window.location.host + "/callback.html",
+            load_user_profile: false,
+            authority: window.identityServerUrl
+        };
+
+
+        var manager = new OidcTokenManager(config);
+
+        // process the token
+        manager.processTokenCallbackAsync().then(function () {
+          window.location = window.location.protocol + "//" + window.location.host + "/";
+          
+        },
+        function (error) {
+            alert("Problem Getting Token : " + (error.message || error));
+        });
+
+    </script>
+</body>
+</html>

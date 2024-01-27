@@ -1,0 +1,334 @@
+﻿
+
+<form name="vm.officeForm">
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="parentId" class="custom-label">Parent Office</label>
+            <select name="zoneId" id="parentId" class="form-control" ng-model="office.parentId" ng-options="option.value as option.text for option in vm.parentOffices" disabled></select>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="bornOfficeId" class="custom-label">Born Office</label>
+            <select name="bornOfficeId" id="bornId" class="form-control" ng-model="office.bornOfficeId" ng-options="option.value as option.text for option in vm.bornOffices">
+                <option value="">--Select an Option--</option>
+            </select>
+
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="name" class="custom-label">Office Name</label>
+            <textarea id="name" class="form-control custom-form-control" ng-model="office.name" name="name" maxlength="150" required></textarea>
+            <p ng-show="vm.officeForm.name.$error.required" class="help-block errormsg">office name is required.</p>
+            <p ng-show="vm.officeForm.name.$error.maxlength" class="help-block errormsg">Maximum character 150</p>
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="shortName" class="custom-label">Short Name</label>
+            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="office.shortName" name="shortName" maxlength="150" required />
+            <p ng-show="vm.officeForm.shortName.$error.required" class="help-block errormsg">Short name is required.</p>
+            <p ng-show="vm.officeForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 150</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="nameBangla" class="custom-label">Office Name (বাংলা)</label>
+            <input type="text" id="nameBangla" class="form-control custom-form-control" ng-model="office.nameBangla" name="nameBangla" maxlength="150" />
+            <p ng-show="vm.officeForm.nameBangla.$error.maxlength" class="help-block errormsg">Maximum character 150</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+
+        <div class="form-group">
+            <label for="shortNameBangla" class="custom-label">Short Name (বাংলা)</label>
+            <input type="text" id="shortNameBangla" class="form-control custom-form-control" ng-model="office.shortNameBangla" name="shortNameBangla" maxlength="250" />
+            <p ng-show="vm.officeForm.shortNameBangla.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+        </div>
+    </div>
+    
+<div class="col-sm-6">
+
+    <div class="form-group">
+        <label for="securityName" class="custom-label">Security Name</label>
+        <input type="text" id="securityName" class="form-control custom-form-control" ng-model="office.securityName" name="securityName" maxlength="50" />
+        <p ng-show="vm.officeForm.securityName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+        <h5>Office Type</h5>
+        <div class="col-sm-3">
+            <input type="checkbox" id="bornCount" class="form-check-input"
+                   ng-model="office.bornOffice" name="isPostponed" />
+            <label for="bornCount" class="custom-label"> Born Office</label>
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="establishment" class="form-check-input"
+                   ng-model="office.establishment" name="isPostponed" />
+            <label for="establishment" class="custom-label"> Establishment</label>
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="coastGuard" class="form-check-input"
+                   ng-model="office.coastGuard" name="isPostponed" />
+            <label for="coastGuard" class="custom-label"> Coast Guard</label>
+
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="isOutsideOrg" class="form-check-input"
+                   ng-model="office.isOutsideOrg" name="isOutsideOrg" />
+            <label for="isOutsideOrg" class="custom-label"> Outside Org</label>
+
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="govtApproved" class="form-check-input"
+                   ng-model="office.govtApproved" name="isPostponed" />
+            <label for="govtApproved" class="custom-label"> Govt. Approved</label>
+
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="indCmd" class="form-check-input"
+                   ng-model="office.indCmd" name="isPostponed" />
+            <label for="indCmd" class="custom-label">Independent Command</label>
+        </div>
+
+        <div class="col-sm-3">
+            <input type="checkbox" id="cmdService" class="form-check-input"
+                   ng-model="office.cmdService" name="isPostponed" />
+            <label for="cmdService" class="custom-label"> Command Service</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="checkbox" id="seaServiceCnt" class="form-check-input"
+                   ng-model="office.seaServiceCnt" name="seaServiceCnt" />
+            <label for="seaServiceCnt" class="custom-label"> Sea Service </label>
+        </div>
+        <div class="col-sm-3">
+            <input type="checkbox" id="isIntelligenceServiceCount" class="form-check-input"
+                   ng-model="office.isIntelligenceServiceCount" name="isIntelligenceServiceCount" />
+            <label for="isIntelligenceServiceCount" class="custom-label"> Intelligent Service</label>
+
+        </div>
+        <div class="col-sm-3">
+            <input type="checkbox" id="isDeputationCount" class="form-check-input"
+                   ng-model="office.isDeputationCount" name="isDeputationCount" />
+            <label for="isDeputationCount" class="custom-label"> Deputation</label>
+
+        </div>
+        <div class="col-sm-3">
+            <input type="checkbox" id="isIsoCount" class="form-check-input"
+                   ng-model="office.isIsoCount" name="isIsoCount" />
+            <label for="isIsoCount" class="custom-label"> ISO</label>
+
+        </div> 
+        <div class="col-sm-3">
+            <input type="checkbox" id="isDockyardCount" class="form-check-input"
+                   ng-model="office.isDocyardCount" name="isDockyardCount" />
+            <label for="isDockyardCount" class="custom-label"> Dockyard</label>
+
+        </div>
+    </div>
+
+    
+<div class="col-sm-6">
+    <div class="form-group">
+        <label for="countryId" class="custom-label">Country</label>
+        <select name="countryId" id="countryId" class="form-control" ng-model="office.countryId" ng-options="option.value as option.text for option in vm.countries">
+            <option value="">--Select an Option--</option>
+        </select>
+
+    </div>
+</div>
+
+<div class="col-sm-6">
+        <div class="form-group">
+            <label for="zoneId" class="custom-label">Zone</label>
+            <select name="zoneId" id="zoneId" class="form-control" ng-model="office.zoneId" ng-options="option.value as option.text for option in vm.zones" >
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeForm.zoneId.$error.required" class="help-block errormsg">Please select an Option</p>
+
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="patternId" class="custom-label">Office Pattern</label>
+            <select name="patternId" id="patternId" class="form-control" ng-model="office.patternId" ng-options="option.value as option.text for option in vm.patterns" required>
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeForm.patternId.$error.required" class="help-block errormsg">Please select an Option</p>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="adminAuthorityId" class="custom-label">Admin Authority</label>
+            <select name="adminAuthorityId" id="adminAuthorityId" class="form-control" ng-model="office.adminAuthorityId" ng-options="option.value as option.text for option in vm.adminAuthorities">
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeForm.adminAuthorityId.$error.required" class="help-block errormsg">Please select an Option</p>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="addressInfo" class="custom-label">Office Address</label>
+            <textarea id="addressInfo" class="form-control custom-form-control" ng-model="office.addressInfo" name="addressInfo" maxlength="250"></textarea>
+            <p ng-show="vm.officeForm.addressInfo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="shipCategoryId" class="custom-label">Ship Category</label>
+            <select name="shipCategoryId" id="shipCategoryId" class="form-control" ng-model="office.shipCategoryId" ng-options="option.value as option.text for option in vm.shipCategories">
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="officeForm.shipCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+        </div>
+    </div>
+
+  
+    
+
+<div class="col-sm-6">
+    <div class="form-group">
+        <label for="shipOriginId" class="custom-label">Ship Origin</label>
+        <select name="shipOriginId" id="shipOriginId" class="form-control" ng-model="office.shipOriginId" ng-options="option.value as option.text for option in vm.countries">
+            <option value="">--Select an Option--</option>
+        </select>
+
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+        <div class="form-group">
+            <label for="shipType" class="custom-label">Ship Type</label>
+            <select name="shipType" id="shipType" class="form-control" ng-model="office.shipType" ng-options="option.value as option.text for option in vm.shipTypes">
+                <option value="">--Select an Option--</option>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="objType" class="custom-label">Objective</label>
+            <select name="objType" id="objType" class="form-control" ng-model="office.objType" ng-options="option.value as option.text for option in vm.objectives" required>
+                <option value="">--Select an Option--</option>
+            </select>
+            <p ng-show="vm.officeForm.objType.$error.required" class="help-block errormsg">Please select an Option</p>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="seServStartDate" class="custom-label">  Sea Service Start Date</label>
+            <input kendo-date-picker id="seServStartDate" class="form-control custom-form-control" k-ng-model="office.seServStartDate" k-format="'dd-MM-yyyy'" name="seServStartDate"  />
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="seServEndDate" class="custom-label">  Sea Service End Date</label>
+            <input kendo-date-picker id="seServEndDate" class="form-control custom-form-control" k-ng-model="office.seServEndDate" k-format="'dd-MM-yyyy'" name="seServEndDate"  />
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="commandServStartDate" class="custom-label">  Command Service Start Date</label>
+            <input kendo-date-picker id="commandServStartDate" class="form-control custom-form-control" k-ng-model="office.commandServStartDate" k-format="'dd-MM-yyyy'" name="commandServStartDate"  />
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="commandServEndDate" class="custom-label">  Command Service End Date</label>
+            <input kendo-date-picker id="commandServEndDate" class="form-control custom-form-control" k-ng-model="office.commandServEndDate" k-format="'dd-MM-yyyy'" name="pDate"  />
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-6">
+        <input type="checkbox" id="commissioned" class="form-check-input"
+               ng-model="office.commissioned" name="isPostponed" />
+        <label for="commissioned" class="custom-label"> Commissioned</label>
+
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="commDate" class="custom-label">  Commission Date</label>
+            <input kendo-date-picker id="commDate" class="form-control custom-form-control" k-ng-model="office.commDate" k-format="'dd-MM-yyyy'" name="pDate" ng-disabled="!office.commissioned" />
+        </div>
+    </div>
+    
+<div class="col-sm-6">
+    <div class="form-group">
+        <label for="commissionBy" class="custom-label">Commissioned By</label>
+        <input type="text" id="commissionBy" class="form-control custom-form-control" ng-model="office.commissionBy" name="commissionBy" maxlength="250" ng-disabled="!office.commissioned" />
+        <p ng-show="vm.officeForm.commissionBy.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+    </div>
+</div>
+<div class="col-sm-6">
+        <input type="checkbox" id="deCommissioned" class="form-check-input"
+               ng-model="office.deCommissioned" name="isPostponed" />
+        <label for="deCommissioned" class="custom-label"> De-Commissioned</label>
+
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="deComDate" class="custom-label">  De-Commission Date</label>
+            <input kendo-date-picker id="deComDate" class="form-control custom-form-control" k-ng-model="office.deComDate" k-format="'dd-MM-yyyy'" name="pDate" ng-disabled="!office.deCommissioned" />
+        </div>
+    </div>
+
+ 
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="deComPurpose" class="custom-label">De-Commission Purpose</label>
+            <textarea type="text" id="deComPurpose" class="form-control custom-form-control" ng-model="office.deComPurpose" name="deComPurpose" maxlength="250" ng-disabled="!office.deCommissioned"></textarea>
+            <p ng-show="vm.officeForm.deComPurpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12">
+        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.officeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{saveButtonText}}</button>
+        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.cancel()"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+    </div>
+</form>
+

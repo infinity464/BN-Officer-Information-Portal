@@ -1,0 +1,52 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.boardForm">
+                    <header class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Board/University<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </header>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="boardType" class="custom-label">Type</label>
+                            <select name="boardType" id="boardType" class="form-control" ng-model="vm.board.boardType" ng-options="option.value as option.text for option in vm.boardTypes" required>
+                                <option value="">--Select Board Type--</option>
+                            </select>
+                            <p ng-show="vm.boardrForm.boardType.$error.required" class="help-block errormsg">Please select an option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.board.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.boardForm.name.$error.required" class="help-block errormsg"> Name is required</p>
+                            <p ng-show="vm.boardForm.name.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="boardCode" class="custom-label">Code</label>
+                            <input type="text" id="boardCode" class="form-control custom-form-control" ng-model="vm.board.boardCode" name="boardCode" maxlength="50"  />
+                            <p ng-show="vm.boardForm.boardCode.$error.maxlength" class="help-block errormsg">Maximum length 50 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Description</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.board.remarks" name="remarks" maxlength="250"></textarea>
+                            <p ng-show="vm.boardForm.remarks.$error.maxlength" class="help-block errormsg">Maximum length 200 characters</p>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.boardForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

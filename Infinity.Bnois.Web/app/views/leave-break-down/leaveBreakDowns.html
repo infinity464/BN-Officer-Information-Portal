@@ -1,0 +1,181 @@
+﻿
+<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+				<!--<div class="page-header">
+					<h2 class="warning page-header-item">Leave Break Down</h2>
+					<div class="search-section pull-right">
+						<div class="input-group">
+							<input type="text" ng-model="vm.employeeId" class="form-control" name="" placeholder="Employee Id" ng-keypress="$event.keyCode == 13 && vm.getLeaveBreakDown(vm.employeeId)">
+							<span class="input-group-btn">
+								<button class="btn btn-success search-btn-success" type="button" ng-click="vm.getLeaveBreakDown(vm.employeeId)"><i class="fa fa-search" aria-hidden="true"></i></button>
+							</span>
+						</div>
+					</div>
+				</div>-->
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="pNo" class="custom-label"> PNO</label>
+						<input type="text" id="pNo" ng-keypress="$event.keyCode ==13 && vm.getLeaveBreakDown(vm.employee.pNo)" class="form-control custom-form-control" ng-model="vm.employee.pNo" name="pNo" required />
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="bnNo" class="custom-label"> BN Number</label>
+						<input type="text" readonly="readonly" style="background-color:skyblue" id="bnNo" class="form-control custom-form-control" ng-model="vm.employee.bnNo" name="bnNo" maxlength="250" required />
+
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="fullNameEng" class="custom-label">Full Name</label>
+						<input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.employee.fullNameEng" name="fullNameEng" maxlength="250" required />
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="fullNameBan" class="custom-label">Full Name Bangla</label>
+						<input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employee.fullNameBan" name="fullNameBan" maxlength="250" required />
+					</div>
+				</div>
+				
+
+				<div class="table-wrapper table-responsive">
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th rowspan="2">Year</th>
+								<th rowspan="2">Leave Due(Days)</th>
+								<th rowspan="2">Leave Availed</th>
+								<th rowspan="2">Year</th>
+								<th colspan="2" style="text-align:center">Duration</th>
+
+								<th rowspan="2">Total Balanced Leave(Days)</th>
+								
+							</tr>
+							<tr>
+								<th>Form Date</th>
+								<th>To Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in vm.resultLeaveBreakDowns | filter:{leaveTypeId:3}">
+								<td>{{item.yearText}}</td>
+								<td>{{item.leaveDuration}}</td>
+								<td>{{item.duration > 0 ? item.duration+ '  Days PI of' :'N/A'}} </td>
+								<td>{{item.slot}}</td>
+								<td>{{item.formDate | date : "dd/MM/y"}}</td>
+								<td>{{item.toDate | date : "dd/MM/y"}}</td>
+								<td>{{item.balance}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<h2>Summary</h2>
+				<div class="table-wrapper table-responsive col-lg-12">
+					<div class="col-lg-6">
+						<table class="table table-hover table-striped ">
+
+							<tr>
+								<td>Total Pl Due</td>
+								<td>{{vm.getPLTotal()}}</td>
+								<td>{{vm.humanise( vm.getPLTotal() )}}</td>
+							
+							</tr>
+							<tr>
+								<td>Total PL Availed</td>
+								<td>{{vm.getAvailTotal()}}</td>
+								<td>{{vm.humanise( vm.getAvailTotal() )}}</td>
+
+							</tr>
+							<tr>
+								<td>Total PL Balance</td>
+								<td>{{ vm.getPLTotal() - vm.getAvailTotal() }}</td>
+								<td>{{vm.humanise( vm.getPLTotal() - vm.getAvailTotal() )}}</td>
+							</tr>
+							<tr>
+								<td>Terminal Leave</td>
+								<td>{{vm.lprCalculateInfo.terminalLeave}}</td>
+								<td>{{vm.humanise(vm.lprCalculateInfo.terminalLeave)}}</td>
+							</tr>
+							<tr>
+								<td>Survey Leave</td>
+								<td>{{vm.lprCalculateInfo.surveyLeave}}</td>
+								<td>{{vm.humanise(vm.lprCalculateInfo.surveyLeave)}}</td>
+							</tr>
+							<tr>
+								<td>Leave Due as Sailor</td>
+								<td>{{vm.lprCalculateInfo.sailorDue}}</td>
+								<td>{{vm.humanise(vm.lprCalculateInfo.sailorDue)}}</td>
+							</tr>
+							<tr>
+								<td>Total Leave Balance</td>
+								<td>{{vm.lprCalculateInfo.sailorDue + vm.lprCalculateInfo.surveyLeave +vm.lprCalculateInfo.terminalLeave + (vm.getPLTotal() - vm.getAvailTotal())}}</td>
+								<td>{{vm.humanise(vm.lprCalculateInfo.sailorDue + vm.lprCalculateInfo.surveyLeave +vm.lprCalculateInfo.terminalLeave + (vm.getPLTotal() - vm.getAvailTotal()))}}</td>
+							</tr>
+							<tr>
+								<td>Total LPR</td>
+								<td>{{vm.lprCalculateInfo.lpr}}</td>
+								<td>{{vm.humanise(vm.lprCalculateInfo.lpr)}}</td>
+							</tr>
+							<tr>
+								<td>LLO</td>
+								<td>{{(vm.lprCalculateInfo.sailorDue + vm.lprCalculateInfo.surveyLeave +vm.lprCalculateInfo.terminalLeave + (vm.getPLTotal() - vm.getAvailTotal())) -vm.lprCalculateInfo.lpr}}</td>
+								<td>{{vm.humanise((vm.lprCalculateInfo.sailorDue + vm.lprCalculateInfo.surveyLeave +vm.lprCalculateInfo.terminalLeave + (vm.getPLTotal() - vm.getAvailTotal())) -vm.lprCalculateInfo.lpr)}}</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="col-lg-6">
+						<table class="table table-hover table-striped ">
+
+							<tr>
+								<td>Total Commission Service</td>
+
+								<td>{{vm.humanise(vm.getCommisionDays())}}</td>
+							</tr>
+							<tr>
+								<td>Furlough Due</td>
+								<td>{{vm.getMonthDays(vm.getFurloughLeave())}}</td>
+
+							</tr>
+							<tr>
+								<td>Furlough granted as LPR</td>
+								<td>{{vm.getMonthDays(vm.getLprFurlough())}}</td>								
+							</tr>
+							<tr>
+								<td>Furlough Balance</td>
+								<td>{{vm.getMonthDays(vm.getFurloughLeave()- vm.getLprFurlough())}}</td>
+								
+							</tr>
+							<tr>
+								<td>Furlough Benefit</td>
+								<td>{{vm.getMonthDays((vm.getFurloughLeave()-vm.getLprFurlough())/2)}}</td>
+							</tr>
+							<tr>
+								<td>Lapsed Leave Balance</td>
+								<td>{{(vm.lprCalculateInfo.sailorDue + vm.lprCalculateInfo.surveyLeave +vm.lprCalculateInfo.terminalLeave + (vm.getPLTotal() - vm.getAvailTotal())) -vm.lprCalculateInfo.lpr}}</td>
+							</tr>
+							<tr>
+								<td>Total Leave Due</td>
+								<td>{{((vm.lprCalculateInfo.sailorDue + vm.lprCalculateInfo.surveyLeave +vm.lprCalculateInfo.terminalLeave + (vm.getPLTotal() - vm.getAvailTotal())) -vm.lprCalculateInfo.lpr) + ((vm.getFurloughLeave()-vm.getLprFurlough())/2)}}</td>
+							</tr>
+							<tr>
+								<td>Financial Benifit</td>
+								<td>{{vm.getFinancialBenifit(((vm.lprCalculateInfo.sailorDue + vm.lprCalculateInfo.surveyLeave +vm.lprCalculateInfo.terminalLeave + (vm.getPLTotal() - vm.getAvailTotal())) -vm.lprCalculateInfo.lpr) + ((vm.getFurloughLeave()-vm.getLprFurlough())/2))}}</td>
+								
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

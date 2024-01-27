@@ -1,0 +1,100 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Additional Sea Service<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+				<form name="vm.seaServiceForm">
+					<employee-search ng-model="vm.seaService.employee"></employee-search>
+					<div class="col-sm-12">
+						<hr />
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="shipType" class="custom-label">Ship Type</label>
+							<select name="shipType" id="shipType" class="form-control" ng-model="vm.seaService.shipType" ng-options="option.value as option.text for option in vm.shipTypes" >
+								<option value="">--Select an Option--</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="shipName" class="custom-label">Ship Name</label>
+							<input type="text" id="shipName" class="form-control custom-form-control" ng-model="vm.seaService.shipName" name="shipName" maxlength="250" />
+							<p ng-show="vm.seaServiceForm.shipName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="countryId" class="custom-label">Country</label>
+							<select name="countryId" id="countryId" class="form-control" ng-model="vm.seaService.countryId" ng-options="option.value as option.text for option in vm.countries" >
+								<option value="">--Select an Option--</option>
+							</select>
+						</div>
+					</div>
+
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="organizationName" class="custom-label">Organization</label>
+							<input type="text" id="organizationName" class="form-control custom-form-control" ng-model="vm.seaService.organizationName" name="organizationName" maxlength="250" />
+							<p ng-show="vm.seaServiceForm.organizationName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+
+
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="fromDate" class="custom-label"> From Date</label>
+							<input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.seaService.fromDate" k-format="'dd-MM-yyyy'" name="fromDate"  />
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="toDate" class="custom-label"> To Date</label>
+							<input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.seaService.toDate" k-format="'dd-MM-yyyy'" name="toDate" required />
+						</div>
+					</div>
+
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="appointmentName" class="custom-label">Appointment</label>
+							<input type="text" id="appointmentName" class="form-control custom-form-control" ng-model="vm.seaService.appointmentName" name="appointmentName" maxlength="250" />
+							<p ng-show="vm.seaServiceForm.appointmentName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="purpose" class="custom-label">Purpose</label>
+							<textarea type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.seaService.purpose" name="purpose" maxlength="350"> </textarea>
+							<p ng-show="vm.seaServiceForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+				
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="reference" class="custom-label">References</label>
+							<input type="text" id="reference" class="form-control custom-form-control" ng-model="vm.seaService.reference" name="reference" maxlength="350" />
+							<p ng-show="vm.seaServiceForm.reference.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+
+
+					<div class="col-xs-12">
+						<br />
+						<button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.seaServiceForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+						<button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+					</div>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>

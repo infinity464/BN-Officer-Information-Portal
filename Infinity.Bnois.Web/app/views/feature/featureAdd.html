@@ -1,0 +1,84 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Feature <span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.featureForm">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="moduleId" class="custom-label">Module Name</label>
+                            <select name="moduleId" id="moduleId" class="form-control custom-form-control" ng-model="vm.feature.moduleId" ng-options="option.value as option.text for option in vm.modules">
+                                <option value="">--Select module--</option>
+                            </select>
+                            <p ng-show="vm.featureForm.moduleId.$error.required" class="help-block errormsg">Module is required</p>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="featureName" class="custom-label">Feature Name</label>
+                            <input type="text" id="featureName" class="form-control custom-form-control" ng-model="vm.feature.featureName" name="featureName" ng-maxlength="50" required />
+                            <p ng-show="vm.featureForm.featureName.$error.required" class="help-block errormsg">Feature Name is required</p>
+                            <p ng-show="vm.featureForm.featureName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="actionNgHref" class="custom-label">Action/Report Name</label>
+                            <input type="text" id="featureName" class="form-control custom-form-control" ng-model="vm.feature.actionNgHref" name="actionNgHref" ng-maxlength="50" required />
+                            <p ng-show="vm.featureForm.actionNgHref.$error.required" class="help-block errormsg">Action Name is required</p>
+                            <p ng-show="vm.featureForm.actionNgHref.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="featureCode" class="custom-label">Authorise Code</label>
+                            <input type="text" id="featureCode" class="form-control custom-form-control" ng-model="vm.feature.featureCode" name="featureCode" required />
+                            <p ng-show="vm.featureForm.featureCode.$error.required" class="help-block errormsg">Authorize Code is required</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="orderNo" class="custom-label">Order</label>
+                            <input type="text" id="orderNo" class="form-control custom-form-control" ng-model="vm.feature.orderNo" name="orderNo"  />
+                            <p ng-show="vm.featureForm.orderNo.$error.required" class="help-block errormsg">Order is required</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="featureTypeId" class="custom-label">Feature Type</label>
+                            <select name="featureTypeId" id="featureTypeId" class="form-control" ng-model="vm.feature.featureTypeId"
+                                    ng-options="option.value as option.text for option in vm.featureTypes"
+                                   >
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--<div class="col-sm-4">
+        <div class="form-group">
+            <label>Is Report</label>
+            <div class="form-control">
+                <label class="radio-inline">
+                    <input type="radio" name="isReport" ng-value="true" ng-model="vm.feature.isReport">
+                    Yes
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="isReport" ng-value="false"  ng-model="vm.feature.isReport">
+                    No
+                </label>
+            </div>
+        </div>
+    </div>-->
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.featureForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.educationForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Education<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="examCategoryId" class="custom-label">Exam Title</label>
+                            <select name="examCategoryId" id="examCategoryId" class="form-control" ng-change="vm.getExaminationByExamCategory(vm.education.examCategoryId)" ng-model="vm.education.examCategoryId" ng-options="option.value as option.text for option in vm.examCategories" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.educationForm.examCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="examinationId" class="custom-label">Examination</label>
+                            <select name="examinationId" id="examinationId" class="form-control" ng-model="vm.education.examinationId" ng-change="vm.getSubjectsByExamination(vm.education.examinationId)" ng-options="option.value as option.text for option in vm.examinations"  >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.educationForm.examinationId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="boardId" class="custom-label">Board/University</label>
+                            <select name="boardId" id="boardId" class="form-control" ng-model="vm.education.boardId" ng-change="vm.getInstituteByBoardOrUniversity(vm.education.boardId)" ng-options="option.value as option.text for option in vm.boards"  >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.educationForm.boardId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="instituteId" class="custom-label">Institute</label>
+                            <select name="instituteId" id="instituteId" class="form-control" ng-model="vm.education.instituteId" ng-options="option.value as option.text for option in vm.institutes">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="subjectid" class="custom-label">Subject/Group</label>
+                            <select name="subjectid" id="subjectid" class="form-control" ng-model="vm.education.subjectid" ng-options="option.value as option.text for option in vm.subjects">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.educationForm.subjectid.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="roll" class="custom-label">Roll No.</label>
+                            <input type="text" id="roll" class="form-control custom-form-control" ng-model="vm.education.roll" name="roll" maxlength="20" />
+                            <p ng-show="vm.educationForm.roll.$error.maxlength" class="help-block errormsg">Maximum length 20 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="regNo" class="custom-label">Registration No.</label>
+                            <input type="text" id="regNo" class="form-control custom-form-control" ng-model="vm.education.regNo" name="regNo" maxlength="20" />
+                            <p ng-show="vm.educationForm.regNo.$error.maxlength" class="help-block errormsg">Maximum length 20 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="resultId" class="custom-label">Result</label>
+                            <select name="resultId" id="resultId" class="form-control" ng-change="vm.showGPA(vm.education.resultId)" ng-model="vm.education.resultId" ng-options="option.value as option.text for option in vm.results" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.educationForm.resultId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6" ng-show="vm.isShowGPA">
+                        <div class="form-group">
+                            <label for="gpa" class="custom-label">GPA</label>
+                            <input min="0" max="5" id="gpa" class="form-control custom-form-control" ng-model="vm.education.gpa" name="gpa" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="resultGradeId" class="custom-label">Grade</label>
+                            <select name="resultGradeId" id="resultGradeId" class="form-control" ng-model="vm.education.resultGradeId" ng-options="option.value as option.text for option in vm.grades">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="marks" class="custom-label">Marks</label>
+                            <input type="text" id="marks" class="form-control custom-form-control" ng-model="vm.education.marks" name="marks" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="distinction" class="custom-label">Distinction/Letter</label>
+                            <input type="text" id="distinction" class="form-control custom-form-control" ng-model="vm.education.distiction" name="marks" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="percentage" class="custom-label">Percentage</label>
+                            <input type="text" id="percentage" class="form-control custom-form-control" ng-model="vm.education.percentage" name="percentage" min=0 max=100 />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="passingYear" class="custom-label">Passing Year</label>
+                            <select name="passingYear" id="passingYear" class="form-control" ng-model="vm.education.passingYear" ng-options="option.value as option.text for option in vm.years"  >
+                                <option value="">--Select Year--</option>
+                            </select>
+                            <p ng-show="vm.educationForm.passingYear.$error.required" class="help-block errormsg">Please select an option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="courseDuration" class="custom-label">Course Duration (Year)</label>
+                            <select name="courseDuration" id="courseDuration" class="form-control" ng-model="vm.education.courseDuration" ng-options="option.value as option.text for option in vm.courseDurations">
+                                <option value="">--Select Year--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.educationForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

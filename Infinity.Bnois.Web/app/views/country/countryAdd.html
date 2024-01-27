@@ -1,0 +1,73 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.countryForm">
+                    <header class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Country<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </header>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullName" class="custom-label">Full Name</label>
+                            <input type="text" id="fullName" class="form-control custom-form-control" ng-model="vm.country.fullName" name="fullName" maxlength="250" required />
+                            <p ng-show="vm.countryForm.fullName.$error.required" class="help-block errormsg">Full Name is required</p>
+                            <p ng-show="vm.countryForm.fullName.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label">Short Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.country.shortName" name="shortName" maxlength="250" required />
+                            <p ng-show="vm.countryForm.shortName.$error.required" class="help-block errormsg">Short Name is required</p>
+                            <p ng-show="vm.countryForm.shortName.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="iso" class="custom-label">ISO Code</label>
+                            <input type="text" id="iso" class="form-control custom-form-control" ng-model="vm.country.iso" name="iso" maxlength="250"  />
+                            <p ng-show="vm.countryForm.iso.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="iso3" class="custom-label">ISO3 </label>
+                            <input type="text" id="iso3" class="form-control custom-form-control" ng-model="vm.country.iso3" name="iso3" maxlength="250"  />
+                            <p ng-show="vm.countryForm.iso3.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nationality" class="custom-label">Nationality</label>
+                            <input type="text" id="nationality" class="form-control custom-form-control" ng-model="vm.country.nationality" name="name" maxlength="250" />
+                            <p ng-show="vm.countryForm.nationality.$error.required" class="help-block errormsg">Nationality is required</p>
+                            <p ng-show="vm.countryForm.nationality.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="numCode" class="custom-label">Number Code </label>
+                            <input type="text" id="numCode" class="form-control custom-form-control" ng-model="vm.country.numCode" name="numCode" maxlength="250"  />
+                            <p ng-show="vm.countryForm.numCode.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="phoneCode" class="custom-label">Phone Code </label>
+                            <input type="text" id="phoneCode" class="form-control custom-form-control" ng-model="vm.country.phoneCode" name="phoneCode" maxlength="250"  />
+                            <p ng-show="vm.countryForm.phoneCode.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.countryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning " ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

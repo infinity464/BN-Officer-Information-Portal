@@ -1,0 +1,161 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officer Information<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeeForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label"> Personal Number</label>
+                            <input type="text" id="pNo" class="form-control custom-form-control" ng-model="vm.employee.pNo" name="pNo" maxlength="250" required />
+                            <p ng-show="vm.employeeForm.pNo.$error.required" class="help-block errormsg"> Personal Number is required</p>
+                            <p ng-show="vm.employeeForm.pNo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="officerTypeId" class="custom-label">Officer Type</label>
+                            <select name="officerTypeId" id="officerTypeId" class="form-control" ng-model="vm.employee.officerTypeId" ng-options="option.value as option.text for option in vm.officerTypes" ng-change="vm.countriesName(vm.employee.officerTypeId)" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.officerTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankCategoryId" class="custom-label">Organization</label>
+                            <select name="rankCategoryId" id="rankCategoryId" class="form-control" ng-change="vm.getRankByRankCategory(vm.employee.rankCategoryId)" ng-model="vm.employee.rankCategoryId" ng-options="option.value as option.text for option in vm.rankCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.rankCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.employee.countryId" ng-options="option.value as option.text for option in vm.countries" required ng-disabled="vm.countryDisable">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bnNo" class="custom-label"> BN Number</label>
+                            <input type="text" id="bnNo" class="form-control custom-form-control" ng-model="vm.employee.bnNo" name="bnNo" maxlength="250" />
+                            <!-- <p ng-show="vm.employeeForm.bnNo.$error.required" class="help-block errormsg"> BN Number is required</p> -->
+                            <p ng-show="vm.employeeForm.bnNo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Full Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.employee.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.employeeForm.name.$error.required" class="help-block errormsg"> Full Name is required</p>
+                            <p ng-show="vm.employeeForm.name.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Full Name (বাংলা)</label>
+                            <input type="text" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employee.fullNameBan" name="fullNameBan" maxlength="250" />
+                            <!-- <p ng-show="vm.employeeForm.fullNameBan.$error.required" class="help-block errormsg"> Full Name Bangla is required</p> -->
+                            <p ng-show="vm.employeeForm.fullNameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="batchId" class="custom-label">Batch</label>
+                            <select name="batchId" id="batchId" class="form-control" ng-model="vm.employee.batchId" ng-options="option.value as option.text for option in vm.batches" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.batchId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="batchPosition" class="custom-label">Batch Position</label>
+                            <input type="text" id="pNo" class="form-control custom-form-control" ng-model="vm.employee.batchPosition" name="batchPosition" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="genderId" class="custom-label">Gender</label>
+                            <select name="genderId" id="genderId" class="form-control" ng-model="vm.employee.genderId" ng-options="option.value as option.text for option in vm.genders" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.genderId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.employee.rankId" ng-options="option.value as option.text for option in vm.ranks" required ng-disabled="vm.employeeId>0">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.rankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6" ng-show="vm.employee.employeeId>0">
+                        <div class="form-group">
+                            <label for="employeeStatusId" class="custom-label">Status</label>
+                            <select name="employeeStatusId" id="employeeStatusId" class="form-control" ng-model="vm.employee.employeeStatusId" ng-options="option.value as option.text for option in vm.employeeStatuses" disabled>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.employeeStatusId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="notification" class="custom-label">Special Notification</label>
+                            <textarea id="notification" class="form-control custom-form-control" ng-model="vm.employee.notification" name="notification" maxlength="250"></textarea>
+                            <p ng-show="vm.employeeForm.notification.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="executionRemarkId" class="custom-label">Board Execution Remark(Promotion)</label>
+                            <select name="executionRemarkId" id="executionRemarkId" class="form-control" ng-model="vm.employee.executionRemarkId" ng-options="option.value as option.text for option in vm.executionRemarks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeeForm.executionRemarkId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>              
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bExecutionDate" class="custom-label">Board Execution Date (Promotion)</label>
+                            <input kendo-date-picker id="bExecutionDate" class="form-control custom-form-control" k-ng-model="vm.employee.bExecutionDate" k-format="'dd-MM-yyyy'" name="bExecutionDate" />
+                            <p ng-show="vm.employeeGeneralForm.bExecutionDate.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bSpRemarks" class="custom-label">Broad Sheet Special Remarks (Nomination)</label>
+                            <textarea id="bSpRemarks" class="form-control custom-form-control" ng-model="vm.employee.bSpRemarks" name="bSpRemarks" maxlength="1000"></textarea>
+                            <p ng-show="vm.employeeForm.bSpRemarks.$error.maxlength" class="help-block errormsg">Maximum character 1000</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

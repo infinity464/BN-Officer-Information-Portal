@@ -1,0 +1,123 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+            <div class="panel-body" id="print">
+
+                <h3 class="reportHeader"> UN Mission</h3>
+                <hr />
+                <h4 class="noScreen" style="border-bottom: 3px solid blue;font-family: Arial">{{vm.officerName}} ({{vm.pNo}})</h4>
+
+                <div ng-if="vm.missions.length>0" class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th>Mission</th>
+                                <th>Appointment</th>
+                                <th>Country</th>
+                                <th>From Date</th>
+                                <th>To Date </th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="item in vm.missions">
+
+                                <td class="reportTD">{{item.mission}}</td>
+                                <td class="reportTD">{{item.appointment}}</td>
+                                <td class="reportTD">{{item.country}}</td>
+                                <td class="reportTD" style="text-align: center; width: 100px;">{{item.fromDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="text-align: center;width: 100px;" ng-if="item.toDate !='Total'">{{item.toDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="text-align: center;width: 100px;" ng-if="item.toDate=='Total'"><strong>{{item.toDate | date:"dd-MMM-yyyy"}}</strong></td>
+                                <td class="reportTD" style="text-align: center;text-transform: lowercase;">{{item.duration}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+                <br />
+
+
+                <h3 class="reportHeader"> Foreign Project</h3>
+                <hr />
+                <div ng-if="vm.foreignProjects.length>0" class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th>Project Name</th>
+                                <th>Appointment</th>
+                                <th>Country</th>
+                                <th>From Date</th>
+                                <th>To Date </th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="item in vm.foreignProjects">
+
+                                <td class="reportTD">{{item.project}}</td>
+                                <td class="reportTD">{{item.appointment}}</td>
+                                <td class="reportTD">{{item.country}}</td>
+                                <td class="reportTD" style="text-align: center; width: 100px;">{{item.fromDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="text-align: center; width: 100px;" ng-if="item.toDate !='Total'">{{item.toDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="text-align: center;width: 100px;" ng-if="item.toDate=='Total'"><strong>{{item.toDate | date:"dd-MMM-yyyy"}}</strong></td>
+                                <td class="reportTD" style="text-align: center;text-transform: lowercase;">{{item.duration}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <br />
+
+                <h3 class="reportHeader"> Hajj Details</h3>
+                <hr />
+                <div ng-if="vm.hajjDetails.length>0" class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th>SL</th>                             
+                                <th>Hajj Type</th>
+                                <th>Date From</th>
+                                <th>Date To</th>
+                                <th>Baloty/ Non-Baloty</th>
+                                <th>Arranged By</th>
+                                <th>Royel Guest</th>
+                                <th>Acompany By</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="employeeHajjDetail in vm.hajjDetails">
+                                <td>{{$index + 1}}</td>                        
+                                <td ng-if="employeeHajjDetail.hajjOrOmra==true">Hajj</td>
+                                <td ng-if="employeeHajjDetail.hajjOrOmra==false">Omrah</td>
+                                <td>{{employeeHajjDetail.fromDate | date: "dd-MMM-yyyy"}}</td>
+                                <td>{{employeeHajjDetail.toDate | date: "dd-MMM-yyyy"}}</td>
+                                <td ng-if="employeeHajjDetail.balotyNonBaloty==true">Baloty</td>
+                                <td ng-if="employeeHajjDetail.balotyNonBaloty==false">Non-Baloty</td>
+                                <td ng-if="employeeHajjDetail.balotyNonBaloty==null"></td>
+                                <td ng-if="employeeHajjDetail.arrangedBy==true">Own Arrangement</td>
+                                <td ng-if="employeeHajjDetail.arrangedBy==false">Govt. Arrangement</td>
+                                <td ng-if="employeeHajjDetail.arrangedBy==null"></td>
+                                <td ng-if="employeeHajjDetail.balotyNonBaloty==null"></td>
+                                <td ng-if="employeeHajjDetail.royelGuest==true">Yes</td>
+                                <td ng-if="employeeHajjDetail.royelGuest==false">No</td>
+                                <td ng-if="employeeHajjDetail.royelGuest==null"></td>
+                                <td>{{employeeHajjDetail.aCompanyBy}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

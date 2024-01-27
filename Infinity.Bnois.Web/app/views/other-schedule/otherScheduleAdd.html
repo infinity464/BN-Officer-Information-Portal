@@ -1,0 +1,47 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Other Schedule<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.otherScheduleForm">
+
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="purpose" class="custom-label">Purpose</label>
+                            <textarea type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.otherSchedule.purpose" name="purpose" maxlength="250" required></textarea>
+                            <p ng-show="vm.otherScheduleForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                            <p ng-show="vm.otherScheduleForm.purpose.$error.required" class="help-block errormsg">Purpose is required.</p>
+
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fromDate" class="custom-label">  From Date</label>
+                            <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.otherSchedule.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                            <p ng-show="vm.otherScheduleForm.fromDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="toDate" class="custom-label">  To Date</label>
+                            <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.otherSchedule.toDate" k-format="'dd-MM-yyyy'" name="toDate" required />
+                            <p ng-show="vm.otherScheduleForm.toDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+	                <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.otherScheduleForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

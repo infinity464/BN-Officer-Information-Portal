@@ -1,0 +1,59 @@
+﻿
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <button class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+            <div class="panel-body" id="print">
+                <h3 class="text-center reportHeader">Leave wise Navy Officer List</h3>
+                <hr />
+
+
+                <h4 class="text-center reportHeader">Total Officer found: {{vm.totalResult}}</h4>
+
+                <div class="table-wrapper table-responsive reportCover">
+
+                    <table class="table table-bordered pdfReportTable" border="1">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                 <th>SL</th>
+                                 <th>Officer Name</th>
+                                 <th>PNo</th>
+                                 <th>Billet-Appointment</th>
+                                 <th>Since</th>
+                                 <th>Leave Type</th>
+                                 <th>Days</th>
+                                 <th ng-if="vm.type==2">Country</th>
+                                 <th>From Date</th>
+                                 <th>To Date</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="item in vm.leaveOfficers">
+                                <td class="reportTD" style="text-align: center;width: 50px;"><strong> {{$index+1}}</strong> </td>
+                                <td class="reportTD hideElement" ><a href="" ng-click="vm.officerDetails(item.pNo)"> <strong>{{item.officerName}}</strong></a> </td>
+                                <td class="reportTD noScreen" ><strong>{{item.officerName}}</strong></td>
+                                <td class="reportTD" style="text-align: center"> <strong>{{item.pNo}}</strong> </td>
+                                <td class="reportTD"><strong>{{item.presentBillet}} </strong> </td>
+                                <td class="reportTD" style="text-align: center;width: 100px;"><strong> {{item.since | date:'dd/MM/yyyy'}}</strong>  </td>
+                                <td class="reportTD" style="text-align: center;width: 50px;"><strong> {{item.leaveType}}</strong>  </td>
+                                <td class="reportTD" style="text-align: center;width: 50px;"><strong> {{item.days}}</strong>  </td>
+                                <td class="reportTD" ng-if="vm.type==2" style="text-align: center;"><strong> {{item.country}}</strong>  </td>
+                                <td class="reportTD" style="text-align: center;width: 100px;"><strong> {{item.fromDate | date:'dd/MM/yyyy'}}</strong>  </td>
+                                <td class="reportTD" style="text-align: center;width: 100px;"><strong> {{item.toDate | date:'dd/MM/yyyy'}}</strong>  </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-sm-12" style="margin-bottom: 50px;"></div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

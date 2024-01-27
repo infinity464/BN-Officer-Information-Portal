@@ -1,0 +1,45 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Children Information</h2>
+                    <button ng-show="vm.permission.add" class="btn custom-btn custom-btn-primary pull-right" type="button" ng-click="vm.addEmployeeChildren()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Children Type</th>
+                                <th>Name (English)</th>
+                                <th>Date Of Birth</th>
+                                <th>Occupation</th>      
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="children in vm.employeeChildrens">
+                                <td>{{children.childrenTypeName}}</td>
+                                <td>{{children.name}}</td>                         
+                                <td style="width: 100px;">{{children.dateOfBirth|date:"dd-MMM-yyyy"}}</td>
+                                <td>{{children.occupation.name}}</td>
+                                <td class="text-right">
+                                    <a  class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.uploadChildrenImage(children)"><span class="fa fa-image" aria-hidden="true" title="Children's Image"></span></a>
+                                    <a ng-show="vm.permission.update" class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateEmployeeChildren(children)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                    <a ng-show="vm.permission.delete" class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteEmployeeChildren(children)"
+                                       ng-confirmation-message="Do you want to delete Children ?"
+                                       ng-confirmation-title="Delete Children ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Children"></span></a>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

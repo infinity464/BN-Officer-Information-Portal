@@ -1,0 +1,329 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+        <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+        <div class="panel-body" id="print" >
+                <h3  class="reportHeader">Family Information</h3>
+        <hr />
+        <h4 class="noScreen"  style="border-bottom: 3px solid blue">{{vm.officerName}} ({{vm.pNo}})</h4>
+                    <div ng-repeat="parentInfo in vm.parentInfos">
+                        <h4 class="text-center">{{parentInfo.relationType}} Information</h4>
+                        <div class="table-wrapper table-responsive reportCover" >
+                            <table class="table pdfReportTable" border="1">
+                                <tbody class="reportBody">
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Full Name</td>
+                                        <td class="reportTD">{{parentInfo.fullName}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Date Of Birth</td>
+                                        <td class="reportTD">{{parentInfo.doB | date:"dd-MMM-yyyy"}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Age</td>
+                                        <td class="reportTD">{{parentInfo.age}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Place Birth</td>
+                                        <td class="reportTD">{{parentInfo.placeOfBirth}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Birth Outside</td>
+                                        <td class="reportTD">{{parentInfo.isBirthOutside}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Country</td>
+                                        <td class="reportTD">{{parentInfo.country.name}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Reason Of Migration</td>
+                                        <td class="reportTD">{{parentInfo.reasonOfMigration}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Migration Date</td>
+                                        <td class="reportTD">{{parentInfo.migrationDate | date:"dd-MMM-yyyy"}}</td>
+                                    </tr>
+
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Nationality</td>
+                                        <td class="reportTD">{{parentInfo.nationality}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Nationality Change</td>
+                                        <td class="reportTD">{{parentInfo.isNationalityChange==1?"Yes":"No"}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Previous Nationality</td>
+                                        <td class="reportTD">{{parentInfo.previousNationality}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Religion</td>
+                                        <td class="reportTD">{{parentInfo.religionId}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Religion Cast</td>
+                                        <td class="reportTD">{{parentInfo.religionCast}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Occupation</td>
+                                        <td class="reportTD">{{parentInfo.occupation}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Has Armed Force Experience</td>
+                                        <td class="reportTD">{{parentInfo.isArmedForceExp==1?"Yes":"No"}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Organization</td>
+                                        <td class="reportTD">{{parentInfo.rankCategory.name}}(PNo:{{vm.parent.pNo}})</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Doing Service</td>
+                                        <td class="reportTD">{{parentInfo.isDoingService==1?'Yes':'No'}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Department</td>
+                                        <td class="reportTD">{{parentInfo.department}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Designation</td>
+                                        <td class="reportTD">{{parentInfo.designation}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Retired</td>
+                                        <td class="reportTD">{{parentInfo.isRetired==1?"Yes":"No"}}</td>
+                                    </tr>
+                                    <tr class="reportTR">
+                                        <td class="reportTD" style="font-weight:bold">Service Address</td>
+                                        <td class="reportTD">{{parentInfo.serviceAddress}}</td>
+                                        <td class="reportTD" style="font-weight:bold">Yearly Income</td>
+                                        <td class="reportTD">{{parentInfo.yearlyIncome}}</td>
+                                    </tr>
+                                <tr class="reportTR">
+                                    <td class="reportTD" style="font-weight:bold">Present Address</td>
+                                    <td class="reportTD">{{parentInfo.presentAddress}}</td>
+                                    <td class="reportTD" style="font-weight:bold">Permanent Address</td>
+                                    <td class="reportTD">{{parentInfo.permanentAddress}}</td>
+                                </tr>
+                                <tr class="reportTR">
+                                    <td class="reportTD" style="font-weight:bold">Status</td>
+                                    <td class="reportTD" colspan="3">{{parentInfo.status}}</td>
+                                   
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11" style="padding-left:65px">
+            <h4 ng-if="vm.spouseInfos.length>0" class="text-center reportHeader">Spouse Information</h4>
+
+            <div ng-repeat="spouseInfo in vm.spouseInfos">
+                <div class="table-wrapper table-responsive reportCover">
+                    <table class="table pdfReportTable" border="1">
+                        <tbody class="reportBody">
+                        <tr  class="reportTR" ng-if="spouseInfo.photo != null">
+                            <td>
+                                <img  src="{{vm.url}}{{spouseInfo.photo}}" style="height:160px;width: 140px" alt="Spouse's Photo'" />
+                            </td>
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Name (Before Marriage)</td>
+                            <td class="reportTD">{{spouseInfo.bNameEng}}</td>
+                            <td class="reportTD" style="font-weight: bold">Name (After Marriage)</td>
+                            <td class="reportTD">{{spouseInfo.aNameEng }} </td>
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Name (বাংলা)(বিবাহের পূর্বে)</td>
+                            <td class="reportTD">{{spouseInfo.bNameBan}}</td>
+                            <td class="reportTD" style="font-weight: bold">Name (বাংলা)(বিবাহের পরে)</td>
+                            <td class="reportTD">{{spouseInfo.aNameBan}}</td>
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Date Of Birth</td>
+                            <td class="reportTD">{{spouseInfo.dateofBirth | date:"dd-MMM-yyyy"}} <br/> <strong>Age:</strong> {{spouseInfo.age}}  </td>
+                            <td class="reportTD" style="font-weight: bold">Birth Place</td>
+                            <td class="reportTD">{{spouseInfo.birthPlace}}</td>
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Educational Qualification</td>
+                            <td class="reportTD">{{spouseInfo.eduQualification}}</td>
+                            <td class="reportTD" style="font-weight: bold">Identification Mark</td>
+                            <td class="reportTD">{{spouseInfo.idMark}}</td>
+                        </tr>
+
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Profession</td>
+                            <td class="reportTD">{{spouseInfo.occupation}}</td>
+                            <td class="reportTD" style="font-weight: bold">Marriage Date</td>
+                            <td class="reportTD">{{spouseInfo.marriageDate| date:"dd-MMM-yyyy"}}</td>
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Current Status</td>
+                            <td class="reportTD">{{spouseInfo.currentStatus}}</td>
+                            <td class="reportTD" style="font-weight: bold">Served in Defense Org</td>
+                            <td class="reportTD">{{spouseInfo.isArmedForceExp==1?"Yes":"No"}}</td>
+                        </tr>
+
+                        <tr></tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Spouse's Father Name </td>
+                            <td class="reportTD">{{spouseInfo.fatherName}}</td>
+
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Father Permanent Address</td>
+                            <td class="reportTD">{{spouseInfo.fatherPerAddress}}</td>
+                            <td class="reportTD" style="font-weight: bold">Father Present Address</td>
+                            <td class="reportTD">{{spouseInfo.fatherPreAddress}}</td>
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Father's Other Info</td>
+                            <td class="reportTD">{{spouseInfo.fatherOtherInfo}}</td>
+                            <td class="reportTD" style="font-weight: bold">Profession</td>
+                            <td class="reportTD">{{spouseInfo.fatherOccupation}}</td>
+                        </tr>
+
+                        <tr></tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Spouse's Mother Name </td>
+                            <td class="reportTD">{{spouseInfo.motherName}}</td>
+
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Mother Permanent Address</td>
+                            <td class="reportTD">{{spouseInfo.motherPerAddress?'Yes':'No'}}</td>
+                            <td class="reportTD" style="font-weight: bold">Mother Present Address</td>
+                            <td class="reportTD">{{spouseInfo.motherPreAddress}}</td>
+                        </tr>
+                        <tr class="reportTR">
+                            <td class="reportTD" style="font-weight: bold">Mother's Other Info</td>
+                            <td class="reportTD">{{spouseInfo.motherOtherInfo}}</td>
+                            <td class="reportTD" style="font-weight: bold">Profession</td>
+                            <td class="reportTD">{{spouseInfo.motherOccupation}}</td>
+                        </tr>
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+
+
+            <h4 ng-if="vm.childrens.length >0" class="text-center reportHeader">Children Information</h4>
+            <div ng-if="vm.childrens.length >0" class="table-wrapper table-responsive reportCover">
+                <table class="table table-bordered pdfReportTable" border="1">
+                    <thead class="reportThead">
+                        <tr class="tableHeading reportTR">
+                            <th>SL</th>
+                            <th>Type</th>
+                            <th>Name (ENG)</th>
+                            <th>Name (বাংলা)</th>
+                            <th>DOB</th>
+                            <th>Age</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  class="reportTR" ng-repeat="children in vm.childrens">
+                            <td class="reportTD" style="text-align: center; width: 50px;">{{$index+1}}</td>
+                            <td class="reportTD">{{children.childrenType==1?"Son":"Daughter"}}</td>
+                            <td class="reportTD">{{children.nameEng}}</td>
+                            <td class="reportTD">{{children.nameBan}}</td>
+                            <td class="reportTD" style="text-align: center;width: 100px;">{{children.dateOfBirth | date:"dd-MMM-yyyy"}}</td>
+                            <td class="reportTD">{{children.age}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <h4 ng-if="vm.siblings.length >0" class="text-center reportHeader">Brother & Sister Information</h4>
+            <div ng-if="vm.siblings.length >0" class="table-wrapper table-responsive reportCover">
+                <table class="table table-bordered pdfReportTable" border="1">
+                    <thead class="reportThead">
+                        <tr class="tableHeading reportTR">
+                            <th>SL</th>
+                            <th>Type</th>
+                            <th>Name </th>
+                            <th>Spouse Name</th>
+                            <th>DOB</th>
+                            <th>Age</th>
+                            <th>Profession</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="reportBody">
+                        <tr class="reportTR" ng-repeat="sibling in vm.siblings">
+                            <td class="reportTD" style="text-align: center; width: 50px;">{{$index+1}}</td>
+                            <td class="reportTD">{{sibling.siblingType==1?"Brother":"Sister"}}</td>
+                            <td class="reportTD">{{sibling.name}}</td>
+                            <td class="reportTD">{{sibling.spouseName}}</td>
+                            <td class="reportTD" style="text-align: center;width: 100px;">{{sibling.dateOfBirth | date:"dd-MMM-yyyy"}}</td>
+                            <td class="reportTD" style="text-align: center;">{{sibling.age}}</td>
+                            <td class="reportTD">{{sibling.profession}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <h4 class="text-center reportHeader">Heir Information</h4>
+            <div class="table-wrapper table-responsive reportCover" ng-repeat="(key,items) in vm.heirs">
+                <h5>{{key | uppercase}}</h5>
+                <table class="table table-bordered pdfReportTable" border="1">
+                    <thead>
+                        <tr class="tableHeading reportTR">
+                            <th>SL</th>
+                            <th>Name </th>
+                            <th>Relation</th>
+                            <th>Present Address</th>
+                            <th>Permanent Address</th>
+                            <th>Phone</th>
+                            <th>Pradhikar</th>
+                            <th>Profession</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="reportBody">
+                        <tr class="reportTR" ng-repeat="item in items">
+                            <td class="reportTD" style="text-align: center; width: 50px;">{{$index+1}}</td>
+                            <td class="reportTD">{{item.name}}</td>
+                            <td class="reportTD">{{item.relation}}</td>
+                            <td class="reportTD">{{item.presentAddress}}</td>
+                            <td class="reportTD">{{item.permanentAddress }}</td>
+                            <td class="reportTD" style="width: 110px;text-align: center">{{item.contactNumber}}</td>
+                            <td class="reportTD" style="text-align: center">{{item.pradhikar}}</td>
+                            <td class="reportTD">{{item.profession}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <h4 ng-if="vm.nextOfKins.length >0" class="text-center reportHeader">Next of Kin Information</h4>
+            <div ng-if="vm.nextOfKins.length >0" class="table-wrapper table-responsive reportCover">
+                <table class="table table-bordered pdfReportTable" border="1">
+                    <thead class="reportThead">
+                        <tr class="tableHeading reportTR">
+                            <th>SL</th>
+                            <th>Name </th>
+                            <th>Relation</th>
+                            <th>Present Address</th>
+                            <th>Permanent Address</th>
+                            <th>Phone</th>
+                            <th>Profession</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="reportBody">
+                        <tr class="reportTR" ng-repeat="nextOfKin in vm.nextOfKins">
+                            <td class="reportTD" style="text-align: center; width: 50px;">{{$index+1}}</td>
+                            <td class="reportTD">{{nextOfKin.name}}</td>
+                            <td class="reportTD">{{nextOfKin.relation}}</td>
+                            <td class="reportTD">{{nextOfKin.presentAddress}}</td>
+                            <td class="reportTD">{{nextOfKin.permanentAddress }}</td>
+                            <td class="reportTD" style="width: 110px;text-align:center">{{nextOfKin.contactNumber}}</td>
+                            <td class="reportTD">{{nextOfKin.profession}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+     </div>
+               
+        <h5 ng-if="vm.parentInfos.length==null" class="text-center" style="margin-top: 15px;">No data found. </h5>
+
+        
+        </div>
+    </div>
+</div>

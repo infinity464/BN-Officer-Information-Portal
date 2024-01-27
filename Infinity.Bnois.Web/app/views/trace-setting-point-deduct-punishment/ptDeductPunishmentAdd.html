@@ -1,0 +1,54 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.ptDeductPunishmentForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Point Deduction for Punishment<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentSubCategoryId" class="custom-label">Punishment Sub Category</label>
+                            <select name="punishmentSubCategoryId" id="punishmentSubCategoryId" class="form-control" ng-model="vm.ptDeductPunishment.punishmentSubCategoryId" ng-options="option.value as option.text for option in vm.punishmentSubCategories">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.ptDeductPunishmentForm.punishmentSubCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentNatureId" class="custom-label">Punishment Nature</label>
+                            <select name="punishmentNatureId" id="punishmentNatureId" class="form-control" ng-model="vm.ptDeductPunishment.punishmentNatureId" ng-options="option.value as option.text for option in vm.punishmentNatures" ng-change="vm.checkPunimentNature(vm.ptDeductPunishment.punishmentNatureId)">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.ptDeductPunishmentForm.punishmentNatureId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="punishmentValue" class="custom-label">Punishment Value</label>
+                            <input type="number" id="punishmentValue" class="form-control custom-form-control" ng-model="vm.ptDeductPunishment.punishmentValue" name="punishmentValue" ng-maxlength="248"/>
+                            <p ng-show="vm.subjectForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12" ng-show="vm.isNormalOffence">
+                        <div class="form-group">
+                            <p>For Normal Offence, above fixed points deduction will be continue for next   <input type="text" id="skipYear" class="form-control form-control-mini" ng-model="vm.ptDeductPunishment.skipYear" name="skipYear" /> years and then  <input type="text" id="deductPercentage" class="form-control form-control-mini" ng-model="vm.ptDeductPunishment.deductPercentage" name="deductPercentage" />% less deduction will applied for each <input type="text" id="deductionYear" class="form-control form-control-mini" ng-model="vm.ptDeductPunishment.deductionYear" name="deductionYear" /> years</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info " ng-click="vm.save()" ng-disabled="vm.ptDeductPunishmentForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.examinationForm">
+                    <header class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Examination Information<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+                    </header>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="examCategoryId" class="custom-label">Exam Category</label>
+                            <select name="examCategoryId" id="examCategoryId" class="form-control" ng-model="vm.examination.examCategoryId" ng-options="option.value as option.text for option in vm.examCategories" required>
+                                <option value="">--Select--</option>
+                            </select>
+                            <p ng-show="vm.examinationForm.examCategoryId.$error.required" class="help-block errormsg">Plaease select an option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Examination Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.examination.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.examinationForm.name.$error.required" class="help-block errormsg">Examination name is required</p>
+                            <p ng-show="vm.examinationForm.name.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="examinationCode" class="custom-label">Examination Code</label>
+                            <input type="text" id="examinationCode" class="form-control custom-form-control" ng-model="vm.examination.examinationCode" name="examinationCode" maxlength="6"  />
+                            <p ng-show="vm.examinationForm.examinationCode.$error.maxlength" class="help-block errormsg">Maximum length 6 characters</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.examinationForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

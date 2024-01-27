@@ -1,0 +1,60 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Previous Transfer<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.previousTransferForm">
+                    
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="billet" class="custom-label">Billet</label>
+                            <input type="text" id="billet" class="form-control custom-form-control" ng-model="vm.previousTransfer.billet" name="billet" ng-maxlength="250" />
+                            <p ng-show="vm.previousTransferForm.billet.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankId" class="custom-label">Rank</label>
+                            <select name="rankId" id="rankId" class="form-control" ng-model="vm.previousTransfer.rankId" ng-options="option.value as option.text for option in vm.ranks" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                          
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fromDate" class="custom-label">From Date</label>
+                            <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.previousTransfer.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" />
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="toDate" class="custom-label">To Date</label>
+                            <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.previousTransfer.toDate" k-format="'dd-MM-yyyy'" name="toDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.previousTransfer.remarks" name="remarks" ng-maxlength="500" ></textarea>
+                            <p ng-show="vm.previousTransferForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.previousTransferForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

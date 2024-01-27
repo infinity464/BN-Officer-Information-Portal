@@ -1,0 +1,105 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Foreign Project<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+				<form name="vm.foreignProjectForm">
+					<employee-search ng-model="vm.foreignProject.employee"></employee-search>
+					<div class="col-sm-12">
+						<hr />
+					</div>
+
+				
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="shipName" class="custom-label">Project Name</label>
+							<input type="text" id="shipName" class="form-control custom-form-control" ng-model="vm.foreignProject.projectName" name="projectName" maxlength="250" />
+							<p ng-show="vm.foreignProjectForm.projectName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="countryId" class="custom-label">Country</label>
+							<select name="countryId" id="countryId" class="form-control" ng-model="vm.foreignProject.countryId" ng-options="option.value as option.text for option in vm.countries" >
+								<option value="">--Select an Option--</option>
+							</select>
+						</div>
+					</div>
+
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="organizationName" class="custom-label">Organization/Ship Name</label>
+							<input type="text" id="organizationName" class="form-control custom-form-control" ng-model="vm.foreignProject.organizationName" name="organizationName" maxlength="250" />
+							<p ng-show="vm.foreignProjectForm.organizationName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+
+                    
+                    
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label for="appointmentName" class="custom-label">Appointment</label>
+				            <input type="text" id="appointmentName" class="form-control custom-form-control" ng-model="vm.foreignProject.appointmentName" name="appointmentName" maxlength="250" />
+				            <p ng-show="vm.foreignProjectForm.appointmentName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+				        </div>
+				    </div>
+                    
+
+
+				    <div class="col-sm-6">
+						<div class="form-group">
+							<label for="fromDate" class="custom-label"> From Date</label>
+							<input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.foreignProject.fromDate" k-format="'dd-MM-yyyy'" name="fromDate"  />
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="toDate" class="custom-label"> To Date</label>
+							<input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.foreignProject.toDate" k-format="'dd-MM-yyyy'" name="toDate" required />
+						</div>
+					</div>
+
+
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="purpose" class="custom-label">Purpose</label>
+							<textarea type="text" id="purpose" class="form-control custom-form-control" ng-model="vm.foreignProject.purpose" name="purpose" maxlength="250"> </textarea>
+							<p ng-show="vm.foreignProjectForm.purpose.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+				
+
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="reference" class="custom-label">References</label>
+							<input type="text" id="reference" class="form-control custom-form-control" ng-model="vm.foreignProject.reference" name="reference" maxlength="250" />
+							<p ng-show="vm.foreignProjectForm.reference.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+						</div>
+					</div>
+
+                    
+				    <div class="col-sm-6">
+				        <div class="form-group">
+				            <label for="remarks" class="custom-label">Remarks</label>
+				            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.foreignProject.remarks" name="remarks" maxlength="500"> </textarea>
+				            <p ng-show="vm.foreignProjectForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+				        </div>
+				    </div>
+                    
+
+				    <div class="col-xs-12">
+						<br />
+						<button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.foreignProjectForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+						<button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+					</div>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>

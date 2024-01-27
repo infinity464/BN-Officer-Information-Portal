@@ -1,0 +1,49 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="panel">
+			<div class="panel-body">
+				<form name="vm.patternForm">
+					<div class="col-sm-12 page-header">
+					    <h2 class="warning page-header-item">Pattern<span class="pull-right text-success">{{vm.title}}</span></h2>
+
+					</div>
+
+					<div class="col-sm-5">
+						<div class="form-group">
+							<label for="name" class="custom-label">Name</label>
+							<input type="text" id="name" class="form-control custom-form-control" ng-model="vm.pattern.name" name="name" maxlength="100" required />
+							<p ng-show="vm.patternForm.name.$error.required" class="help-block errormsg">This is required</p>
+							<p ng-show="vm.patternForm.name.$error.maxlength" class="help-block errormsg">Maximum length 60 characters</p>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="aNatNmBng" class="custom-label">Type</label>
+						    <input type="radio" name="isCirculationValue" ng-model="vm.pattern.pType" value="S" >&nbsp;&nbsp;Sea
+						    <input type="radio" name="isCirculationValue" ng-model="vm.pattern.pType"  value="L">&nbsp;&nbsp; Shore &nbsp;&nbsp;
+
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group">
+						    <label class="custom-label">
+                                
+						        <input type="checkbox" ng-model="vm.pattern.isMoveAble" /> Moveable
+
+						    </label>
+
+							
+						</div>
+					</div>
+                    
+				    <div class="col-sm-12">
+				        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.patternForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+				        <button type="button" class="btn custom-btn btn-warning btn-margin-right" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+				    </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

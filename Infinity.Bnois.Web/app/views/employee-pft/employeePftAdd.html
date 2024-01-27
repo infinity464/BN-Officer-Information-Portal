@@ -1,0 +1,56 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">PFT<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeePftForm">
+                    <employee-search ng-model="vm.employeePft.employee"></employee-search>
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pftTypeId" class="custom-label">PFT Type</label>
+                            <select name="pftTypeId" id="pftTypeId" class="form-control" ng-model="vm.employeePft.pftTypeId" ng-options="option.value as option.text for option in vm.pftTypes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeePftForm.pftTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pftResultId" class="custom-label">PFT Result</label>
+                            <select name="pftResultId" id="pftResultId" class="form-control" ng-model="vm.employeePft.pftResultId" ng-options="option.value as option.text for option in vm.pftResults" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.employeePftForm.pftResultId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pftDate" class="custom-label"> PFT Date</label>
+                            <input kendo-date-picker id="pftDate" class="form-control custom-form-control" k-ng-model="vm.employeePft.pftDate" k-format="'dd-MM-yyyy'" name="pftDate" required />
+                            <p ng-show="vm.employeePftForm.pftDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeePftForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

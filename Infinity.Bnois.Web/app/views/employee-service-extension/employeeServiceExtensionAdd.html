@@ -1,0 +1,93 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officer Service Extention<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.employeeServiceExtensionForm">
+                    <!--<employee-search ng-model="vm.employeeServiceExtension.employee"></employee-search>-->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label"> PNo</label>
+                            <input type="text" id="pNo" ng-keypress="$event.keyCode ==13 && vm.searchEmployee()" class="form-control custom-form-control" ng-model="vm.employeeServiceExtension.employee.pNo" name="pNo" required />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameEng" class="custom-label"> Name</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.employeeServiceExtension.employee.fullNameEng" name="fullNameEng" maxlength="250" required />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Rank</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeServiceExtension.employee.rank.fullName" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Batch</label>
+                            <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeServiceExtension.employee.batch.name" name="fullNameBan" maxlength="250" required />
+                        </div>
+                    </div>
+
+
+                    <!--<div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="retirementDate" class="custom-label">{{vm.labelName}}</label>
+                            <input kendo-date-picker id="retirementDate" class="form-control custom-form-control" k-ng-model="vm.employeeServiceExtension.retirementDate" k-format="dd-MMM-yyyy" name="retirementDate" required />
+                            <p ng-show="vm.employeeServiceExtensionForm.retirementDate.$error.required" class="help-block errormsg">Retirement Date is required.</p>
+                        </div>
+                    </div>-->
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="retirementDate" class="custom-label">{{vm.labelName}}</label>
+                            <input kendo-date-picker id="retirementDate" class="form-control custom-form-control" k-ng-model="vm.employeeServiceExtension.retirementDate" k-format="'dd-MM-yyyy'" name="retirementDate" required />
+                            <p ng-show="vm.employeeServiceExtensionForm.retirementDate.$error.required" class="help-block errormsg">Retirement Date is required.</p>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="extMonth" class="custom-label">Extension For Months</label>
+                            <input type="number" id="extMonth" class="form-control custom-form-control" ng-model="vm.employeeServiceExtension.extMonth" name="extMonth" />
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="extDays" class="custom-label">Extension For Days</label>
+                            <input type="number" id="extDays" class="form-control custom-form-control" ng-model="vm.employeeServiceExtension.extDays" name="extDays" min="0" max="30" />
+                            <p ng-show="vm.employeeServiceExtensionForm.extDays.$error.max" class="help-block errormsg">Days must be between 1-30.</p>
+                            <p ng-show="vm.employeeServiceExtensionForm.extDays.$error.min" class="help-block errormsg">Days must be between 1-30.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.employeeServiceExtension.remarks" name="remarks" maxlength="250"></textarea>
+                            <p ng-show="vm.employeeServiceExtensionForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeServiceExtensionForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

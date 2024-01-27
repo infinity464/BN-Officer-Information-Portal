@@ -1,0 +1,34 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item" style="font-size: 16px;">{{vm.title}} [Board]<span class="pull-right text-success">{{vm.action}}</span></h2>
+                </div>
+                <form name="vm.boardMemberForm">
+                    <employee-search ng-model="vm.boardMember.employee"></employee-search>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="memberRoleId" class="custom-label">Role</label>
+                            <select name="memberRoleId" id="memberRoleId" class="form-control" ng-model="vm.boardMember.memberRoleId" ng-options="option.value as option.text for option in vm.memberRoles" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.boardMemberForm.memberRoleId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" ng-model="vm.boardMember.isVoteAllowed">Is Allowed to Vote
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.boardMemberForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

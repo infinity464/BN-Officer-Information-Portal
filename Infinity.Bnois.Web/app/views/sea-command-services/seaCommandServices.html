@@ -1,0 +1,53 @@
+﻿<div class="container-fluid pdfReportFormCover">
+    <div class="row">
+        <div class="panel">
+            <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+            <div class="panel-body" id="print">
+                <h3  class="reportHeader">Sea Command Services</h3>
+                <hr />
+                <h4 class="noScreen"  style="border-bottom: 3px solid blue">{{vm.officerName}} ({{vm.pNo}})</h4>
+                <div class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable" border="1">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th>Ship Type</th>
+                                <th>Ship Name</th>
+                                <th>From Date</th>
+                                <th>To Date </th>
+                                <th>Duration</th>
+                                <th>Sub Total Duration</th>
+                                <th>Grand Total Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR">
+                                <td class="reportTD" colspan="6"></td>
+                                <td class="reportTD" rowspan="{{vm.seaCommandServices.medium.length+vm.seaCommandServices.small.length+vm.seaCommandServices.large.length+1}}" style="vertical-align : middle;text-align:center;text-transform: lowercase;">{{vm.seaCommandServicesGrandTotal[0].grandTotalDuration}}</td>
+                            </tr>
+                            <tr class="reportTR" ng-repeat-start="(key, val) in vm.seaCommandServices">
+                                <td class="reportTD" rowspan="{{val.length}}" style="vertical-align : middle;text-align:center;"><strong style="text-transform:capitalize">{{key }}</strong></td>
+                                <td class="reportTD">{{val[0].shipName}}</td>
+                                <td class="reportTD" style="width: 100px;">{{val[0].fromDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="width: 100px;">{{val[0].toDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="width: 100px;" style="text-transform: lowercase;">{{val[0].duration}}</td>
+                                <td class="reportTD" rowspan="{{val.length}}" style="vertical-align : middle;text-align:center;text-transform: lowercase;">{{val[0].subTotalDuration}}</td>
+                            </tr>
+                            <tr class="reportTR" ng-repeat-end ng-repeat="value in val.slice(1)">
+                                <td class="reportTD">{{value.shipName}}</td>
+                                <td class="reportTD">{{value.fromDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD">{{value.toDate | date:"dd-MMM-yyyy"}}</td>
+                                <td class="reportTD" style="text-transform: lowercase;">{{value.duration}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- <h5 ng-if="vm.seaCommandServices.length==null" class="text-center" style="margin-top: 15px;">No data found. </h5> -->
+
+
+            </div>
+        </div>
+    </div>
+</div>

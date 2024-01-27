@@ -1,0 +1,56 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Officers</h2>
+                </div>
+                <form name="vm.employeeReportForm">
+                    <employee-search ng-model="vm.employeeReport.employee"></employee-search>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeReportForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.downlaodTrace()"> Download</button>
+                    </div>
+                </form>
+
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>PNo</th>
+                                <th>Name</th>
+                                <th class="text-right">
+                                    <a class="btn custom-btn btn-delete btn-info btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteAllEmployeeReport()"
+                                       ng-confirmation-message="Do you want to delete All ?"
+                                       ng-confirmation-title="Delete All ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete All"></span></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="employeeReport in vm.employeeReports">
+                                <td>{{$index+1}}</td>
+                                <td>{{employeeReport.pNo}}</td>
+                                <td>{{employeeReport.fullNameEng}}</td>
+                                <td class="text-right">
+                                    <a  class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteEmployeeReport(employeeReport)"
+                                       ng-confirmation-message="Do you want to delete ?"
+                                       ng-confirmation-title="Delete Offficer ?"
+                                       ng-confirmation-yes-text="Yes"
+                                       ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagenation-wrapper" ng-if="vm.employeeReports.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

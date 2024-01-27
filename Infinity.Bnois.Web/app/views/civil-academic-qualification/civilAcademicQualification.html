@@ -1,0 +1,45 @@
+﻿
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <button class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.printSection('print')"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+            <div class="panel-body" id="print">
+                <h3 class="reportHeader">Civil Academic Qualification</h3>
+                <hr />
+                <h4 class="noScreen" style="border-bottom: 3px solid blue;font-family: Arial">{{vm.officerName}} ({{vm.pNo}})</h4>
+                <div ng-if="vm.civilAcademicQualifications.length>0" class="table-wrapper table-responsive reportCover">
+                    <table class="table table-bordered pdfReportTable "  border="1">
+                        <thead class="reportThead">
+                            <tr class="tableHeading reportTR">
+                                <th style="text-align: center;">SL</th>
+                                <th style="text-align: center;">Exam</th>
+                                <th style="text-align: center;">Year</th>
+                                <th style="text-align: center;">Institute</th>
+                                <th style="text-align: center;">Marks/Grade</th>
+                                <th style="text-align: center;">Result/GPA</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reportBody">
+                            <tr class="reportTR" ng-repeat="civilAcademicQualification in vm.civilAcademicQualifications">
+                                <td class="reportTD" style="text-align: center;">{{$index+1}}</td>
+                                <td class="reportTD">{{civilAcademicQualification.examination}}</td>
+                                <td class="reportTD" style="text-align: center;">{{civilAcademicQualification.passingYear}}</td>
+                                <td class="reportTD" style="text-transform: capitalize">{{civilAcademicQualification.institute}}</td>
+                                <td class="reportTD" style="text-align: center;">{{civilAcademicQualification.marks}}</td>
+                                <td class="reportTD" style="text-align: center;">{{civilAcademicQualification.result}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <h5 ng-if="vm.civilAcademicQualifications.length==null" class="text-center" style="margin-top: 15px;">No data found. </h5>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

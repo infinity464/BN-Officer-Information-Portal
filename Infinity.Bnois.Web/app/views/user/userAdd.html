@@ -1,0 +1,185 @@
+<style>
+    .helper {
+        background: #000066;
+    }
+
+    .content {
+        width: 100%;
+    }
+    .btn, .navbar .navbar-nav > a.btn {
+        font-size: 1.1rem !important;
+        line-height: 2.2rem !important;
+    }
+    .card-body {
+        padding: 0px !important;
+    }
+    .form-control {
+        font-size: 18px !important;
+    }
+    .customeTableHead {
+        background-color: #0176D6;
+        color: #ffffff;
+    }
+    .card label {
+        font-size: 1.2rem !important;
+        margin-bottom: 5px !important;
+        color: white !important;
+    }
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        border: 2px solid #b5b8c7 !important;
+        padding: 8px 4px !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
+    /*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 8px 4px !important;
+    }*/
+    .table {
+        background-color: #eef4fa;
+    }
+
+    .card {
+        background-color: transparent !important;
+    }
+
+    @media screen and (max-width: 1366px) and (min-width: 901px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: 1.1rem !important;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            font-size: .9rem !important;
+        }
+    }
+
+    .btn, .navbar .navbar-nav > a.btn {
+        padding: 4px 10px !important;
+    }
+
+    .pagination li {
+        padding: 7px 12px !important;
+        color: white !important;
+        border: 1px solid white !important;
+    }
+
+        .pagination li:hover, .active {
+            background-color: #66ff99 !important;
+            color: black !important;
+            border-radius: 0px !important;
+        }
+
+            .pagination li:hover a {
+                color: black !important;
+            }
+
+        .pagination li a {
+            color: white !important;
+            text-decoration: none !important;
+        }
+
+
+</style>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <!--<header class="page-header">
+                        <h2 class="warning page-header-item">User<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </header>-->
+                    <!--<pre>{{vm.user | json}}</pre>-->
+                    <form name="vm.userForm">
+                        <div class="row">
+                            <!--<div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="userName" class="custom-label">User</label>
+                                    <input type="text" id="userName" class="form-control custom-form-control" ng-model="vm.user.userName" name="userName" ng-maxlength="256" required />
+                                    <span ng-show="vm.userForm.userName.$error.required" class="help-block errormsg">User is required</span>
+                                    <span ng-show="vm.userForm.userName.$error.maxlength" class="help-block errormsg">Maximum character 256</span>
+                                </div>
+                            </div>-->
+                            <!--<div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="pNo" class="custom-label">PNo</label>
+                                    <input type="text" id="pNo" class="form-control custom-form-control" ng-model="vm.user.pNo" name="pNo" ng-maxlength="256" required />
+                                    <span ng-show="vm.userForm.pNo.$error.required" class="help-block errormsg">PNo is required</span>
+                                    <span ng-show="vm.userForm.pNo.$error.maxlength" class="help-block errormsg">Maximum character 256</span>
+                                </div>
+                            </div>-->
+                            <div class="col-sm-6 col-md-6 custom-col-height" ng-hide="vm.userId != ''">
+                                <div class="form-group">
+                                    <label for="password" class="custom-label">Password</label>
+                                    <input type="password" id="password" class="form-control custom-form-control" ng-model="vm.user.password" name="password" ng-maxlength="25" ng-minlength="8" required />
+                                    <span ng-show="vm.userForm.password.$error.required" class="help-block errormsg">Password is required</span>
+                                    <span ng-show="vm.userForm.password.$error.maxlength" class="help-block errormsg">Maximum character 25</span>
+                                    <span ng-show="vm.userForm.password.$error.minlength" class="help-block errormsg">Minimum character 8</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height" ng-hide="vm.userId != ''">
+                                <div class="form-group">
+                                    <label for="confirmPassword" class="custom-label">Confirm Password</label>
+                                    <input type="password" id="confirmPassword" class="form-control custom-form-control" ng-model="vm.user.confirmPassword" name="confirmPassword" ng-maxlength="25" ng-minlength="8" required />
+                                    <span ng-show="vm.userForm.confirmPassword.$error.required" class="help-block errormsg">Password is required</span>
+                                    <span ng-show="vm.userForm.confirmPassword.$error.maxlength" class="help-block errormsg">Maximum character 25</span>
+                                    <span ng-show="vm.userForm.confirmPassword.$error.minlength" class="help-block errormsg">Minimum character 8</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="firstName" class="custom-label">First Name</label>
+                                    <input type="text" id="firstName" class="form-control custom-form-control" ng-model="vm.user.firstName" name="firstName" ng-maxlength="100" required />
+                                    <span ng-show="vm.userForm.firstName.$error.required" class="help-block errormsg">First Name is required</span>
+                                    <span ng-show="vm.userForm.firstName.$error.maxlength" class="help-block errormsg">Maximum character 100</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="lastName" class="custom-label">Last Name</label>
+                                    <input type="text" id="lastName" class="form-control custom-form-control" ng-model="vm.user.lastName" name="lastName" ng-maxlength="100" required />
+                                    <span ng-show="vm.userForm.lastName.$error.required" class="help-block errormsg">Last Name is required</span>
+                                    <span ng-show="vm.userForm.lastName.$error.maxlength" class="help-block errormsg">Maximum character 100</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="phoneNumber" class="custom-label">Phone Number</label>
+                                    <input type="text" id="phoneNumber" class="form-control custom-form-control" ng-model="vm.user.phoneNumber" name="phoneNumber" ng-maxlength="100" required />
+                                    <span ng-show="vm.userForm.phoneNumber.$error.required" class="help-block errormsg">Phone number is required</span>
+                                    <span ng-show="vm.userForm.phoneNumber.$error.maxlength" class="help-block errormsg">Maximum character 100</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="fax" class="custom-label">Email</label>
+                                    <input type="email" id="fax" class="form-control custom-form-control" ng-model="vm.user.email" name="email" ng-maxlength="100" required ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+                                    <span ng-show="vm.userForm.email.$error.required" class="help-block errormsg">Email is required</span>
+                                    <span ng-show="vm.userForm.email.$error.maxlength" class="help-block errormsg">Maximum character 100</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <div class="form-group">
+                                    <label for="cultureCode" class="custom-label">Language</label>
+                                    <select id="cultureCode" ng-model="vm.user.cultureCode" ng-options="option.value as option.text for option in vm.languages" name="cultureCode" class="form-control custom-form-control selectpicker">
+                                        <option value="">--Select Langualge--</option>
+                                    </select>
+                                    <span ng-show="vm.userForm.cultureCode.$error.required" class="help-block errormsg">Laguage is required</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 custom-col-height">
+                                <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
+                            </div>
+                            <div class="col-sm-6 col-md-6 custom-col-height ">
+                                <button type="button" class="btn custom-btn btn-info pull-right" ng-click="vm.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> {{vm.saveButtonText}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

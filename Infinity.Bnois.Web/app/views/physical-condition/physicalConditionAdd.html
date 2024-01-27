@@ -1,0 +1,151 @@
+﻿<div class="container-fluid">
+    <div class="col-md-8 row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.physicalConditionForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Physical Structure<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="eyeColorId" class="custom-label">Eye Color</label>
+                            <select name="eyeColorId" id="eyeColor" class="form-control" ng-model="vm.physicalCondition.eyeColorId" ng-options="option.value as option.text for option in vm.eyeColors" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.physicalConditionForm.eyeColorId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="skinColorId" class="custom-label">Skin Color</label>
+                            <select name="skinColorId" id="skinColorId" class="form-control" ng-model="vm.physicalCondition.skinColorId" ng-options="option.value as option.text for option in vm.skinColors" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.physicalConditionForm.skinColorId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="hairColorId" class="custom-label">Hair Color</label>
+                            <select name="hairColorId" id="hairColorId" class="form-control" ng-model="vm.physicalCondition.hairColorId" ng-options="option.value as option.text for option in vm.hairColors" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.physicalConditionForm.hairColorId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="eyeVisionId" class="custom-label">Eye Vision</label>
+                            <select name="eyeVisionId" id="eyeVisionId" class="form-control" ng-model="vm.physicalCondition.eyeVisionId" ng-options="option.value as option.text for option in vm.eyeVisions" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.physicalConditionForm.eyeVisionId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="bloodGroupId" class="custom-label">Blood Group</label>
+                            <select name="bloodGroupId" id="bloodGroupId" class="form-control" ng-model="vm.physicalCondition.bloodGroupId" ng-options="option.value as option.text for option in vm.bloodGroups" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.physicalConditionForm.bloodGroupId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="physicalStructureId" class="custom-label">Physical Structure</label>
+                            <select name="physicalStructureId" id="physicalStructureId" class="form-control" ng-model="vm.physicalCondition.physicalStructureId" ng-options="option.value as option.text for option in vm.physicalStructures" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.physicalConditionForm.physicalStructureId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox" ng-model="vm.physicalCondition.isPerMedicalCategory">Permanent Medical Category
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="medicalCategoryId" class="custom-label">Medical Category</label>
+                            <select name="medicalCategoryId" id="medicalCategoryId" class="form-control" ng-model="vm.physicalCondition.medicalCategoryId" ng-options="option.value as option.text for option in vm.medicalCategories" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.physicalConditionForm.medicalCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="heightInFeet" class="custom-label">Height</label>
+
+                            <input type="text" id="heightInFeet" class="form-control form-control-mini" ng-model="vm.physicalCondition.heightInFeet" name="heightInFeet" placeholder="Height in Feet" /> Feet
+                            <p ng-show="vm.physicalConditionForm.heightInFeet.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                            <input type="text" id="heightInInc" class="form-control form-control-mini" ng-model="vm.physicalCondition.heightInInc" name="heightInInc" placeholder="Height in Inch" /> Inch
+                            <p ng-show="vm.physicalConditionForm.heightInInc.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="weight" class="custom-label">Weight</label>
+                            <input type="text" id="weight" class="form-control custom-form-control" ng-model="vm.physicalCondition.weight" name="weight" />
+                            <p ng-show="vm.physicalConditionForm.weight.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="identificationMark" class="custom-label">Identification Mark</label>
+                            <input type="text" id="identificationMark" class="form-control custom-form-control" ng-model="vm.physicalCondition.identificationMark" name="identificationMark" />
+                            <p ng-show="vm.physicalConditionForm.identificationMark.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <input type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.physicalCondition.remarks" name="remarks" />
+                            <p ng-show="vm.physicalConditionForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.physicalConditionForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="col-md-4 row" style="background-color:lightskyblue; margin-top: 50px;border-radius: 20px;">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="inchInput" class="custom-label">Enter Height</label>
+                        <input type="text" id="inchInput" class="form-control-half custom-form-control" ng-keyup="vm.convertFeetAndInch(vm.inchInput)" ng-model="vm.inchInput" name="inchInput" /> Centimetre
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="text" id="feet" class="form-control-half custom-form-control" ng-model="vm.feet" name="feet" /> Feets
+                        <input type="text" id="inch" class="form-control-half custom-form-control" ng-model="vm.inch" name="inch" /> Inches
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

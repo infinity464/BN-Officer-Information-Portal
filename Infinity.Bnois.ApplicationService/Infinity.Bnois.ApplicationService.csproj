@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{349CA3D5-71A7-4D06-80CD-5C54EBCF292D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infinity.Bnois.ApplicationService</RootNamespace>
+    <AssemblyName>Infinity.Bnois.ApplicationService</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LazyCache, Version=2.0.1.113, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LazyCache.2.0.1\lib\netstandard2.0\LazyCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementation\AchievementService.cs" />
+    <Compile Include="Implementation\AddressService.cs" />
+    <Compile Include="Implementation\AdminFeedBackService.cs" />
+    <Compile Include="Implementation\BasicSearchService.cs" />
+    <Compile Include="Implementation\AgeServicePolicyService.cs" />
+    <Compile Include="Implementation\AppointmentCategoryService.cs" />
+    <Compile Include="Implementation\AppointmentNatureService.cs" />
+    <Compile Include="Implementation\AdvanceSearchService.cs" />
+    <Compile Include="Implementation\BulkUserService.cs" />
+    <Compile Include="Implementation\DailyProcessService.cs" />
+    <Compile Include="Implementation\DashboardService.cs" />
+    <Compile Include="Implementation\DownloadService.cs" />
+    <Compile Include="Implementation\EmployeeHajjDetaitService.cs" />
+    <Compile Include="Implementation\FeedBackService.cs" />
+    <Compile Include="Implementation\FlashNoticeService.cs" />
+    <Compile Include="Implementation\QuickLinkService.cs" />
+    <Compile Include="Implementation\PreviousPunishmentService.cs" />
+    <Compile Include="Implementation\PreviousLeaveService.cs" />
+    <Compile Include="Implementation\PreviousMissionService.cs" />
+    <Compile Include="Implementation\RemarkService.cs" />
+    <Compile Include="Implementation\ResultGradeService.cs" />
+    <Compile Include="Implementation\ForeignProjectService.cs" />
+    <Compile Include="Implementation\StatusChangeService.cs" />
+    <Compile Include="Implementation\ExtraAppointmentService.cs" />
+    <Compile Include="Implementation\UsedStoreProcedureService.cs" />
+    <Compile Include="Implementation\UsedReportService.cs" />
+    <Compile Include="Implementation\CertificateService.cs" />
+    <Compile Include="Implementation\AwardService.cs" />
+    <Compile Include="Implementation\BatchService.cs" />
+    <Compile Include="Implementation\BloodGroupService.cs" />
+    <Compile Include="Implementation\BoardMemberService.cs" />
+    <Compile Include="Implementation\BoardService.cs" />
+    <Compile Include="Implementation\BonusPtAwardService.cs" />
+    <Compile Include="Implementation\BonusPtComAppService.cs" />
+    <Compile Include="Implementation\BonusPtMedalService.cs" />
+    <Compile Include="Implementation\BonusPtPublicService.cs" />
+    <Compile Include="Implementation\BraCtryCoursePointService.cs" />
+    <Compile Include="Implementation\BranchService.cs" />
+    <Compile Include="Implementation\CategoryService.cs" />
+    <Compile Include="Implementation\ColorService.cs" />
+    <Compile Include="Implementation\CommendationService.cs" />
+    <Compile Include="Implementation\CountryService.cs" />
+    <Compile Include="Implementation\CourseCategoryService.cs" />
+    <Compile Include="Implementation\CoursePointService.cs" />
+    <Compile Include="Implementation\CourseService.cs" />
+    <Compile Include="Implementation\CourseSubCategoryService.cs" />
+    <Compile Include="Implementation\CurrentStatusService.cs" />
+    <Compile Include="Implementation\DistrictService.cs" />
+    <Compile Include="Implementation\DivisionService.cs" />
+    <Compile Include="Implementation\EducationService.cs" />
+    <Compile Include="Implementation\EffectTypeService.cs" />
+    <Compile Include="Implementation\EmployeeChildrenService.cs" />
+    <Compile Include="Implementation\EmployeeReportService.cs" />
+    <Compile Include="Implementation\ProposalCadidateService.cs" />
+    <Compile Include="Implementation\ProposalDetailService.cs" />
+    <Compile Include="Implementation\ReportService.cs" />
+    <Compile Include="Implementation\RetiredEmployeeService.cs" />
+    <Compile Include="Implementation\EmployeeTransferFuturePlanService.cs" />
+    <Compile Include="Implementation\EmployeeDollarSignService.cs" />
+    <Compile Include="Implementation\EmployeeGeneralService.cs" />
+    <Compile Include="Implementation\EmployeeLeaveCountryService.cs" />
+    <Compile Include="Implementation\EmployeeLeaveService.cs" />
+    <Compile Include="Implementation\EmployeeLeaveYearService.cs" />
+    <Compile Include="Implementation\EmployeeLprService.cs" />
+    <Compile Include="Implementation\EmployeeOprService.cs" />
+    <Compile Include="Implementation\EmployeeOtherService.cs" />
+    <Compile Include="Implementation\EmployeePftService.cs" />
+    <Compile Include="Implementation\EmployeeSecurityClearanceService.cs" />
+    <Compile Include="Implementation\EmployeeService.cs" />
+    <Compile Include="Implementation\EmployeeServiceExamResultService.cs" />
+    <Compile Include="Implementation\EmployeeServiceExtensionService.cs" />
+    <Compile Include="Implementation\EmployeeSportService.cs" />
+    <Compile Include="Implementation\EmpRejoinService.cs" />
+    <Compile Include="Implementation\EmpRunMissingService.cs" />
+    <Compile Include="Implementation\ExamCategoryService.cs" />
+    <Compile Include="Implementation\ExaminationService.cs" />
+    <Compile Include="Implementation\ExamSubjectService.cs" />
+    <Compile Include="Implementation\ExecutionRemarkService.cs" />
+    <Compile Include="Implementation\ExtracurricularService.cs" />
+    <Compile Include="Implementation\ExtracurricularTypeService.cs" />
+    <Compile Include="Implementation\EyeVisionService.cs" />
+    <Compile Include="Implementation\GenderService.cs" />
+    <Compile Include="Implementation\HeirNextOfKinInfoService.cs" />
+    <Compile Include="Implementation\HeirTypeService.cs" />
+    <Compile Include="Implementation\InstituteService.cs" />
+    <Compile Include="Implementation\InstituteTypeService.cs" />
+    <Compile Include="Implementation\LeavePolicyService.cs" />
+    <Compile Include="Implementation\LeavePurposeService.cs" />
+    <Compile Include="Implementation\LeaveTypeService.cs" />
+    <Compile Include="Implementation\LprCalculateInfoService.cs" />
+    <Compile Include="Implementation\MaritalTypeService.cs" />
+    <Compile Include="Implementation\MedalAwardService.cs" />
+    <Compile Include="Implementation\MedalService.cs" />
+    <Compile Include="Implementation\MedicalCategoryService.cs" />
+    <Compile Include="Implementation\MemberRoleService.cs" />
+    <Compile Include="Implementation\MissionAppointmentService.cs" />
+    <Compile Include="Implementation\NationalityService.cs" />
+    <Compile Include="Implementation\NominationDetailService.cs" />
+    <Compile Include="Implementation\NominationScheduleService.cs" />
+    <Compile Include="Implementation\NominationService.cs" />
+    <Compile Include="Implementation\ObservationIntelligentService.cs" />
+    <Compile Include="Implementation\OccupationService.cs" />
+    <Compile Include="Implementation\OfficeAppointmentService.cs" />
+    <Compile Include="Implementation\OfficerStreamService.cs" />
+    <Compile Include="Implementation\OfficeService.cs" />
+    <Compile Include="Implementation\OPRAppointmentService.cs" />
+    <Compile Include="Implementation\OprGradingService.cs" />
+    <Compile Include="Implementation\PtDeductPunishmentService.cs" />
+    <Compile Include="Implementation\RecomandationTypeService.cs" />
+    <Compile Include="Implementation\ParentService.cs" />
+    <Compile Include="Implementation\PatternService.cs" />
+    <Compile Include="Implementation\PftResultService.cs" />
+    <Compile Include="Implementation\PoorCourseResultService.cs" />
+    <Compile Include="Implementation\SuitabilityService.cs" />
+    <Compile Include="Implementation\SpecialAptTypeService.cs" />
+    <Compile Include="Implementation\OprOccasionService.cs" />
+    <Compile Include="Implementation\PftTypeService.cs" />
+    <Compile Include="Implementation\PhotoService.cs" />
+    <Compile Include="Implementation\PhysicalConditionService.cs" />
+    <Compile Include="Implementation\PhysicalStructureService.cs" />
+    <Compile Include="Implementation\PreCommissionCourseDetailService.cs" />
+    <Compile Include="Implementation\PreCommissionCourseService.cs" />
+    <Compile Include="Implementation\PreCommissionRankService.cs" />
+    <Compile Include="Implementation\PreviousExperienceService.cs" />
+    <Compile Include="Implementation\PromotionBoardService.cs" />
+    <Compile Include="Implementation\PromotionNominationService.cs" />
+    <Compile Include="Implementation\PromotionPolicyService.cs" />
+    <Compile Include="Implementation\PublicationCategoryService.cs" />
+    <Compile Include="Implementation\PublicatonService.cs" />
+    <Compile Include="Implementation\PunishmentAccidentService.cs" />
+    <Compile Include="Implementation\PunishmentCategoryService.cs" />
+    <Compile Include="Implementation\PunishmentNatureService.cs" />
+    <Compile Include="Implementation\PunishmentSubCategoryService.cs" />
+    <Compile Include="Implementation\RankCategoryService.cs" />
+    <Compile Include="Implementation\RankMapService.cs" />
+    <Compile Include="Implementation\RankService.cs" />
+    <Compile Include="Implementation\RelationService.cs" />
+    <Compile Include="Implementation\ReligionCastService.cs" />
+    <Compile Include="Implementation\ReligionService.cs" />
+    <Compile Include="Implementation\ResultService.cs" />
+    <Compile Include="Implementation\ResultTypeService.cs" />
+    <Compile Include="Implementation\RetiredAgeService.cs" />
+    <Compile Include="Implementation\SecurityClearanceReasonService.cs" />
+    <Compile Include="Implementation\ServiceExamCategoryService.cs" />
+    <Compile Include="Implementation\ServiceExamService.cs" />
+    <Compile Include="Implementation\ShipCategoryService.cs" />
+    <Compile Include="Implementation\SiblingService.cs" />
+    <Compile Include="Implementation\SocialAttributeService.cs" />
+    <Compile Include="Implementation\SportService.cs" />
+    <Compile Include="Implementation\SpouseForeignVisitService.cs" />
+    <Compile Include="Implementation\SpouseService.cs" />
+    <Compile Include="Implementation\SubBranchService.cs" />
+    <Compile Include="Implementation\SubCategoryService.cs" />
+    <Compile Include="Implementation\SubjectService.cs" />
+    <Compile Include="Implementation\TerminationTypeService.cs" />
+    <Compile Include="Implementation\TraceSettingService.cs" />
+    <Compile Include="Implementation\TrainingInstituteService.cs" />
+    <Compile Include="Implementation\TrainingPlanService.cs" />
+    <Compile Include="Implementation\SeaServiceService.cs" />
+    <Compile Include="Implementation\EmployeeCourseFuturePlanService.cs" />
+    <Compile Include="Implementation\TrainingResultService.cs" />
+    <Compile Include="Implementation\TransferProposalService.cs" />
+    <Compile Include="Implementation\TransferService.cs" />
+    <Compile Include="Implementation\UpazilaService.cs" />
+    <Compile Include="Implementation\VisitCategoryService.cs" />
+    <Compile Include="Implementation\VisitSubCategoryService.cs" />
+    <Compile Include="Implementation\OfficeShipmentService.cs" />
+    <Compile Include="Implementation\ZoneService.cs" />
+    <Compile Include="Interface\IAdminFeedBackService.cs" />
+    <Compile Include="Interface\IBulkUserService.cs" />
+    <Compile Include="Interface\IDownloadService.cs" />
+    <Compile Include="Interface\IEmployeeHajjDetaitService.cs" />
+    <Compile Include="Interface\IBasicSearchService.cs" />
+    <Compile Include="Interface\IAdvanceSearchService.cs" />
+    <Compile Include="Interface\IDailyProcessService.cs" />
+    <Compile Include="Interface\IDashBoardService.cs" />
+    <Compile Include="Interface\IFeedBackService.cs" />
+    <Compile Include="Interface\IFlashNoticeService.cs" />
+    <Compile Include="Interface\IQuickLinkService.cs" />
+    <Compile Include="Interface\IPreviousPunishmentService.cs" />
+    <Compile Include="Interface\IPreviousMissionService.cs" />
+    <Compile Include="Interface\IPreviousTransferService.cs" />
+    <Compile Include="Interface\IPreviousLeaveService.cs" />
+    <Compile Include="Interface\IRemarkService.cs" />
+    <Compile Include="Interface\IResultGradeService.cs" />
+    <Compile Include="Interface\IForeignProjectService.cs" />
+    <Compile Include="Interface\IStatusChangeService.cs" />
+    <Compile Include="Interface\IExtraAppointmentService.cs" />
+    <Compile Include="Interface\IUsedStoreProcedureService.cs" />
+    <Compile Include="Interface\IUsedReportService.cs" />
+    <Compile Include="Interface\ICertificateService.cs" />
+    <Compile Include="Interface\IBonusPtAwardService.cs" />
+    <Compile Include="Interface\IBonusPtComAppService.cs" />
+    <Compile Include="Interface\IBonusPtMedalService.cs" />
+    <Compile Include="Interface\IBonusPtPublicService.cs" />
+    <Compile Include="Interface\IBraCtryCoursePointService.cs" />
+    <Compile Include="Interface\IEmployeeReportService.cs" />
+    <Compile Include="Interface\IEmployeeTransferFuturePlanService.cs" />
+    <Compile Include="Interface\IEmployeeOprService.cs" />
+    <Compile Include="Interface\ICoursePointService.cs" />
+    <Compile Include="Interface\ICurrentStatusService.cs" />
+    <Compile Include="Interface\IEmployeeChildrenService.cs" />
+    <Compile Include="Interface\IEmployeePftService.cs" />
+    <Compile Include="Interface\ILeavePurposeService.cs" />
+    <Compile Include="Interface\IOPRAppointmentService.cs" />
+    <Compile Include="Interface\IProposalCandidateService.cs" />
+    <Compile Include="Interface\IProposalDetailService.cs" />
+    <Compile Include="Interface\IPtDeductPunishmentService.cs" />
+    <Compile Include="Interface\IRecomandationTypeService.cs" />
+    <Compile Include="Interface\IPftResultService.cs" />
+    <Compile Include="Interface\IPoorCourseResultService.cs" />
+    <Compile Include="Interface\IReportService.cs" />
+    <Compile Include="Interface\ISpecialAptTypeService.cs" />
+    <Compile Include="Interface\ISuitabilityService.cs" />
+    <Compile Include="Interface\IOprGradingService.cs" />
+    <Compile Include="Interface\IOprOccasionService.cs" />
+    <Compile Include="Interface\IPftTypeService.cs" />
+    <Compile Include="Interface\IPromotionPolicyService.cs" />
+    <Compile Include="Interface\IServiceExamService.cs" />
+    <Compile Include="Interface\IServiceExamCategoryService.cs" />
+    <Compile Include="Interface\ISecurityClearanceReasonService.cs" />
+    <Compile Include="Interface\IEmployeeDollarSignService.cs" />
+    <Compile Include="Interface\IEmployeeSecurityClearanceService.cs" />
+    <Compile Include="Interface\INominationDetailService.cs" />
+    <Compile Include="Interface\INominationService.cs" />
+    <Compile Include="Interface\IMissionAppointmentService.cs" />
+    <Compile Include="Interface\IPreCommissionCourseDetailService.cs" />
+    <Compile Include="Interface\IPunishmentAccidentService.cs" />
+    <Compile Include="Interface\IObservationIntelligentService.cs" />
+    <Compile Include="Interface\IMedalAwardService.cs" />
+    <Compile Include="Interface\IAddressService.cs" />
+    <Compile Include="Interface\IAppointmentCategoryService.cs" />
+    <Compile Include="Interface\IAppointmentNatureService.cs" />
+    <Compile Include="Interface\IAwardService.cs" />
+    <Compile Include="Interface\IBoardMemberService.cs" />
+    <Compile Include="Interface\IEmployeeLprService.cs" />
+    <Compile Include="Interface\ISportService.cs" />
+    <Compile Include="Interface\ISpouseForeignVisitService.cs" />
+    <Compile Include="Interface\IEmployeeServiceExamResultService.cs" />
+    <Compile Include="Interface\ITraceSettingService.cs" />
+    <Compile Include="Interface\ISeaServiceService.cs" />
+    <Compile Include="Interface\IEmployeeCourseFuturePlanService.cs" />
+    <Compile Include="Interface\IRetiredEmployeeService.cs" />
+    <Compile Include="Interface\ITransferProposalService.cs" />
+    <Compile Include="Interface\IVisitCategoryService.cs" />
+    <Compile Include="Interface\IPunishmentNatureService.cs" />
+    <Compile Include="Interface\ICommendationService.cs" />
+    <Compile Include="Interface\IPunishmentCategoryService.cs" />
+    <Compile Include="Interface\IVisitSubCategoryService.cs" />
+    <Compile Include="Interface\IPunishmentSubCategoryService.cs" />
+    <Compile Include="Interface\IPublicationService.cs" />
+    <Compile Include="Interface\IMedalService.cs" />
+    <Compile Include="Interface\IExecutionRemarkService.cs" />
+    <Compile Include="Interface\ILprCalculateInfoService.cs" />
+    <Compile Include="Interface\IMedicalCategoryService.cs" />
+    <Compile Include="Interface\IMemberRoleService.cs" />
+    <Compile Include="Interface\IOfficeService.cs" />
+    <Compile Include="Interface\IPromotionBoardService.cs" />
+    <Compile Include="Interface\IPromotionNominationService.cs" />
+    <Compile Include="Interface\IShipCategoryService.cs" />
+    <Compile Include="Interface\IEmployeeServiceExtensionService.cs" />
+    <Compile Include="Interface\IHeirNextOfKinInfoService.cs" />
+    <Compile Include="Interface\IHeirTypeService.cs" />
+    <Compile Include="Interface\IPatternService.cs" />
+    <Compile Include="Interface\IPreviousExperienceService.cs" />
+    <Compile Include="Interface\IRelationService.cs" />
+    <Compile Include="Interface\IPreCommissionRankService.cs" />
+    <Compile Include="Interface\IExtracurricularService.cs" />
+    <Compile Include="Interface\IExtracurricularTypeService.cs" />
+    <Compile Include="Interface\IParentService.cs" />
+    <Compile Include="Interface\IOccupationService.cs" />
+    <Compile Include="Interface\IOfficeAppointmentService.cs" />
+    <Compile Include="Interface\IAchievementService.cs" />
+    <Compile Include="Interface\INominationScheduleService.cs" />
+    <Compile Include="Interface\ITransferService.cs" />
+    <Compile Include="Interface\IOfficeShipmentService.cs" />
+    <Compile Include="Interface\IZoneService.cs" />
+    <Compile Include="Interface\ISpouseService.cs" />
+    <Compile Include="Interface\ISiblingService.cs" />
+    <Compile Include="Interface\ISocialAttributeService.cs" />
+    <Compile Include="Interface\IEmployeeSportService.cs" />
+    <Compile Include="Interface\ITrainingResultService.cs" />
+    <Compile Include="Interface\ITrainingPlanService.cs" />
+    <Compile Include="Interface\ICourseService.cs" />
+    <Compile Include="Interface\IResultTypeService.cs" />
+    <Compile Include="Interface\IEducationService.cs" />
+    <Compile Include="Interface\IEmpRejoinService.cs" />
+    <Compile Include="Interface\IAgeServicePolicyService.cs" />
+    <Compile Include="Interface\IBoardService.cs" />
+    <Compile Include="Interface\ICourseCategoryService.cs" />
+    <Compile Include="Interface\IEmployeeLeaveCountryService.cs" />
+    <Compile Include="Interface\IEmployeeLeaveYearService.cs" />
+    <Compile Include="Interface\IEmpRunMissingService.cs" />
+    <Compile Include="Interface\IExaminationService.cs" />
+    <Compile Include="Interface\IExamCategoryService.cs" />
+    <Compile Include="Interface\IBatchService.cs" />
+    <Compile Include="Interface\IBloodGroupService.cs" />
+    <Compile Include="Interface\IBranchService.cs" />
+    <Compile Include="Interface\ICategoryService.cs" />
+    <Compile Include="Interface\IColorService.cs" />
+    <Compile Include="Interface\ICommissionTypeService.cs" />
+    <Compile Include="Interface\ICountryService.cs" />
+    <Compile Include="Interface\IDistrictService.cs" />
+    <Compile Include="Interface\IDivisionService.cs" />
+    <Compile Include="Interface\IEffectTypeService.cs" />
+    <Compile Include="Interface\IEmployeeGeneralService.cs" />
+    <Compile Include="Interface\IEmployeeLeaveService.cs" />
+    <Compile Include="Interface\IEmployeeOtherService.cs" />
+    <Compile Include="Interface\IEmployeeService.cs" />
+    <Compile Include="Interface\IExamSubjectService.cs" />
+    <Compile Include="Interface\IEyeVisionService.cs" />
+    <Compile Include="Interface\IGenderService.cs" />
+    <Compile Include="Interface\IInstituteService.cs" />
+    <Compile Include="Interface\IInstituteTypeService.cs" />
+    <Compile Include="Interface\ILeavePolicyService.cs" />
+    <Compile Include="Interface\ILeaveTypeService.cs" />
+    <Compile Include="Interface\IMaritalTypeService.cs" />
+    <Compile Include="Interface\IPublicationCategoryService.cs" />
+    <Compile Include="Interface\INationalityService.cs" />
+    <Compile Include="Interface\IPhysicalConditionService.cs" />
+    <Compile Include="Interface\IPhysicalStructureService.cs" />
+    <Compile Include="Interface\IRankCategoryService.cs" />
+    <Compile Include="Interface\IRankMapService.cs" />
+    <Compile Include="Interface\IRankService.cs" />
+    <Compile Include="Interface\IOfficerStreamService.cs" />
+    <Compile Include="Interface\IReligionCastService.cs" />
+    <Compile Include="Interface\IReligionService.cs" />
+    <Compile Include="Interface\IResultService.cs" />
+    <Compile Include="Interface\ITrainingInstituteService.cs" />
+    <Compile Include="Interface\IRetiredAgeService.cs" />
+    <Compile Include="Interface\ISubBranchService.cs" />
+    <Compile Include="Interface\ICourseSubCategoryService.cs" />
+    <Compile Include="Interface\ISubCategoryService.cs" />
+    <Compile Include="Interface\ISubjectService.cs" />
+    <Compile Include="Interface\ITerminationTypeService.cs" />
+    <Compile Include="Interface\IUpazilaService.cs" />
+    <Compile Include="Interface\IPreCommissionCourseService.cs" />
+    <Compile Include="Implementation\PreviousTransferService.cs" />
+    <Compile Include="Models\AchievementModel.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\AdminFeedBackModel.cs" />
+    <Compile Include="Models\BasicSearchModel.cs" />
+    <Compile Include="Models\AdvanceSearchModel.cs" />
+    <Compile Include="Models\AgeServicePolicyModel.cs" />
+    <Compile Include="Models\AptCatModel.cs" />
+    <Compile Include="Models\AptNatModel.cs" />
+    <Compile Include="Models\AwardModel.cs" />
+    <Compile Include="Models\BatchModel.cs" />
+    <Compile Include="Models\BloodGroupModel.cs" />
+    <Compile Include="Models\BoardMemberModel.cs" />
+    <Compile Include="Models\BoardModel.cs" />
+    <Compile Include="Models\BonusPtAwardModel.cs" />
+    <Compile Include="Models\BonusPtComAppModel.cs" />
+    <Compile Include="Models\BonusPtMedalModel.cs" />
+    <Compile Include="Models\BonusPtPublicModel.cs" />
+    <Compile Include="Models\BraCtryCoursePointModel.cs" />
+    <Compile Include="Models\BranchModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\CertificateModel.cs" />
+    <Compile Include="Models\ColorModel.cs" />
+    <Compile Include="Models\CommendationModel.cs" />
+    <Compile Include="Models\CommissionTypeModel.cs" />
+    <Compile Include="Implementation\CommissionTypeService.cs" />
+    <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\CourseCategoryModel.cs" />
+    <Compile Include="Models\CourseModel.cs" />
+    <Compile Include="Models\CoursePointModel.cs" />
+    <Compile Include="Models\CourseSubCategoryModel.cs" />
+    <Compile Include="Models\DistrictModel.cs" />
+    <Compile Include="Models\DivisionModel.cs" />
+    <Compile Include="Models\DownloadModel.cs" />
+    <Compile Include="Models\EducationModel.cs" />
+    <Compile Include="Models\EffectTypeModel.cs" />
+    <Compile Include="Models\EmpLeaveDetailModel.cs" />
+    <Compile Include="Models\EmployeeChildrenModel.cs" />
+    <Compile Include="Models\EmployeeCourseFuturePlanModel.cs" />
+    <Compile Include="Models\EmployeeDollarSignModel.cs" />
+    <Compile Include="Models\EmployeeGeneralModel.cs" />
+    <Compile Include="Models\EmployeeHajjDetailModel.cs" />
+    <Compile Include="Models\EmployeeLeaveCountryModel.cs" />
+    <Compile Include="Models\EmployeeLeaveModel.cs" />
+    <Compile Include="Models\EmployeeLeaveYearModel.cs" />
+    <Compile Include="Models\EmployeeLprModel.cs" />
+    <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\EmployeeOprModel.cs" />
+    <Compile Include="Models\EmployeeOtherModel.cs" />
+    <Compile Include="Models\EmployeePftModel.cs" />
+    <Compile Include="Models\EmployeeReportModel.cs" />
+    <Compile Include="Models\EmployeeSecurityClearanceModel.cs" />
+    <Compile Include="Models\EmployeeServiceExamResultModel.cs" />
+    <Compile Include="Models\EmployeeServiceExtensionModel.cs" />
+    <Compile Include="Models\EmployeeStatusModel.cs" />
+    <Compile Include="Models\EmployeeTransferFuturePlanModel.cs" />
+    <Compile Include="Models\ExecutionRemarkModel.cs" />
+    <Compile Include="Models\ExtraAppointmentModel.cs" />
+    <Compile Include="Models\ExtracurricularModel.cs" />
+    <Compile Include="Models\ExtracurricularTypeModel.cs" />
+    <Compile Include="Models\FeedBackModel.cs" />
+    <Compile Include="Models\FlashNoticeModel.cs" />
+    <Compile Include="Models\ForeignProjectModel.cs" />
+    <Compile Include="Models\HeirNextOfKinInfoModel.cs" />
+    <Compile Include="Models\HeirTypeModel.cs" />
+    <Compile Include="Interface\IPhotoService.cs" />
+    <Compile Include="Models\LeavePurposeModel.cs" />
+    <Compile Include="Models\LeaveSummaryModel.cs" />
+    <Compile Include="Models\LprCalculateInfoModel.cs" />
+    <Compile Include="Models\MedalAwardModel.cs" />
+    <Compile Include="Models\MedalModel.cs" />
+    <Compile Include="Models\MemberRoleModel.cs" />
+    <Compile Include="Models\MissionAppointmentModel.cs" />
+    <Compile Include="Models\NominationDetailModel.cs" />
+    <Compile Include="Models\NominationModel.cs" />
+    <Compile Include="Models\NominationScheduleModel.cs" />
+    <Compile Include="Models\ObservationIntelligentModel.cs" />
+    <Compile Include="Models\OccupationModel.cs" />
+    <Compile Include="Models\OfficeAppointmentModel.cs" />
+    <Compile Include="Models\OfficeModel.cs" />
+    <Compile Include="Models\OfficerTypeModel.cs" />
+    <Compile Include="Models\OfficeShipmentModel.cs" />
+    <Compile Include="Models\OprAptSuitabilityModel.cs" />
+    <Compile Include="Models\OprGradingModel.cs" />
+    <Compile Include="Models\OprOccasionModel.cs" />
+    <Compile Include="Models\OrganizationModel.cs" />
+    <Compile Include="Models\ParentModel.cs" />
+    <Compile Include="Models\PatternModel.cs" />
+    <Compile Include="Models\PftResultModel.cs" />
+    <Compile Include="Models\PftTypeModel.cs" />
+    <Compile Include="Models\PhotoModel.cs" />
+    <Compile Include="Models\PoorCourseResultModel.cs" />
+    <Compile Include="Models\PreCommissionCourseDetailModel.cs" />
+    <Compile Include="Models\PreCommissionCourseModel.cs" />
+    <Compile Include="Models\PreCommissionRankModel.cs" />
+    <Compile Include="Models\PreviousExperienceModel.cs" />
+    <Compile Include="Models\PreviousLeaveModel.cs" />
+    <Compile Include="Models\PreviousMissionModel.cs" />
+    <Compile Include="Models\PreviousPunishmentModel.cs" />
+    <Compile Include="Models\PreviousTransferModel.cs" />
+    <Compile Include="Models\PromotionBoardModel.cs" />
+    <Compile Include="Models\PromotionNominationModel.cs" />
+    <Compile Include="Models\PromotionPolicyModel.cs" />
+    <Compile Include="Models\ProposalCadidateModel.cs" />
+    <Compile Include="Models\ProposalDetailModel.cs" />
+    <Compile Include="Models\PtDeductPunishmentModel.cs" />
+    <Compile Include="Models\PublicationCategoryModel.cs" />
+    <Compile Include="Models\PublicationModel.cs" />
+    <Compile Include="Models\PunishmentAccidentModel.cs" />
+    <Compile Include="Models\PunishmentCategoryModel.cs" />
+    <Compile Include="Models\PunishmentNatureModel.cs" />
+    <Compile Include="Models\PunishmentSubCategoryModel.cs" />
+    <Compile Include="Models\QuickLinkModel.cs" />
+    <Compile Include="Models\RecomandationTypeModel.cs" />
+    <Compile Include="Models\RelationModel.cs" />
+    <Compile Include="Models\RemarkModel.cs" />
+    <Compile Include="Models\ResultGradeModel.cs" />
+    <Compile Include="Models\RetiredEmployeeModel.cs" />
+    <Compile Include="Models\SeaServiceModel.cs" />
+    <Compile Include="Models\SecurityClearanceReasonModel.cs" />
+    <Compile Include="Models\ServiceExamCategoryModel.cs" />
+    <Compile Include="Models\ServiceExamModel.cs" />
+    <Compile Include="Models\ShipCategoryModel.cs" />
+    <Compile Include="Models\SiblingModel.cs" />
+    <Compile Include="Models\SocialAttributeModel.cs" />
+    <Compile Include="Models\SpecialAptTypeModel.cs" />
+    <Compile Include="Models\SportModel.cs" />
+    <Compile Include="Models\SpouseForeignVisitModel.cs" />
+    <Compile Include="Models\SpouseModel.cs" />
+    <Compile Include="Models\EmployeeSportModel.cs" />
+    <Compile Include="Models\StatusChangeModel.cs" />
+    <Compile Include="Models\SuitabilityModel.cs" />
+    <Compile Include="Models\TraceSettingModel.cs" />
+    <Compile Include="Models\TrainingResultModel.cs" />
+    <Compile Include="Models\EmpRejoinModel.cs" />
+    <Compile Include="Models\EmpRunMissingModel.cs" />
+    <Compile Include="Models\ExamCategoryModel.cs" />
+    <Compile Include="Models\ExaminationModel.cs" />
+    <Compile Include="Models\ExamSubjectModel.cs" />
+    <Compile Include="Models\EyeVisionModel.cs" />
+    <Compile Include="Models\GenderModel.cs" />
+    <Compile Include="Models\GetLeaveInfo_ResultModel.cs" />
+    <Compile Include="Models\InstituteModel.cs" />
+    <Compile Include="Models\InstituteTypeModel.cs" />
+    <Compile Include="Models\LeavePolicyModel.cs" />
+    <Compile Include="Models\LeaveTypeModel.cs" />
+    <Compile Include="Models\MaritalTypeModel.cs" />
+    <Compile Include="Models\MedicalCategoryModel.cs" />
+    <Compile Include="Models\NationalityModel.cs" />
+    <Compile Include="Models\PhysicalConditionModel.cs" />
+    <Compile Include="Models\PhysicalStructureModel.cs" />
+    <Compile Include="Models\RankCategoryModel.cs" />
+    <Compile Include="Models\RankMapModel.cs" />
+    <Compile Include="Models\RankModel.cs" />
+    <Compile Include="Models\OfficerStreamModel.cs" />
+    <Compile Include="Models\ReligionCastModel.cs" />
+    <Compile Include="Models\ReligionModel.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\ResultTypeModel.cs" />
+    <Compile Include="Models\RetiredAgeModel.cs" />
+    <Compile Include="Models\SubBranchModel.cs" />
+    <Compile Include="Models\SubCategoryModel.cs" />
+    <Compile Include="Models\SubjectModel.cs" />
+    <Compile Include="Models\TerminationTypeModel.cs" />
+    <Compile Include="Models\TrainingInstituteModel.cs" />
+    <Compile Include="Models\TrainingPlanModel.cs" />
+    <Compile Include="Models\TransferModel.cs" />
+    <Compile Include="Models\TransferProposalModel.cs" />
+    <Compile Include="Models\UpazilaModel.cs" />
+    <Compile Include="Models\UsedReportModel.cs" />
+    <Compile Include="Models\UsedStoreProcedureModel.cs" />
+    <Compile Include="Models\VisitCategoryModel.cs" />
+    <Compile Include="Models\VisitSubCategoryModel.cs" />
+    <Compile Include="Models\YearListModel.cs" />
+    <Compile Include="Models\ZoneModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infinity.Bnois.Api.Core\Infinity.Bnois.Api.Core.csproj">
+      <Project>{975B5546-2948-462E-924E-9D327A36EB38}</Project>
+      <Name>Infinity.Bnois.Api.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.Configuration\Infinity.Bnois.Configuration.csproj">
+      <Project>{748102B5-6482-4C1B-B486-A4945FE8DDDC}</Project>
+      <Name>Infinity.Bnois.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.Data.Core\Infinity.Bnois.Data.Core.csproj">
+      <Project>{f8f2199b-026e-4200-a29c-4f035bf7e9cd}</Project>
+      <Name>Infinity.Bnois.Data.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.Data\Infinity.Bnois.Data.csproj">
+      <Project>{9214c2e2-e377-4917-a8d3-0cb61c37d72e}</Project>
+      <Name>Infinity.Bnois.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infinity.Bnois.Shared\Infinity.Bnois.Shared.csproj">
+      <Project>{32f92eea-af33-46e8-af45-de4c401ac6a6}</Project>
+      <Name>Infinity.Bnois.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

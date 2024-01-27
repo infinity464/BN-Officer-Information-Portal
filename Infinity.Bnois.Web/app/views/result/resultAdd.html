@@ -1,0 +1,42 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.resultForm">
+                    <header class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Result<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </header>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label">Result</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.result.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.resultForm.name.$error.required" class="help-block errormsg">Result name is required</p>
+                            <p ng-show="vm.resultForm.name.$error.maxlength" class="help-block errormsg">Maximum length 250 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="resultCode" class="custom-label">Order</label>
+                            <input type="text" id="resultCode" class="form-control custom-form-control" ng-model="vm.result.resultCode" name="resultCode" maxlength="250" />
+                            <p ng-show="vm.resultForm.resultCode.$error.maxlength" class="help-block errormsg">Maximum length 6 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="description" class="custom-label">Description</label>
+                            <textarea type="text" id="description" class="form-control custom-form-control" ng-model="vm.result.description" name="description" maxlength="200"></textarea>
+                            <p ng-show="vm.resultForm.description.$error.maxlength" class="help-block errormsg">Maximum length 200 characters</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.resultForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

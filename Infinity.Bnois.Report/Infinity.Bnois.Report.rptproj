@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <FullPath>Debug</FullPath>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2008</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>Infinity.Bnois.Report</TargetReportFolder>
+    <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+    <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
+    <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+    <TargetServerURL>http://192.168.1.200/ReportServer</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
+    <FullPath>DebugLocal</FullPath>
+    <OutputPath>bin\DebugLocal</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>Infinity.Bnois.Report</TargetReportFolder>
+    <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+    <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
+    <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <FullPath>Release</FullPath>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>Infinity.Bnois.Report</TargetReportFolder>
+    <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+    <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
+    <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup>
+    <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkZGw1MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAiIHhtbG5zOmRkbDUwMF81MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAvNTAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+    <DataSources>@(DataSource)</DataSources>
+    <DataSets>@(DataSet)</DataSets>
+    <Reports>@(Report)</Reports>
+  </PropertyGroup>
+  <ItemGroup>
+    <DataSource Include="BnoisDataSource.rds" />
+  </ItemGroup>
+  <ItemGroup>
+    <Report Include="AdvanceSearchEducationResult.rdl" />
+    <Report Include="AdvanceSearchResult.rdl" />
+    <Report Include="AllCoursesInfo.rdl" />
+    <Report Include="AllCoursesInfoBranchAndCountryWise.rdl" />
+    <Report Include="AllCoursesInfoBranchWise.rdl" />
+    <Report Include="AllCoursesInfoCatAndCountryWise.rdl" />
+    <Report Include="AllCoursesInfoCategoryWise.rdl" />
+    <Report Include="AllCoursesInfoCountryWise.rdl" />
+    <Report Include="AllCoursesInfoRankAndBranchWise.rdl" />
+    <Report Include="AllCoursesInfoRankAndCountryWise.rdl" />
+    <Report Include="AllCoursesInfoRankWise.rdl" />
+    <Report Include="AllCoursesInfoWithAddress.rdl" />
+    <Report Include="AllOfficerCoursesInfo.rdl" />
+    <Report Include="AllOfficerCoursesInfoCatSubCat.rdl" />
+    <Report Include="AllOfficerCoursesInfoCatSubCatAbroad.rdl" />
+    <Report Include="AllOfficerCoursesInfoCatSubCatHome.rdl" />
+    <Report Include="AllOfficerdidCourse.rdl" />
+    <Report Include="AllOfficerdidCourseApptAndRankWise.rdl" />
+    <Report Include="AllOfficerdidCourseCatgAndBranchWise.rdl" />
+    <Report Include="AllOfficerdidCourseCatgAndRankWise.rdl" />
+    <Report Include="AllOfficerdidCourseCatgBranchAndRankWise.rdl" />
+    <Report Include="AllOfficerdidCourseCatgWise.rdl" />
+    <Report Include="AllOfficerdidCourseCountryWise.rdl" />
+    <Report Include="AllOfficerPresentluDoingCourse.rdl" />
+    <Report Include="Annx-1.rdl" />
+    <Report Include="Annx-2.rdl" />
+    <Report Include="Annx-3.rdl" />
+    <Report Include="Annx-4.rdl" />
+    <Report Include="Annx-5.rdl" />
+    <Report Include="Annx-6.rdl" />
+    <Report Include="Annx-7.rdl" />
+    <Report Include="Annx-8.rdl" />
+    <Report Include="AwardSubReport.rdl" />
+    <Report Include="BNListBranchWiseSeniorityHONOfficer.rdl" />
+    <Report Include="BNListBranchWiseSeniorityList.rdl" />
+    <Report Include="BNListBranchWiseSenioritySDOfficer.rdl" />
+    <Report Include="BNListCombinedSeniorityList.rdl" />
+    <Report Include="BNListCourse.rdl" />
+    <Report Include="BnListEducationBranchSubjectWise.rdl" />
+    <Report Include="BNListHonoraryCommissionedOfficers.rdl" />
+    <Report Include="BNListLPROfficer.rdl" />
+    <Report Include="BnListRankAndBranchWiseOfficerSearch.rdl" />
+    <Report Include="BNListRetiredOfficer.rdl" />
+    <Report Include="BNListSDOfficer.rdl" />
+    <Report Include="BNListTextileLeatherEng.rdl" />
+    <Report Include="BroadSheetCdrToCapt.rdl" />
+    <Report Include="BroadSheetCourseVisitMissionSubReport.rdl" />
+    <Report Include="BroadSheetForCaptAndAvobe.rdl" />
+    <Report Include="BroadSheetForCdreAndAvobe.rdl" />
+    <Report Include="BroadSheetForCdreAndAvobeS.rdl" />
+    <Report Include="BroadSheetForLieutenant.rdl" />
+    <Report Include="BroadSheetForLongCourse.rdl" />
+    <Report Include="BroadSheetForLtCdrAndAvobe.rdl" />
+    <Report Include="BroadSheetForNominationCourseVisitMission.rdl" />
+    <Report Include="BroadSheetPromotion.rdl" />
+    <Report Include="BroadSheetPromotionLtAndCdreBelow.rdl" />
+    <Report Include="BroadSheetSASB.rdl" />
+    <Report Include="BroadSheetSubReport.rdl" />
+    <Report Include="BroadSheetSubReportCdre.rdl" />
+    <Report Include="BSPromLtCaptToCdre.rdl" />
+    <Report Include="BSPromLtCdrToCdr.rdl" />
+    <Report Include="BSPromLtToLtCdr.rdl" />
+    <Report Include="CdrAndAvobeQualifingSubReport.rdl" />
+    <Report Include="CommendationAnnx3SubReport.rdl" />
+    <Report Include="CommendationDescSubReport.rdl" />
+    <Report Include="CommendationSubReport.rdl" />
+    <Report Include="Copy (2) of BroadSheetForLieutenant.rdl" />
+    <Report Include="Copy of Annx-3.rdl" />
+    <Report Include="Copy of BroadSheetForLieutenant.rdl" />
+    <Report Include="CourseAnnx4WithoutResultReport.rdl" />
+    <Report Include="CourseAnnx4WithResultSubReport.rdl" />
+    <Report Include="CourseAnnx6WithoutResultReport.rdl" />
+    <Report Include="CourseAnnx6WithResultSubReport.rdl" />
+    <Report Include="CourseWithoutResultSubReport.rdl" />
+    <Report Include="CourseWithResultSubReport.rdl" />
+    <Report Include="DateAndCommissionTypeWiseOfficers.rdl" />
+    <Report Include="DeferementSubReport.rdl" />
+    <Report Include="EducationAnnx5WithResultSubReport.rdl" />
+    <Report Include="EducationAnnx6WithResultSubReport.rdl" />
+    <Report Include="EducationWithoutResultAnnx6SubReport.rdl" />
+    <Report Include="EducationWithoutResultSubReport.rdl" />
+    <Report Include="EducationWithResultSubReport.rdl" />
+    <Report Include="EmployeeInfo.rdl" />
+    <Report Include="Impression.rdl" />
+    <Report Include="Last3OPR.rdl" />
+    <Report Include="Last3OprRecomLtCdrBelowSubReport.rdl" />
+    <Report Include="Last3OprRecomSubReport.rdl" />
+    <Report Include="LeaveAvailedParticularLeaveWithType.rdl" />
+    <Report Include="LeaveBreakDown.rdl" />
+    <Report Include="LeaveBreakdownLLO.rdl" />
+    <Report Include="MissionCountryStatus.rdl" />
+    <Report Include="NoCommendationAnnx3SubReport.rdl" />
+    <Report Include="NoCommendationSubReport.rdl" />
+    <Report Include="NoPunishmentAnnx3SubReport.rdl" />
+    <Report Include="NoPunishmentSubReport.rdl" />
+    <Report Include="OffficersByMaritalType.rdl" />
+    <Report Include="OfficerGotAppreciations.rdl" />
+    <Report Include="OfficerGotCommendations.rdl" />
+    <Report Include="OfficerListReport.rdl" />
+    <Report Include="OfficerPresentlyOnLeaveWithAppoinment.rdl" />
+    <Report Include="OfficerPresentlyOnLeaveWithRank.rdl" />
+    <Report Include="OfficerPresentlyOnLeaveWithRankAndAppoinment.rdl" />
+    <Report Include="OfficerRetiredList.rdl" />
+    <Report Include="OfficerRetiredWithReason.rdl" />
+    <Report Include="OfficersByAge.rdl" />
+    <Report Include="OfficersByBloodGroup.rdl" />
+    <Report Include="OfficersByCategoryAndSubCategory.rdl" />
+    <Report Include="OfficersByCommissionDate.rdl" />
+    <Report Include="OfficersByCommissionType.rdl" />
+    <Report Include="OfficersByDead.rdl" />
+    <Report Include="OfficersByDollarSign.rdl" />
+    <Report Include="OfficersByDrivingLicense.rdl" />
+    <Report Include="OfficersByFreedomFighter.rdl" />
+    <Report Include="OfficersByGender.rdl" />
+    <Report Include="OfficersByMedicalCategory.rdl" />
+    <Report Include="OfficersByMedicalCategoryType.rdl" />
+    <Report Include="OfficersBySubject.rdl" />
+    <Report Include="OfficersDidNotSoFarAvailedLeave.rdl" />
+    <Report Include="OfficersDidNotSoFarAvailedLeaveNatWise.rdl" />
+    <Report Include="OfficersDidNotSoFarAvailedLeaveRankAndNatWise.rdl" />
+    <Report Include="OfficersDidNotSoFarAvailedLeaveWithRank.rdl" />
+    <Report Include="OfficersRejoinedInfo.rdl" />
+    <Report Include="OfficersRetiringInfo.rdl" />
+    <Report Include="OprGraphicalReportList.rdl" />
+    <Report Include="OprGraphicalReportYearly.rdl" />
+    <Report Include="OprRecommendationWithOprAvg.rdl" />
+    <Report Include="PersonWiseLeave.rdl" />
+    <Report Include="PresentlyMarkedRun.rdl" />
+    <Report Include="PresentlyOnLpr.rdl" />
+    <Report Include="PromotionAppointmentProfileSubReport.rdl" />
+    <Report Include="PromotionChracterProfileSubReport.rdl" />
+    <Report Include="PromotionQualificationProfileSubReport.rdl" />
+    <Report Include="PromotionRemarkLtCdrSubReport.rdl" />
+    <Report Include="PunishmentAnnx6SubReport.rdl" />
+    <Report Include="PunishmentPresentRankSubReport.rdl" />
+    <Report Include="PunishmentSubReport.rdl" />
+    <Report Include="PunishmentTestSubReport.rdl" />
+    <Report Include="Report1.rdl" />
+    <Report Include="RetiredOfficerByPNo.rdl" />
+    <Report Include="RetiredOfficerRank.rdl" />
+    <Report Include="ReturendRunMissingInfo.rdl" />
+    <Report Include="SASBAppointmentProfileSubReport.rdl" />
+    <Report Include="SASBChracterProfileOrCommendationSubReport.rdl" />
+    <Report Include="SASBCommitmentProfileSubReport.rdl" />
+    <Report Include="SASBCommitmentProfileSubReport1.rdl" />
+    <Report Include="SASBQualificationProfileSubReport.rdl" />
+    <Report Include="SASBQualificationProfileSubReport1.rdl" />
+    <Report Include="SASBQualificationProfileSubReport2.rdl" />
+    <Report Include="SASBSummaruOfImportantCriteriaSubReport.rdl" />
+    <Report Include="SeaCommandServiceGraphicalReport.rdl" />
+    <Report Include="SearchAdminAuthoritySubReport.rdl" />
+    <Report Include="SearchAppreciationSubReport.rdl" />
+    <Report Include="SearchAreaServiceWithHistorySubReport.rdl" />
+    <Report Include="SearchAreaSubReport.rdl" />
+    <Report Include="SearchAwardSubReport.rdl" />
+    <Report Include="SearchCommendationSubReport.rdl" />
+    <Report Include="SearchCourseSubReport.rdl" />
+    <Report Include="SearchEducationSubreport.rdl" />
+    <Report Include="SearchExBDLeaveSubReport.rdl" />
+    <Report Include="SearchForeignVisitSubReport.rdl" />
+    <Report Include="SearchLastBilletSubReport.rdl" />
+    <Report Include="SearchMedalSubReport.rdl" />
+    <Report Include="SearchPublicationSubReport.rdl" />
+    <Report Include="SearchPunishmentSubReport.rdl" />
+    <Report Include="SearchReturnAbroadSubReport.rdl" />
+    <Report Include="SearchSecurityClearanceSubReport.rdl" />
+    <Report Include="SearchTransferSubReport.rdl" />
+    <Report Include="SearchUNMissionSubReport.rdl" />
+    <Report Include="SeaServiceGraphicalReport.rdl" />
+    <Report Include="SeaServiceWithPno.rdl" />
+    <Report Include="ServiceWereTerminatedInfo.rdl" />
+    <Report Include="ServiceWhreExtendedInfo.rdl" />
+    <Report Include="SpecializationSubReport.rdl" />
+    <Report Include="TpProposedBilletSubReport.rdl" />
+    <Report Include="TraceBroadSheetAppointmentProfile.rdl" />
+    <Report Include="TraceBroadSheetRemarksSubReport.rdl" />
+    <Report Include="TraceCalculationPersonalInfoSubReport.rdl" />
+    <Report Include="TraceCalculationPersonalInfoSubReport1.rdl" />
+    <Report Include="TraceCalculationSubReport.rdl" />
+    <Report Include="TraceCalculationSubReport1.rdl" />
+    <Report Include="TraceCalculationSubReport2.rdl" />
+    <Report Include="TraceCalculationSubReport3.rdl" />
+    <Report Include="TraceCalulation.rdl" />
+    <Report Include="TraceCalulation1.rdl" />
+    <Report Include="TraceCalulation2.rdl" />
+    <Report Include="TraceCalulation3.rdl" />
+    <Report Include="TraceGraphicalReport.rdl" />
+    <Report Include="TracePersoanlInfo.rdl" />
+    <Report Include="TransferProposal.rdl" />
+    <Report Include="TransferProposalLtCdrAbove.rdl" />
+    <Report Include="TransferProposalLtCdrAboveSpecial.rdl" />
+    <Report Include="TransferProposalProfileSpecialSubReport.rdl" />
+    <Report Include="TransferProposalQualifyingCriteriaSubReport.rdl" />
+    <Report Include="TransferProposalSpecial.rdl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
+</Project>

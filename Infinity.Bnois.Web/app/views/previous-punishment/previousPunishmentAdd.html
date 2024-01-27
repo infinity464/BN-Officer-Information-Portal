@@ -1,0 +1,49 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Previous Punishment<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.previousPunishmentForm">
+                    
+                    
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="type" class="custom-label"> Type</label>
+                            <br />
+                            <label> <input  type="radio" ng-model="vm.previousPunishment.type" value="1" name="type" /> Punishment</label>
+                            <br/>
+                            <label> <input type="radio" ng-model="vm.previousPunishment.type" value="2" name="type" />Achievement</label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="description" class="custom-label">Description</label>
+                            <textarea type="text" id="description" class="form-control custom-form-control" ng-model="vm.previousPunishment.description" name="description" ng-maxlength="500" ></textarea>
+                            <p ng-show="vm.previousPunishmentForm.description.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.previousPunishment.remarks" name="remarks" ng-maxlength="500" ></textarea>
+                            <p ng-show="vm.previousPunishmentForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.previousPunishmentForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

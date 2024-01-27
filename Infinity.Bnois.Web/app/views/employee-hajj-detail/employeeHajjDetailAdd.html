@@ -1,0 +1,122 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form name="vm.employeeHajjDetailForm">
+                    <div class="col-sm-12 page-header">
+                        <h2 class="warning page-header-item">Officer Hajj Detail<span class="pull-right text-success">{{vm.title}}</span></h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="pNo" class="custom-label"> PNo</label>
+                                <input type="text" id="pNo" ng-keypress="$event.keyCode ==13 && vm.getEmployeeInfo()" class="form-control custom-form-control" ng-model="vm.employeeHajjDetail.employee.pNo" name="pNo" required />
+                                <p ng-show="vm.employeeHajjDetailForm.pNo.$error.required" class="help-block errormsg">PNo is required</p>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="fullNameEng" class="custom-label">Name</label>
+                                <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.employeeHajjDetail.employee.fullNameEng" name="fullNameEng" maxlength="250" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="fullNameBan" class="custom-label">Rank</label>
+                                <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeHajjDetail.employee.rank.fullName" name="fullNameBan" maxlength="250" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="fullNameBan" class="custom-label">Batch</label>
+                                <input type="text" readonly="readonly" style="background-color:skyblue" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeHajjDetail.employee.batch.name" name="fullNameBan" maxlength="250" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="fromDate" class="custom-label"> From Date</label>
+                                <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-ng-model="vm.employeeHajjDetail.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                                <p ng-show="vm.employeeHajjDetailForm.fromDate.$error.required" class="help-block errormsg">From Date is required</p>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="tempTransferType" class="custom-label">Hajj Type</label>
+                                <label>
+                                    <input type="radio" id="tempTransferType" ng-model="vm.employeeHajjDetail.hajjOrOmra" value="true"> Hajj
+                                    <input type="radio" id="tempTransferType" ng-model="vm.employeeHajjDetail.hajjOrOmra" value="false"> Omrah
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="doB" class="custom-label"> To Date</label>
+                                <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.employeeHajjDetail.toDate" k-format="'dd-MM-yyyy'" name="toDate" required />
+                                <p ng-show="vm.employeeHajjDetailForm.toDate.$error.required" class="help-block errormsg">To Date is required</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="tempTransferType" class="custom-label">Baloty/ Non-Bloty</label>
+
+                                <label style="width: 50%">
+                                    <input type="radio" id="balotyNoBaloty" ng-model="vm.employeeHajjDetail.balotyNonBaloty" value="true"> Baloty
+                                    <input type="radio" id="balotyNoBaloty" ng-model="vm.employeeHajjDetail.balotyNonBaloty" value="false"> Non-Baloty
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nickName" class="custom-label"> A Company By</label>
+                                <textarea type="text" id="nickName" class="form-control custom-form-control" ng-model="vm.employeeHajjDetail.aCompanyBy" name="nickName" maxlength="250" />
+                                <p ng-show="vm.employeeHajjDetailForm.aCompanyBy.$error.maxlength" class="help-block errormsg">Maximum character 500</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="tempTransferType" class="custom-label">Arranged By</label>
+
+                                <label style="width: 50%">
+                                    <input type="radio" id="arrangedBy" ng-model="vm.employeeHajjDetail.arrangedBy" value="true"> Own Arranagement
+                                    <input type="radio" id="arrangedBy" ng-model="vm.employeeHajjDetail.arrangedBy" value="false"> Govt. Arranagement
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="tempTransferType" class="custom-label">Visit Type</label>
+                                <label style="width: 50%">
+                                    <input type="radio" id="royelGuest" ng-model="vm.employeeHajjDetail.royelGuest" value="true"> Forign Visit
+                                    <input type="radio" id="royelGuest" ng-model="vm.employeeHajjDetail.royelGuest" value="false"> Ex.Bd Leave
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeHajjDetailForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

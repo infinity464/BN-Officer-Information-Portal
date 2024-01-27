@@ -1,0 +1,356 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">{{vm.title|uppercase}}</h2>
+                </div>
+                <form name="vm.parentForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullName" class="custom-label">Full Name</label>
+                            <input type="text" id="fullName" class="form-control custom-form-control" ng-model="vm.parent.fullName" name="fullName" ng-maxlength="250" required />
+                            <p ng-show="vm.parentForm.fullName.$error.required" class="help-block errormsg">Full Name Of is required</p>
+                            <p ng-show="vm.parentForm.fullName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullNameBan" class="custom-label">Full Name (বাংলা)</label>
+                            <input type="text" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.parent.fullNameBan" name="fullNameBan" ng-maxlength="250" />
+                            <p ng-show="vm.parentForm.fullNameBan.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nickName" class="custom-label">Nick Name</label>
+                            <input type="text" id="nickName" class="form-control custom-form-control" ng-model="vm.parent.nickName" name="nickName" ng-maxlength="50" />
+                            <p ng-show="vm.parentForm.nickName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+                    
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="otherName" class="custom-label">Other Name</label>
+                        <input type="text" id="otherName" class="form-control custom-form-control" ng-model="vm.parent.otherName" name="otherName" ng-maxlength="50" />
+                        <p ng-show="vm.parentForm.otherName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                    </div>
+                </div>
+
+                
+
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="familyTitle" class="custom-label">Family Title</label>
+                            <input type="text" id="familyTitle" class="form-control custom-form-control" ng-model="vm.parent.familyTitle" name="familyTitle" ng-maxlength="250" />
+                            <p ng-show="vm.parentForm.familyTitle.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="doB" class="custom-label">Date of Birth</label>
+                            <input kendo-date-picker id="doB" class="form-control custom-form-control" k-ng-model="vm.parent.doB" k-format="'dd-MM-yyyy'" name="doB" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="placeOfBirth" class="custom-label">Place of Birth</label>
+                            <input type="text" id="placeOfBirth" class="form-control custom-form-control" ng-model="vm.parent.placeOfBirth" name="placeOfBirth" ng-maxlength="250" />
+                            <p ng-show="vm.parentForm.placeOfBirth.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isBirthOutSide" class="custom-label">Birth Outside Bangladesh</label>
+                            <input type="radio" ng-model="vm.parent.isBirthOutSide" ng-value="false">No
+                            <input type="radio" ng-model="vm.parent.isBirthOutSide" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="countryId" class="custom-label">Country</label>
+                            <select name="countryId" id="countryId" class="form-control" ng-model="vm.parent.countryId" ng-options="option.value as option.text for option in vm.countries" ng-disabled="!vm.parent.isBirthOutSide">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.parentForm.countryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reasonOfMigration" class="custom-label">Reasson of Migration</label>
+                            <input type="text" id="reasonOfMigration" class="form-control custom-form-control" ng-model="vm.parent.reasonOfMigration" name="reasonOfMigration" ng-maxlength="250" ng-disabled="!vm.parent.isBirthOutSide" />
+                            <p ng-show="vm.parent.reasonOfMigration.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="migraitonDate" class="custom-label">Migration Date</label>
+                            <input kendo-date-picker id="migraitonDate" k-ng-model="vm.parent.migraitonDate" k-format="'dd-MM-yyyy'" class="form-control custom-form-control" name="migraitonDate" ng-maxlength="250" ng-disabled="!vm.parent.isBirthOutSide" />
+                            <p ng-show="vm.parentForm.migraitonDate.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="nationalityId" class="custom-label">Nationality</label>
+                            <select name="nationalityId" id="nationalityId" class="form-control" ng-model="vm.parent.nationalityId" ng-options="option.value as option.text for option in vm.nationalities" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.parentForm.nationalityId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="nID" class="custom-label">NID</label>
+                        <input type="text" id="nID" class="form-control custom-form-control" ng-model="vm.parent.nid" name="nID" ng-maxlength="50" />
+                        <p ng-show="vm.parentForm.nID.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isNationalityChange" class="custom-label">Nationality Change</label>
+                            <input type="radio" ng-model="vm.parent.isNationalityChange" ng-value="false">No
+                            <input type="radio" ng-model="vm.parent.isNationalityChange" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="previousNationalityId" class="custom-label">Previous Nationality</label>
+                            <select name="previousNationalityId" id="previousNationalityId" class="form-control" ng-model="vm.parent.previousNationalityId" ng-options="option.value as option.text for option in vm.nationalities" ng-disabled="!vm.parent.isNationalityChange">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.parentForm.previousNationalityId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="previousNationalityDate" class="custom-label">Previous Nationality Date</label>
+                            <input kendo-date-picker id="previousNationalityDate" k-ng-model="vm.parent.previousNationalityDate" k-format="'dd-MM-yyyy'" class="form-control custom-form-control" name="previousNationalityDate" ng-maxlength="250" ng-disabled="!vm.parent.isNationalityChange" />
+                            <p ng-show="vm.parentForm.previousNationalityDate.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="educationalQualification" class="custom-label">Educational Qualification</label>
+                            <textarea type="text" id="educationalQualification" class="form-control custom-form-control" ng-model="vm.parent.educationalQualification" name="educationalQualification" ng-maxlength="350"  />
+                            <p ng-show="vm.parentForm.educationalQualification.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="religionId" class="custom-label">Religion</label>
+                            <select name="religionId" id="religionId" class="form-control" ng-model="vm.parent.religionId" ng-change="vm.getReligionCastByReligion(vm.parent.religionId)" ng-options="option.value as option.text for option in vm.religions" >
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.parentForm.religionId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="religionCastId" class="custom-label">Religion Cast</label>
+                            <select name="religionCastId" id="religionCastId" class="form-control" ng-model="vm.parent.religionCastId" ng-options="option.value as option.text for option in vm.religionCasts">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.parentForm.religionCastId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12"><h3>Professional History</h3></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isDoingService" class="custom-label">Service/Professional History</label>
+                            <input type="radio" ng-model="vm.parent.isDoingService" ng-value="false">No
+                            <input type="radio" ng-model="vm.parent.isDoingService" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="occupationId" class="custom-label">Occupation</label>
+                            <select name="occupationId" id="occupationId" class="form-control" ng-model="vm.parent.occupationId" ng-options="option.value as option.text for option in vm.occupations">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.parentForm.occupationId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="department" class="custom-label">Department</label>
+                            <input type="text" id="department" class="form-control custom-form-control" ng-model="vm.parent.department" name="department" ng-maxlength="250" ng-disabled="!vm.parent.isDoingService" />
+                            <p ng-show="vm.parentForm.department.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="designation" class="custom-label">Designation</label>
+                            <input type="text" id="designation" class="form-control custom-form-control" ng-model="vm.parent.designation" name="designation" ng-maxlength="250" ng-disabled="!vm.parent.isDoingService" />
+                            <p ng-show="vm.parentForm.designation.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="serviceAddress" class="custom-label">Present Service Address</label>
+                            <textarea type="text" id="serviceAddress" class="form-control custom-form-control" ng-model="vm.parent.serviceAddress" name="serviceAddress" ng-maxlength="350" ng-disabled="!vm.parent.isDoingService" />
+                            <p ng-show="vm.parentForm.serviceAddress.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="preServiceAddress" class="custom-label">Previous Service Address (If Any)</label>
+                            <textarea type="text" id="preServiceAddress" class="form-control custom-form-control" ng-model="vm.parent.preServiceAddress" name="preServiceAddress" ng-maxlength="350" ng-disabled="!vm.parent.isDoingService" />
+                            <p ng-show="vm.parentForm.preServiceAddress.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isArmedForceExp" class="custom-label">Has Armed Force Experience</label>
+                            <input type="radio" ng-model="vm.parent.isArmedForceExp" ng-value="false">No
+                            <input type="radio" ng-model="vm.parent.isArmedForceExp" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankCategoryId" class="custom-label">Armed Force Organization</label>
+                            <select name="rankCategoryId" id="rankCategoryId" class="form-control" ng-model="vm.parent.rankCategoryId" ng-options="option.value as option.text for option in vm.rankCategories" ng-disabled="!vm.parent.isArmedForceExp">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.parentForm.rankCategoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pNo" class="custom-label">PNo.</label>
+                            <input type="text" id="pNo" class="form-control custom-form-control" ng-model="vm.parent.pNo" name="pNo" ng-disabled="!vm.parent.isArmedForceExp" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="rankName" class="custom-label">Rank Name</label>
+                            <input type="text" id="rankName" class="form-control custom-form-control" ng-model="vm.parent.rankName" name="rankName" ng-maxlength="250" ng-disabled="!vm.parent.isArmedForceExp" />
+                            <p ng-show="vm.parentForm.rankName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="yearlyIncome" class="custom-label">Yearly Income</label>
+                            <input type="text" id="yearlyIncome" class="form-control custom-form-control" ng-model="vm.parent.yearlyIncome" name="yearlyIncome" ng-maxlength="250" />
+                            <p ng-show="vm.parentForm.yearlyIncome.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isRetired" class="custom-label">Retired</label>
+                            <input type="radio" ng-model="vm.parent.isRetired" ng-value="false">No
+                            <input type="radio" ng-model="vm.parent.isRetired" ng-value="true">Yes
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isDead" class="custom-label">Status</label>
+                            <input type="radio" ng-model="vm.parent.isDead" ng-value="false">Alive
+                            <input type="radio" ng-model="vm.parent.isDead" ng-value="true">Dead
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="deadDate" class="custom-label">Death Date</label>
+                            <input kendo-date-picker id="deadDate" class="form-control custom-form-control" k-ng-model="vm.parent.deadDate" k-format="'dd-MM-yyyy'" name="deadDate" ng-disabled="!vm.parent.isDead" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12"><h3>Addresss</h3></div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="presentAddress" class="custom-label">Present Address</label>
+                            <textarea type="text" id="presentAddress" class="form-control custom-form-control" ng-model="vm.parent.presentAddress" name="presentAddress" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.presentAddress.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="presentAddressBan" class="custom-label">Present Address (বাংলা)</label>
+                            <textarea type="text" id="presentAddressBan" class="form-control custom-form-control" ng-model="vm.parent.presentAddressBan" name="presentAddressBan" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.presentAddressBan.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="permanentAddress" class="custom-label">Permanent Address</label>
+                            <textarea type="text" id="permanentAddress" class="form-control custom-form-control" ng-model="vm.parent.permanentAddress" name="permanentAddress" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.permanentAddress.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="permanentAddressBan" class="custom-label">Permanent Address (বাংলা)</label>
+                            <textarea type="text" id="permanentAddressBan" class="form-control custom-form-control" ng-model="vm.parent.permanentAddressBan" name="permanentAddressBan" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.permanentAddressBan.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="otherAddress" class="custom-label">Other Address</label>
+                            <textarea type="text" id="otherAddress" class="form-control custom-form-control" ng-model="vm.parent.otherAddress" name="otherAddress" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.otherAddress.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="otherAddressBan" class="custom-label">Other Address (বাংলা)</label>
+                            <textarea type="text" id="otherAddressBan" class="form-control custom-form-control" ng-model="vm.parent.otherAddressBan" name="otherAddressBan" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.otherAddressBan.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="politicalIdeology" class="custom-label">Political Ideology</label>
+                            <textarea type="text" id="politicalIdeology" class="form-control custom-form-control" ng-model="vm.parent.politicalIdeology" name="politicalIdeology" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.politicalIdeology.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dependency" class="custom-label">Dependency on the Subj Indl</label>
+                            <textarea type="text" id="dependency" class="form-control custom-form-control" ng-model="vm.parent.dependency" name="dependency" ng-maxlength="350" />
+                            <p ng-show="vm.parentForm.dependency.$error.maxlength" class="help-block errormsg">Maximum character 350</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.sportsAndHobbyForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

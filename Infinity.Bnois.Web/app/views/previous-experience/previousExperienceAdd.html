@@ -1,0 +1,114 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Pre Commission Service<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.previousExperienceForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="preCommissionRankId" class="custom-label">Pre Commission Rank</label>
+                            <select name="preCommissionRankId" id="preCommissionRankId" class="form-control" ng-model="vm.previousExperience.preCommissionRankId" ng-options="option.value as option.text for option in vm.preCommissionRanks">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.previousExperienceForm.preCommissionRankId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="serviceNo" class="custom-label">Service No</label>
+                            <input type="text" id="serviceNo" class="form-control custom-form-control" ng-model="vm.previousExperience.serviceNo" name="serviceNo" ng-maxlength="50" />
+                            <p ng-show="vm.previousExperienceForm.serviceNo.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="joiningDate" class="custom-label">Joining Date</label>
+                            <input kendo-date-picker id="joiningDate" class="form-control custom-form-control" k-ng-model="vm.previousExperience.joiningDate" k-format="'dd-MM-yyyy'" name="joiningDate" required />
+                            <p ng-show="vm.previousExperienceForm.doB.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="categoryId" class="custom-label">Category</label>
+                            <select name="categoryId" id="categoryId" class="form-control" ng-model="vm.previousExperience.categoryId" ng-options="option.value as option.text for option in vm.categories">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.previousExperienceForm.categoryId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Description</label>
+                            <input type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.previousExperience.remarks" name="remarks" ng-maxlength="528" />
+                            <p ng-show="vm.previousExperienceForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="leavingReason" class="custom-label">Reason for Leaving Service</label>
+                            <input type="text" id="leavingReason" class="form-control custom-form-control" ng-model="vm.previousExperience.leavingReason" name="leavingReason" ng-maxlength="528" />
+                            <p ng-show="vm.previousExperienceForm.leavingReason.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="issb" class="custom-label">ISSB</label>
+                            <select name="issb" id="issb" class="form-control" ng-model="vm.previousExperience.issb" ng-options="option.value as option.text for option in vm.issb">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6" ng-if="vm.previousExperience.issb ==1">
+                        <div class="form-group">
+                            <label for="issbResult" class="custom-label"> Result</label>
+                            <select name="issbResult" id="issbResult" class="form-control" ng-model="vm.previousExperience.issbResult" ng-options="option.value as option.text for option in vm.issbResults">
+                                <option value="">--Select an Option--</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <h5>Balance Leave for SD/Honorary Officer</h5>
+
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="leaveMonths" class="custom-label">Months</label>
+                            <input type="number" id="leaveMonths" class="form-control custom-form-control" ng-model="vm.previousExperience.leaveMonths" name="leaveMonths" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="leaveDays" class="custom-label">Days</label>
+                            <input type="number" id="leaveDays" class="form-control custom-form-control" ng-model="vm.previousExperience.leaveDays" name="leaveDays" />
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.preousExperienceForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

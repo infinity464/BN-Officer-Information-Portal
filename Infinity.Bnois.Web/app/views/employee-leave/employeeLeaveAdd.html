@@ -1,0 +1,224 @@
+﻿<!--<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-user">
+                <div class="card-header">
+                    <h5 class="card-title">Leave Apllication</h5>
+                </div>
+                <div class="card-body">
+                    <form name="vm.employeeLeaveForm">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="pNo" class="custom-label"> PNo</label>
+                                    <input type="text" readonly="readonly" id="pNo" ng-keypress="$event.keyCode ==13 && vm.searchEmployee()" class="form-control" ng-model="vm.employeeLeave.employee.pNo" name="pNo" required />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fullNameEng" class="custom-label"> Name</label>
+                                    <input type="text" readonly="readonly" id="fullNameEng" class="form-control custom-form-control" ng-model="vm.employeeLeave.employee.fullNameEng" name="fullNameEng" maxlength="250" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fullNameBan" class="custom-label">Rank</label>
+                                    <input type="text" readonly="readonly" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeLeave.employee.rank.fullName" name="fullNameBan" maxlength="250" required />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fullNameBan" class="custom-label">Batch</label>
+                                    <input type="text" readonly="readonly" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeLeave.employee.batch.name" name="fullNameBan" maxlength="250" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="born" class="custom-label">Born</label>
+                                    <input type="text" readonly="readonly" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeLeave.preBornOffice" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="Attach" class="custom-label">Attach</label>
+                                    <input type="text" readonly="readonly" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeLeave.preAttachOffice" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="Appointment" class="custom-label">Appointment</label>
+                                    <input type="text" readonly="readonly" id="fullNameBan" class="form-control custom-form-control" ng-model="vm.employeeLeave.preAppointment" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fullNameBan" class="custom-label">Branch</label>
+                                    <input type="text" readonly="readonly" id="branchName" class="form-control custom-form-control" ng-model="vm.employeeLeave.employee.branchName" name="branchName" maxlength="250" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" ng-show="vm.employeeLeave.isBackLog">
+                                <div class="form-group">
+                                    <label for="transferId" class="custom-label">Born/Attach/Appointment</label>
+                                    <select name="transferId" id="transferId" class="form-control" ng-model="vm.employeeLeave.transferId"
+                                            ng-options="option.value as option.text for option in vm.transfers">
+                                        <option value="">--Select an Option--</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                        </div>
+                        <div class="row">
+
+                        </div>
+
+                        
+                        
+                        
+                        
+                        <div class="col-sm-12">
+                            <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">Leave Entry</legend>
+                                <div class="col-sm-9">
+                                    <fieldset class="scheduler-border">
+                                        <div class="row" style="padding-top:10px">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="leaveTypeId" class="custom-label"> Leave Type</label>
+                                                    <select name="leaveTypeId" id="leaveTypeId" class="form-control" ng-model="vm.employeeLeave.leaveTypeId" ng-change="vm.getLeaveDurationInfo(vm.employeeLeave.leaveTypeId)" ng-options="option.value as option.text for option in vm.leaveTypes" required>
+                                                        <option value="">--Select an Option--</option>
+                                                    </select>
+                                                    <p ng-show="vm.employeeLeaveForm.leaveTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="leaveDueCount" class="custom-label"> Total Leave Due</label>
+                                                    <input type="text" id="duration" ng-if="vm.employeeLeave.leaveDueCount >= 0" class="form-control custom-form-control" ng-model="vm.employeeLeave.leaveDueCount" name="duration" disabled />
+                                                    <input type="text" id="duration" ng-if="vm.employeeLeave.leaveDueCount < 0" class="form-control custom-form-control" ng-init="defaultvalue='0 Days'" ng-model="defaultvalue" name="duration" disabled />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="fromDate" class="custom-label"> Date From</label>
+                                                <input kendo-date-picker id="fromDate" class="form-control custom-form-control" k-on-change="vm.getDays()" k-ng-model="vm.employeeLeave.fromDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                                                <p ng-show="vm.employeeLeaveForm.fromDate.$error.required" class="help-block errormsg"> Date is required</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="toDate" class="custom-label"> Date To</label>
+                                                <input kendo-date-picker id="toDate" class="form-control custom-form-control" k-ng-model="vm.employeeLeave.toDate" k-on-change="vm.getDays()" k-format="'dd-MM-yyyy'" name="toDate" required />
+                                                <p ng-show="vm.employeeLeaveForm.toDate.$error.toDate" class="help-block errormsg"> Date is required</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="duration" class="custom-label"> Total Leave Days</label>
+                                                <input type="text" id="duration" class="form-control custom-form-control" ng-model="vm.employeeLeave.duration" name="duration" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="remarks" class="custom-label"> Remarks</label>
+                                                <textarea id="remarks" class="form-control custom-form-control" ng-model="vm.employeeLeave.remarks" name="remarks"></textarea>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="officeAppointmentId" class="custom-label"> Commanding Officer</label>
+                                                <select name="officeAppointmentId" id="officeAppointmentId" class="form-control" ng-model="vm.employeeLeave.officeAppointmentId" ng-options="option.value as option.text for option in vm.commandingOfficerList" required>
+                                                    <option value="">--Select an Option--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-3">
+                                    <fieldset class="scheduler-border">
+                                        <legend class="scheduler-border">Privilege Leave Slot</legend>
+                                        <div class="table-wrapper table-responsive">
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Year</th>
+                                                        <th>Total</th>
+                                                        <th>Balance</th>
+                                                        <th>Availed</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="leaveBalance in  vm.employeeLeave.leaveBalances">
+                                                        <td>
+                                                            <input type="checkbox" ng-model="leaveBalance.isAssigned">
+                                                        </td>
+                                                        <td>{{leaveBalance.leaveYear}}</td>
+                                                        <td>{{leaveBalance.totalLeave}}</td>
+                                                        <td>{{leaveBalance.balance}}</td>
+                                                        <td>{{leaveBalance.totalConsume}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-sm-12">
+                            <fieldset class="scheduler-border">
+                                <legend class="scheduler-border"><input type="checkbox" ng-model="vm.employeeLeave.exBdLeave" />   Ex Bangladesh Leave</legend>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="countryIds" class="custom-label">Country</label>
+                                        <select kendo-multi-select k-options="vm.countryOptions" k-ng-model="vm.employeeLeave.countryIds" k-ng-disabled="!(vm.employeeLeave.exBdLeave)"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="purpose" class="custom-label">Purpose</label>
+                                        <select name="purpose" id="purpose" class="form-control" ng-disabled="!(vm.employeeLeave.exBdLeave)" ng-model="vm.employeeLeave.purpose" ng-options="option.value as option.text for option in vm.leavePurposeList">
+                                            <option value="">--Select an Option--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="accompanyBy" class="custom-label"> Accompany By</label>
+                                            <textarea id="accompanyBy" ng-readonly="!(vm.employeeLeave.exBdLeave)" class="form-control custom-form-control" ng-model="vm.employeeLeave.accompanyBy" name="accompanyBy"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-xs-12">
+                            <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.employeeLeaveForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                            <button type="button" class="btn custom-btn btn-warning" ng-click="vm.searchEmployee()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="alert alert-success" role="alert">
+    Please contact with admin authority for Trace Mark/Grading(Except position)..........!
+</div>

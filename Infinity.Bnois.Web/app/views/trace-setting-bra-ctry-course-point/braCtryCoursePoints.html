@@ -1,0 +1,44 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Branch and Country Wise Course Points</h2>
+                    <button  class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addBraCtryCoursePoint()"><span class="glyphicon glyphicon-user"></span> Add</button>
+                </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Sub Category</th>
+                                <th>Organization</th>
+                                <th>Branch</th>
+                                <th>Country</th>
+                                <th>Max Mark</th>
+                                <th>Min Mark</th>
+                                <th class="text-right">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="braCtryCoursePoint in vm.braCtryCoursePoints">
+                                <td>{{braCtryCoursePoint.courseCategory.name}}</td>
+                                <td>{{braCtryCoursePoint.courseSubCategory.name}}</td>
+                                <td>{{braCtryCoursePoint.rankCategory.name}}</td>
+                                <td>{{braCtryCoursePoint.branch.name}}</td>
+                                <td>{{braCtryCoursePoint.country.fullName}}</td>
+                                <td>{{braCtryCoursePoint.max}}</td>
+                                <td>{{braCtryCoursePoint.min}}</td>
+                                <td class="text-right">
+                                    <a  class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateBraCtryCoursePoint(braCtryCoursePoint)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

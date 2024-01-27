@@ -1,0 +1,32 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <header class="page-header">
+                    <h2 class="warning page-header-item">Module<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </header>
+                <form name="vm.moduleForm">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="moduleName" class="custom-label">Module Name</label>
+                            <input type="text" id="moduleName" class="form-control custom-form-control" ng-model="vm.module.name" name="moduleName" required />
+                            <p ng-show="vm.moduleForm.moduleName.$error.required" class="help-block errormsg">Module Name is required</p>
+                            <p ng-show="vm.moduleForm.moduleName.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="orderNo" class="custom-label">Order</label>
+                            <input type="text" id="orderNo" class="form-control custom-form-control" ng-model="vm.module.orderNo" name="orderNo" ng-maxlength="50" required />
+                            <p ng-show="vm.moduleForm.orderNo.$error.required" class="help-block errormsg">Order is required</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.moduleForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

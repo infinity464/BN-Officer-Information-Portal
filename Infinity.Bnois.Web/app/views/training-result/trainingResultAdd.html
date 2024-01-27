@@ -1,0 +1,170 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Participant Result<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.trainingResultForm">
+                    <employee-search ng-model="vm.trainingResult.employee"></employee-search>
+
+                    <div class="col-sm-12">
+                        <hr />
+                    </div>
+
+
+                    <!-- <div class="col-sm-6"> -->
+                    <!--     <div class="form-group"> -->
+                    <!--         <label for="countryId" class="custom-label">Country</label> -->
+                    <!--         <select name="countryId" id="countryId" class="form-control" ng-model="vm.trainingResult.trainingPlan.countryId" -->
+                    <!--                 ng-options="option.value as option.text for option in vm.countries" required  -->
+                    <!--                 > -->
+                    <!--             <option value="">--Select an Option--</option> -->
+                    <!--         </select> -->
+                    <!--         -->
+                    <!--     </div> -->
+                    <!-- </div> -->
+                    <!-- -->
+                    <!-- <div class="col-sm-6"> -->
+                    <!--     <div class="form-group"> -->
+                    <!--         <label for="courseCategoryId" class="custom-label">Category</label> -->
+                    <!--         <select name="courseCategoryId" id="courseCategoryId" class="form-control" ng-model="vm.trainingResult.courseCategoryId" -->
+                    <!--                 ng-options="option.value as option.text for option in vm.courseCategories" required -->
+                    <!--                 ng-change="vm.getCourseSubCategory(vm.trainingResult.courseCategoryId)"> -->
+                    <!--             <option value="">--Select an Option--</option> -->
+                    <!--         </select> -->
+                    <!--         <p ng-show="vm.trainingResultForm.courseCategoryId.$error.required" class="help-block errormsg">Please select an Option</p> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
+                    <!-- -->
+                    <!-- <div class="col-sm-6"> -->
+                    <!--     <div class="form-group"> -->
+                    <!--         <label for="courseSubCategoryId" class="custom-label">Sub Category</label> -->
+                    <!--         <select name="courseSubCategoryId" id="courseSubCategoryId" class="form-control" ng-model="vm.trainingResult.courseSubCategoryId" -->
+                    <!--                 ng-options="option.value as option.text for option in vm.courseSubCategories" required -->
+                    <!--                 ng-change="vm.getTrainingPlansByCategorySubCategory(vm.trainingResult.courseSubCategoryId)"> -->
+                    <!--             <option value="">--Select an Option--</option> -->
+                    <!--         </select> -->
+                    <!--         <p ng-show="vm.trainingResultForm.courseSubCategoryId.$error.required" class="help-block errormsg">Please select an Option</p> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
+                    <!-- -->
+                    <!-- <div class="col-sm-6"> -->
+                    <!--     <div class="form-group"> -->
+                    <!--         <label for="trainingPlanId" class="custom-label">Course</label> -->
+                    <!-- -->
+                    <!--         <select name="trainingPlanId" id="trainingPlanId" class="form-control" ng-model="vm.trainingResult.trainingPlanId" ng-options="option.value as option.text for option in vm.trainingPlans" required> -->
+                    <!--             <option value="">--Select an Option--</option> -->
+                    <!--         </select> -->
+                    <!--         <p ng-show="vm.trainingResultForm.trainingResultId.$error.required" class="help-block errormsg">Please select an Option</p> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
+
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="trainingPlanId" class="custom-label">Training Schedule </label>
+                            <angucomplete-alt id="trainingPlanId"
+                                              placeholder="Search Schedule"
+                                              pause="400"
+                                              maxlength="250"
+                                              minlength="2"
+                                              selected-object="vm.selected"
+                                              local-data="vm.trainingPlans"
+                                              local-search="vm.localSearch"
+                                              title-field="text"
+                                              match-class="highlight"
+                                              field-required="true"
+                                              input-name="trainingPlanId"
+                                              override-suggestions="true"
+                                              auto-match="true"
+                                              text-no-results="Schedule Not Found"
+                                              input-class="form-control form-control-small" />
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="resultTypeId" class="custom-label">Result</label>
+                            <select name="resultTypeId" id="resultTypeId" class="form-control" ng-model="vm.trainingResult.resultTypeId" ng-options="option.value as option.text for option in vm.resultTypes" required>
+                                <option value="">--Select an Option--</option>
+                            </select>
+                            <p ng-show="vm.trainingResultForm.resultTypeId.$error.required" class="help-block errormsg">Please select an Option</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="resultStatus" class="custom-label">Result Status</label>
+                            <div class="radio-inline" ng-repeat=" status in vm.resultStatus">
+
+                                <label>  <input type="radio" id="resultStatus" ng-model="vm.trainingResult.resultStatus" value="{{status.value}}" required> {{status.text}}</label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="resultDate" class="custom-label"> Result Date</label>
+                            <input kendo-date-picker id="resultDate" class="form-control custom-form-control" k-ng-model="vm.trainingResult.resultDate" k-format="'dd-MM-yyyy'" name="fromDate" required />
+                            <p ng-show="vm.trainingResultForm.resultDate.$error.required" class="help-block errormsg">Date is required.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="percentage" class="custom-label">Percentage/Grade</label>
+                            <input type="number" id="percentage" class="form-control custom-form-control" ng-model="vm.trainingResult.percentage" name="percentage" />
+                            <p ng-show="vm.trainingResultForm.percentage.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="position" class="custom-label">Position</label>
+                            <input type="number" id="position" class="form-control custom-form-control" ng-model="vm.trainingResult.positon" name="position" maxlength="250" />
+                            <p ng-show="vm.trainingResultForm.position.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remarks" class="custom-label">Remarks</label>
+                            <textarea type="text" id="remarks" class="form-control custom-form-control" ng-model="vm.trainingResult.remarks" name="remarks" maxlength="250"></textarea>
+                            <p ng-show="vm.trainingResultForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="unit" class="custom-label">Appointment Reccomendation (For Report)</label>
+                            <input type="text" id="unit" class="form-control custom-form-control" ng-model="vm.trainingResult.unit" name="unit" maxlength="250" />
+                            <p ng-show="vm.trainingResultForm.unit.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.trainingResultForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

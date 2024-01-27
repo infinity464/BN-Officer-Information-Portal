@@ -1,0 +1,49 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2 class="warning page-header-item">Category<span class="pull-right text-success">{{vm.title}}</span></h2>
+                </div>
+                <form name="vm.categoryForm">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="custom-label"> Category Name</label>
+                            <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.category.name" name="name" maxlength="250" required />
+                            <p ng-show="vm.categoryForm.name.$error.required" class="help-block errormsg">Category name is required</p>
+                            <p ng-show="vm.categoryForm.name.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="shortName" class="custom-label"> Short Name</label>
+                            <input type="text" id="shortName" class="form-control custom-form-control" ng-model="vm.category.shortName" name="shortName" maxlength="50" />
+                            <p ng-show="vm.categoryForm.shortName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="priority" class="custom-label"> Priority</label>
+                            <input type="text" id="priority" class="form-control custom-form-control" ng-model="vm.category.priority" name="priority" maxlength="50" />
+                            <p ng-show="vm.categoryForm.priority.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="description" class="custom-label">Remarks</label>
+                            <textarea type="text" id="description" class="form-control custom-form-control" ng-model="vm.category.description" name="description" maxlength="250" />
+                            <p ng-show="vm.categoryForm.remarks.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.categoryForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.saveButtonText}}</button>
+                        <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
